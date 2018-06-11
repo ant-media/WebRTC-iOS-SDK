@@ -13,6 +13,7 @@
 		78DC79BD20CE63AC0034CAAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DC79BB20CE63AC0034CAAB /* Main.storyboard */; };
 		78DC79BF20CE63AE0034CAAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78DC79BE20CE63AE0034CAAB /* Assets.xcassets */; };
 		78DC79C220CE63AE0034CAAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DC79C020CE63AE0034CAAB /* LaunchScreen.storyboard */; };
+		78DC79CB20CE8C420034CAAB /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CA20CE8C420034CAAB /* AlertHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		78DC79BE20CE63AE0034CAAB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78DC79C120CE63AE0034CAAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		78DC79C320CE63AE0034CAAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		78DC79CA20CE8C420034CAAB /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		9F18D764CE2419C8E0CB31A9 /* Pods-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
 		DE0A4A5B30AF79A3DA0B8C3F /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 		78DC79B620CE63AC0034CAAB /* AntMediaReferenceApplication */ = {
 			isa = PBXGroup;
 			children = (
+				78DC79C920CE8C350034CAAB /* Helper */,
 				78DC79B720CE63AC0034CAAB /* AppDelegate.swift */,
 				78DC79B920CE63AC0034CAAB /* WelcomeViewController.swift */,
 				78DC79BB20CE63AC0034CAAB /* Main.storyboard */,
@@ -77,6 +80,14 @@
 				78DC79C320CE63AE0034CAAB /* Info.plist */,
 			);
 			path = AntMediaReferenceApplication;
+			sourceTree = "<group>";
+		};
+		78DC79C920CE8C350034CAAB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				78DC79CA20CE8C420034CAAB /* AlertHelper.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 		B8F850D806BEFA4B3B88C62F /* Pods */ = {
@@ -200,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78DC79CB20CE8C420034CAAB /* AlertHelper.swift in Sources */,
 				78DC79BA20CE63AC0034CAAB /* WelcomeViewController.swift in Sources */,
 				78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */,
 			);
@@ -349,7 +361,10 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -366,7 +381,10 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
