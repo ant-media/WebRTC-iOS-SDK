@@ -48,6 +48,10 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func serverTapped(_ sender: UIButton) {
-        
+        AlertHelper.getInstance().addOption("Save", onSelect: {
+            (address) in
+            print("Saved: \(address)")
+        })
+        AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address (no need protocol)")
     }
 }
