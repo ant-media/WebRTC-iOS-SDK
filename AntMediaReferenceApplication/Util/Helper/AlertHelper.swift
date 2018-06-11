@@ -11,7 +11,7 @@ import UIKit
 
 open class AlertHelper: NSObject, UIAlertViewDelegate {
     
-    fileprivate static let instance = AlertHelper();
+    fileprivate static let instance = AlertHelper()
     
     fileprivate var alertView: UIAlertController?
     fileprivate var inputField: UITextField?
@@ -23,7 +23,7 @@ open class AlertHelper: NSObject, UIAlertViewDelegate {
     }
     
     open func addOption(_ title: String, onSelect: @escaping ((String?) -> Void)) {
-        options.append((title: title, action: onSelect));
+        options.append((title: title, action: onSelect))
     }
     
     open func show(_ title: String?, message: String?, cancelButtonText: String = "Cancel", cancelAction: SimpleClosure? = nil) {
@@ -40,7 +40,7 @@ open class AlertHelper: NSObject, UIAlertViewDelegate {
         alertView!.addTextField(configurationHandler: {
             (textField: UITextField) -> Void in
             self.inputField = textField
-        });
+        })
         
         addButtons(cancelButtonText)
         target.present(alertView!, animated: true, completion: nil)
