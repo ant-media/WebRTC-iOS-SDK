@@ -99,7 +99,10 @@ WebRTC Live Streaming</string>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Inj-Ay-988">
-                                        <rect key="frame" x="84" y="297" width="77" height="28"/>
+                                        <rect key="frame" x="6" y="297" width="233" height="28"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="vla-6X-HS0"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Set server ip">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,6 +124,7 @@ WebRTC Live Streaming</string>
                                     <constraint firstAttribute="height" constant="325" id="ag6-hd-ueA"/>
                                     <constraint firstAttribute="trailing" secondItem="tve-qy-d3T" secondAttribute="trailing" constant="3" id="b30-NY-29S"/>
                                     <constraint firstItem="qBa-xU-p76" firstAttribute="leading" secondItem="WPm-03-EZ0" secondAttribute="trailing" constant="9" id="c8E-Qu-x18"/>
+                                    <constraint firstItem="Inj-Ay-988" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="dFZ-Tk-cdp"/>
                                     <constraint firstAttribute="bottom" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="30" id="eam-bM-qXm"/>
                                     <constraint firstItem="WPm-03-EZ0" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="g7x-Ws-hPN"/>
                                     <constraint firstItem="Inj-Ay-988" firstAttribute="top" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="2" id="hHZ-tp-cby"/>
@@ -128,8 +132,8 @@ WebRTC Live Streaming</string>
                                     <constraint firstItem="Sor-To-6JJ" firstAttribute="top" secondItem="WPm-03-EZ0" secondAttribute="bottom" constant="4" id="nYK-a5-xmP"/>
                                     <constraint firstItem="Sor-To-6JJ" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="puv-3J-ZAC"/>
                                     <constraint firstItem="tve-qy-d3T" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="q5g-wG-vnA"/>
-                                    <constraint firstItem="Inj-Ay-988" firstAttribute="centerX" secondItem="dMz-6A-4JU" secondAttribute="centerX" id="rcL-ef-AbJ"/>
                                     <constraint firstItem="5ym-6R-Akx" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="tOA-K4-3PF"/>
+                                    <constraint firstAttribute="trailing" secondItem="Inj-Ay-988" secondAttribute="trailing" constant="6" id="vdV-GS-5gg"/>
                                     <constraint firstItem="tve-qy-d3T" firstAttribute="top" secondItem="Sor-To-6JJ" secondAttribute="bottom" constant="37.5" id="yEi-Ni-znF"/>
                                 </constraints>
                             </view>
@@ -146,9 +150,13 @@ WebRTC Live Streaming</string>
                     </view>
                     <connections>
                         <outlet property="actionContainer" destination="dMz-6A-4JU" id="re3-vy-nDr"/>
+                        <outlet property="connectButton" destination="5ym-6R-Akx" id="FvS-ZV-hw7"/>
                         <outlet property="logo" destination="U8S-UW-oXC" id="3lq-Kh-VgJ"/>
                         <outlet property="logoTopAnchor" destination="6zy-xl-qt8" id="7Sq-W1-tKl"/>
+                        <outlet property="modeSelection" destination="tve-qy-d3T" id="otx-gM-Jqk"/>
+                        <outlet property="refreshButton" destination="qBa-xU-p76" id="2ts-oH-fbj"/>
                         <outlet property="roomField" destination="WPm-03-EZ0" id="zox-4O-VZM"/>
+                        <outlet property="serverButton" destination="Inj-Ay-988" id="g57-SJ-bgK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

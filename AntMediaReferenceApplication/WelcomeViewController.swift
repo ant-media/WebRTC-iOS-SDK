@@ -21,6 +21,7 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var modeSelection: UISegmentedControl!
     @IBOutlet weak var connectButton: UIButton!
+    @IBOutlet weak var serverButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,11 @@ class WelcomeViewController: UIViewController {
     @IBAction func serverTapped(_ sender: UIButton) {
         AlertHelper.getInstance().addOption("Save", onSelect: {
             (address) in
-            print("Saved: \(address)")
+            if (address!.count > 0) {
+                self.serverButton.setTitle("Server ip: http://\(address!)/", for: .normal)
+            } else {
+                self.serverButton.setTitle("Set server ip", for: .normal)
+            }
         })
         AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address (no need protocol)")
     }
