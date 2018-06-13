@@ -1,0 +1,11 @@
+framework module AntMediaSDK {
+  umbrella header "AntMediaSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module AntMediaSDK.Swift {
+    header "AntMediaSDK-Swift.h"
+    requires objc
+}

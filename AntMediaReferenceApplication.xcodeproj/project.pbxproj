@@ -17,7 +17,23 @@
 		78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */; };
 		78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */; };
 		78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D320D12DA20034CAAB /* Defaults.swift */; };
+		78DC79D620D146710034CAAB /* AntMediaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DC79D520D146710034CAAB /* AntMediaSDK.framework */; };
+		78DC79D720D146710034CAAB /* AntMediaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78DC79D520D146710034CAAB /* AntMediaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		78DC79D820D146710034CAAB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				78DC79D720D146710034CAAB /* AntMediaSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		62EB92D1E19240951AEBD4BA /* Pods-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -32,6 +48,7 @@
 		78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
 		78DC79D320D12DA20034CAAB /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		78DC79D520D146710034CAAB /* AntMediaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AntMediaSDK.framework; sourceTree = "<group>"; };
 		9F18D764CE2419C8E0CB31A9 /* Pods-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
 		DE0A4A5B30AF79A3DA0B8C3F /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -41,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78DC79D620D146710034CAAB /* AntMediaSDK.framework in Frameworks */,
 				0432B93E203AE679BF908D5C /* Pods_AntMediaReferenceApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -51,6 +69,7 @@
 		5656254C28A8684D300692C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				78DC79D520D146710034CAAB /* AntMediaSDK.framework */,
 				DE0A4A5B30AF79A3DA0B8C3F /* Pods_AntMediaReferenceApplication.framework */,
 			);
 			name = Frameworks;
@@ -136,6 +155,7 @@
 				78DC79B120CE63AC0034CAAB /* Frameworks */,
 				78DC79B220CE63AC0034CAAB /* Resources */,
 				38A459280847FBBFBEC32229 /* [CP] Embed Pods Frameworks */,
+				78DC79D820D146710034CAAB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -388,6 +408,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -408,6 +432,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
