@@ -92,8 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				78DC79CA20CE8C420034CAAB /* AlertHelper.swift */,
-				78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */,
 				78DC79D320D12DA20034CAAB /* Defaults.swift */,
+				78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";

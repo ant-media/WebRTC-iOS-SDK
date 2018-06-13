@@ -21,7 +21,15 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var modeSelection: UISegmentedControl!
     @IBOutlet weak var connectButton: UIButton!
-    @IBOutlet weak var serverButton: UIButton!
+    @IBOutlet weak var serverButton: UIButton! {
+        didSet {
+            if let server = Defaults[.server] {
+                if (server.count > 0) {
+                    self.serverButton.setTitle("Server ip: http://\(server)/", for: .normal)
+                }
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +49,9 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func refreshTapped(_ sender: UIButton) {
-    
+        if let room = Defaults[.room] {
+            self.roomField.text = room
+        }
     }
     
     @IBAction func connectButton(_ sender: UIButton ) {
@@ -53,8 +63,10 @@ class WelcomeViewController: UIViewController {
             (address) in
             if (address!.count > 0) {
                 self.serverButton.setTitle("Server ip: http://\(address!)/", for: .normal)
+                Defaults[.server] = address
             } else {
                 self.serverButton.setTitle("Set server ip", for: .normal)
+                Defaults[.server] = ""
             }
         })
         AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address (no need protocol)")
