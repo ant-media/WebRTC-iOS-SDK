@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AntMediaSDK
 
 class WelcomeViewController: UIViewController {
     
@@ -30,10 +31,6 @@ class WelcomeViewController: UIViewController {
             }
         }
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -48,14 +45,23 @@ class WelcomeViewController: UIViewController {
         })
     }
     
+    @IBAction func connectButton(_ sender: UIButton ) {
+        if roomField.text!.count == 0 {
+            AlertHelper.getInstance().show("Caution!", message: "Please fill room field")
+        } else if Defaults[.server]!.count < 2 {
+            AlertHelper.getInstance().show("Caution!", message: "Please set server ip")
+        } else {
+            let url = URL.init(string: Defaults[.server]!)
+            let stream = roomField.text!
+            let client = AntMediaClient.init(wsUrl: url!, streamId: stream)
+            client.connect()
+        }
+    }
+    
     @IBAction func refreshTapped(_ sender: UIButton) {
         if let room = Defaults[.room] {
             self.roomField.text = room
         }
-    }
-    
-    @IBAction func connectButton(_ sender: UIButton ) {
-        
     }
     
     @IBAction func serverTapped(_ sender: UIButton) {

@@ -31,7 +31,7 @@ open class AlertHelper: NSObject, UIAlertViewDelegate {
         alertView = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         addButtons(cancelButtonText)
         
-        //UIApplication.presentView(alertView!)
+        UIApplication.presentView(alertView!)
     }
     
     open func showInput(_ target: UIViewController, title: String?, message: String?, cancelButtonText: String = "Cancel", cancelAction: SimpleClosure? = nil) {
