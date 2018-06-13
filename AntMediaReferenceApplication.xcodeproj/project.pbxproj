@@ -15,6 +15,8 @@
 		78DC79C220CE63AE0034CAAB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DC79C020CE63AE0034CAAB /* LaunchScreen.storyboard */; };
 		78DC79CB20CE8C420034CAAB /* AlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CA20CE8C420034CAAB /* AlertHelper.swift */; };
 		78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */; };
+		78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */; };
+		78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D320D12DA20034CAAB /* Defaults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		78DC79C320CE63AE0034CAAB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		78DC79CA20CE8C420034CAAB /* AlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertHelper.swift; sourceTree = "<group>"; };
 		78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
+		78DC79D320D12DA20034CAAB /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9F18D764CE2419C8E0CB31A9 /* Pods-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
 		DE0A4A5B30AF79A3DA0B8C3F /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,6 +92,8 @@
 			isa = PBXGroup;
 			children = (
 				78DC79CA20CE8C420034CAAB /* AlertHelper.swift */,
+				78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */,
+				78DC79D320D12DA20034CAAB /* Defaults.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -233,7 +239,9 @@
 				78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */,
 				78DC79CB20CE8C420034CAAB /* AlertHelper.swift in Sources */,
 				78DC79BA20CE63AC0034CAAB /* WelcomeViewController.swift in Sources */,
+				78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */,
 				78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */,
+				78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
