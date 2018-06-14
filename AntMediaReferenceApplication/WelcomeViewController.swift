@@ -26,11 +26,14 @@ class WelcomeViewController: UIViewController {
         didSet {
             if let server = Defaults[.server] {
                 if (server.count > 0) {
-                    self.serverButton.setTitle("Server ip: http://\(server)/", for: .normal)
+                    self.serverButton.setTitle("Server ip: \(server)", for: .normal)
                 }
             }
         }
     }
+    
+    let client = AntMediaClient.init()
+    var isConnected = false
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -51,9 +54,10 @@ class WelcomeViewController: UIViewController {
         } else if Defaults[.server]!.count < 2 {
             AlertHelper.getInstance().show("Caution!", message: "Please set server ip")
         } else {
-            let url = URL.init(string: Defaults[.server]!)
-            let stream = roomField.text!
-            let client = AntMediaClient.init(wsUrl: url!, streamId: stream)
+            let server = Defaults[.server]!
+            let room = roomField.text!
+            client.delegate = self
+            client.setOptions(url: server, streamId: room)
             client.connect()
         }
     }
@@ -68,7 +72,7 @@ class WelcomeViewController: UIViewController {
         AlertHelper.getInstance().addOption("Save", onSelect: {
             (address) in
             if (address!.count > 0) {
-                self.serverButton.setTitle("Server ip: http://\(address!)/", for: .normal)
+                self.serverButton.setTitle("Server ip: \(address!)", for: .normal)
                 Defaults[.server] = address
             } else {
                 self.serverButton.setTitle("Set server ip", for: .normal)
@@ -76,5 +80,21 @@ class WelcomeViewController: UIViewController {
             }
         })
         AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address (no need protocol)")
+    }
+}
+
+extension WelcomeViewController: AntMediaClientDelegate {
+
+    func clientDidConnect(_ client: AntMediaClient) {
+        print("Connected")
+        Defaults[.room] = roomField.text!
+        self.isConnected = true
+        //AlertHelper.getInstance().show("Caution!", message: "Connection established")
+    }
+    
+    func clientDidDisconnect(_ message: String) {
+        print("Disconnected")
+        self.isConnected = false
+        //AlertHelper.getInstance().show("Caution!", message: "Could not connect")
     }
 }
