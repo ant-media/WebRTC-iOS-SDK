@@ -81,6 +81,13 @@ class WelcomeViewController: UIViewController {
         })
         AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address (no need protocol)")
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "video" {
+            let controller = segue.destination as! VideoViewController
+            controller.client = self.client
+        }
+    }
 }
 
 extension WelcomeViewController: AntMediaClientDelegate {

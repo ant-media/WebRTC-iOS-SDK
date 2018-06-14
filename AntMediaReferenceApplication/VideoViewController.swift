@@ -21,6 +21,11 @@ class VideoViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print(self.client.isConnected())
+    }
+    
     @IBAction func closeTapped(_ sender: UIButton!) {
         self.dismiss(animated: true, completion: nil)
     }
