@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/AntMediaSDK-Swift.h</key>
 		<data>
-		DUA1ImW7yXJTDboLNQ5j3MIb++Y=
+		b23tn75lc8fCZszrahLSOPd1dDw=
 		</data>
 		<key>Headers/AntMediaSDK.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/AntMediaSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		Gi6oc+g89OLzTwXGgEjkcrW3a5M=
+		XJtf/+51n2yhW3U67kry2p69aPU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -35,11 +35,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DUA1ImW7yXJTDboLNQ5j3MIb++Y=
+			b23tn75lc8fCZszrahLSOPd1dDw=
 			</data>
 			<key>hash2</key>
 			<data>
-			3KC68XC77pna2rBPXvkFNwUWwQSnkngZWOxT0uF1lsU=
+			QPG6DdLHzC1nHfUyupKfrbwGjB09+7WBF91GHJDqtA4=
 			</data>
 		</dict>
 		<key>Headers/AntMediaSDK.h</key>
@@ -68,11 +68,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Gi6oc+g89OLzTwXGgEjkcrW3a5M=
+			XJtf/+51n2yhW3U67kry2p69aPU=
 			</data>
 			<key>hash2</key>
 			<data>
-			+AblFDXd4a4KheOLU9qp4r/wrqAfvWD/4RVU8ppQ5F4=
+			PIZt09jzamqYnM83TZXz7+0lvjxkvQJnSrP3gsTix9c=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
