@@ -21,4 +21,7 @@ class VideoViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    @IBAction func closeTapped(_ sender: UIButton!) {
+        self.dismiss(animated: true, completion: nil)
+    }
 }

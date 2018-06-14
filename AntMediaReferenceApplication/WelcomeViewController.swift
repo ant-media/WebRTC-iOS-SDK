@@ -89,6 +89,7 @@ extension WelcomeViewController: AntMediaClientDelegate {
         print("Connected")
         Defaults[.room] = roomField.text!
         self.isConnected = true
+        self.performSegue(withIdentifier: "video", sender: nil)
         //AlertHelper.getInstance().show("Caution!", message: "Connection established")
     }
     

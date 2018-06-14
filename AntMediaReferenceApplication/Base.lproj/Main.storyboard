@@ -157,11 +157,69 @@ WebRTC Live Streaming</string>
                         <outlet property="refreshButton" destination="qBa-xU-p76" id="2ts-oH-fbj"/>
                         <outlet property="roomField" destination="WPm-03-EZ0" id="zox-4O-VZM"/>
                         <outlet property="serverButton" destination="Inj-Ay-988" id="g57-SJ-bgK"/>
+                        <segue destination="xVm-wQ-O5q" kind="show" identifier="video" id="Im6-25-i5E"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="140" y="125.4872563718141"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="pqe-YK-PtD">
+            <objects>
+                <viewController id="xVm-wQ-O5q" customClass="VideoViewController" customModule="AntMediaReferenceApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LyJ-zl-XYS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwh-ZV-HkX" customClass="RTCEAGLVideoView">
+                                <rect key="frame" x="255" y="517" width="90" height="120"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="FEQ-6q-T1I"/>
+                                    <constraint firstAttribute="width" constant="90" id="pW9-Zi-CJA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6J-nM-Xth">
+                                <rect key="frame" x="10" y="30" width="39" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="BHA-HV-oHa"/>
+                                </constraints>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="closeTapped:" destination="xVm-wQ-O5q" eventType="touchUpInside" id="MDO-xE-T5c"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="l6J-nM-Xth" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" constant="10" id="MZh-98-qu8"/>
+                            <constraint firstItem="cFD-yb-BM7" firstAttribute="trailing" secondItem="nVm-o6-c59" secondAttribute="trailing" id="ZcZ-ff-zxY"/>
+                            <constraint firstItem="cFD-yb-BM7" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="am1-y6-ssL"/>
+                            <constraint firstItem="cFD-yb-BM7" firstAttribute="top" secondItem="LyJ-zl-XYS" secondAttribute="top" id="bGX-yt-zpD"/>
+                            <constraint firstItem="l6J-nM-Xth" firstAttribute="top" secondItem="nVm-o6-c59" secondAttribute="top" constant="10" id="cjU-18-OUG"/>
+                            <constraint firstItem="nVm-o6-c59" firstAttribute="bottom" secondItem="lwh-ZV-HkX" secondAttribute="bottom" constant="30" id="iCI-59-Sf1"/>
+                            <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="lwh-ZV-HkX" secondAttribute="trailing" constant="30" id="tix-62-yP1"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l6J-nM-Xth" secondAttribute="trailing" constant="20" symbolic="YES" id="unO-rR-645"/>
+                            <constraint firstItem="cFD-yb-BM7" firstAttribute="bottom" secondItem="nVm-o6-c59" secondAttribute="bottom" id="wLm-UH-VO6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="nVm-o6-c59"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ikL-xj-lik"/>
+                    <connections>
+                        <outlet property="localVideoView" destination="lwh-ZV-HkX" id="blI-IM-zkz"/>
+                        <outlet property="remoteVideoView" destination="cFD-yb-BM7" id="O1R-sI-ZGo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O0m-K1-lh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1197.5999999999999" y="124.58770614692655"/>
         </scene>
     </scenes>
     <resources>
