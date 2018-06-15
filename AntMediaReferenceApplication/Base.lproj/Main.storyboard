@@ -174,45 +174,98 @@ WebRTC Live Streaming</string>
                         <subviews>
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwh-ZV-HkX" customClass="RTCEAGLVideoView">
                                 <rect key="frame" x="255" y="517" width="90" height="120"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="FEQ-6q-T1I"/>
                                     <constraint firstAttribute="width" constant="90" id="pW9-Zi-CJA"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l6J-nM-Xth">
-                                <rect key="frame" x="10" y="30" width="39" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-3T-91O">
+                                <rect key="frame" x="15" y="263.5" width="45" height="140"/>
+                                <subviews>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5j2-CR-zdD" userLabel="Audio Button">
+                                        <rect key="frame" x="2" y="0.0" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2032908818493151" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Wzj-6O-2fY"/>
+                                            <constraint firstAttribute="height" constant="40" id="yct-bn-cuv"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
+                                        <state key="normal" image="audioOn">
+                                            <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="selected" image="audioOff"/>
+                                        <connections>
+                                            <action selector="audioTapped:" destination="xVm-wQ-O5q" eventType="touchUpInside" id="ybe-VJ-Xjc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znm-um-kD7" userLabel="Video Button">
+                                        <rect key="frame" x="2" y="50" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20329088179999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Qvh-q6-lnK"/>
+                                            <constraint firstAttribute="height" constant="40" id="Tj5-VT-dKV"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
+                                        <state key="normal" image="videoOn">
+                                            <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="selected" image="audioOff"/>
+                                        <connections>
+                                            <action selector="videoTapped:" destination="xVm-wQ-O5q" eventType="touchDragInside" id="2jE-1P-OFe"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="643-J5-pC4" userLabel="Close Button">
+                                        <rect key="frame" x="2" y="100" width="40" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20329088179999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="6sl-SA-YLs"/>
+                                            <constraint firstAttribute="height" constant="40" id="8eM-TY-yYi"/>
+                                        </constraints>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
+                                        <state key="normal" image="close">
+                                            <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <state key="selected" image="audioOff"/>
+                                        <connections>
+                                            <action selector="closeTapped:" destination="xVm-wQ-O5q" eventType="touchUpInside" id="syU-hC-4Lz"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="BHA-HV-oHa"/>
+                                    <constraint firstItem="5j2-CR-zdD" firstAttribute="top" secondItem="H3f-3T-91O" secondAttribute="top" id="EbZ-fI-D3Z"/>
+                                    <constraint firstAttribute="height" constant="140" id="FEG-9J-Gat"/>
+                                    <constraint firstItem="znm-um-kD7" firstAttribute="top" secondItem="5j2-CR-zdD" secondAttribute="bottom" constant="10" id="Lli-cd-0n2"/>
+                                    <constraint firstItem="643-J5-pC4" firstAttribute="leading" secondItem="H3f-3T-91O" secondAttribute="leading" constant="2" id="Rhq-Rw-QgS"/>
+                                    <constraint firstItem="znm-um-kD7" firstAttribute="leading" secondItem="H3f-3T-91O" secondAttribute="leading" constant="2" id="ZUq-4I-vQH"/>
+                                    <constraint firstItem="643-J5-pC4" firstAttribute="top" secondItem="znm-um-kD7" secondAttribute="bottom" constant="10" id="b7o-CF-blx"/>
+                                    <constraint firstItem="5j2-CR-zdD" firstAttribute="leading" secondItem="H3f-3T-91O" secondAttribute="leading" constant="2" id="cPc-Pt-Sms"/>
+                                    <constraint firstAttribute="width" constant="45" id="fLl-ZI-OTI"/>
                                 </constraints>
-                                <state key="normal" title="Close">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="closeTapped:" destination="xVm-wQ-O5q" eventType="touchUpInside" id="MDO-xE-T5c"/>
-                                </connections>
-                            </button>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="l6J-nM-Xth" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" constant="10" id="MZh-98-qu8"/>
+                            <constraint firstItem="H3f-3T-91O" firstAttribute="centerY" secondItem="LyJ-zl-XYS" secondAttribute="centerY" id="6jn-v9-NJQ"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="trailing" secondItem="nVm-o6-c59" secondAttribute="trailing" id="ZcZ-ff-zxY"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="am1-y6-ssL"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="top" secondItem="LyJ-zl-XYS" secondAttribute="top" id="bGX-yt-zpD"/>
-                            <constraint firstItem="l6J-nM-Xth" firstAttribute="top" secondItem="nVm-o6-c59" secondAttribute="top" constant="10" id="cjU-18-OUG"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="bottom" secondItem="lwh-ZV-HkX" secondAttribute="bottom" constant="30" id="iCI-59-Sf1"/>
+                            <constraint firstItem="H3f-3T-91O" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" constant="15" id="qWY-wJ-EOm"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="lwh-ZV-HkX" secondAttribute="trailing" constant="30" id="tix-62-yP1"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="l6J-nM-Xth" secondAttribute="trailing" constant="20" symbolic="YES" id="unO-rR-645"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="bottom" secondItem="nVm-o6-c59" secondAttribute="bottom" id="wLm-UH-VO6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nVm-o6-c59"/>
                     </view>
                     <navigationItem key="navigationItem" id="ikL-xj-lik"/>
                     <connections>
+                        <outlet property="containerLeftConstraint" destination="qWY-wJ-EOm" id="c5u-Qc-hPy"/>
+                        <outlet property="containerView" destination="H3f-3T-91O" id="Rdc-Kg-oyi"/>
                         <outlet property="localVideoView" destination="lwh-ZV-HkX" id="blI-IM-zkz"/>
                         <outlet property="remoteVideoView" destination="cFD-yb-BM7" id="O1R-sI-ZGo"/>
                         <outlet property="remoteViewBottomConstraint" destination="wLm-UH-VO6" id="meS-oT-VFr"/>
@@ -227,7 +280,11 @@ WebRTC Live Streaming</string>
         </scene>
     </scenes>
     <resources>
+        <image name="audioOff" width="16" height="17"/>
+        <image name="audioOn" width="13" height="17"/>
+        <image name="close" width="25" height="9"/>
         <image name="last_used" width="128" height="128"/>
         <image name="logo" width="512" height="512"/>
+        <image name="videoOn" width="18" height="14"/>
     </resources>
 </document>
