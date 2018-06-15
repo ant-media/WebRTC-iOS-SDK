@@ -23,6 +23,7 @@ class VideoViewController: UIViewController {
     
     var client: AntMediaClient! {
         didSet {
+            self.client.setDebug(true)
             self.client.delegate = self
         }
     }

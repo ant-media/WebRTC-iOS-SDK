@@ -22,7 +22,7 @@
 		</data>
 		<key>Modules/AntMediaSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		MXbz45WqT2jbNh3SAs2YXSMRArM=
+		FTzWfwtDq7qcONCxicspOyx9XaY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -68,11 +68,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			MXbz45WqT2jbNh3SAs2YXSMRArM=
+			FTzWfwtDq7qcONCxicspOyx9XaY=
 			</data>
 			<key>hash2</key>
 			<data>
-			QSSyesHnw0uGlq+M+j81IlreOjCvW0ajCUpjbm7Eaqo=
+			/3AbustRcALObf/eowBR2qrlB+llH+Nx3rc8yTj+IS8=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
