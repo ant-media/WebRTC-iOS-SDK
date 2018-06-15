@@ -172,7 +172,7 @@ WebRTC Live Streaming</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
+                            <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -215,6 +215,10 @@ WebRTC Live Streaming</string>
                     <connections>
                         <outlet property="localVideoView" destination="lwh-ZV-HkX" id="blI-IM-zkz"/>
                         <outlet property="remoteVideoView" destination="cFD-yb-BM7" id="O1R-sI-ZGo"/>
+                        <outlet property="remoteViewBottomConstraint" destination="wLm-UH-VO6" id="meS-oT-VFr"/>
+                        <outlet property="remoteViewLeftConstraint" destination="am1-y6-ssL" id="u4q-eq-hEt"/>
+                        <outlet property="remoteViewRightConstraint" destination="ZcZ-ff-zxY" id="TlJ-db-jdh"/>
+                        <outlet property="remoteViewTopConstraint" destination="bGX-yt-zpD" id="QV0-ey-zqW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0m-K1-lh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
