@@ -15,18 +15,31 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var localVideoView: RTCEAGLVideoView!
     @IBOutlet weak var remoteVideoView: RTCEAGLVideoView!
     
-    var client: AntMediaClient!
+    var client: AntMediaClient! {
+        didSet {
+            self.client.delegate = self
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(self.client.isConnected())
+        self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
+        self.client.start()
     }
     
     @IBAction func closeTapped(_ sender: UIButton!) {
         self.dismiss(animated: true, completion: nil)
     }
+}
+
+extension VideoViewController: AntMediaClientDelegate {
+    
+    func clientDidConnect(_ client: AntMediaClient) {
+        print("Connected")
+    }
+    
+    func clientDidDisconnect(_ message: String) {
+        print("Disconnected")
+    }
+    
 }
