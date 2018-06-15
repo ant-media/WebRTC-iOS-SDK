@@ -39,11 +39,11 @@ class VideoViewController: UIViewController {
     }
     
     @IBAction func audioTapped(_ sender: UIButton!) {
-        
+        sender.isSelected = !sender.isSelected
     }
     
-    @IBAction func videoTapped(_ sender: UIButton!) {
-        
+    @IBAction func videoTapped(_ video: UIButton!) {
+        video.isSelected = !video.isSelected
     }
     
     @IBAction func closeTapped(_ sender: UIButton!) {
