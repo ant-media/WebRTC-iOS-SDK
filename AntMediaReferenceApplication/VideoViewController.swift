@@ -34,21 +34,7 @@ class VideoViewController: UIViewController {
     }
     
     @IBAction func closeTapped(_ sender: UIButton!) {
-        //self.dismiss(animated: true, completion: nil)
-        UIView.animate(withDuration: 0.4, animations: { () -> Void in
-            let containerWidth: CGFloat = self.view.frame.size.width
-            let containerHeight: CGFloat = self.view.frame.size.height
-            let defaultAspectRatio: CGSize = CGSize(width: 4, height: 3)
-
-            let aspectRatio: CGSize = defaultAspectRatio
-            let videoRect: CGRect = self.view.bounds
-            let videoFrame: CGRect = AVMakeRect(aspectRatio: aspectRatio, insideRect: videoRect)
-            
-            self.remoteViewTopConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0)
-            self.remoteViewBottomConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0) * -1
-            self.remoteViewLeftConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
-            self.remoteViewRightConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
-        })
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -60,5 +46,30 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func clientDidDisconnect(_ message: String) {
         print("Disconnected")
+    }
+    
+    func remoteStreamStarted() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                let containerWidth: CGFloat = self.view.frame.size.width
+                let containerHeight: CGFloat = self.view.frame.size.height
+                let defaultAspectRatio: CGSize = CGSize(width: 4, height: 3)
+                
+                let aspectRatio: CGSize = defaultAspectRatio
+                let videoRect: CGRect = self.view.bounds
+                let videoFrame: CGRect = AVMakeRect(aspectRatio: aspectRatio, insideRect: videoRect)
+                
+                self.remoteViewTopConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0)
+                self.remoteViewBottomConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0) * -1
+                self.remoteViewLeftConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
+                self.remoteViewRightConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
+            }, completion: { _ in
+                self.localVideoView.bringSubview(toFront: self.remoteVideoView)
+            })
+        }
+    }
+    
+    func localStreamStarted() {
+        print("Local stream added")
     }
 }
