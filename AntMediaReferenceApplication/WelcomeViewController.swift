@@ -54,7 +54,7 @@ class WelcomeViewController: UIViewController {
     @IBAction func connectButton(_ sender: UIButton ) {
         if roomField.text!.count == 0 {
             AlertHelper.getInstance().show("Caution!", message: "Please fill room field")
-        } else if Defaults[.server]!.count < 2 {
+        } else if (Defaults[.server] ?? "").count < 2 {
             AlertHelper.getInstance().show("Caution!", message: "Please set server ip")
         } else {
             let server = Defaults[.server]!
