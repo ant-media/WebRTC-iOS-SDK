@@ -25,7 +25,7 @@ class VideoViewController: UIViewController {
     
     var client: AntMediaClient! {
         didSet {
-            self.client.setDebug(false)
+            self.client.setDebug(true)
             self.client.delegate = self
         }
     }
@@ -101,6 +101,7 @@ extension VideoViewController: AntMediaClientDelegate {
                 self.remoteViewRightConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
             }, completion: { _ in
                 self.localVideoView.bringSubview(toFront: self.remoteVideoView)
+                self.remoteVideoView.isHidden = false
             })
         }
     }
