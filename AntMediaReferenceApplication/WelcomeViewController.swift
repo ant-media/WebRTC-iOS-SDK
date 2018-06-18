@@ -34,9 +34,12 @@ class WelcomeViewController: UIViewController {
     
     let client = AntMediaClient.init()
     var isConnected = false
+    var tapGesture: UITapGestureRecognizer!
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.setGesture()
+        
         UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
             self.logoTopAnchor.constant = 40
             self.view.layoutIfNeeded()
@@ -87,6 +90,16 @@ class WelcomeViewController: UIViewController {
             let controller = segue.destination as! VideoViewController
             controller.client = self.client
         }
+    }
+    
+    private func setGesture() {
+        self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.toggleContainer))
+        self.tapGesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func toggleContainer() {
+        self.view.endEditing(true)
     }
 }
 
