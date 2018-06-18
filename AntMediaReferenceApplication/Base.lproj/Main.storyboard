@@ -176,7 +176,7 @@ WebRTC Live Streaming</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwh-ZV-HkX" customClass="RTCEAGLVideoView">
+                            <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="lwh-ZV-HkX" customClass="RTCEAGLVideoView">
                                 <rect key="frame" x="255" y="517" width="90" height="120"/>
                                 <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -252,10 +252,39 @@ WebRTC Live Streaming</string>
                                     <constraint firstAttribute="width" constant="45" id="fLl-ZI-OTI"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sys-2y-QDn">
+                                <rect key="frame" x="0.0" y="587" width="375" height="80"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="uq8-ht-jnO">
+                                        <rect key="frame" x="17" y="16" width="20" height="20"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connecting to: ws://" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-jt-TjB">
+                                        <rect key="frame" x="45" y="16" width="305" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click for details: AntMedia.io" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txw-6v-P0f">
+                                        <rect key="frame" x="17" y="44" width="333" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.18823529410000001" green="0.85882352939999995" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="M9U-OV-V51"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="H3f-3T-91O" firstAttribute="centerY" secondItem="LyJ-zl-XYS" secondAttribute="centerY" id="6jn-v9-NJQ"/>
+                            <constraint firstItem="sys-2y-QDn" firstAttribute="bottom" secondItem="nVm-o6-c59" secondAttribute="bottom" id="I6p-im-sn2"/>
+                            <constraint firstItem="sys-2y-QDn" firstAttribute="trailing" secondItem="nVm-o6-c59" secondAttribute="trailing" id="WMg-eH-YUA"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="trailing" secondItem="nVm-o6-c59" secondAttribute="trailing" id="ZcZ-ff-zxY"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="am1-y6-ssL"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="top" secondItem="LyJ-zl-XYS" secondAttribute="top" id="bGX-yt-zpD"/>
@@ -263,6 +292,7 @@ WebRTC Live Streaming</string>
                             <constraint firstItem="H3f-3T-91O" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" constant="15" id="qWY-wJ-EOm"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="lwh-ZV-HkX" secondAttribute="trailing" constant="30" id="tix-62-yP1"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="bottom" secondItem="nVm-o6-c59" secondAttribute="bottom" id="wLm-UH-VO6"/>
+                            <constraint firstItem="sys-2y-QDn" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="yOU-rK-hu2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nVm-o6-c59"/>
                     </view>
@@ -270,6 +300,8 @@ WebRTC Live Streaming</string>
                     <connections>
                         <outlet property="containerLeftConstraint" destination="qWY-wJ-EOm" id="c5u-Qc-hPy"/>
                         <outlet property="containerView" destination="H3f-3T-91O" id="Rdc-Kg-oyi"/>
+                        <outlet property="footerView" destination="sys-2y-QDn" id="M6f-oH-ybA"/>
+                        <outlet property="footerViewBoomConstraint" destination="I6p-im-sn2" id="OTL-W7-4Mh"/>
                         <outlet property="localVideoView" destination="lwh-ZV-HkX" id="blI-IM-zkz"/>
                         <outlet property="remoteVideoView" destination="cFD-yb-BM7" id="O1R-sI-ZGo"/>
                         <outlet property="remoteViewBottomConstraint" destination="wLm-UH-VO6" id="meS-oT-VFr"/>

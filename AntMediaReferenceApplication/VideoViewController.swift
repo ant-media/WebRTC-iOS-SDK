@@ -15,6 +15,7 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var localVideoView: RTCEAGLVideoView!
     @IBOutlet weak var remoteVideoView: RTCEAGLVideoView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var footerView: UIView!
     
     // Auto Layout Constraints used for animations
     @IBOutlet weak var remoteViewTopConstraint: NSLayoutConstraint?
@@ -22,6 +23,7 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var remoteViewLeftConstraint: NSLayoutConstraint?
     @IBOutlet weak var remoteViewBottomConstraint: NSLayoutConstraint?
     @IBOutlet weak var containerLeftConstraint: NSLayoutConstraint?
+    @IBOutlet weak var footerViewBoomConstraint: NSLayoutConstraint?
     
     var client: AntMediaClient! {
         didSet {
@@ -102,6 +104,13 @@ extension VideoViewController: AntMediaClientDelegate {
             }, completion: { _ in
                 self.localVideoView.bringSubview(toFront: self.remoteVideoView)
                 self.remoteVideoView.isHidden = false
+            })
+            
+            Run.afterDelay(3, block: {
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.footerViewBoomConstraint?.constant = 80
+                    self.view.layoutIfNeeded()
+                }, completion: nil)
             })
         }
     }

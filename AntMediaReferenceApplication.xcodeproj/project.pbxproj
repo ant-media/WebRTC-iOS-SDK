@@ -12,6 +12,7 @@
 		78B4B3CD20D272350058F57E /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78DC79F920D149E90034CAAB /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		78B4B3CE20D272350058F57E /* AntMediaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78DC79F720D149CA0034CAAB /* AntMediaSDK.framework */; };
 		78B4B3CF20D272350058F57E /* AntMediaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 78DC79F720D149CA0034CAAB /* AntMediaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		78BCD2CB20D7F646003D2A58 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BCD2CA20D7F646003D2A58 /* Run.swift */; };
 		78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79B720CE63AC0034CAAB /* AppDelegate.swift */; };
 		78DC79BA20CE63AC0034CAAB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79B920CE63AC0034CAAB /* WelcomeViewController.swift */; };
 		78DC79BD20CE63AC0034CAAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78DC79BB20CE63AC0034CAAB /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		62EB92D1E19240951AEBD4BA /* Pods-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		6D25BABC50EF650E2B453DA0 /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B4B3C920D242660058F57E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		78BCD2CA20D7F646003D2A58 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		78DC79B420CE63AC0034CAAB /* AntMediaReferenceApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AntMediaReferenceApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78DC79B720CE63AC0034CAAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78DC79B920CE63AC0034CAAB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				78DC79CA20CE8C420034CAAB /* AlertHelper.swift */,
 				78DC79D320D12DA20034CAAB /* Defaults.swift */,
 				78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */,
+				78BCD2CA20D7F646003D2A58 /* Run.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */,
+				78BCD2CB20D7F646003D2A58 /* Run.swift in Sources */,
 				78B4B3CA20D242660058F57E /* VideoViewController.swift in Sources */,
 				78DC79CB20CE8C420034CAAB /* AlertHelper.swift in Sources */,
 				78DC79BA20CE63AC0034CAAB /* WelcomeViewController.swift in Sources */,
