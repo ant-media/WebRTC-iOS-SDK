@@ -40,13 +40,16 @@ class VideoViewController: UIViewController {
     
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
+        self.client.toggleAudio()
     }
     
     @IBAction func videoTapped(_ video: UIButton!) {
         video.isSelected = !video.isSelected
+        self.client.toggleVideo()
     }
     
     @IBAction func closeTapped(_ sender: UIButton!) {
+        self.client.disconnect()
         self.dismiss(animated: true, completion: nil)
     }
     
