@@ -60,7 +60,7 @@ class WelcomeViewController: UIViewController {
             let server = Defaults[.server]!
             let room = roomField.text!
             client.delegate = self
-            client.setOptions(url: server, streamId: room)
+            client.setOptions(url: server, streamId: room, mode: self.getMode())
             client.connect()
         }
     }
@@ -96,6 +96,19 @@ class WelcomeViewController: UIViewController {
         self.tapGesture = UITapGestureRecognizer(target: self, action: #selector(WelcomeViewController.toggleContainer))
         self.tapGesture.numberOfTapsRequired = 1
         self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    private func getMode() -> AntMediaClientMode {
+        switch self.modeSelection.selectedSegmentIndex {
+            case 0:
+                return AntMediaClientMode.join
+            case 1:
+                return AntMediaClientMode.play
+            case 2:
+                return AntMediaClientMode.publish
+            default:
+                return AntMediaClientMode.join
+        }
     }
     
     @objc private func toggleContainer() {
