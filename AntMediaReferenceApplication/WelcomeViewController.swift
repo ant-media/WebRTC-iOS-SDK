@@ -132,6 +132,10 @@ extension WelcomeViewController: AntMediaClientDelegate {
         //AlertHelper.getInstance().show("Caution!", message: "Could not connect")
     }
     
+    func clientHasError(_ message: String) {
+        print("clientHasError")
+    }
+    
     func remoteStreamStarted() {}
     func localStreamStarted() {}
 }

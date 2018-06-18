@@ -93,6 +93,10 @@ extension VideoViewController: AntMediaClientDelegate {
         print("Disconnected")
     }
     
+    func clientHasError(_ message: String) {
+        AlertHelper.getInstance().show("Error!", message: message)
+    }
+    
     func remoteStreamStarted() {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.4, animations: { () -> Void in
