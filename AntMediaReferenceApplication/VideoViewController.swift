@@ -40,6 +40,13 @@ class VideoViewController: UIViewController {
         self.setGesture()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.client.getCurrentMode() == AntMediaClientMode.play {
+            self.localVideoView.isHidden = true
+        }
+    }
+    
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
         self.client.toggleAudio()
