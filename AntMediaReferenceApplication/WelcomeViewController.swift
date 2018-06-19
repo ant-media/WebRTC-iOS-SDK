@@ -127,9 +127,9 @@ extension WelcomeViewController: AntMediaClientDelegate {
     }
     
     func clientDidDisconnect(_ message: String) {
-        print("Disconnected")
+        print("Disconnected: \(message)")
         self.isConnected = false
-        //AlertHelper.getInstance().show("Caution!", message: "Could not connect")
+        AlertHelper.getInstance().show("Caution!", message: "Could not connect: \(message)")
     }
     
     func clientHasError(_ message: String) {

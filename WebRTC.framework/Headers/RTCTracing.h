@@ -10,7 +10,7 @@
 
 #import <Foundation/Foundation.h>
 
-#import <WebRTC/RTCMacros.h>
+#import "RTCMacros.h"
 
 RTC_EXTERN void RTCSetupInternalTracer();
 /** Starts capture to specified file. Must be a valid writable path.

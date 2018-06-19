@@ -11,8 +11,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-#import <WebRTC/RTCMacros.h>
-#import <WebRTC/RTCVideoRenderer.h>
+#import "RTCMacros.h"
+#import "RTCVideoRenderer.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

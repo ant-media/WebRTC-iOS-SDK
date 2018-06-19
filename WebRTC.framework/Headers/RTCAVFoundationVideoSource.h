@@ -8,8 +8,8 @@
  *  be found in the AUTHORS file in the root of the source tree.
  */
 
-#import <WebRTC/RTCMacros.h>
-#import <WebRTC/RTCVideoSource.h>
+#import "RTCMacros.h"
+#import "RTCVideoSource.h"
 
 @class AVCaptureSession;
 @class RTCMediaConstraints;
