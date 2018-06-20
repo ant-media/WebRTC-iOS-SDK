@@ -91,7 +91,7 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func clientDidDisconnect(_ message: String) {
-        print("Disconnected")
+        print("Disconnected: \(message)")
     }
     
     func clientHasError(_ message: String) {
@@ -125,6 +125,17 @@ extension VideoViewController: AntMediaClientDelegate {
                 }, completion: nil)
             })
         }
+    }
+    
+    func remoteStreamRemoved() {
+        Run.afterDelay(1, block: {
+            UIView.animate(withDuration: 0.4, animations: {
+                self.footerViewBoomConstraint?.constant = 0
+                self.view.layoutIfNeeded()
+            }, completion: { _ in
+                self.remoteVideoView.isHidden = true
+            })
+        })
     }
     
     func localStreamStarted() {
