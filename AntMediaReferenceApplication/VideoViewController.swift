@@ -27,16 +27,14 @@ class VideoViewController: UIViewController {
     
     var client: AntMediaClient! {
         didSet {
-            self.client.setDebug(true)
             self.client.delegate = self
+            self.client.setDebug(true)
         }
     }
     var tapGesture: UITapGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
-        self.client.start()
         self.setGesture()
     }
     
@@ -45,6 +43,9 @@ class VideoViewController: UIViewController {
         if self.client.getCurrentMode() == AntMediaClientMode.play {
             self.localVideoView.isHidden = true
         }
+        
+        self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
+        self.client.start()
     }
     
     @IBAction func audioTapped(_ sender: UIButton!) {
