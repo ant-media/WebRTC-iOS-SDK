@@ -11,6 +11,17 @@
 		7819AA6420DA2D07007D6292 /* AntMediaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7819AA6520DA2D07007D6292 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6020DA2CFD007D6292 /* WebRTC.framework */; };
 		7819AA6620DA2D07007D6292 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6020DA2CFD007D6292 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7819AA6920DA30FC007D6292 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6820DA30FC007D6292 /* VideoToolbox.framework */; };
+		7819AA6B20DA313A007D6292 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6A20DA313A007D6292 /* AudioToolbox.framework */; };
+		7819AA6D20DA313F007D6292 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6C20DA313F007D6292 /* CoreGraphics.framework */; };
+		7819AA6F20DA3145007D6292 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6E20DA3145007D6292 /* CoreImage.framework */; };
+		7819AA7120DA314D007D6292 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7020DA314D007D6292 /* CoreMedia.framework */; };
+		7819AA7320DA3158007D6292 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7220DA3158007D6292 /* CoreVideo.framework */; };
+		7819AA7520DA315D007D6292 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7420DA315D007D6292 /* GLKit.framework */; };
+		7819AA7720DA3164007D6292 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7620DA3164007D6292 /* AVFoundation.framework */; };
+		7819AA7920DA3169007D6292 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7820DA3169007D6292 /* libicucore.tbd */; };
+		7819AA7B20DA3170007D6292 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7A20DA3170007D6292 /* libsqlite3.0.tbd */; };
+		7819AA7D20DA3178007D6292 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7C20DA3178007D6292 /* libc++.tbd */; };
 		78B4B3CA20D242660058F57E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B4B3C920D242660058F57E /* VideoViewController.swift */; };
 		78BCD2CB20D7F646003D2A58 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BCD2CA20D7F646003D2A58 /* Run.swift */; };
 		78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79B720CE63AC0034CAAB /* AppDelegate.swift */; };
@@ -45,6 +56,17 @@
 		62EB92D1E19240951AEBD4BA /* Pods-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AntMediaSDK.framework; sourceTree = "<group>"; };
 		7819AA6020DA2CFD007D6292 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
+		7819AA6820DA30FC007D6292 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		7819AA6A20DA313A007D6292 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		7819AA6C20DA313F007D6292 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		7819AA6E20DA3145007D6292 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		7819AA7020DA314D007D6292 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		7819AA7220DA3158007D6292 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		7819AA7420DA315D007D6292 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		7819AA7620DA3164007D6292 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		7819AA7820DA3169007D6292 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		7819AA7A20DA3170007D6292 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		7819AA7C20DA3178007D6292 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		78B4B3C920D242660058F57E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		78BCD2CA20D7F646003D2A58 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
 		78DC79B420CE63AC0034CAAB /* AntMediaReferenceApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AntMediaReferenceApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,6 +88,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7819AA7D20DA3178007D6292 /* libc++.tbd in Frameworks */,
+				7819AA7B20DA3170007D6292 /* libsqlite3.0.tbd in Frameworks */,
+				7819AA7920DA3169007D6292 /* libicucore.tbd in Frameworks */,
+				7819AA7720DA3164007D6292 /* AVFoundation.framework in Frameworks */,
+				7819AA7520DA315D007D6292 /* GLKit.framework in Frameworks */,
+				7819AA7320DA3158007D6292 /* CoreVideo.framework in Frameworks */,
+				7819AA7120DA314D007D6292 /* CoreMedia.framework in Frameworks */,
+				7819AA6F20DA3145007D6292 /* CoreImage.framework in Frameworks */,
+				7819AA6D20DA313F007D6292 /* CoreGraphics.framework in Frameworks */,
+				7819AA6B20DA313A007D6292 /* AudioToolbox.framework in Frameworks */,
+				7819AA6920DA30FC007D6292 /* VideoToolbox.framework in Frameworks */,
 				7819AA6320DA2D07007D6292 /* AntMediaSDK.framework in Frameworks */,
 				D9ABC77DB8B7994227ED69E7 /* Pods_AntMediaReferenceApplication.framework in Frameworks */,
 				7819AA6520DA2D07007D6292 /* WebRTC.framework in Frameworks */,
@@ -78,6 +111,17 @@
 		5656254C28A8684D300692C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7819AA7C20DA3178007D6292 /* libc++.tbd */,
+				7819AA7A20DA3170007D6292 /* libsqlite3.0.tbd */,
+				7819AA7820DA3169007D6292 /* libicucore.tbd */,
+				7819AA7620DA3164007D6292 /* AVFoundation.framework */,
+				7819AA7420DA315D007D6292 /* GLKit.framework */,
+				7819AA7220DA3158007D6292 /* CoreVideo.framework */,
+				7819AA7020DA314D007D6292 /* CoreMedia.framework */,
+				7819AA6E20DA3145007D6292 /* CoreImage.framework */,
+				7819AA6C20DA313F007D6292 /* CoreGraphics.framework */,
+				7819AA6A20DA313A007D6292 /* AudioToolbox.framework */,
+				7819AA6820DA30FC007D6292 /* VideoToolbox.framework */,
 				7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */,
 				7819AA6020DA2CFD007D6292 /* WebRTC.framework */,
 				49BCC33059E40AD701D0CADB /* Pods_AntMediaReferenceApplication.framework */,
