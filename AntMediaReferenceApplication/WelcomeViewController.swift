@@ -136,6 +136,7 @@ extension WelcomeViewController: AntMediaClientDelegate {
         print("clientHasError")
     }
     
+    func remoteStreamRemoved() {}
     func remoteStreamStarted() {}
     func localStreamStarted() {}
 }
