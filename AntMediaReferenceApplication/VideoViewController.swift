@@ -15,7 +15,10 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var localVideoView: RTCEAGLVideoView!
     @IBOutlet weak var remoteVideoView: RTCEAGLVideoView!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var modeLabel: UILabel!
     @IBOutlet weak var footerView: UIView!
+    @IBOutlet weak var footerStatusLabel: UILabel!
+    @IBOutlet weak var footerInfoLabel: UILabel!
     
     // Auto Layout Constraints used for animations
     @IBOutlet weak var remoteViewTopConstraint: NSLayoutConstraint?
@@ -42,6 +45,9 @@ class VideoViewController: UIViewController {
         super.viewDidAppear(animated)
         if self.client.getCurrentMode() == AntMediaClientMode.play {
             self.localVideoView.isHidden = true
+            self.modeLabel.text = "Mode: Play"
+        } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
+            self.modeLabel.text = "Mode: Publish"
         }
         
         self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)

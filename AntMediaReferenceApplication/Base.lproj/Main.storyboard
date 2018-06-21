@@ -266,7 +266,7 @@ WebRTC Live Streaming</string>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Click for details: AntMedia.io" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txw-6v-P0f">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Check for more details: AntMedia.io" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txw-6v-P0f">
                                         <rect key="frame" x="17" y="44" width="333" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -279,6 +279,16 @@ WebRTC Live Streaming</string>
                                     <constraint firstAttribute="height" constant="80" id="M9U-OV-V51"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode: P2P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr8-Ya-8WG">
+                                <rect key="frame" x="280" y="30" width="85" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="bi7-3P-nUP"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="l3P-Y1-asD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -288,8 +298,10 @@ WebRTC Live Streaming</string>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="trailing" secondItem="nVm-o6-c59" secondAttribute="trailing" id="ZcZ-ff-zxY"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="am1-y6-ssL"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="top" secondItem="LyJ-zl-XYS" secondAttribute="top" id="bGX-yt-zpD"/>
+                            <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="jr8-Ya-8WG" secondAttribute="trailing" constant="10" id="bgT-Y3-Y0q"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="bottom" secondItem="lwh-ZV-HkX" secondAttribute="bottom" constant="30" id="iCI-59-Sf1"/>
                             <constraint firstItem="H3f-3T-91O" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" constant="15" id="qWY-wJ-EOm"/>
+                            <constraint firstItem="jr8-Ya-8WG" firstAttribute="top" secondItem="nVm-o6-c59" secondAttribute="top" constant="10" id="qww-N0-k4j"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="lwh-ZV-HkX" secondAttribute="trailing" constant="30" id="tix-62-yP1"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="bottom" secondItem="nVm-o6-c59" secondAttribute="bottom" id="wLm-UH-VO6"/>
                             <constraint firstItem="sys-2y-QDn" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="yOU-rK-hu2"/>
@@ -300,9 +312,12 @@ WebRTC Live Streaming</string>
                     <connections>
                         <outlet property="containerLeftConstraint" destination="qWY-wJ-EOm" id="c5u-Qc-hPy"/>
                         <outlet property="containerView" destination="H3f-3T-91O" id="Rdc-Kg-oyi"/>
+                        <outlet property="footerInfoLabel" destination="Txw-6v-P0f" id="jrq-0G-C3z"/>
+                        <outlet property="footerStatusLabel" destination="oWA-jt-TjB" id="NR2-Qk-ei2"/>
                         <outlet property="footerView" destination="sys-2y-QDn" id="M6f-oH-ybA"/>
                         <outlet property="footerViewBoomConstraint" destination="I6p-im-sn2" id="OTL-W7-4Mh"/>
                         <outlet property="localVideoView" destination="lwh-ZV-HkX" id="blI-IM-zkz"/>
+                        <outlet property="modeLabel" destination="jr8-Ya-8WG" id="PuP-fa-HB0"/>
                         <outlet property="remoteVideoView" destination="cFD-yb-BM7" id="O1R-sI-ZGo"/>
                         <outlet property="remoteViewBottomConstraint" destination="wLm-UH-VO6" id="meS-oT-VFr"/>
                         <outlet property="remoteViewLeftConstraint" destination="am1-y6-ssL" id="u4q-eq-hEt"/>
