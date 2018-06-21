@@ -43,15 +43,19 @@ class VideoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         if self.client.getCurrentMode() == AntMediaClientMode.play {
             self.localVideoView.isHidden = true
             self.modeLabel.text = "Mode: Play"
         } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
             self.modeLabel.text = "Mode: Publish"
+        } else if self.client.getCurrentMode() == AntMediaClientMode.join {
+            self.modeLabel.text = "Mode: P2P"
         }
         
         self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
         self.client.start()
+        self.footerStatusLabel.text = "Connecting to: \(self.client.getWsUrl())"
     }
     
     @IBAction func audioTapped(_ sender: UIButton!) {
