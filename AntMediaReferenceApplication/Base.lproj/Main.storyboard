@@ -299,6 +299,7 @@ WebRTC Live Streaming</string>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="am1-y6-ssL"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="top" secondItem="LyJ-zl-XYS" secondAttribute="top" id="bGX-yt-zpD"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="jr8-Ya-8WG" secondAttribute="trailing" constant="10" id="bgT-Y3-Y0q"/>
+                            <constraint firstItem="jr8-Ya-8WG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LyJ-zl-XYS" secondAttribute="leading" constant="20" symbolic="YES" id="haB-qM-QfA"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="bottom" secondItem="lwh-ZV-HkX" secondAttribute="bottom" constant="30" id="iCI-59-Sf1"/>
                             <constraint firstItem="H3f-3T-91O" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" constant="15" id="qWY-wJ-EOm"/>
                             <constraint firstItem="jr8-Ya-8WG" firstAttribute="top" secondItem="nVm-o6-c59" secondAttribute="top" constant="10" id="qww-N0-k4j"/>

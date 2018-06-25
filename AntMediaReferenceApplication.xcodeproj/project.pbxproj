@@ -133,9 +133,9 @@
 			isa = PBXGroup;
 			children = (
 				78DC79B620CE63AC0034CAAB /* AntMediaReferenceApplication */,
+				5656254C28A8684D300692C6 /* Frameworks */,
 				78DC79B520CE63AC0034CAAB /* Products */,
 				B8F850D806BEFA4B3B88C62F /* Pods */,
-				5656254C28A8684D300692C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
