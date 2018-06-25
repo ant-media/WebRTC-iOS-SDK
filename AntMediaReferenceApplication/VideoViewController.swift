@@ -41,19 +41,23 @@ class VideoViewController: UIViewController {
         self.setGesture()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        if self.client.getCurrentMode() == AntMediaClientMode.play {
-            self.localVideoView.isHidden = true
-            self.modeLabel.text = "Mode: Play"
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if self.client.getCurrentMode() == AntMediaClientMode.join {
+            self.modeLabel.text = "Mode: P2P"
+            self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
         } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
             self.modeLabel.text = "Mode: Publish"
-        } else if self.client.getCurrentMode() == AntMediaClientMode.join {
-            self.modeLabel.text = "Mode: P2P"
+            self.client.setVideoViews(local: remoteVideoView, remote: localVideoView)
+            self.localVideoView.isHidden = true
+        } else if self.client.getCurrentMode() == AntMediaClientMode.play {
+            self.localVideoView.isHidden = true
+            self.modeLabel.text = "Mode: Play"
         }
-        
-        self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.client.start()
         self.footerStatusLabel.text = "Connecting to: \(self.client.getWsUrl())"
     }
@@ -127,7 +131,7 @@ extension VideoViewController: AntMediaClientDelegate {
                 self.localVideoView.bringSubview(toFront: self.remoteVideoView)
                 self.remoteVideoView.isHidden = false
             })
-            
+        
             Run.afterDelay(3, block: {
                 UIView.animate(withDuration: 0.4, animations: {
                     self.footerViewBoomConstraint?.constant = 80
@@ -150,5 +154,6 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func localStreamStarted() {
         print("Local stream added")
+        self.remoteVideoView.isHidden = false
     }
 }
