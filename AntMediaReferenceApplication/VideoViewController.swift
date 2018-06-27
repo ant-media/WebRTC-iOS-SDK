@@ -43,22 +43,26 @@ class VideoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         if self.client.getCurrentMode() == AntMediaClientMode.join {
             self.modeLabel.text = "Mode: P2P"
             self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
         } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
+            self.localVideoView.isHidden = true
             self.modeLabel.text = "Mode: Publish"
             self.client.setVideoViews(local: remoteVideoView, remote: localVideoView)
-            self.localVideoView.isHidden = true
         } else if self.client.getCurrentMode() == AntMediaClientMode.play {
+            self.remoteVideoView.isHidden = false
             self.localVideoView.isHidden = true
+            self.client.setVideoViews(local: localVideoView, remote: remoteVideoView)
             self.modeLabel.text = "Mode: Play"
         }
+        
+        self.client.start()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.client.start()
         self.footerStatusLabel.text = "Connecting to: \(self.client.getWsUrl())"
     }
     
@@ -101,11 +105,11 @@ class VideoViewController: UIViewController {
 extension VideoViewController: AntMediaClientDelegate {
     
     func clientDidConnect(_ client: AntMediaClient) {
-        print("Connected")
+        print("VideoViewController: Connected")
     }
     
     func clientDidDisconnect(_ message: String) {
-        print("Disconnected: \(message)")
+        print("VideoViewController: Disconnected: \(message)")
     }
     
     func clientHasError(_ message: String) {
