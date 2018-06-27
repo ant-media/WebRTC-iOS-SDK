@@ -60,6 +60,7 @@ class WelcomeViewController: UIViewController {
             let server = Defaults[.server]!
             let room = roomField.text!
             client.delegate = self
+            client.setDebug(true)
             client.setOptions(url: server, streamId: room, mode: self.getMode())
             client.connect()
         }
@@ -119,7 +120,7 @@ class WelcomeViewController: UIViewController {
 extension WelcomeViewController: AntMediaClientDelegate {
 
     func clientDidConnect(_ client: AntMediaClient) {
-        print("Connected")
+        print("Connected1")
         Defaults[.room] = roomField.text!
         self.isConnected = true
         self.performSegue(withIdentifier: "video", sender: nil)
