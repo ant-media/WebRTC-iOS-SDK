@@ -167,7 +167,7 @@ WebRTC Live Streaming</string>
         <!--Video View Controller-->
         <scene sceneID="pqe-YK-PtD">
             <objects>
-                <viewController id="xVm-wQ-O5q" customClass="VideoViewController" customModule="AntMediaReferenceApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Video" id="xVm-wQ-O5q" customClass="VideoViewController" customModule="AntMediaReferenceApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LyJ-zl-XYS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
