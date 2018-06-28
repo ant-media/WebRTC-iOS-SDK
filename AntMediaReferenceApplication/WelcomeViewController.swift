@@ -33,8 +33,17 @@ class WelcomeViewController: UIViewController {
     }
     
     let client = AntMediaClient.init()
+    var clientUrl: String!
+    var clientRoom: String!
     var isConnected = false
     var tapGesture: UITapGestureRecognizer!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        client.delegate = self
+        client.setDebug(true)
+        print(client.isConnected())
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -57,12 +66,16 @@ class WelcomeViewController: UIViewController {
         } else if (Defaults[.server] ?? "").count < 2 {
             AlertHelper.getInstance().show("Caution!", message: "Please set server ip")
         } else {
-            let server = Defaults[.server]!
-            let room = roomField.text!
-            client.delegate = self
-            client.setDebug(true)
-            client.setOptions(url: server, streamId: room, mode: self.getMode())
-            client.connect()
+            self.clientUrl = Defaults[.server]!
+            self.clientRoom = roomField.text!
+            
+            if client.isConnected() {
+                self.showVideo()
+            } else {
+                client.delegate = self
+                client.setOptions(url: self.clientUrl, streamId: self.clientRoom, mode: self.getMode())
+                client.connect()
+            }
         }
     }
     
@@ -84,13 +97,6 @@ class WelcomeViewController: UIViewController {
             }
         })
         AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address (no need protocol)")
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "video" {
-            let controller = segue.destination as! VideoViewController
-            controller.client = self.client
-        }
     }
     
     private func setGesture() {
@@ -115,20 +121,27 @@ class WelcomeViewController: UIViewController {
     @objc private func toggleContainer() {
         self.view.endEditing(true)
     }
+    
+    private func showVideo() {
+        let controller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Video") as! VideoViewController
+        controller.clientUrl = self.clientUrl
+        controller.clientStreamId = self.clientRoom
+        controller.clientMode = self.getMode()
+        self.show(controller, sender: nil)
+    }
 }
 
 extension WelcomeViewController: AntMediaClientDelegate {
 
     func clientDidConnect(_ client: AntMediaClient) {
-        print("Connected1")
+        print("WelcomeViewController: Connected")
         Defaults[.room] = roomField.text!
         self.isConnected = true
-        self.performSegue(withIdentifier: "video", sender: nil)
-        //AlertHelper.getInstance().show("Caution!", message: "Connection established")
+        self.showVideo()
     }
     
     func clientDidDisconnect(_ message: String) {
-        print("Disconnected: \(message)")
+        print("WelcomeViewController: Disconnected: \(message)")
         self.isConnected = false
         AlertHelper.getInstance().show("Caution!", message: "Could not connect: \(message)")
     }
