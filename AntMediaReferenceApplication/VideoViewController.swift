@@ -114,11 +114,13 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func clientHasError(_ message: String) {
-        AlertHelper.getInstance().show("Error!", message: message)
+        AlertHelper.getInstance().show("Error!", message: message, cancelButtonText: "OK", cancelAction: {
+            self.dismiss(animated: true, completion: nil)
+        })
     }
     
     func remoteStreamStarted() {
-        DispatchQueue.main.async {
+        Run.onMainThread {
             if self.client.getCurrentMode() != .publish {
                 UIView.animate(withDuration: 0.4, animations: { () -> Void in
                     let containerWidth: CGFloat = self.view.frame.size.width
@@ -138,26 +140,34 @@ extension VideoViewController: AntMediaClientDelegate {
                     self.remoteVideoView.isHidden = false
                 })
             }
-        
+            
             Run.afterDelay(3, block: {
-                UIView.animate(withDuration: 0.4, animations: {
-                    self.footerViewBoomConstraint?.constant = 80
-                    self.view.layoutIfNeeded()
-                }, completion: nil)
+                Run.onMainThread {
+                    UIView.animate(withDuration: 0.4, animations: {
+                        self.footerViewBoomConstraint?.constant = 80
+                        self.view.layoutIfNeeded()
+                    }, completion: nil)
+                }
             })
         }
     }
     
     func remoteStreamRemoved() {
         print("Remote stream removed")
-        Run.afterDelay(1, block: {
-            UIView.animate(withDuration: 0.4, animations: {
-                self.footerViewBoomConstraint?.constant = 0
-                self.view.layoutIfNeeded()
-            }, completion: { _ in
-                self.remoteVideoView.isHidden = true
+        if (self.client.getCurrentMode() == .join) {
+            Run.afterDelay(1, block: {
+                UIView.animate(withDuration: 0.4, animations: {
+                    self.footerViewBoomConstraint?.constant = 0
+                    self.view.layoutIfNeeded()
+                }, completion: { _ in
+                    self.remoteVideoView.isHidden = true
+                })
             })
-        })
+        } else {
+            AlertHelper.getInstance().show("Caution!", message: "Remote stream is no longer available", cancelButtonText: "OK", cancelAction: {
+                self.dismiss(animated: true, completion: nil)
+            })
+        }
     }
     
     func localStreamStarted() {
