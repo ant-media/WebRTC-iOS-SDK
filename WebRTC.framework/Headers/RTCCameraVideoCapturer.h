@@ -9,9 +9,10 @@
  */
 
 #import <Foundation/Foundation.h>
+#import <AVFoundation/AVFoundation.h>
 
-#import "RTCMacros.h"
-#import "RTCVideoCapturer.h>
+#import <WebRTC/RTCMacros.h>
+#import <WebRTC/RTCVideoCapturer.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -19,6 +20,9 @@ RTC_EXPORT
 // Camera capture that implements RTCVideoCapturer. Delivers frames to a RTCVideoCapturerDelegate
 // (usually RTCVideoSource).
 @interface RTCCameraVideoCapturer : RTCVideoCapturer
+
+// Capture session that is used for capturing. Valid from initialization to dealloc.
+@property(readonly, nonatomic) AVCaptureSession *captureSession;
 
 // Returns list of available capture devices that support video capture.
 + (NSArray<AVCaptureDevice *> *)captureDevices;
@@ -28,12 +32,9 @@ RTC_EXPORT
 // Starts and stops the capture session asynchronously.
 - (void)startCaptureWithDevice:(AVCaptureDevice *)device
                         format:(AVCaptureDeviceFormat *)format
-                           fps:(int)fps;
+                           fps:(NSInteger)fps;
 // Stops the capture session asynchronously.
 - (void)stopCapture;
-
-// Capture session that is used for capturing. Valid from initialization to dealloc.
-@property(readonly, nonatomic) AVCaptureSession *captureSession;
 
 @end
 

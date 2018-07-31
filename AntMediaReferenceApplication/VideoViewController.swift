@@ -63,7 +63,10 @@ class VideoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.footerStatusLabel.text = "Connecting to: \(self.client.getWsUrl())"
+        Run.onMainThread {
+            print(self.client.getWsUrl())
+            self.footerStatusLabel.text = "Connecting to: \(self.client.getWsUrl())"
+        }
     }
     
     @IBAction func audioTapped(_ sender: UIButton!) {

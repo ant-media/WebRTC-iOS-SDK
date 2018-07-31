@@ -10,20 +10,17 @@
 
 #import <Foundation/Foundation.h>
 
-#import "RTCMacros.h"
-#import "RTCMediaSource.h"
-#import "RTCVideoCapturer.h"
+#import <WebRTC/RTCMacros.h>
+#import <WebRTC/RTCMediaSource.h>
+#import <WebRTC/RTCVideoCapturer.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 RTC_EXPORT
 
-@interface RTCVideoSource : RTCMediaSource<RTCVideoCapturerDelegate>
+@interface RTCVideoSource : RTCMediaSource <RTCVideoCapturerDelegate>
 
 - (instancetype)init NS_UNAVAILABLE;
-
-// RTCVideoCapturerDelegate protocol implementation.
-- (void)capturer:(RTCVideoCapturer*)capturer didCaptureVideoFrame:(RTCVideoFrame*)frame;
 
 /**
  * Calling this function will cause frames to be scaled down to the
