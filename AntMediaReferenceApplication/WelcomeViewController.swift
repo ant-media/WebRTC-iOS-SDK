@@ -96,7 +96,7 @@ class WelcomeViewController: UIViewController {
                 Defaults[.server] = ""
             }
         })
-        AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address (no need protocol)")
+        AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address with protocol (ws or wss)")
     }
     
     private func setGesture() {
