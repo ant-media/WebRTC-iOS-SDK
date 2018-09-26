@@ -19,6 +19,7 @@ class WelcomeViewController: UIViewController {
         }
     }
     @IBOutlet weak var roomField: UITextField!
+    @IBOutlet weak var tokenField: UITextField!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet weak var modeSelection: UISegmentedControl!
     @IBOutlet weak var connectButton: UIButton!
@@ -35,6 +36,7 @@ class WelcomeViewController: UIViewController {
     let client = AntMediaClient.init()
     var clientUrl: String!
     var clientRoom: String!
+    var clientToken: String!
     var isConnected = false
     var tapGesture: UITapGestureRecognizer!
     
@@ -65,15 +67,18 @@ class WelcomeViewController: UIViewController {
             AlertHelper.getInstance().show("Caution!", message: "Please fill room field")
         } else if (Defaults[.server] ?? "").count < 2 {
             AlertHelper.getInstance().show("Caution!", message: "Please set server ip")
+        } else if (tokenField.text!.count == 0) {
+            AlertHelper.getInstance().show("Caution!", message: "Please fill token field")
         } else {
             self.clientUrl = Defaults[.server]!
             self.clientRoom = roomField.text!
+            self.clientToken = tokenField.text!
             
             if client.isConnected() {
                 self.showVideo()
             } else {
                 client.delegate = self
-                client.setOptions(url: self.clientUrl, streamId: self.clientRoom, mode: self.getMode())
+                client.setOptions(url: self.clientUrl, streamId: self.clientRoom, token: self.clientToken, mode: self.getMode())
                 client.connect()
             }
         }
@@ -126,6 +131,7 @@ class WelcomeViewController: UIViewController {
         let controller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Video") as! VideoViewController
         controller.clientUrl = self.clientUrl
         controller.clientStreamId = self.clientRoom
+        controller.clientToken = self.clientToken
         controller.clientMode = self.getMode()
         self.show(controller, sender: nil)
     }
