@@ -31,6 +31,7 @@ class VideoViewController: UIViewController {
     let client: AntMediaClient = AntMediaClient.init()
     var clientUrl: String!
     var clientStreamId: String!
+    var clientToken: String!
     var clientMode: AntMediaClientMode!
     var tapGesture: UITapGestureRecognizer!
 
@@ -42,7 +43,7 @@ class VideoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.client.delegate = self
-        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, mode: self.clientMode)
+        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode)
         
         if self.client.getCurrentMode() == AntMediaClientMode.join {
             self.modeLabel.text = "Mode: P2P"
