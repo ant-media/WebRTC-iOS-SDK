@@ -44,7 +44,6 @@ class WelcomeViewController: UIViewController {
         super.viewWillAppear(animated)
         client.delegate = self
         client.setDebug(true)
-        print(client.isConnected())
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,12 +66,15 @@ class WelcomeViewController: UIViewController {
             AlertHelper.getInstance().show("Caution!", message: "Please fill room field")
         } else if (Defaults[.server] ?? "").count < 2 {
             AlertHelper.getInstance().show("Caution!", message: "Please set server ip")
-        } else if (tokenField.text!.count == 0) {
-            AlertHelper.getInstance().show("Caution!", message: "Please fill token field")
         } else {
             self.clientUrl = Defaults[.server]!
             self.clientRoom = roomField.text!
-            self.clientToken = tokenField.text!
+            
+            if (!tokenField.text!.isEmpty) {
+                self.clientToken = tokenField.text!
+            } else {
+                self.clientToken = ""
+            }
             
             if client.isConnected() {
                 self.showVideo()
@@ -153,7 +155,7 @@ extension WelcomeViewController: AntMediaClientDelegate {
     }
     
     func clientHasError(_ message: String) {
-        print("clientHasError")
+        print("clientHasError: \(message)")
     }
     
     func remoteStreamRemoved() {}
