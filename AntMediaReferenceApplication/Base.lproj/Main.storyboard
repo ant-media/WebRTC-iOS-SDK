@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="U8S-UW-oXC">
-                                <rect key="frame" x="87" y="160" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="160" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="1mh-o1-svn"/>
                                     <constraint firstAttribute="width" secondItem="U8S-UW-oXC" secondAttribute="height" multiplier="1:1" id="KfE-gR-cN6"/>
@@ -49,19 +48,19 @@ WebRTC Live Streaming</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Room name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPm-03-EZ0">
-                                        <rect key="frame" x="6" y="90" width="100" height="30"/>
+                                        <rect key="frame" x="6" y="90" width="194" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="lDx-qO-ch4"/>
+                                            <constraint firstAttribute="height" constant="30" id="CiX-ga-Kvk"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBa-xU-p76">
-                                        <rect key="frame" x="115" y="90" width="30" height="30"/>
+                                        <rect key="frame" x="210" y="90" width="30" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="2zW-rk-e2r"/>
-                                            <constraint firstAttribute="height" constant="30" id="FJY-Fa-uq3"/>
+                                            <constraint firstAttribute="height" constant="30" id="Le2-vI-Gyt"/>
+                                            <constraint firstAttribute="width" constant="30" id="Xq1-R8-8AP"/>
                                         </constraints>
                                         <state key="normal" image="last_used"/>
                                         <connections>
@@ -69,25 +68,17 @@ WebRTC Live Streaming</string>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sor-To-6JJ">
-                                        <rect key="frame" x="3" y="124" width="239" height="2"/>
+                                        <rect key="frame" x="3" y="124" width="239" height="1.5"/>
                                         <color key="backgroundColor" red="0.8666666666666667" green="0.13725490196078433" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1.5" id="K1Q-Vw-hNs"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOm-jT-SR6">
-                                        <rect key="frame" x="151" y="91" width="2" height="30"/>
-                                        <color key="backgroundColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1.5" id="J5f-3e-2Lm"/>
-                                            <constraint firstAttribute="height" constant="30" id="qIc-iU-6cO"/>
-                                        </constraints>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ym-6R-Akx">
-                                        <rect key="frame" x="3" y="260" width="239" height="35"/>
+                                        <rect key="frame" x="3" y="257" width="239" height="35"/>
                                         <color key="backgroundColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="th5-xa-8Fc"/>
+                                            <constraint firstAttribute="height" constant="35" id="VtG-oR-hHT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                         <state key="normal" title="Connect">
@@ -98,7 +89,10 @@ WebRTC Live Streaming</string>
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tve-qy-d3T">
-                                        <rect key="frame" x="3" y="163" width="239" height="29"/>
+                                        <rect key="frame" x="3" y="199" width="239" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="28" id="TR8-U1-QCx"/>
+                                        </constraints>
                                         <segments>
                                             <segment title="P2P"/>
                                             <segment title="Play"/>
@@ -109,7 +103,7 @@ WebRTC Live Streaming</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Inj-Ay-988">
                                         <rect key="frame" x="6" y="297" width="233" height="28"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="vla-6X-HS0"/>
+                                            <constraint firstAttribute="height" constant="28" id="hdB-gN-BaZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Set server ip">
@@ -119,45 +113,51 @@ WebRTC Live Streaming</string>
                                             <action selector="serverTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7au-au-tqd"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aM2-7T-G09">
-                                        <rect key="frame" x="159" y="91" width="80" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aM2-7T-G09">
+                                        <rect key="frame" x="6" y="145.5" width="233" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="jRx-XT-oue"/>
+                                            <constraint firstAttribute="height" constant="30" id="qlc-PV-TJg"/>
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                     </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="56n-x2-4A3">
+                                        <rect key="frame" x="3" y="179.5" width="239" height="1.5"/>
+                                        <color key="backgroundColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1.5" id="iiF-rI-AkF"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="5ym-6R-Akx" firstAttribute="top" secondItem="tve-qy-d3T" secondAttribute="bottom" constant="30" id="4vX-3V-S78"/>
                                     <constraint firstItem="wtb-z3-Op3" firstAttribute="centerX" secondItem="dMz-6A-4JU" secondAttribute="centerX" id="5R0-jL-b38"/>
                                     <constraint firstItem="wtb-z3-Op3" firstAttribute="top" secondItem="dMz-6A-4JU" secondAttribute="top" constant="10" id="5rk-6a-6Lp"/>
-                                    <constraint firstItem="Sor-To-6JJ" firstAttribute="top" secondItem="aM2-7T-G09" secondAttribute="bottom" constant="3" id="7AT-Hc-YHe"/>
-                                    <constraint firstItem="aM2-7T-G09" firstAttribute="leading" secondItem="YOm-jT-SR6" secondAttribute="trailing" constant="6" id="7Re-a6-xqz"/>
-                                    <constraint firstItem="qBa-xU-p76" firstAttribute="top" secondItem="wtb-z3-Op3" secondAttribute="bottom" constant="18" id="C0o-NX-96T"/>
-                                    <constraint firstItem="WPm-03-EZ0" firstAttribute="top" secondItem="wtb-z3-Op3" secondAttribute="bottom" constant="18" id="EXC-Ay-nq0"/>
-                                    <constraint firstAttribute="trailing" secondItem="aM2-7T-G09" secondAttribute="trailing" constant="6" id="GEn-2s-ZTS"/>
-                                    <constraint firstItem="aM2-7T-G09" firstAttribute="leading" secondItem="YOm-jT-SR6" secondAttribute="trailing" constant="6" id="IWh-sN-8hx"/>
-                                    <constraint firstAttribute="trailing" secondItem="5ym-6R-Akx" secondAttribute="trailing" constant="3" id="KJx-UL-sNJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="qBa-xU-p76" secondAttribute="trailing" constant="100" id="MVm-GQ-mbe"/>
+                                    <constraint firstItem="Inj-Ay-988" firstAttribute="top" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="5" id="8H4-2h-ijP"/>
+                                    <constraint firstItem="tve-qy-d3T" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="D2M-Hs-pKF"/>
+                                    <constraint firstAttribute="trailing" secondItem="56n-x2-4A3" secondAttribute="trailing" constant="3" id="Ery-Cl-rwo"/>
+                                    <constraint firstAttribute="trailing" secondItem="tve-qy-d3T" secondAttribute="trailing" constant="3" id="FOc-VN-Dls"/>
+                                    <constraint firstAttribute="trailing" secondItem="5ym-6R-Akx" secondAttribute="trailing" constant="3" id="FyW-hJ-WuF"/>
+                                    <constraint firstItem="56n-x2-4A3" firstAttribute="top" secondItem="aM2-7T-G09" secondAttribute="bottom" constant="4" id="HkD-yf-8cc"/>
+                                    <constraint firstItem="Inj-Ay-988" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="INM-G9-J4t"/>
+                                    <constraint firstItem="tve-qy-d3T" firstAttribute="top" secondItem="56n-x2-4A3" secondAttribute="bottom" constant="18" id="MC3-mS-eg3"/>
+                                    <constraint firstItem="qBa-xU-p76" firstAttribute="top" secondItem="wtb-z3-Op3" secondAttribute="bottom" constant="18" id="NPZ-hs-9Ns"/>
+                                    <constraint firstAttribute="trailing" secondItem="aM2-7T-G09" secondAttribute="trailing" constant="6" id="OWH-4g-rPU"/>
                                     <constraint firstAttribute="trailing" secondItem="Sor-To-6JJ" secondAttribute="trailing" constant="3" id="UX7-s2-uRw"/>
-                                    <constraint firstItem="YOm-jT-SR6" firstAttribute="top" secondItem="aM2-7T-G09" secondAttribute="top" id="Whr-xE-a8T"/>
+                                    <constraint firstAttribute="trailing" secondItem="Inj-Ay-988" secondAttribute="trailing" constant="6" id="WuT-KX-5b4"/>
+                                    <constraint firstItem="WPm-03-EZ0" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="a3P-jZ-pch"/>
+                                    <constraint firstItem="56n-x2-4A3" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="a4O-It-sly"/>
                                     <constraint firstAttribute="height" constant="325" id="ag6-hd-ueA"/>
-                                    <constraint firstAttribute="trailing" secondItem="tve-qy-d3T" secondAttribute="trailing" constant="3" id="b30-NY-29S"/>
-                                    <constraint firstItem="qBa-xU-p76" firstAttribute="leading" secondItem="WPm-03-EZ0" secondAttribute="trailing" constant="9" id="c8E-Qu-x18"/>
-                                    <constraint firstItem="YOm-jT-SR6" firstAttribute="leading" secondItem="qBa-xU-p76" secondAttribute="trailing" constant="6" id="cMN-lh-6vs"/>
-                                    <constraint firstItem="Inj-Ay-988" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="dFZ-Tk-cdp"/>
-                                    <constraint firstAttribute="bottom" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="30" id="eam-bM-qXm"/>
-                                    <constraint firstItem="WPm-03-EZ0" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="g7x-Ws-hPN"/>
-                                    <constraint firstItem="Inj-Ay-988" firstAttribute="top" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="2" id="hHZ-tp-cby"/>
-                                    <constraint firstAttribute="bottom" secondItem="Inj-Ay-988" secondAttribute="bottom" id="hsr-1j-2ji"/>
-                                    <constraint firstItem="Sor-To-6JJ" firstAttribute="top" secondItem="WPm-03-EZ0" secondAttribute="bottom" constant="4" id="nYK-a5-xmP"/>
+                                    <constraint firstItem="Sor-To-6JJ" firstAttribute="top" secondItem="qBa-xU-p76" secondAttribute="bottom" constant="4" id="axH-FB-4PP"/>
+                                    <constraint firstItem="qBa-xU-p76" firstAttribute="leading" secondItem="WPm-03-EZ0" secondAttribute="trailing" constant="10" id="gvs-1S-NJR"/>
+                                    <constraint firstItem="5ym-6R-Akx" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="inH-zy-LcD"/>
+                                    <constraint firstItem="aM2-7T-G09" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="lqi-FN-OfE"/>
+                                    <constraint firstItem="Sor-To-6JJ" firstAttribute="top" secondItem="WPm-03-EZ0" secondAttribute="bottom" constant="4" id="o6r-RH-byn"/>
+                                    <constraint firstItem="aM2-7T-G09" firstAttribute="top" secondItem="Sor-To-6JJ" secondAttribute="bottom" constant="20" id="o7T-k0-HYK"/>
                                     <constraint firstItem="Sor-To-6JJ" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="puv-3J-ZAC"/>
-                                    <constraint firstItem="tve-qy-d3T" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="q5g-wG-vnA"/>
-                                    <constraint firstItem="5ym-6R-Akx" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="tOA-K4-3PF"/>
-                                    <constraint firstAttribute="trailing" secondItem="Inj-Ay-988" secondAttribute="trailing" constant="6" id="vdV-GS-5gg"/>
-                                    <constraint firstItem="tve-qy-d3T" firstAttribute="top" secondItem="Sor-To-6JJ" secondAttribute="bottom" constant="37.5" id="yEi-Ni-znF"/>
+                                    <constraint firstAttribute="trailing" secondItem="qBa-xU-p76" secondAttribute="trailing" constant="5" id="qVM-CT-acj"/>
                                 </constraints>
                             </view>
                         </subviews>
