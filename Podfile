@@ -2,7 +2,6 @@
 # platform :ios, '9.0'
 
 target 'AntMediaReferenceApplication' do
-    platform :ios, '12.0'
     use_frameworks!
     pod 'Starscream', '~> 3.0.6'
 end
