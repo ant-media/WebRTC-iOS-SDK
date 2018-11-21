@@ -23,6 +23,7 @@
 		7819AA7B20DA3170007D6292 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7A20DA3170007D6292 /* libsqlite3.0.tbd */; };
 		7819AA7D20DA3178007D6292 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA7C20DA3178007D6292 /* libc++.tbd */; };
 		7841544021A05DF300263F98 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6820DA30FC007D6292 /* VideoToolbox.framework */; };
+		784C75E921A5E58700FB22B8 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784C75E821A5E58700FB22B8 /* HelpViewController.swift */; };
 		78B4B3CA20D242660058F57E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B4B3C920D242660058F57E /* VideoViewController.swift */; };
 		78BCD2CB20D7F646003D2A58 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BCD2CA20D7F646003D2A58 /* Run.swift */; };
 		78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79B720CE63AC0034CAAB /* AppDelegate.swift */; };
@@ -67,6 +68,7 @@
 		7819AA7820DA3169007D6292 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		7819AA7A20DA3170007D6292 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		7819AA7C20DA3178007D6292 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		784C75E821A5E58700FB22B8 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		7892F6B321A05F23001C13AB /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		78B4B3C920D242660058F57E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		78BCD2CA20D7F646003D2A58 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				78DC79B720CE63AC0034CAAB /* AppDelegate.swift */,
+				784C75E821A5E58700FB22B8 /* HelpViewController.swift */,
 				78DC79B920CE63AC0034CAAB /* WelcomeViewController.swift */,
 				78B4B3C920D242660058F57E /* VideoViewController.swift */,
 				78DC79BB20CE63AC0034CAAB /* Main.storyboard */,
@@ -318,6 +321,7 @@
 				78BCD2CB20D7F646003D2A58 /* Run.swift in Sources */,
 				78B4B3CA20D242660058F57E /* VideoViewController.swift in Sources */,
 				78DC79CB20CE8C420034CAAB /* AlertHelper.swift in Sources */,
+				784C75E921A5E58700FB22B8 /* HelpViewController.swift in Sources */,
 				78DC79BA20CE63AC0034CAAB /* WelcomeViewController.swift in Sources */,
 				78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */,
 				78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */,
@@ -476,8 +480,11 @@
 				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.webrtc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -502,8 +509,11 @@
 				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.webrtc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

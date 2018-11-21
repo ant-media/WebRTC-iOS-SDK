@@ -32,6 +32,11 @@ class WelcomeViewController: UIViewController {
             }
         }
     }
+    @IBOutlet weak var helpButton: UIButton! {
+        didSet {
+            self.helpButton.alpha = 0
+        }
+    }
     
     let client = AntMediaClient.init()
     var clientUrl: String!
@@ -56,6 +61,7 @@ class WelcomeViewController: UIViewController {
         }, completion: { (completed) in
             UIView.animate(withDuration: 0.5, animations: {
                 self.actionContainer.alpha = 1
+                self.helpButton.alpha = 1
                 self.view.layoutIfNeeded()
             })
         })
