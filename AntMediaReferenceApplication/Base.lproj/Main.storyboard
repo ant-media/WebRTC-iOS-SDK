@@ -10,6 +10,95 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Help View Controller-->
+        <scene sceneID="GK3-1t-FDn">
+            <objects>
+                <viewController id="87B-JF-ugd" customClass="HelpViewController" customModule="AntMediaReferenceApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="O6g-dC-GTr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cDm-PJ-o0s">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.32549019610000002" green="0.32549019610000002" blue="0.32549019610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Plg-Ik-n4Y">
+                                <rect key="frame" x="18" y="94" width="339" height="555"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <mutableString key="content">You should have an AntMedia instance to use reference application. 
+
+If you just do not have one, please send us a message including your goal, company or personal usage and a note that you come from mobile application. You can use contact form on our website: https://antmedia.io/ 
+
+Once you have an working AntMedia Server Instance:
+
+1) Set a server address: localhost or ip address including protocol (ws or wss - example: ws://localhost/)
+ 
+2) Set a room name: Can be alpha-numeric.
+
+3) Set a token (optional).
+
+That's all. 
+
+If you need more information application, SDK and features, you may check the our blog: https://antmedia.io/blog/
+
+And our documentation: https://github.com/ant-media/Ant-Media-Server/wiki
+
+Ant Media</mutableString>
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="15" name="AvenirNext-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to use Reference Application" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2Y-hc-DuR">
+                                <rect key="frame" x="32" y="65" width="311.5" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Wsb-XF-AKK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07E-tK-c5Q">
+                                <rect key="frame" x="16" y="16" width="45" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0q8-Cg-uFs"/>
+                                    <constraint firstAttribute="width" constant="45" id="zwG-pP-lPX"/>
+                                </constraints>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backTapped:" destination="87B-JF-ugd" eventType="touchUpInside" id="uSD-fu-MEO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="8he-HX-spi" firstAttribute="bottom" secondItem="Plg-Ik-n4Y" secondAttribute="bottom" constant="18" id="Cpn-x9-dKc"/>
+                            <constraint firstItem="07E-tK-c5Q" firstAttribute="top" secondItem="O6g-dC-GTr" secondAttribute="top" constant="16" id="LWe-nF-D4L"/>
+                            <constraint firstItem="M2Y-hc-DuR" firstAttribute="top" secondItem="8he-HX-spi" secondAttribute="top" constant="45" id="QI0-fd-NoM"/>
+                            <constraint firstItem="Plg-Ik-n4Y" firstAttribute="top" secondItem="M2Y-hc-DuR" secondAttribute="bottom" constant="8" id="SkR-rU-9Nr"/>
+                            <constraint firstItem="M2Y-hc-DuR" firstAttribute="centerX" secondItem="O6g-dC-GTr" secondAttribute="centerX" id="ZGp-Xk-auh"/>
+                            <constraint firstItem="07E-tK-c5Q" firstAttribute="leading" secondItem="8he-HX-spi" secondAttribute="leading" constant="16" id="ehi-CF-ds2"/>
+                            <constraint firstItem="Plg-Ik-n4Y" firstAttribute="leading" secondItem="8he-HX-spi" secondAttribute="leading" constant="18" id="ihW-7M-9Rm"/>
+                            <constraint firstItem="8he-HX-spi" firstAttribute="trailing" secondItem="Plg-Ik-n4Y" secondAttribute="trailing" constant="18" id="v3g-K5-o4u"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8he-HX-spi"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XJG-Ft-NqR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1197.5999999999999" y="-587.85607196401804"/>
+        </scene>
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -160,6 +249,20 @@ WebRTC Live Streaming</string>
                                     <constraint firstAttribute="trailing" secondItem="qBa-xU-p76" secondAttribute="trailing" constant="5" id="qVM-CT-acj"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qq6-gp-OaX">
+                                <rect key="frame" x="209" y="36" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jXW-en-tyv"/>
+                                    <constraint firstAttribute="width" constant="150" id="oOg-r0-JAL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="How to use?">
+                                    <color key="titleColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="87B-JF-ugd" kind="show" id="ZrV-YD-JVm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -167,6 +270,8 @@ WebRTC Live Streaming</string>
                             <constraint firstItem="dMz-6A-4JU" firstAttribute="top" secondItem="U8S-UW-oXC" secondAttribute="bottom" constant="-30" id="7Hj-IJ-Nx0"/>
                             <constraint firstItem="dMz-6A-4JU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="65" id="TdP-c0-uMi"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dMz-6A-4JU" secondAttribute="trailing" constant="65" id="Wda-0o-WzD"/>
+                            <constraint firstItem="Qq6-gp-OaX" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="ZYi-tI-f61"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qq6-gp-OaX" secondAttribute="trailing" constant="16" id="Zum-gP-veX"/>
                             <constraint firstItem="U8S-UW-oXC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="swK-2M-D2s"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -174,6 +279,7 @@ WebRTC Live Streaming</string>
                     <connections>
                         <outlet property="actionContainer" destination="dMz-6A-4JU" id="re3-vy-nDr"/>
                         <outlet property="connectButton" destination="5ym-6R-Akx" id="FvS-ZV-hw7"/>
+                        <outlet property="helpButton" destination="Qq6-gp-OaX" id="Y0K-by-WY3"/>
                         <outlet property="logo" destination="U8S-UW-oXC" id="3lq-Kh-VgJ"/>
                         <outlet property="logoTopAnchor" destination="6zy-xl-qt8" id="7Sq-W1-tKl"/>
                         <outlet property="modeSelection" destination="tve-qy-d3T" id="otx-gM-Jqk"/>
