@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7819AA6320DA2D07007D6292 /* AntMediaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; };
-		7819AA6420DA2D07007D6292 /* AntMediaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7819AA6520DA2D07007D6292 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6020DA2CFD007D6292 /* WebRTC.framework */; };
 		7819AA6620DA2D07007D6292 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6020DA2CFD007D6292 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		7819AA6920DA30FC007D6292 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6820DA30FC007D6292 /* VideoToolbox.framework */; };
@@ -33,6 +31,8 @@
 		78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */; };
 		78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */; };
 		78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D320D12DA20034CAAB /* Defaults.swift */; };
+		A89F672222106313005C618A /* AntMediaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; };
+		A89F672322106313005C618A /* AntMediaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D9ABC77DB8B7994227ED69E7 /* Pods_AntMediaReferenceApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BCC33059E40AD701D0CADB /* Pods_AntMediaReferenceApplication.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,7 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				7819AA6420DA2D07007D6292 /* AntMediaSDK.framework in Embed Frameworks */,
+				A89F672322106313005C618A /* AntMediaSDK.framework in Embed Frameworks */,
 				7819AA6620DA2D07007D6292 /* WebRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -96,10 +96,10 @@
 				7819AA7320DA3158007D6292 /* CoreVideo.framework in Frameworks */,
 				7819AA7120DA314D007D6292 /* CoreMedia.framework in Frameworks */,
 				7819AA6F20DA3145007D6292 /* CoreImage.framework in Frameworks */,
+				A89F672222106313005C618A /* AntMediaSDK.framework in Frameworks */,
 				7819AA6D20DA313F007D6292 /* CoreGraphics.framework in Frameworks */,
 				7819AA6B20DA313A007D6292 /* AudioToolbox.framework in Frameworks */,
 				7819AA6920DA30FC007D6292 /* VideoToolbox.framework in Frameworks */,
-				7819AA6320DA2D07007D6292 /* AntMediaSDK.framework in Frameworks */,
 				D9ABC77DB8B7994227ED69E7 /* Pods_AntMediaReferenceApplication.framework in Frameworks */,
 				7819AA6520DA2D07007D6292 /* WebRTC.framework in Frameworks */,
 			);
@@ -275,7 +275,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -284,7 +284,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5D9016099DDC43D46D018B04 /* [CP] Check Pods Manifest.lock */ = {
@@ -466,7 +466,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5X5P5RAB3;
+				DEVELOPMENT_TEAM = 2YK9J8G25K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -474,7 +474,10 @@
 				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -491,7 +494,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K5X5P5RAB3;
+				DEVELOPMENT_TEAM = 2YK9J8G25K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -499,7 +502,10 @@
 				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.reference;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
