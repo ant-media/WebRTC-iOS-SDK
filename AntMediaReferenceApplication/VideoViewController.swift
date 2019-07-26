@@ -9,6 +9,7 @@
 import UIKit
 import AntMediaSDK
 import WebRTC
+import AVFoundation
 
 class VideoViewController: UIViewController {
     
@@ -34,14 +35,16 @@ class VideoViewController: UIViewController {
     var clientToken: String!
     var clientMode: AntMediaClientMode!
     var tapGesture: UITapGestureRecognizer!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setGesture()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         self.client.delegate = self
         self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode)
         
@@ -59,7 +62,7 @@ class VideoViewController: UIViewController {
             self.modeLabel.text = "Mode: Play"
         }
         
-        self.client.connect()
+        self.client.connectWebSocket()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -81,7 +84,7 @@ class VideoViewController: UIViewController {
     }
     
     @IBAction func closeTapped(_ sender: UIButton!) {
-        self.client.disconnect()
+        self.client.stop()
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -123,37 +126,13 @@ extension VideoViewController: AntMediaClientDelegate {
         })
     }
     
+    
+    func disconnected() {
+        
+    }
+    
     func remoteStreamStarted() {
-        Run.onMainThread {
-            if self.client.getCurrentMode() != .publish {
-                UIView.animate(withDuration: 0.4, animations: { () -> Void in
-                    let containerWidth: CGFloat = self.view.frame.size.width
-                    let containerHeight: CGFloat = self.view.frame.size.height
-                    let defaultAspectRatio: CGSize = CGSize(width: 4, height: 3)
-                    
-                    let aspectRatio: CGSize = defaultAspectRatio
-                    let videoRect: CGRect = self.view.bounds
-                    let videoFrame: CGRect = AVMakeRect(aspectRatio: aspectRatio, insideRect: videoRect)
-                    
-                    self.remoteViewTopConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0)
-                    self.remoteViewBottomConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0) * -1
-                    self.remoteViewLeftConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
-                    self.remoteViewRightConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
-                }, completion: { _ in
-                    self.localVideoView.bringSubview(toFront: self.remoteVideoView)
-                    self.remoteVideoView.isHidden = false
-                })
-            }
-            
-            Run.afterDelay(3, block: {
-                Run.onMainThread {
-                    UIView.animate(withDuration: 0.4, animations: {
-                        self.footerViewBoomConstraint?.constant = 80
-                        self.view.layoutIfNeeded()
-                    }, completion: nil)
-                }
-            })
-        }
+  
     }
     
     func remoteStreamRemoved() {
@@ -177,5 +156,68 @@ extension VideoViewController: AntMediaClientDelegate {
     func localStreamStarted() {
         print("Local stream added")
         self.remoteVideoView.isHidden = false
+    }
+    
+    
+    func playStarted()
+    {
+         Run.onMainThread {
+            UIView.animate(withDuration: 0.4, animations: { () -> Void in
+                
+                let containerWidth: CGFloat = self.view.frame.size.width
+                let containerHeight: CGFloat = self.view.frame.size.height
+                let defaultAspectRatio: CGSize = CGSize(width: 4, height: 3)
+                
+                let aspectRatio: CGSize = defaultAspectRatio
+                let videoRect: CGRect = self.view.bounds
+                let videoFrame: CGRect = AVMakeRect(aspectRatio: aspectRatio, insideRect: videoRect)
+                
+                self.remoteViewTopConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0)
+                self.remoteViewBottomConstraint!.constant = (containerHeight / 2.0 - videoFrame.size.height / 2.0) * -1
+                self.remoteViewLeftConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
+                self.remoteViewRightConstraint!.constant = (containerWidth / 2.0 - videoFrame.size.width / 2.0)
+            }, completion: { _ in
+                self.localVideoView.bringSubview(toFront: self.remoteVideoView)
+                self.remoteVideoView.isHidden = false
+            })
+            
+            
+            Run.afterDelay(3, block: {
+                Run.onMainThread {
+                    UIView.animate(withDuration: 0.4, animations: {
+                        self.footerViewBoomConstraint?.constant = 80
+                        self.view.layoutIfNeeded()
+                    }, completion: nil)
+                }
+            })
+            
+        
+        }
+        
+    }
+    
+    func playFinished() {
+        AlertHelper.getInstance().show("Caution!", message: "Remote stream is no longer available", cancelButtonText: "OK", cancelAction: {
+            self.dismiss(animated: true, completion: nil)
+        })
+    }
+
+    func publishStarted()
+    {
+        Run.onMainThread
+        {
+            Run.afterDelay(3, block: {
+                Run.onMainThread {
+                    UIView.animate(withDuration: 0.4, animations: {
+                        self.footerViewBoomConstraint?.constant = 80
+                        self.view.layoutIfNeeded()
+                    }, completion: nil)
+                }
+            })
+        }
+    }
+    
+    func publishFinished() {
+        
     }
 }

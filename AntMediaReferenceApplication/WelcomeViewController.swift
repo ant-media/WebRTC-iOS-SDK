@@ -81,7 +81,7 @@ class WelcomeViewController: UIViewController {
             } else {
                 client.delegate = self
                 client.setOptions(url: self.clientUrl, streamId: self.clientRoom, token: self.clientToken, mode: self.getMode())
-                client.connect()
+                client.connectWebSocket()
             }
         }
     }
@@ -161,4 +161,15 @@ extension WelcomeViewController: AntMediaClientDelegate {
     func remoteStreamRemoved() {}
     func remoteStreamStarted() {}
     func localStreamStarted() {}
+    
+    func playStarted() {}
+    
+    func playFinished() {}
+    
+    func publishStarted() {}
+    
+    func publishFinished() {}
+    
+    
+    func disconnected() {}
 }
