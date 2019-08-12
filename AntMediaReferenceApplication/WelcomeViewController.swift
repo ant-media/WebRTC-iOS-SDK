@@ -33,7 +33,6 @@ class WelcomeViewController: UIViewController {
         }
     }
     
-    let client = AntMediaClient.init()
     var clientUrl: String!
     var clientRoom: String!
     var clientToken: String!
@@ -42,13 +41,17 @@ class WelcomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        client.delegate = self
-        client.setDebug(true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setGesture()
+        
+        self.roomField.text = "stream1"
+   
+        let address = "ws://192.168.1.38"
+        self.serverButton.setTitle("Server ip: \(address)", for: .normal)
+        Defaults[.server] = address
         
         UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
             self.logoTopAnchor.constant = 40
@@ -76,13 +79,7 @@ class WelcomeViewController: UIViewController {
                 self.clientToken = ""
             }
             
-            if client.isConnected() {
-                self.showVideo()
-            } else {
-                client.delegate = self
-                client.setOptions(url: self.clientUrl, streamId: self.clientRoom, token: self.clientToken, mode: self.getMode())
-                client.connectWebSocket()
-            }
+            self.showVideo()
         }
     }
     
@@ -139,37 +136,3 @@ class WelcomeViewController: UIViewController {
     }
 }
 
-extension WelcomeViewController: AntMediaClientDelegate {
-
-    func clientDidConnect(_ client: AntMediaClient) {
-        print("WelcomeViewController: Connected")
-        Defaults[.room] = roomField.text!
-        self.isConnected = true
-        self.showVideo()
-    }
-    
-    func clientDidDisconnect(_ message: String) {
-        print("WelcomeViewController: Disconnected: \(message)")
-        self.isConnected = false
-        AlertHelper.getInstance().show("Caution!", message: "Could not connect: \(message)")
-    }
-    
-    func clientHasError(_ message: String) {
-        print("clientHasError: \(message)")
-    }
-    
-    func remoteStreamRemoved() {}
-    func remoteStreamStarted() {}
-    func localStreamStarted() {}
-    
-    func playStarted() {}
-    
-    func playFinished() {}
-    
-    func publishStarted() {}
-    
-    func publishFinished() {}
-    
-    
-    func disconnected() {}
-}

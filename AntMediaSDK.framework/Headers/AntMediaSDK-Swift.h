@@ -168,7 +168,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import ObjectiveC;
+@import WebRTC;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -190,6 +192,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC11AntMediaSDK14AntMediaClient")
 @interface AntMediaClient : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol RTCVideoRenderer;
+
+@interface AntMediaClient (SWIFT_EXTENSION(AntMediaSDK)) <RTCVideoViewDelegate>
+- (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
 
 
@@ -370,7 +378,9 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
+@import CoreGraphics;
 @import ObjectiveC;
+@import WebRTC;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -392,6 +402,12 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 SWIFT_CLASS("_TtC11AntMediaSDK14AntMediaClient")
 @interface AntMediaClient : NSObject
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+@protocol RTCVideoRenderer;
+
+@interface AntMediaClient (SWIFT_EXTENSION(AntMediaSDK)) <RTCVideoViewDelegate>
+- (void)videoView:(id <RTCVideoRenderer> _Nonnull)videoView didChangeVideoSize:(CGSize)size;
 @end
 
 
