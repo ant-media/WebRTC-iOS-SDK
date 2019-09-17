@@ -33,7 +33,7 @@
 		78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D320D12DA20034CAAB /* Defaults.swift */; };
 		A89F672222106313005C618A /* AntMediaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; };
 		A89F672322106313005C618A /* AntMediaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D9ABC77DB8B7994227ED69E7 /* Pods_AntMediaReferenceApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49BCC33059E40AD701D0CADB /* Pods_AntMediaReferenceApplication.framework */; };
+		D66AB75047DCEC015832D5F4 /* Pods_AntMediaReferenceApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E440B4235F98829B4EF7C6AE /* Pods_AntMediaReferenceApplication.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,7 +52,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		49BCC33059E40AD701D0CADB /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62EB92D1E19240951AEBD4BA /* Pods-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AntMediaSDK.framework; sourceTree = "<group>"; };
 		7819AA6020DA2CFD007D6292 /* WebRTC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WebRTC.framework; sourceTree = "<group>"; };
@@ -81,6 +80,7 @@
 		78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
 		78DC79D320D12DA20034CAAB /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9F18D764CE2419C8E0CB31A9 /* Pods-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
+		E440B4235F98829B4EF7C6AE /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +100,8 @@
 				7819AA6D20DA313F007D6292 /* CoreGraphics.framework in Frameworks */,
 				7819AA6B20DA313A007D6292 /* AudioToolbox.framework in Frameworks */,
 				7819AA6920DA30FC007D6292 /* VideoToolbox.framework in Frameworks */,
-				D9ABC77DB8B7994227ED69E7 /* Pods_AntMediaReferenceApplication.framework in Frameworks */,
 				7819AA6520DA2D07007D6292 /* WebRTC.framework in Frameworks */,
+				D66AB75047DCEC015832D5F4 /* Pods_AntMediaReferenceApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,7 +124,7 @@
 				7819AA6820DA30FC007D6292 /* VideoToolbox.framework */,
 				7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */,
 				7819AA6020DA2CFD007D6292 /* WebRTC.framework */,
-				49BCC33059E40AD701D0CADB /* Pods_AntMediaReferenceApplication.framework */,
+				E440B4235F98829B4EF7C6AE /* Pods_AntMediaReferenceApplication.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 				78DC79B120CE63AC0034CAAB /* Frameworks */,
 				78DC79B220CE63AC0034CAAB /* Resources */,
 				7819AA6720DA2D07007D6292 /* Embed Frameworks */,
-				15BB2186EE7E235CFCDC9526 /* [CP] Embed Pods Frameworks */,
+				5842EC9889B3FBBE5BFE0EF9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,18 +269,17 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15BB2186EE7E235CFCDC9526 /* [CP] Embed Pods Frameworks */ = {
+		5842EC9889B3FBBE5BFE0EF9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
