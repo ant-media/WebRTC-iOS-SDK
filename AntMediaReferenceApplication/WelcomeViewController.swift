@@ -49,9 +49,9 @@ class WelcomeViewController: UIViewController {
         
         self.roomField.text = "stream1"
    
-        let address = "ws://192.168.1.38"
-        self.serverButton.setTitle("Server ip: \(address)", for: .normal)
-        Defaults[.server] = address
+        //let address = Defaults[.server]
+       // self.serverButton.setTitle("Server ip: \(address)", for: .normal)
+        //Defaults[.server] = address
         
         UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
             self.logoTopAnchor.constant = 40
@@ -100,7 +100,7 @@ class WelcomeViewController: UIViewController {
                 Defaults[.server] = ""
             }
         })
-        AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address with protocol (ws or wss)")
+        AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter your server address with protocol (ws or wss, example \n ws://192.168.7.25)")
     }
     
     private func setGesture() {
