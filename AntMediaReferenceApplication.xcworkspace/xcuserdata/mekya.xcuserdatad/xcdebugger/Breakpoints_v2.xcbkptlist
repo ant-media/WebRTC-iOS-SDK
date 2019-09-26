@@ -79,7 +79,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
             endingLineNumber = "67"
-            landmarkName = "init(remoteVideoView:localVideoView:delegate:mode:)"
+            landmarkName = "init(remoteVideoView:localVideoView:delegate:mode:cameraPosition:targetWidth:targetHeight:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "68"
             endingLineNumber = "68"
-            landmarkName = "init(remoteVideoView:localVideoView:delegate:mode:)"
+            landmarkName = "init(remoteVideoView:localVideoView:delegate:mode:cameraPosition:targetWidth:targetHeight:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -201,7 +201,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../WebRTCiOSSDK/AntMediaSDK/Core/Client/AntMediaClient.swift"
-            timestampString = "587330864.546738"
+            timestampString = "590671966.01726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "203"
@@ -233,7 +233,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
-            timestampString = "588093209.497646"
+            timestampString = "590671966.017339"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
