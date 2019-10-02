@@ -28,7 +28,7 @@ open class AlertHelper: NSObject, UIAlertViewDelegate {
     
     open func show(_ title: String?, message: String?, cancelButtonText: String = "Cancel", cancelAction: SimpleClosure? = nil) {
         self.cancelAction = cancelAction
-        alertView = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertView = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         addButtons(cancelButtonText)
         
         UIApplication.presentView(alertView!)
@@ -36,7 +36,7 @@ open class AlertHelper: NSObject, UIAlertViewDelegate {
     
     open func showInput(_ target: UIViewController, title: String?, message: String?, cancelButtonText: String = "Cancel", cancelAction: SimpleClosure? = nil) {
         self.cancelAction = cancelAction
-        alertView = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertView = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         alertView!.addTextField(configurationHandler: {
             (textField: UITextField) -> Void in
             self.inputField = textField
@@ -47,14 +47,14 @@ open class AlertHelper: NSObject, UIAlertViewDelegate {
     }
     
     fileprivate func addButtons(_ cancelButtonText: String) {
-        alertView!.addAction(UIAlertAction(title: cancelButtonText, style: UIAlertActionStyle.cancel, handler: {
+        alertView!.addAction(UIAlertAction(title: cancelButtonText, style: UIAlertAction.Style.cancel, handler: {
             (_) -> Void in
             self.options.removeAll()
             self.cancelAction?()
         }))
         
         for option in options {
-            alertView!.addAction(UIAlertAction(title: option.title, style: UIAlertActionStyle.default, handler: {
+            alertView!.addAction(UIAlertAction(title: option.title, style: UIAlertAction.Style.default, handler: {
                 (_) -> Void in
                 self.options.removeAll()
                 self.alertView = nil

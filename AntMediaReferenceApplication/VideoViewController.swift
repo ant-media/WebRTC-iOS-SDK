@@ -54,6 +54,7 @@ class VideoViewController: UIViewController {
             self.fullVideoView.isHidden = false
             self.modeLabel.text = "Mode: Publish"
             self.client.setCameraPosition(position: .front)
+            //self.client.setScaleMode(mode: <#T##UIView.ContentMode#>.rawValue.)
             self.client.setTargetResolution(width: 480, height: 360)
             self.client.setLocalView(container: fullVideoView)
            
@@ -194,7 +195,7 @@ extension VideoViewController: AntMediaClientDelegate {
             Run.afterDelay(3, block: {
                 Run.onMainThread {
                     
-                    self.pipVideoView.bringSubview(toFront: self.fullVideoView)
+                    self.pipVideoView.bringSubviewToFront(self.fullVideoView)
                     
                     
                     UIView.animate(withDuration: 0.4, animations: {
