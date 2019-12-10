@@ -44,17 +44,20 @@ class VideoViewController: UIViewController {
         self.client.delegate = self
         self.client.setDebug(true)
         self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode)
+
+      
         
         if self.client.getCurrentMode() == AntMediaClientMode.join {
             self.modeLabel.text = "Mode: P2P"
             self.client.setLocalView(container: pipVideoView)
             self.client.setRemoteView(remoteContainer: fullVideoView)
         } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
+           // self.client.setVideoEnable(enable: true);
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
             self.modeLabel.text = "Mode: Publish"
             self.client.setCameraPosition(position: .front)
-            //self.client.setScaleMode(mode: <#T##UIView.ContentMode#>.rawValue.)
+            self.client.setScaleMode(mode: .scaleAspectFit)
             self.client.setTargetResolution(width: 480, height: 360)
             self.client.setLocalView(container: fullVideoView)
            
