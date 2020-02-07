@@ -68,7 +68,7 @@ class VideoViewController: UIViewController {
             self.modeLabel.text = "Mode: Play"
         }
         
-        self.client.connectWebSocket()
+        self.client.start()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -119,7 +119,6 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func clientDidConnect(_ client: AntMediaClient) {
         print("VideoViewController: Connected")
-         self.client.start()
     }
     
     func clientDidDisconnect(_ message: String) {
@@ -134,7 +133,7 @@ extension VideoViewController: AntMediaClientDelegate {
     
     
     func disconnected() {
-        
+        print("Disconnected")
     }
     
     func remoteStreamStarted() {
@@ -186,6 +185,7 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func playFinished() {
+        print("play finished")
         AlertHelper.getInstance().show("Caution!", message: "Remote stream is no longer available", cancelButtonText: "OK", cancelAction: {
             self.dismiss(animated: true, completion: nil)
         })
@@ -212,5 +212,9 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func publishFinished() {
         
+    }
+    
+    func audioSessionDidStartPlayOrRecord() {
+       // self.client.speakerOn()
     }
 }
