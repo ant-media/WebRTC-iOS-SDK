@@ -45,11 +45,16 @@ class VideoViewController: UIViewController {
         self.client.setDebug(true)
         self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode)
 
-      
+        /*
+         Enable the below line if you use multi peer node for embedded sdk
+         */
+        //self.client.setMultiPeerMode(enable: true, mode: "play")
         
         if self.client.getCurrentMode() == AntMediaClientMode.join {
             self.modeLabel.text = "Mode: P2P"
-            self.client.setLocalView(container: pipVideoView)
+            self.pipVideoView.isHidden = false
+            self.fullVideoView.isHidden = false
+            //self.client.setLocalView(container: pipVideoView)
             self.client.setRemoteView(remoteContainer: fullVideoView)
         } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
            // self.client.setVideoEnable(enable: true);
