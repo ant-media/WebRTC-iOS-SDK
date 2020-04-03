@@ -68,7 +68,7 @@
 		7819AA7C20DA3178007D6292 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		78B4B3C920D242660058F57E /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		78BCD2CA20D7F646003D2A58 /* Run.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Run.swift; sourceTree = "<group>"; };
-		78DC79B420CE63AC0034CAAB /* AntMediaReferenceApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AntMediaReferenceApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78DC79B420CE63AC0034CAAB /* Ant Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Ant Media.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78DC79B720CE63AC0034CAAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78DC79B920CE63AC0034CAAB /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		78DC79BC20CE63AC0034CAAB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 		78DC79B520CE63AC0034CAAB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				78DC79B420CE63AC0034CAAB /* AntMediaReferenceApplication.app */,
+				78DC79B420CE63AC0034CAAB /* Ant Media.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -219,7 +219,7 @@
 			);
 			name = AntMediaReferenceApplication;
 			productName = AntMediaReferenceApplication;
-			productReference = 78DC79B420CE63AC0034CAAB /* AntMediaReferenceApplication.app */;
+			productReference = 78DC79B420CE63AC0034CAAB /* Ant Media.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -479,7 +479,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.reference3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ant Media";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -507,7 +507,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.reference;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Ant Media";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
