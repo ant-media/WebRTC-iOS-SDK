@@ -49,6 +49,10 @@ class VideoViewController: UIViewController {
          Enable the below line if you use multi peer node for embedded sdk
          */
         //self.client.setMultiPeerMode(enable: true, mode: "play")
+        /*
+         Enable below line if you don't want to have mic permission dialog while playing
+         */
+        //dontAskMicPermissionForPlaying();
         
         if self.client.getCurrentMode() == AntMediaClientMode.join {
             self.modeLabel.text = "Mode: P2P"
@@ -74,6 +78,21 @@ class VideoViewController: UIViewController {
         }
         
         self.client.start()
+    }
+    
+    
+    /*
+     *  WebRTC Framework ask for mic permission by default even it's only playing
+     *  stream. If you run this method before starting the webrtc client in play mode,
+     *  It will not ask for mic permission
+     */
+    private func dontAskMicPermissionForPlaying() {
+        let webRTCConfiguration = RTCAudioSessionConfiguration.init()
+        webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
+        webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
+        webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
+                             
+        RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,7 +136,11 @@ class VideoViewController: UIViewController {
             }
             self.view.layoutIfNeeded()
         })
+        
     }
+    
+    
+   
 }
 
 extension VideoViewController: AntMediaClientDelegate {
