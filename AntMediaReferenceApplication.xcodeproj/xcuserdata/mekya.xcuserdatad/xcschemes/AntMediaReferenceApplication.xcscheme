@@ -37,6 +37,16 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A8C465B6248B9AA10027ADBA"
+               BuildableName = "WebRTCiOSSDKTests.xctest"
+               BlueprintName = "WebRTCiOSSDKTests"
+               ReferencedContainer = "container:AntMediaReferenceApplication.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

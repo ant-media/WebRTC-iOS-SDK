@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AntMediaSDK
 
 class WelcomeViewController: UIViewController {
     

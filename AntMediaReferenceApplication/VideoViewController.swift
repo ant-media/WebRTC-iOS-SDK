@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AntMediaSDK
 import WebRTC
 import AVFoundation
 
@@ -181,7 +180,8 @@ extension VideoViewController: AntMediaClientDelegate {
             })
         } else {
             AlertHelper.getInstance().show("Caution!", message: "Remote stream is no longer available", cancelButtonText: "OK", cancelAction: {
-                self.dismiss(animated: true, completion: nil)
+                //self.dismiss(animated: true, completion: nil)
+                //self.fullVideoView.
             })
         }
     }
@@ -214,6 +214,7 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func playFinished() {
         print("play finished")
+        
         AlertHelper.getInstance().show("Caution!", message: "Remote stream is no longer available", cancelButtonText: "OK", cancelAction: {
             self.dismiss(animated: true, completion: nil)
         })

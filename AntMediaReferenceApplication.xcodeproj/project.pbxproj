@@ -29,12 +29,31 @@
 		78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */; };
 		78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */; };
 		78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D320D12DA20034CAAB /* Defaults.swift */; };
-		A89F672222106313005C618A /* AntMediaSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; };
-		A89F672322106313005C618A /* AntMediaSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8C465A0248B98700027ADBA /* AntMediaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C4659D248B98700027ADBA /* AntMediaClient.swift */; };
+		A8C465A1248B98700027ADBA /* AntMediaClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C4659E248B98700027ADBA /* AntMediaClientDelegate.swift */; };
+		A8C465A2248B98700027ADBA /* AntMediaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C4659F248B98700027ADBA /* AntMediaError.swift */; };
+		A8C465A5248B99E30027ADBA /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465A4248B99E30027ADBA /* WebRTCClient.swift */; };
+		A8C465A7248B99EB0027ADBA /* WebRTCClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465A6248B99EB0027ADBA /* WebRTCClientDelegate.swift */; };
+		A8C465A9248B9A430027ADBA /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465A8248B9A420027ADBA /* Config.swift */; };
+		A8C465C1248B9AA10027ADBA /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8C465B1248B9AA00027ADBA /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A8C465C4248B9AA10027ADBA /* WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8C465AF248B9AA00027ADBA /* WebRTCiOSSDK.framework */; };
+		A8C465C5248B9AA10027ADBA /* WebRTCiOSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8C465AF248B9AA00027ADBA /* WebRTCiOSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8C465E1248BA4480027ADBA /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465D7248BA2540027ADBA /* String.swift */; };
+		A8C465E2248BA44F0027ADBA /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465D8248BA2540027ADBA /* Dictionary.swift */; };
 		A8EB1FCD233FBCB2004D9F64 /* WebRTC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6020DA2CFD007D6292 /* WebRTC.framework */; };
 		A8EB1FCE233FBCB2004D9F64 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6020DA2CFD007D6292 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D66AB75047DCEC015832D5F4 /* Pods_AntMediaReferenceApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E440B4235F98829B4EF7C6AE /* Pods_AntMediaReferenceApplication.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8C465C2248B9AA10027ADBA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78DC79AC20CE63AC0034CAAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8C465AE248B9AA00027ADBA;
+			remoteInfo = WebRTCiOSSDK;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7819AA6720DA2D07007D6292 /* Embed Frameworks */ = {
@@ -43,7 +62,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A89F672322106313005C618A /* AntMediaSDK.framework in Embed Frameworks */,
+				A8C465C5248B9AA10027ADBA /* WebRTCiOSSDK.framework in Embed Frameworks */,
 				A8EB1FCE233FBCB2004D9F64 /* WebRTC.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -80,6 +99,18 @@
 		78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
 		78DC79D320D12DA20034CAAB /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9F18D764CE2419C8E0CB31A9 /* Pods-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
+		A8C4659D248B98700027ADBA /* AntMediaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClient.swift; sourceTree = "<group>"; };
+		A8C4659E248B98700027ADBA /* AntMediaClientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClientDelegate.swift; sourceTree = "<group>"; };
+		A8C4659F248B98700027ADBA /* AntMediaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaError.swift; sourceTree = "<group>"; };
+		A8C465A4248B99E30027ADBA /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
+		A8C465A6248B99EB0027ADBA /* WebRTCClientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClientDelegate.swift; sourceTree = "<group>"; };
+		A8C465A8248B9A420027ADBA /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		A8C465AF248B9AA00027ADBA /* WebRTCiOSSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebRTCiOSSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8C465B1248B9AA00027ADBA /* WebRTCiOSSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebRTCiOSSDK.h; sourceTree = "<group>"; };
+		A8C465B2248B9AA00027ADBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8C465D7248BA2540027ADBA /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A8C465D8248BA2540027ADBA /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		A8C465DB248BA3CB0027ADBA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E440B4235F98829B4EF7C6AE /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -96,12 +127,19 @@
 				7819AA7520DA315D007D6292 /* GLKit.framework in Frameworks */,
 				7819AA7320DA3158007D6292 /* CoreVideo.framework in Frameworks */,
 				7819AA7120DA314D007D6292 /* CoreMedia.framework in Frameworks */,
+				A8C465C4248B9AA10027ADBA /* WebRTCiOSSDK.framework in Frameworks */,
 				7819AA6F20DA3145007D6292 /* CoreImage.framework in Frameworks */,
-				A89F672222106313005C618A /* AntMediaSDK.framework in Frameworks */,
 				7819AA6D20DA313F007D6292 /* CoreGraphics.framework in Frameworks */,
 				7819AA6B20DA313A007D6292 /* AudioToolbox.framework in Frameworks */,
 				7819AA6920DA30FC007D6292 /* VideoToolbox.framework in Frameworks */,
 				D66AB75047DCEC015832D5F4 /* Pods_AntMediaReferenceApplication.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C465AC248B9AA00027ADBA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +149,7 @@
 		5656254C28A8684D300692C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A8C465DB248BA3CB0027ADBA /* Starscream.framework */,
 				7819AA7C20DA3178007D6292 /* libc++.tbd */,
 				7819AA7A20DA3170007D6292 /* libsqlite3.0.tbd */,
 				7819AA7820DA3169007D6292 /* libicucore.tbd */,
@@ -133,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				78DC79B620CE63AC0034CAAB /* AntMediaReferenceApplication */,
+				A8C465B0248B9AA00027ADBA /* WebRTCiOSSDK */,
 				5656254C28A8684D300692C6 /* Frameworks */,
 				78DC79B520CE63AC0034CAAB /* Products */,
 				B8F850D806BEFA4B3B88C62F /* Pods */,
@@ -143,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				78DC79B420CE63AC0034CAAB /* Ant Media.app */,
+				A8C465AF248B9AA00027ADBA /* WebRTCiOSSDK.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -190,6 +231,39 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		A8C4659A248B97C20027ADBA /* api */ = {
+			isa = PBXGroup;
+			children = (
+				A8C4659D248B98700027ADBA /* AntMediaClient.swift */,
+				A8C4659E248B98700027ADBA /* AntMediaClientDelegate.swift */,
+				A8C4659F248B98700027ADBA /* AntMediaError.swift */,
+				A8C465A3248B99A60027ADBA /* webrtc */,
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		A8C465A3248B99A60027ADBA /* webrtc */ = {
+			isa = PBXGroup;
+			children = (
+				A8C465D8248BA2540027ADBA /* Dictionary.swift */,
+				A8C465D7248BA2540027ADBA /* String.swift */,
+				A8C465A8248B9A420027ADBA /* Config.swift */,
+				A8C465A6248B99EB0027ADBA /* WebRTCClientDelegate.swift */,
+				A8C465A4248B99E30027ADBA /* WebRTCClient.swift */,
+			);
+			path = webrtc;
+			sourceTree = "<group>";
+		};
+		A8C465B0248B9AA00027ADBA /* WebRTCiOSSDK */ = {
+			isa = PBXGroup;
+			children = (
+				A8C4659A248B97C20027ADBA /* api */,
+				A8C465B1248B9AA00027ADBA /* WebRTCiOSSDK.h */,
+				A8C465B2248B9AA00027ADBA /* Info.plist */,
+			);
+			path = WebRTCiOSSDK;
+			sourceTree = "<group>";
+		};
 		B8F850D806BEFA4B3B88C62F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +274,17 @@
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		A8C465AA248B9AA00027ADBA /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8C465C1248B9AA10027ADBA /* WebRTCiOSSDK.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		78DC79B320CE63AC0034CAAB /* AntMediaReferenceApplication */ = {
@@ -216,11 +301,30 @@
 			buildRules = (
 			);
 			dependencies = (
+				A8C465C3248B9AA10027ADBA /* PBXTargetDependency */,
 			);
 			name = AntMediaReferenceApplication;
 			productName = AntMediaReferenceApplication;
 			productReference = 78DC79B420CE63AC0034CAAB /* Ant Media.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A8C465AE248B9AA00027ADBA /* WebRTCiOSSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8C465C6248B9AA10027ADBA /* Build configuration list for PBXNativeTarget "WebRTCiOSSDK" */;
+			buildPhases = (
+				A8C465AA248B9AA00027ADBA /* Headers */,
+				A8C465AB248B9AA00027ADBA /* Sources */,
+				A8C465AC248B9AA00027ADBA /* Frameworks */,
+				A8C465AD248B9AA00027ADBA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WebRTCiOSSDK;
+			productName = WebRTCiOSSDK;
+			productReference = A8C465AF248B9AA00027ADBA /* WebRTCiOSSDK.framework */;
+			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
@@ -228,13 +332,17 @@
 		78DC79AC20CE63AC0034CAAB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0930;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = AntMedia;
 				TargetAttributes = {
 					78DC79B320CE63AC0034CAAB = {
 						CreatedOnToolsVersion = 9.3.1;
 						LastSwiftMigration = 1100;
+					};
+					A8C465AE248B9AA00027ADBA = {
+						CreatedOnToolsVersion = 11.4.1;
+						LastSwiftMigration = 1140;
 					};
 				};
 			};
@@ -252,6 +360,7 @@
 			projectRoot = "";
 			targets = (
 				78DC79B320CE63AC0034CAAB /* AntMediaReferenceApplication */,
+				A8C465AE248B9AA00027ADBA /* WebRTCiOSSDK */,
 			);
 		};
 /* End PBXProject section */
@@ -264,6 +373,13 @@
 				78DC79C220CE63AE0034CAAB /* LaunchScreen.storyboard in Resources */,
 				78DC79BF20CE63AE0034CAAB /* Assets.xcassets in Resources */,
 				78DC79BD20CE63AC0034CAAB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C465AD248B9AA00027ADBA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,18 +428,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8C465A2248B98700027ADBA /* AntMediaError.swift in Sources */,
+				A8C465E2248BA44F0027ADBA /* Dictionary.swift in Sources */,
 				78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */,
 				78BCD2CB20D7F646003D2A58 /* Run.swift in Sources */,
+				A8C465A9248B9A430027ADBA /* Config.swift in Sources */,
 				78B4B3CA20D242660058F57E /* VideoViewController.swift in Sources */,
 				78DC79CB20CE8C420034CAAB /* AlertHelper.swift in Sources */,
+				A8C465A0248B98700027ADBA /* AntMediaClient.swift in Sources */,
 				78DC79BA20CE63AC0034CAAB /* WelcomeViewController.swift in Sources */,
+				A8C465A7248B99EB0027ADBA /* WebRTCClientDelegate.swift in Sources */,
 				78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */,
 				78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */,
+				A8C465A1248B98700027ADBA /* AntMediaClientDelegate.swift in Sources */,
+				A8C465E1248BA4480027ADBA /* String.swift in Sources */,
 				78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */,
+				A8C465A5248B99E30027ADBA /* WebRTCClient.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8C465AB248B9AA00027ADBA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8C465C3248B9AA10027ADBA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8C465AE248B9AA00027ADBA /* WebRTCiOSSDK */;
+			targetProxy = A8C465C2248B9AA10027ADBA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		78DC79BB20CE63AC0034CAAB /* Main.storyboard */ = {
@@ -396,7 +535,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -450,7 +589,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -515,6 +654,72 @@
 			};
 			name = Release;
 		};
+		A8C465C7248B9AA10027ADBA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WebRTCiOSSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.WebRTCiOSSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		A8C465C8248B9AA10027ADBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = WebRTCiOSSDK/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.WebRTCiOSSDK;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -532,6 +737,15 @@
 			buildConfigurations = (
 				78DC79C720CE63AE0034CAAB /* Debug */,
 				78DC79C820CE63AE0034CAAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8C465C6248B9AA10027ADBA /* Build configuration list for PBXNativeTarget "WebRTCiOSSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8C465C7248B9AA10027ADBA /* Debug */,
+				A8C465C8248B9AA10027ADBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

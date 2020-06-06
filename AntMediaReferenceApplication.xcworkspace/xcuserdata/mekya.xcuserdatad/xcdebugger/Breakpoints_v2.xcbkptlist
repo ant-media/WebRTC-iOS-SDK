@@ -218,8 +218,8 @@
             timestampString = "590671966.01726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "230"
-            endingLineNumber = "230"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "start()"
             landmarkType = "7">
          </BreakpointContent>
@@ -251,10 +251,10 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
-            landmarkName = "VideoViewController"
-            landmarkType = "21">
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "disconnected()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -267,10 +267,10 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
-            landmarkName = "clientDidConnect(_:)"
-            landmarkType = "7">
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "VideoViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -283,8 +283,8 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -315,9 +315,9 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "126"
-            endingLineNumber = "126"
-            landmarkName = "clientDidConnect(_:)"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "disconnected()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -331,9 +331,9 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "closeTapped(_:)"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
+            landmarkName = "toggleContainer()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -347,8 +347,8 @@
             filePath = "AntMediaReferenceApplication/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
