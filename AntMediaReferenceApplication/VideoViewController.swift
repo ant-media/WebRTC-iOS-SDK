@@ -74,6 +74,7 @@ class VideoViewController: UIViewController {
             self.pipVideoView.isHidden = false
             self.client.setRemoteView(remoteContainer: fullVideoView)
             self.modeLabel.text = "Mode: Play"
+            self.client.setDefaultSpeakerMode(speakerOn: false)
         }
         
         self.client.start()
