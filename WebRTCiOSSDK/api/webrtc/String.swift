@@ -1,0 +1,27 @@
+//
+//  String.swift
+//  AntMediaSDK
+//
+//
+
+import Foundation
+
+extension String {
+    
+    func toURL() -> URL {
+        return URL(string: self)!
+    }
+    
+    func toJSON() -> [String: Any]? {
+        let data = self.data(using: .utf8)!
+        do {
+            if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,Any> {
+                return jsonArray
+            } else {
+                return nil
+            }
+        } catch {
+            return nil
+        }
+    }
+}
