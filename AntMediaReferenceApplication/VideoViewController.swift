@@ -16,13 +16,9 @@ class VideoViewController: UIViewController {
     @IBOutlet weak var fullVideoView: UIView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var modeLabel: UILabel!
-    @IBOutlet weak var footerView: UIView!
-    @IBOutlet weak var footerStatusLabel: UILabel!
-    @IBOutlet weak var footerInfoLabel: UILabel!
     
     // Auto Layout Constraints used for animations
     @IBOutlet weak var containerLeftConstraint: NSLayoutConstraint?
-    @IBOutlet weak var footerViewBoomConstraint: NSLayoutConstraint?
     
     let client: AntMediaClient = AntMediaClient.init()
     var clientUrl: String!
@@ -97,10 +93,7 @@ class VideoViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        Run.onMainThread {
-            print(self.client.getWsUrl())
-            self.footerStatusLabel.text = "Connecting to: \(self.client.getWsUrl())"
-        }
+        print(self.client.getWsUrl())
     }
     
     @IBAction func audioTapped(_ sender: UIButton!) {
@@ -172,12 +165,7 @@ extension VideoViewController: AntMediaClientDelegate {
         print("Remote stream removed")
         if (self.client.getCurrentMode() == .join) {
             Run.afterDelay(1, block: {
-                UIView.animate(withDuration: 0.4, animations: {
-                    self.footerViewBoomConstraint?.constant = 0
-                    self.view.layoutIfNeeded()
-                }, completion: { _ in
-                    self.fullVideoView.isHidden = true
-                })
+                self.fullVideoView.isHidden = true
             })
         } else {
             AlertHelper.getInstance().show("Caution!", message: "Remote stream is no longer available", cancelButtonText: "OK", cancelAction: {
@@ -196,21 +184,6 @@ extension VideoViewController: AntMediaClientDelegate {
     func playStarted()
     {
         print("play started");
-        
-         Run.onMainThread {
-
-            Run.afterDelay(3, block: {
-                Run.onMainThread {
-                    UIView.animate(withDuration: 0.4, animations: {
-                        self.footerViewBoomConstraint?.constant = 80
-                        self.view.layoutIfNeeded()
-                    }, completion: nil)
-                }
-            })
-            
-        
-        }
-        
     }
     
     func playFinished() {
@@ -227,14 +200,7 @@ extension VideoViewController: AntMediaClientDelegate {
         {
             Run.afterDelay(3, block: {
                 Run.onMainThread {
-                    
                     self.pipVideoView.bringSubviewToFront(self.fullVideoView)
-                    
-                    
-                    UIView.animate(withDuration: 0.4, animations: {
-                        self.footerViewBoomConstraint?.constant = 80
-                        self.view.layoutIfNeeded()
-                    }, completion: nil)
                 }
             })
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="AntMediaReferenceApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Ant_Media" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -186,12 +186,12 @@ WebRTC Live Streaming</string>
         <!--Video View Controller-->
         <scene sceneID="pqe-YK-PtD">
             <objects>
-                <viewController storyboardIdentifier="Video" id="xVm-wQ-O5q" customClass="VideoViewController" customModule="AntMediaReferenceApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Video" id="xVm-wQ-O5q" customClass="VideoViewController" customModule="Ant_Media" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LyJ-zl-XYS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
+                            <view hidden="YES" contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -271,33 +271,6 @@ WebRTC Live Streaming</string>
                                     <constraint firstAttribute="width" constant="45" id="fLl-ZI-OTI"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sys-2y-QDn">
-                                <rect key="frame" x="0.0" y="567" width="375" height="80"/>
-                                <subviews>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="uq8-ht-jnO">
-                                        <rect key="frame" x="17" y="16" width="20" height="20"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </activityIndicatorView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Connecting to: ws://" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oWA-jt-TjB">
-                                        <rect key="frame" x="45" y="16" width="305" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Check for more details: AntMedia.io" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txw-6v-P0f">
-                                        <rect key="frame" x="17" y="44" width="333" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.18823529410000001" green="0.85882352939999995" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="M9U-OV-V51"/>
-                                </constraints>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mode: P2P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr8-Ya-8WG">
                                 <rect key="frame" x="280" y="10" width="85" height="21"/>
                                 <constraints>
@@ -311,12 +284,8 @@ WebRTC Live Streaming</string>
                         </subviews>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="cFD-yb-BM7" firstAttribute="trailing" secondItem="sys-2y-QDn" secondAttribute="trailing" id="5Ra-b5-Szm"/>
                             <constraint firstItem="H3f-3T-91O" firstAttribute="centerY" secondItem="LyJ-zl-XYS" secondAttribute="centerY" id="6jn-v9-NJQ"/>
-                            <constraint firstItem="sys-2y-QDn" firstAttribute="bottom" secondItem="nVm-o6-c59" secondAttribute="bottom" id="I6p-im-sn2"/>
-                            <constraint firstItem="cFD-yb-BM7" firstAttribute="leading" secondItem="sys-2y-QDn" secondAttribute="leading" id="R7F-9i-wdd"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="top" secondItem="nVm-o6-c59" secondAttribute="top" id="Tlg-xM-goS"/>
-                            <constraint firstItem="sys-2y-QDn" firstAttribute="trailing" secondItem="nVm-o6-c59" secondAttribute="trailing" id="WMg-eH-YUA"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="jr8-Ya-8WG" secondAttribute="trailing" constant="10" id="bgT-Y3-Y0q"/>
                             <constraint firstItem="jr8-Ya-8WG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="LyJ-zl-XYS" secondAttribute="leading" constant="20" symbolic="YES" id="haB-qM-QfA"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="bottom" secondItem="lwh-ZV-HkX" secondAttribute="bottom" constant="30" id="iCI-59-Sf1"/>
@@ -324,7 +293,6 @@ WebRTC Live Streaming</string>
                             <constraint firstItem="jr8-Ya-8WG" firstAttribute="top" secondItem="nVm-o6-c59" secondAttribute="top" constant="10" id="qww-N0-k4j"/>
                             <constraint firstAttribute="bottomMargin" secondItem="cFD-yb-BM7" secondAttribute="bottom" constant="-20" id="rQz-uz-eZW"/>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="lwh-ZV-HkX" secondAttribute="trailing" constant="30" id="tix-62-yP1"/>
-                            <constraint firstItem="sys-2y-QDn" firstAttribute="leading" secondItem="nVm-o6-c59" secondAttribute="leading" id="yOU-rK-hu2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nVm-o6-c59"/>
                     </view>
@@ -332,10 +300,6 @@ WebRTC Live Streaming</string>
                     <connections>
                         <outlet property="containerLeftConstraint" destination="qWY-wJ-EOm" id="c5u-Qc-hPy"/>
                         <outlet property="containerView" destination="H3f-3T-91O" id="Rdc-Kg-oyi"/>
-                        <outlet property="footerInfoLabel" destination="Txw-6v-P0f" id="jrq-0G-C3z"/>
-                        <outlet property="footerStatusLabel" destination="oWA-jt-TjB" id="NR2-Qk-ei2"/>
-                        <outlet property="footerView" destination="sys-2y-QDn" id="M6f-oH-ybA"/>
-                        <outlet property="footerViewBoomConstraint" destination="I6p-im-sn2" id="OTL-W7-4Mh"/>
                         <outlet property="fullVideoView" destination="cFD-yb-BM7" id="O1R-sI-ZGo"/>
                         <outlet property="modeLabel" destination="jr8-Ya-8WG" id="PuP-fa-HB0"/>
                         <outlet property="pipVideoView" destination="lwh-ZV-HkX" id="blI-IM-zkz"/>
