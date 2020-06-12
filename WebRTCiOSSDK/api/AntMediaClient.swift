@@ -261,20 +261,12 @@ open class AntMediaClient: NSObject {
        
         self.onConnection()
     }
-    
-    /*
-     * Set video scale mode. You should set this mode before setting local or remote view
-     * It's effective in arm architecture.
-     */
-    open func setScaleMode(mode: UIView.ContentMode) {
-        self.videoContentMode = mode
-    }
-    
-    open func setLocalView( container: UIView) {
+        
+    open func setLocalView( container: UIView, mode:UIView.ContentMode = .scaleAspectFit) {
        
         #if arch(arm64)
         let localRenderer = RTCMTLVideoView(frame: container.frame)
-        localRenderer.videoContentMode =  self.videoContentMode ?? .scaleAspectFit
+        localRenderer.videoContentMode =  mode
         #else
         let localRenderer = RTCEAGLVideoView(frame: container.frame)
         localRenderer.delegate = self
@@ -287,11 +279,11 @@ open class AntMediaClient: NSObject {
         self.embedView(localRenderer, into: container)
     }
     
-    open func setRemoteView(remoteContainer: UIView) {
+    open func setRemoteView(remoteContainer: UIView, mode:UIView.ContentMode = .scaleAspectFit) {
        
         #if arch(arm64)
         let remoteRenderer = RTCMTLVideoView(frame: remoteContainer.frame)
-        remoteRenderer.videoContentMode = self.videoContentMode ?? .scaleAspectFit
+        remoteRenderer.videoContentMode = mode
         #else
         let remoteRenderer = RTCEAGLVideoView(frame: remoteContainer.frame)
         remoteRenderer.delegate = self
