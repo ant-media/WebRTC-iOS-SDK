@@ -281,11 +281,10 @@ open class AntMediaClient: NSObject {
         #endif
  
         localRenderer.frame = container.bounds
-        
         self.localView = localRenderer
         self.localContainerBounds = container.bounds
         
-        container.addSubview(self.localView! as! UIView)
+        self.embedView(localRenderer, into: container)
     }
     
     open func setRemoteView(remoteContainer: UIView) {
@@ -303,7 +302,7 @@ open class AntMediaClient: NSObject {
         self.remoteView = remoteRenderer
         self.remoteContainerBounds = remoteContainer.bounds
         self.embedView(remoteRenderer, into: remoteContainer)
-
+        
     }
     
     private func embedView(_ view: UIView, into containerView: UIView) {
@@ -539,6 +538,9 @@ extension AntMediaClient: RTCAudioSessionDelegate
 
 }
 
+/*
+ This delegate used non arm64 versions. In other words it's used for RTCEAGLVideoView
+ */
 extension AntMediaClient: RTCVideoViewDelegate {
     
     private func resizeVideoFrame(bounds: CGRect, size: CGSize, videoView: UIView) {
