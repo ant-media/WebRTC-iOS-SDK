@@ -263,7 +263,7 @@ open class AntMediaClient: NSObject {
     }
     
     /*
-     * Set video scale mode
+     * Set video scale mode. You should set this mode before setting local or remote view
      * It's effective in arm architecture.
      */
     open func setScaleMode(mode: UIView.ContentMode) {
@@ -283,7 +283,6 @@ open class AntMediaClient: NSObject {
         localRenderer.frame = container.bounds
         
         self.localView = localRenderer
-        
         self.localContainerBounds = container.bounds
         
         container.addSubview(self.localView! as! UIView)
@@ -303,8 +302,23 @@ open class AntMediaClient: NSObject {
         
         self.remoteView = remoteRenderer
         self.remoteContainerBounds = remoteContainer.bounds
+        self.embedView(remoteRenderer, into: remoteContainer)
+
+    }
+    
+    private func embedView(_ view: UIView, into containerView: UIView) {
+        containerView.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
+                                                                    options: [],
+                                                                    metrics: nil,
+                                                                    views: ["view":view]))
         
-        remoteContainer.addSubview(self.remoteView! as! UIView)
+        containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|",
+                                                                    options: [],
+                                                                    metrics: nil,
+                                                                    views: ["view":view]))
+        containerView.layoutIfNeeded()
     }
     
     open func isConnected() -> Bool {
