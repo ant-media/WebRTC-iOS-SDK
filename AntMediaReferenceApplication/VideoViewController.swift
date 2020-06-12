@@ -61,21 +61,19 @@ class VideoViewController: UIViewController {
             self.fullVideoView.isHidden = false
             self.modeLabel.text = "Mode: Publish"
             self.client.setCameraPosition(position: .front)
-            self.client.setScaleMode(mode: .scaleAspectFit)
             self.client.setTargetResolution(width: 480, height: 360)
-            self.client.setLocalView(container: fullVideoView)
+            self.client.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
            
         } else if self.client.getCurrentMode() == AntMediaClientMode.play {
             self.fullVideoView.isHidden = false
             self.pipVideoView.isHidden = false
-            self.client.setRemoteView(remoteContainer: fullVideoView)
+            self.client.setRemoteView(remoteContainer: fullVideoView, mode: .scaleAspectFit)
             self.modeLabel.text = "Mode: Play"
             self.client.setDefaultSpeakerMode(speakerOn: false)
         }
         
         self.client.start()
     }
-    
     
     /*
      *  WebRTC Framework ask for mic permission by default even it's only playing
@@ -89,11 +87,6 @@ class VideoViewController: UIViewController {
         webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
                              
         RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print(self.client.getWsUrl())
     }
     
     @IBAction func audioTapped(_ sender: UIButton!) {
