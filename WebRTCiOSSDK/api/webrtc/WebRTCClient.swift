@@ -177,12 +177,6 @@ class WebRTCClient: NSObject {
     
     public func stop() {
         self.peerConnection?.close()
-        if (remoteVideoTrack != nil) {
-            //self.remoteVideoView?.renderFrame(nil)
-            //self.remoteVideoTrack?.remove(remoteVideoView!)
-            //self.remoteVideoTrack = nil
-        }
-        //self.remoteVideoView?.backgroundColor = UIColor.black
     }
 
     public func disconnect() {
