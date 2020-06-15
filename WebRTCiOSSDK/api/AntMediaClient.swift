@@ -250,17 +250,22 @@ open class AntMediaClient: NSObject {
         self.webRTCClient?.disconnect()
     }
     
-    open func startInternal() {
+    open func initPeerConnection() {
         
-        configureAudioSession()
-        AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
-        self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer)
-        
-        self.webRTCClient!.setStreamId(streamId)
-        self.webRTCClient!.setToken(self.token)
-       
-        self.onConnection()
+        if (self.webRTCClient == nil) {
+            configureAudioSession()
+            AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
+            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer)
+            
+            self.webRTCClient!.setStreamId(streamId)
+            self.webRTCClient!.setToken(self.token)
+        }
+        else {
+            AntMediaClient.printf("WebRTCClient already initialized")
+        }
     }
+    
+
         
     open func setLocalView( container: UIView, mode:UIView.ContentMode = .scaleAspectFit) {
        
@@ -339,6 +344,7 @@ open class AntMediaClient: NSObject {
     private func onConnection() {
         if (self.webSocket!.isConnected) {
             let jsonString = getHandshakeMessage()
+            AntMediaClient.printf("onConnection message: \(jsonString)")
             webSocket!.write(string: jsonString)
         }
     }
@@ -386,13 +392,17 @@ open class AntMediaClient: NSObject {
         AntMediaClient.printf("Command: " + command)
         switch command {
             case "start":
+                //if this is called, it's publisher or initiator in p2p
+                self.initPeerConnection()
                 self.webRTCClient?.createOffer()
                 break
             case "stop":
                 self.webRTCClient?.stop()
+                self.webRTCClient = nil
                 self.delegate.remoteStreamRemoved()
                 break
             case "takeConfiguration":
+                self.initPeerConnection()
                 self.onTakeConfiguration(message: message)
                 break
             case "takeCandidate":
@@ -496,7 +506,9 @@ extension AntMediaClient: WebSocketDelegate {
     
     public func websocketDidConnect(socket: WebSocketClient) {
         AntMediaClient.printf("WebSocketDelegate->Connected: \(socket.isConnected)")
-        self.startInternal()
+        //no need to init peer connection but it opens camera and other stuff so that some users want at first
+        self.initPeerConnection()
+        self.onConnection()
         self.delegate?.clientDidConnect(self)
     }
     
