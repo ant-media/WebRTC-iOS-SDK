@@ -34,6 +34,7 @@ class WebRTCClient: NSObject {
     var remoteAudioTrack: RTCAudioTrack!
     var remoteVideoView: RTCVideoRenderer?
     var localVideoView: RTCVideoRenderer?
+    var videoSender: RTCRtpSender!
     
     private var token: String!
     private var streamId: String!
@@ -280,7 +281,7 @@ class WebRTCClient: NSObject {
         if (self.videoEnabled) {
             self.localVideoTrack = createVideoTrack();
 
-            self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
+            self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
         }
         let audioSource = WebRTCClient.factory.audioSource(with: self.config.createTestConstraints())
         self.localAudioTrack = WebRTCClient.factory.audioTrack(with: audioSource, trackId: AUDIO_TRACK_ID)
@@ -293,6 +294,28 @@ class WebRTCClient: NSObject {
         self.delegate?.addLocalStream()
         return true
     }
+    
+    public func switchCamera() {
+        
+        if self.videoSender != nil {
+            peerConnection?.removeTrack(self.videoSender)
+        }
+        if self.cameraPosition == .front {
+            self.cameraPosition = .back
+        }
+        else {
+            self.cameraPosition = .front
+        }
+        
+        self.localVideoTrack.remove(localVideoView!)
+        self.localVideoTrack = createVideoTrack()
+        
+        self.localVideoTrack.add(localVideoView!)
+        
+        self.videoSender = self.peerConnection?.add(self.localVideoTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
+        
+    }
+      
 }
 
 extension WebRTCClient: RTCPeerConnectionDelegate {

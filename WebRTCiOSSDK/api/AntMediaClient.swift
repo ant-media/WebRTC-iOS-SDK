@@ -265,6 +265,12 @@ open class AntMediaClient: NSObject {
         }
     }
     
+    /*
+     Just switches the camera. It works on the fly as well
+     */
+    open func switchCamera() {
+        self.webRTCClient?.switchCamera()
+    }
 
         
     open func setLocalView( container: UIView, mode:UIView.ContentMode = .scaleAspectFit) {

@@ -53,7 +53,7 @@ class VideoViewController: UIViewController {
             self.modeLabel.text = "Mode: P2P"
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
-            //self.client.setLocalView(container: pipVideoView)
+            self.client.setLocalView(container: pipVideoView)
             self.client.setRemoteView(remoteContainer: fullVideoView)
         } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
            // self.client.setVideoEnable(enable: true);
@@ -71,6 +71,8 @@ class VideoViewController: UIViewController {
             self.modeLabel.text = "Mode: Play"
             self.client.setDefaultSpeakerMode(speakerOn: false)
         }
+        //calling this method is not necessary. It just initializes the connection and opens the camera
+        self.client.initPeerConnection()
         
         self.client.start()
     }
