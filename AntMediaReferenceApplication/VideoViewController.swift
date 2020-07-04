@@ -128,6 +128,10 @@ class VideoViewController: UIViewController {
     }
     
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.client.stop()
+    }
+    
    
 }
 
