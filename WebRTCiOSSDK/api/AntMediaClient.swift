@@ -36,6 +36,7 @@ public enum AntMediaClientMode: Int {
                 return "publish"
         }
     }
+    
 }
 
 open class AntMediaClient: NSObject {
@@ -85,6 +86,8 @@ open class AntMediaClient: NSObject {
      This peer mode is used in multi peer streaming
      */
     private var multiPeerMode: String = "play"
+    
+    var pingTimer: Timer?
     
     struct HandshakeMessage:Codable {
         var command:String?
@@ -511,16 +514,31 @@ extension AntMediaClient: WebRTCClientDelegate {
 
 extension AntMediaClient: WebSocketDelegate {
     
+    
+    public func getPingMessage() -> [String: String] {
+           return [COMMAND: "ping"]
+       }
+       
+    
     public func websocketDidConnect(socket: WebSocketClient) {
         AntMediaClient.printf("WebSocketDelegate->Connected: \(socket.isConnected)")
         //no need to init peer connection but it opens camera and other stuff so that some users want at first
         self.initPeerConnection()
         self.onConnection()
         self.delegate?.clientDidConnect(self)
+        
+        //too keep the connetion alive send ping command for every 10 seconds
+        pingTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { pingTimer in
+            let jsonString = self.getPingMessage().json
+            self.webSocket?.write(string: jsonString)
+        }
     }
+    
+
     
     public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
        
+        pingTimer?.invalidate()
         AntMediaClient.printf("WebSocketDelegate->Disconnected connected: \(socket.isConnected) \(self.webSocket?.isConnected)")
         
         if let e = error as? WSError {
