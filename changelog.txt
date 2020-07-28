@@ -1,0 +1,54 @@
+- Jul 4 19:59:33 2020
+  - Add ping/pong timer: Ping/pong timer is required in order to handle timeouts in the load balancer
+  - Stop webrtclient in viewWillDisappear method
+
+- Jun 25 12:32:19 2020
+  - Fix websocket re-connect scenario: Websocket status does not sometimes updated properly. 
+
+- Jun 19 19:32:53 2020
+  - Add switchCamera method: Switch back and forth camera while streaming 
+
+- Jun 15 14:10:41 2020
+   - Init connection after getting start/take configuration command:
+       Proper connection initialization that works better in more cases
+
+- Jun 13 16:44:52 2020
+  - Show error message definition if there is no friendly message:
+    More meaningful messages to debug
+
+- Jun 12 11:34:26 2020
+  - Add local view with embedView method for ui view changes
+  - Add layout constraints for ui changes
+  - Simplify user interface and components
+  - Fixes the orientation problem in portraint and landscape mode 
+  - Remove setScaleMode method. Use mode as parameter in setLocalView and setRemoteView method: 
+     setScaleMode is useless if it's called after setting view so that it's removed
+  - Refactor and adapt the don't call setScaleMode in VideoViewController 
+
+- Jun 6 14:16:44 2020
+  - Add export_fat_framework.sh
+  - Add iOS SDK as source
+  
+- May 9 18:30:57 2020
+  - Update AntMediaSDK and add auxiliary method for mic permission:
+      This gives user to control mic permission. Because there are some side effects for using directly
+      in the framework.   
+
+- Sun May 3 10:48:11 2020
+  - Update for xcode 11.4.1
+  - Update project name 
+
+- Sat Mar 28 17:53:44 2020  
+  - Build for new xcode version and change the message in the server url
+
+- Fri Feb 7 20:39:15 2020  
+  - Implement new audioSessionDidStartPlayOrRecord delegate method: 
+     This delegate method helps managing audio session(speakerOn and Off) in a better way   
+
+- Dec 10 14:14:21 2019
+  - Build SDK with latest Swift 5.1.2 
+
+- Oct 27 20:55:28 2019
+  - Support audio only publish/play and swift 5.1.1 
+
+
