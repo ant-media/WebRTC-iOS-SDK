@@ -79,4 +79,26 @@ public protocol AntMediaClientDelegate {
      */
     func audioSessionDidStartPlayOrRecord()
     
+    /*
+     Called when data is received from webrtc data channel.
+     You can convert data to String as follows
+       String(decoding: data, as: UTF8.self)
+     
+     If you receive json data you can parse it after converting string this
+       let message = msg.toJSON();
+     Then you can access each field by their values like.
+     
+     Assume that  {"command":"message","content":"hello"} is received.
+     
+     Convert it to String and then parse the json
+       let rawJSON =  String(decoding: data, as: UTF8.self)
+       let json = rawJSON.toJSON();
+     
+     Access command and content as follows
+     json["command"]
+     json["content"]
+     
+     */
+    func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool)
+    
 }

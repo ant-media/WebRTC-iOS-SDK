@@ -80,6 +80,8 @@ open class AntMediaClient: NSObject {
     
     private var defaultSpeakerModeOn: Bool = true
     
+    private var enableDataChannel: Bool = false
+    
     private var multiPeerStreamId: String?
     
     /*
@@ -104,12 +106,13 @@ open class AntMediaClient: NSObject {
      
      }
     
-    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join) {
+    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false) {
         self.wsUrl = url
         self.streamId = streamId
         self.token = token
         self.mode = mode
-         self.rtcAudioSession.add(self)
+        self.rtcAudioSession.add(self)
+        self.enableDataChannel = enableDataChannel
     }
     
     /**
@@ -259,7 +262,7 @@ open class AntMediaClient: NSObject {
         if (self.webRTCClient == nil) {
             configureAudioSession()
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
-            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer)
+            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel)
             
             self.webRTCClient!.setStreamId(streamId)
             self.webRTCClient!.setToken(self.token)
@@ -276,6 +279,16 @@ open class AntMediaClient: NSObject {
         self.webRTCClient?.switchCamera()
     }
 
+    /*
+     Send data through WebRTC Data channel.
+     */
+    open func sendData(data: Data, binary: Bool = false) {
+        self.webRTCClient?.sendData(data: data, binary: binary)
+    }
+    
+    open func isDataChannelActive() -> Bool {
+        return self.webRTCClient?.isDataChannelActive() ?? false
+    }
         
     open func setLocalView( container: UIView, mode:UIView.ContentMode = .scaleAspectFit) {
        
@@ -500,14 +513,11 @@ extension AntMediaClient: WebRTCClientDelegate {
         {
             AntMediaClient.printf("connectionStateChanged: \(newState.rawValue)")
             self.delegate.disconnected();
-            
-            /*
-            if newState != RTCIceConnectionState.closed {
-                self.stop()
-            }
-            */
         }
-        
+    }
+    
+    public func dataReceivedFromDataChannel(didReceiveData data: RTCDataBuffer) {
+        self.delegate.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
     }
     
 }

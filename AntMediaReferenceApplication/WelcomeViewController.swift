@@ -47,10 +47,6 @@ class WelcomeViewController: UIViewController {
         self.setGesture()
         
         self.roomField.text = "stream1"
-   
-        //let address = Defaults[.server]
-       // self.serverButton.setTitle("Server ip: \(address)", for: .normal)
-        //Defaults[.server] = address
         
         UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
             self.logoTopAnchor.constant = 40
@@ -89,17 +85,29 @@ class WelcomeViewController: UIViewController {
     }
     
     @IBAction func serverTapped(_ sender: UIButton) {
-        AlertHelper.getInstance().addOption("Save", onSelect: {
-            (address) in
-            if (address!.count > 0) {
-                self.serverButton.setTitle("Server ip: \(address!)", for: .normal)
-                Defaults[.server] = address
-            } else {
-                self.serverButton.setTitle("Set server ip", for: .normal)
-                Defaults[.server] = ""
+        
+        //1. Create the alert controller.
+        let alert = UIAlertController(title: "Server WebSocket URL", message: "Please enter the full url like \n ws://192.168.7.25:5080/WebRTCAppEE/websocket", preferredStyle: .alert)
+
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text =  Defaults[.server]
+        }
+
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            guard let textValue =  alert?.textFields?.first?.text else {
+                return
             }
-        })
-        AlertHelper.getInstance().showInput(self, title: "IP Address", message: "Please enter the full url like \n ws://192.168.7.25:5080/WebRTCAppEE/websocket")
+            
+            AntMediaClient.printf("Text field: \(textValue)")
+            self.serverButton.setTitle("Server ip: \(textValue)", for: .normal)
+            Defaults[.server] = textValue
+        }))
+
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+        
     }
     
     private func setGesture() {
@@ -125,7 +133,8 @@ class WelcomeViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    private func showVideo() {
+    private func showVideo()
+    {
         let controller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Video") as! VideoViewController
         controller.clientUrl = self.clientUrl
         controller.clientStreamId = self.clientRoom

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -204,7 +204,7 @@ WebRTC Live Streaming</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-3T-91O">
-                                <rect key="frame" x="15" y="288" width="45" height="140"/>
+                                <rect key="frame" x="15" y="258" width="45" height="200"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5j2-CR-zdD" userLabel="Audio Button">
                                         <rect key="frame" x="2" y="0.0" width="40" height="40"/>
@@ -225,7 +225,7 @@ WebRTC Live Streaming</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znm-um-kD7" userLabel="Video Button">
-                                        <rect key="frame" x="2" y="50" width="40" height="40"/>
+                                        <rect key="frame" x="2" y="52" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20329088179999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="Qvh-q6-lnK"/>
@@ -233,7 +233,7 @@ WebRTC Live Streaming</string>
                                         </constraints>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" image="videoOn">
-                                            <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.4979824424" green="0.49807190899999998" blue="0.4979767799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="selected" image="videoOff">
                                             <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -242,8 +242,24 @@ WebRTC Live Streaming</string>
                                             <action selector="videoTapped:" destination="xVm-wQ-O5q" eventType="touchUpInside" id="gXv-jW-Coa"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syx-6W-m27" userLabel="Data Button">
+                                        <rect key="frame" x="2" y="104" width="40" height="40"/>
+                                        <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="add-oX-NBh"/>
+                                            <constraint firstAttribute="height" constant="40" id="xXk-9V-Veo"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <size key="titleShadowOffset" width="0.0" height="1"/>
+                                        <state key="normal" image="message.fill" catalog="system">
+                                            <color key="titleShadowColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="messageButtonTapped:" destination="xVm-wQ-O5q" eventType="touchUpInside" id="ezP-4b-n09"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="643-J5-pC4" userLabel="Close Button">
-                                        <rect key="frame" x="2" y="100" width="40" height="40"/>
+                                        <rect key="frame" x="2" y="160" width="40" height="40"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20329088179999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="6sl-SA-YLs"/>
@@ -251,7 +267,7 @@ WebRTC Live Streaming</string>
                                         </constraints>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" image="close">
-                                            <color key="titleShadowColor" red="0.49803921569999998" green="0.49803921569999998" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.4979824424" green="0.49807190899999998" blue="0.4979767799" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="selected" image="audioOff"/>
                                         <connections>
@@ -262,13 +278,15 @@ WebRTC Live Streaming</string>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="5j2-CR-zdD" firstAttribute="top" secondItem="H3f-3T-91O" secondAttribute="top" id="EbZ-fI-D3Z"/>
-                                    <constraint firstAttribute="height" constant="140" id="FEG-9J-Gat"/>
-                                    <constraint firstItem="znm-um-kD7" firstAttribute="top" secondItem="5j2-CR-zdD" secondAttribute="bottom" constant="10" id="Lli-cd-0n2"/>
+                                    <constraint firstItem="syx-6W-m27" firstAttribute="leading" secondItem="H3f-3T-91O" secondAttribute="leading" constant="2" id="Eig-9B-HXG"/>
+                                    <constraint firstAttribute="height" constant="200" id="FEG-9J-Gat"/>
+                                    <constraint firstItem="znm-um-kD7" firstAttribute="top" secondItem="5j2-CR-zdD" secondAttribute="bottom" constant="12" id="Lli-cd-0n2"/>
+                                    <constraint firstItem="syx-6W-m27" firstAttribute="top" secondItem="znm-um-kD7" secondAttribute="bottom" constant="12" id="Ojr-C5-B7P"/>
                                     <constraint firstItem="643-J5-pC4" firstAttribute="leading" secondItem="H3f-3T-91O" secondAttribute="leading" constant="2" id="Rhq-Rw-QgS"/>
                                     <constraint firstItem="znm-um-kD7" firstAttribute="leading" secondItem="H3f-3T-91O" secondAttribute="leading" constant="2" id="ZUq-4I-vQH"/>
-                                    <constraint firstItem="643-J5-pC4" firstAttribute="top" secondItem="znm-um-kD7" secondAttribute="bottom" constant="10" id="b7o-CF-blx"/>
                                     <constraint firstItem="5j2-CR-zdD" firstAttribute="leading" secondItem="H3f-3T-91O" secondAttribute="leading" constant="2" id="cPc-Pt-Sms"/>
                                     <constraint firstAttribute="width" constant="45" id="fLl-ZI-OTI"/>
+                                    <constraint firstItem="643-J5-pC4" firstAttribute="top" secondItem="syx-6W-m27" secondAttribute="bottom" constant="16" id="ofJ-NR-HPJ"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mode: P2P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr8-Ya-8WG">
@@ -318,6 +336,7 @@ WebRTC Live Streaming</string>
         <image name="close" width="25" height="9.5"/>
         <image name="last_used" width="128" height="128"/>
         <image name="logo" width="512" height="512"/>
+        <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="videoOff" width="19" height="19"/>
         <image name="videoOn" width="18" height="14"/>
     </resources>

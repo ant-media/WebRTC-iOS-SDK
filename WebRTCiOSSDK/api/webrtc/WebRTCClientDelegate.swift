@@ -18,4 +18,6 @@ internal protocol WebRTCClientDelegate {
     func addLocalStream()
     
     func connectionStateChanged(newState: RTCIceConnectionState);
+    
+    func dataReceivedFromDataChannel(didReceiveData data: RTCDataBuffer);
 }

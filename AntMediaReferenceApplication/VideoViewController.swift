@@ -38,7 +38,7 @@ class VideoViewController: UIViewController {
         
         self.client.delegate = self
         self.client.setDebug(true)
-        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode)
+        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true)
 
         /*
          Enable the below line if you use multi peer node for embedded sdk
@@ -81,6 +81,9 @@ class VideoViewController: UIViewController {
      *  WebRTC Framework ask for mic permission by default even it's only playing
      *  stream. If you run this method before starting the webrtc client in play mode,
      *  It will not ask for mic permission
+     *
+     *  ATTENTION: Calling this method in sending stream cause not sending the audio. So if you publish
+     *  and play stream at the same time, don't use this method
      */
     private func dontAskMicPermissionForPlaying() {
         let webRTCConfiguration = RTCAudioSessionConfiguration.init()
@@ -104,6 +107,49 @@ class VideoViewController: UIViewController {
     @IBAction func closeTapped(_ sender: UIButton!) {
         self.client.stop()
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func messageButtonTapped(_ sender: Any) {
+        //show alert window if data channel is enabled
+        if self.client.isDataChannelActive()
+        {
+            
+            let alert = UIAlertController(title: "Send Message", message: "Send message with WebRTC Datachannel", preferredStyle: .alert)
+
+            alert.addTextField { (textField) in
+                textField.text =  ""
+            }
+
+            alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { [weak alert] (_) in
+                guard let textValue  =  alert?.textFields?.first?.text else {
+                           return
+                }
+                     
+                if let data = textValue.data(using: .utf8) {
+                    /*
+                     Send data through data channel
+                    */
+                    self.client.sendData(data: data, binary: false)
+                    
+                    /*
+                     You can either use some simple JSON formatting in order to have better
+                     let candidateJson = ["command": "message",
+                                          "content" : textValue,
+                                          ] as [String : Any]
+                     self.client.sendData(data: candidateJson.json.data(using: .utf8) ?? Data.init(capacity: 1), binary: false)
+                     */
+                }
+            }))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [weak alert] (_) in
+                alert?.dismiss(animated: false, completion: nil)
+            }))
+
+            self.present(alert, animated: true, completion: nil)
+        }
+        else {
+             AlertHelper.getInstance().show("Warning", message: "Data channel is not active. Please make sure data channel is enabled in both server side and mobile sdk ")
+        }
+        
     }
     
     private func setGesture() {
@@ -211,5 +257,28 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func audioSessionDidStartPlayOrRecord() {
        // self.client.speakerOn()
+    }
+    
+    func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
+        AntMediaClient.printf("Data is received from stream: \(streamId) is binary:\(binary) content: " + String(decoding: data, as: UTF8.self))
+        
+        Run.onMainThread {
+            self.showToast(controller: self, message:  String(decoding: data, as: UTF8.self), seconds: 1.0)
+        }
+        
+    }
+    
+    func showToast(controller: UIViewController, message : String, seconds: Double)
+    {
+        let alert = UIAlertController(title: "Received Message", message: message, preferredStyle: .alert)
+        alert.view.backgroundColor = UIColor.black
+        alert.view.alpha = 0.6
+        alert.view.layer.cornerRadius = 15
+
+        controller.present(alert, animated: true)
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
+            alert.dismiss(animated: true)
+        }
     }
 }

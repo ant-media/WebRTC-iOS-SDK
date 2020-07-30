@@ -35,6 +35,7 @@ class WebRTCClient: NSObject {
     var remoteVideoView: RTCVideoRenderer?
     var localVideoView: RTCVideoRenderer?
     var videoSender: RTCRtpSender!
+    var dataChannel: RTCDataChannel?
     
     private var token: String!
     private var streamId: String!
@@ -66,10 +67,10 @@ class WebRTCClient: NSObject {
     
     public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
-                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false )
+                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false)
     }
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate)
         self.mode = mode
         self.cameraPosition = cameraPosition
@@ -79,6 +80,12 @@ class WebRTCClient: NSObject {
         
         if (self.mode != .play && !multiPeerActive) {
             self.addLocalMediaStream()
+        }
+        
+        if (enableDataChannel && self.mode == .publish) {
+            //in publish mode, client opens the data channel
+            self.dataChannel = createDataChannel()
+            self.dataChannel?.delegate = self
         }
     }
     
@@ -102,6 +109,20 @@ class WebRTCClient: NSObject {
     
     public func addCandidate(_ candidate: RTCIceCandidate) {
         self.peerConnection?.add(candidate)
+    }
+    
+    public func sendData(data: Data, binary: Bool = false) {
+        if (self.dataChannel?.readyState == .open) {
+            let dataBuffer = RTCDataBuffer.init(data: data, isBinary: binary);
+            self.dataChannel?.sendData(dataBuffer);
+        }
+        else {
+            AntMediaClient.printf("Data channel is nil or state is not open. State is \(String(describing: self.dataChannel?.readyState)) Please check that data channel is enabled in server side ")
+        }
+    }
+    
+    public func isDataChannelActive() -> Bool {
+        return self.dataChannel?.readyState == .open;
     }
 
     
@@ -178,6 +199,15 @@ class WebRTCClient: NSObject {
     
     public func stop() {
         self.peerConnection?.close()
+    }
+    
+    private func createDataChannel() -> RTCDataChannel? {
+        let config = RTCDataChannelConfiguration()
+        guard let dataChannel = self.peerConnection?.dataChannel(forLabel: "WebRTCData", configuration: config) else {
+            AntMediaClient.printf("Warning: Couldn't create data channel.")
+            return nil
+        }
+        return dataChannel
     }
 
     public func disconnect() {
@@ -287,7 +317,7 @@ class WebRTCClient: NSObject {
         self.localAudioTrack = WebRTCClient.factory.audioTrack(with: audioSource, trackId: AUDIO_TRACK_ID)
         
         self.peerConnection?.add(self.localAudioTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
-
+        
         if (self.localVideoTrack != nil) {
             self.localVideoTrack.add(localVideoView!)
         }
@@ -316,6 +346,34 @@ class WebRTCClient: NSObject {
         
     }
       
+}
+
+extension WebRTCClient: RTCDataChannelDelegate
+{
+    func dataChannel(_ dataChannel: RTCDataChannel, didReceiveMessageWith buffer: RTCDataBuffer) {
+        self.delegate?.dataReceivedFromDataChannel(didReceiveData: buffer)
+    }
+    
+    func dataChannelDidChangeState(_ parametersdataChannel: RTCDataChannel)  {
+        if (parametersdataChannel.readyState == .open) {
+            AntMediaClient.printf("Data channel state is open")
+        }
+        else if  (parametersdataChannel.readyState == .connecting) {
+            AntMediaClient.printf("Data channel state is connecting")
+        }
+        else if  (parametersdataChannel.readyState == .closing) {
+            AntMediaClient.printf("Data channel state is closing")
+        }
+        else if  (parametersdataChannel.readyState == .closed) {
+            AntMediaClient.printf("Data channel state is closed")
+        }
+    }
+    
+    func dataChannel(_ dataChannel: RTCDataChannel, didChangeBufferedAmount amount: UInt64) {
+        
+    }
+    
+    
 }
 
 extension WebRTCClient: RTCPeerConnectionDelegate {
@@ -380,7 +438,10 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     
     // didOpen dataChannel
     func peerConnection(_ peerConnection: RTCPeerConnection, didOpen dataChannel: RTCDataChannel) {
-        //AntMediaClient.printf("---> dataChannel")
+        AntMediaClient.printf("---> dataChannel opened")
+        self.dataChannel = dataChannel
+        self.dataChannel?.delegate = self
+        
     }
     
     
