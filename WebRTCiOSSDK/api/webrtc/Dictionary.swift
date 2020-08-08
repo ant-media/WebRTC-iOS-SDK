@@ -8,7 +8,7 @@
 
 import Foundation
 
-extension Dictionary {
+public extension Dictionary {
 
     var json: String {
         let invalidJson = "Not a valid JSON"

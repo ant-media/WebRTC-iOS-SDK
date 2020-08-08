@@ -6,7 +6,7 @@
 
 import Foundation
 
-extension String {
+public extension String {
     
     func toURL() -> URL {
         return URL(string: self)!

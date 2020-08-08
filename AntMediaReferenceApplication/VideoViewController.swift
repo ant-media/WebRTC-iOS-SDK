@@ -70,7 +70,6 @@ class VideoViewController: UIViewController {
             self.pipVideoView.isHidden = false
             self.client.setRemoteView(remoteContainer: fullVideoView, mode: .scaleAspectFit)
             self.modeLabel.text = "Mode: Play"
-            self.client.setDefaultSpeakerMode(speakerOn: false)
         }
         //calling this method is not necessary. It just initializes the connection and opens the camera
         self.client.initPeerConnection()

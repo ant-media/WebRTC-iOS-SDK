@@ -31,6 +31,7 @@
 		78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */; };
 		78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */; };
 		78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D320D12DA20034CAAB /* Defaults.swift */; };
+		A8747A4024DEB76900E765A1 /* AntMediaClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8747A3F24DEB76900E765A1 /* AntMediaClientProtocol.swift */; };
 		A89C908C24DDAF8C005F5D98 /* AntMediaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C4659D248B98700027ADBA /* AntMediaClient.swift */; };
 		A89C908D24DDAF8C005F5D98 /* AntMediaClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C4659E248B98700027ADBA /* AntMediaClientDelegate.swift */; };
 		A89C908E24DDAF8C005F5D98 /* AntMediaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C4659F248B98700027ADBA /* AntMediaError.swift */; };
@@ -102,6 +103,7 @@
 		78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyUserDefaults.swift; sourceTree = "<group>"; };
 		78DC79D320D12DA20034CAAB /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		9F18D764CE2419C8E0CB31A9 /* Pods-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
+		A8747A3F24DEB76900E765A1 /* AntMediaClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntMediaClientProtocol.swift; sourceTree = "<group>"; };
 		A8C4659D248B98700027ADBA /* AntMediaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClient.swift; sourceTree = "<group>"; };
 		A8C4659E248B98700027ADBA /* AntMediaClientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClientDelegate.swift; sourceTree = "<group>"; };
 		A8C4659F248B98700027ADBA /* AntMediaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaError.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				A8C4659D248B98700027ADBA /* AntMediaClient.swift */,
+				A8747A3F24DEB76900E765A1 /* AntMediaClientProtocol.swift */,
 				A8C4659E248B98700027ADBA /* AntMediaClientDelegate.swift */,
 				A8C4659F248B98700027ADBA /* AntMediaError.swift */,
 				A8C465A3248B99A60027ADBA /* webrtc */,
@@ -480,6 +483,7 @@
 			files = (
 				A89C908C24DDAF8C005F5D98 /* AntMediaClient.swift in Sources */,
 				A89C908D24DDAF8C005F5D98 /* AntMediaClientDelegate.swift in Sources */,
+				A8747A4024DEB76900E765A1 /* AntMediaClientProtocol.swift in Sources */,
 				A89C908E24DDAF8C005F5D98 /* AntMediaError.swift in Sources */,
 				A89C908F24DDAF8C005F5D98 /* Dictionary.swift in Sources */,
 				A89C909024DDAF8C005F5D98 /* String.swift in Sources */,

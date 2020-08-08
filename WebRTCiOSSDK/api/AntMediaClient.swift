@@ -39,7 +39,7 @@ public enum AntMediaClientMode: Int {
     
 }
 
-open class AntMediaClient: NSObject {
+open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     internal static var isDebug: Bool = false
     public var delegate: AntMediaClientDelegate!
@@ -77,9 +77,7 @@ open class AntMediaClient: NSObject {
     private var audioEnable: Bool = true
     
     private var multiPeer: Bool = false
-    
-    private var defaultSpeakerModeOn: Bool = true
-    
+        
     private var enableDataChannel: Bool = false
     
     private var multiPeerStreamId: String?
@@ -113,15 +111,6 @@ open class AntMediaClient: NSObject {
         self.mode = mode
         self.rtcAudioSession.add(self)
         self.enableDataChannel = enableDataChannel
-    }
-    
-    /**
-     Sets the default speaker mode when playing has started.
-     If it's true, speaker will be on. If it's false, speaker will be off.
-     speakerOn and speakerOff methods are also available
-     */
-    public func setDefaultSpeakerMode(speakerOn: Bool) {
-        self.defaultSpeakerModeOn = speakerOn;
     }
     
     public func setMultiPeerMode(enable: Bool, mode: String) {
@@ -444,14 +433,10 @@ open class AntMediaClient: NSObject {
                 if definition == "joined" {
                     AntMediaClient.printf("Joined: Let's go")
                     self.onJoined()
-                    self.speakerOn()
                 }
                 else if definition == "play_started" {
                     AntMediaClient.printf("Play started: Let's go")
                     self.delegate.playStarted()
-                    if (self.defaultSpeakerModeOn) {
-                        self.speakerOn()
-                    }
                 }
                 else if definition == "play_finished" {
                     AntMediaClient.printf("Playing has finished")

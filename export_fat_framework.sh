@@ -25,4 +25,4 @@ cp $SIMULATOR_DIR/WebRTCiOSSDK.framework/Modules/WebRTCiOSSDK.swiftmodule/* $UNI
 rm -rf $SIMULATOR_DIR
 rm -rf $OS_DIR
 
-echo "If everything is ok. Your Universal Framework is $UNIVERSAL_DIR/AntMediaSDK.framework"
+echo "If everything is ok. Your Universal Framework is $UNIVERSAL_DIR/WebRTCiOSSDK.framework"
