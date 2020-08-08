@@ -9,18 +9,28 @@
 /* Begin PBXBuildFile section */
 		068E5963381B58D7D8CD321462F567ED /* Compression.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2E057170ECA65E2F05A5B595252784 /* Compression.swift */; };
 		1627E6FA0453D6DB472BA444F1D32AE7 /* SSLClientCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48F7922C44A3645750BD18CCCF671B0 /* SSLClientCertificate.swift */; };
-		25C49EF28FE8E2BBCA3276AEC80D11FC /* Pods-AntMediaReferenceApplication-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 572783AD0276A3B32E55E64E8872E60C /* Pods-AntMediaReferenceApplication-dummy.m */; };
+		22EB1A2C86A9BE1597A7E25B4DB23425 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = ECD89CF5AB34055EE9B58F881468204C /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-dummy.m */; };
 		294D61E8A195B6A1F6AEDCF0F73599A5 /* Starscream-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 01FB5DEA2CF4E44263A62924A53A069E /* Starscream-dummy.m */; };
+		4A686AEF21AFB3C3277B01F3CF703250 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 06A41175B006447E64AC2BFEBDB49FEF /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5FB96B4D66674679D95D7310E58EE3D5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		60AC96849E2ED422F488AEF97AC2D2DA /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB6212DCA25042AF9C899C46024E918 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-dummy.m */; };
 		8B3350D96B15B975184C8EE0819F9623 /* SSLSecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59F921BA6434A655F9C82F0F81BE47A /* SSLSecurity.swift */; };
+		9249AE234BE1B048F9AD336C70CF9077 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A3BB3C0216A5827C858EF4D7A180D206 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		96D67F9A7630A34944B6EAAD47F785E3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		B131E92904B8AFC39D4AB85206178CC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		A80A34780F512D1B37A0A39303BD7936 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
 		B4A6283FDFA04E3A7B6FD0C13B6FEF32 /* Starscream-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7F7A2315DC555AEF64DA8D50B51DA7F1 /* Starscream-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C02D9FEB295BDA1359D2F52C80F8E75A /* WebSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B9AA0D25BD7BD2C495D776FC8B846DC /* WebSocket.swift */; };
-		D55BA2FF4794D34031A9B68FADEBC296 /* Pods-AntMediaReferenceApplication-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B35AA52F3332F55C913100EF0CECD2F /* Pods-AntMediaReferenceApplication-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C4C4FFBD593B5090AEB8D6C59ABB6F42 /* PBXContainerItemProxy */ = {
+		6928D9E63C0B039230EA9CFDEA9D85B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9B78EE4AF6AE03E79D88886319853FF7;
+			remoteInfo = Starscream;
+		};
+		7D6FE25F20EAB08422FF93C4E286D0F8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -31,28 +41,37 @@
 
 /* Begin PBXFileReference section */
 		01FB5DEA2CF4E44263A62924A53A069E /* Starscream-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Starscream-dummy.m"; sourceTree = "<group>"; };
-		0B35AA52F3332F55C913100EF0CECD2F /* Pods-AntMediaReferenceApplication-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AntMediaReferenceApplication-umbrella.h"; sourceTree = "<group>"; };
+		06A41175B006447E64AC2BFEBDB49FEF /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-umbrella.h"; sourceTree = "<group>"; };
 		2EF130DB1D020533A3D8DDE0CB985BD3 /* Starscream.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Starscream.modulemap; sourceTree = "<group>"; };
+		310BFCF2A1FB06EAE1E8B59A8CFA2B07 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		3897AEF38D25867B916C27DE83CC5353 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-acknowledgements.plist"; sourceTree = "<group>"; };
 		3B9AA0D25BD7BD2C495D776FC8B846DC /* WebSocket.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WebSocket.swift; path = Sources/Starscream/WebSocket.swift; sourceTree = "<group>"; };
 		3DCEA6169B33E34F1E6E7128F65DC025 /* Starscream-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-prefix.pch"; sourceTree = "<group>"; };
 		44E219F4030CE498CF0D43505F1973F7 /* Starscream-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Starscream-Info.plist"; sourceTree = "<group>"; };
-		4DC5B7903121CC63978E54E97745DE1C /* Pods-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
-		572783AD0276A3B32E55E64E8872E60C /* Pods-AntMediaReferenceApplication-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AntMediaReferenceApplication-dummy.m"; sourceTree = "<group>"; };
-		58F3359BE4B0DB5E33776D893DABB8DE /* Pods-AntMediaReferenceApplication.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AntMediaReferenceApplication.modulemap"; sourceTree = "<group>"; };
+		4BB6212DCA25042AF9C899C46024E918 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-dummy.m"; sourceTree = "<group>"; };
 		64D5E391E11E3D9A03B0ACF80CFBA3B2 /* Starscream.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Starscream.xcconfig; sourceTree = "<group>"; };
-		72DC832107FB58B4A64120D285B837FF /* Pods-AntMediaReferenceApplication-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AntMediaReferenceApplication-acknowledgements.markdown"; sourceTree = "<group>"; };
+		65F086A359C0DAEF8553D4D3AC30E85A /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks.sh"; sourceTree = "<group>"; };
+		75E58A3301662AED9327E546AB8DCDEF /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.modulemap"; sourceTree = "<group>"; };
+		792EE1FD9A1DE4FF08AC69D4E3430234 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F7A2315DC555AEF64DA8D50B51DA7F1 /* Starscream-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Starscream-umbrella.h"; sourceTree = "<group>"; };
 		891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Starscream.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8E4BB9BB8F86DD381F6A162C7D36E9A2 /* Pods-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
+		92C667381BD1813CDD8EBE7F0D0309E1 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-acknowledgements.plist"; sourceTree = "<group>"; };
+		9316B3A8B47205FBA70904CA242B0CDB /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-Info.plist"; sourceTree = "<group>"; };
+		98ABB437D14306DE8164C342E4D2A63F /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A53692B84E1E3EACE18843D6D0BF1918 /* Pods-AntMediaReferenceApplication-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AntMediaReferenceApplication-frameworks.sh"; sourceTree = "<group>"; };
-		A57C984538C03450C671644A0FA8D5A9 /* Pods-AntMediaReferenceApplication-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AntMediaReferenceApplication-acknowledgements.plist"; sourceTree = "<group>"; };
-		B107AC4DA60E85E966A392C49482D63D /* Pods-AntMediaReferenceApplication-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AntMediaReferenceApplication-Info.plist"; sourceTree = "<group>"; };
+		A287C0E60806F6410B29D48B3A7AEB5A /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		A3BB3C0216A5827C858EF4D7A180D206 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-umbrella.h"; sourceTree = "<group>"; };
+		AE3E28C1D3E41F1439C6D928ED57CF6E /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7EE7E13AD20E34B1A825FC2069BF8ED /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.modulemap"; sourceTree = "<group>"; };
 		BA2E057170ECA65E2F05A5B595252784 /* Compression.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Compression.swift; path = Sources/Starscream/Compression.swift; sourceTree = "<group>"; };
+		BDBAAE7AFBAE3020301D37FED8906342 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-Info.plist"; sourceTree = "<group>"; };
+		C1B30B1DEC0DBA845B80F8C93F1E79A6 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-acknowledgements.markdown"; sourceTree = "<group>"; };
 		D59F921BA6434A655F9C82F0F81BE47A /* SSLSecurity.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLSecurity.swift; path = Sources/Starscream/SSLSecurity.swift; sourceTree = "<group>"; };
 		E48F7922C44A3645750BD18CCCF671B0 /* SSLClientCertificate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SSLClientCertificate.swift; path = Sources/Starscream/SSLClientCertificate.swift; sourceTree = "<group>"; };
-		FC77984AD21B914E612D6D916E519C0E /* Pods_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_AntMediaReferenceApplication.framework; path = "Pods-AntMediaReferenceApplication.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7C95361A33C662D6FEF2B37CF5A506B /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-acknowledgements.markdown"; sourceTree = "<group>"; };
+		ECD89CF5AB34055EE9B58F881468204C /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-dummy.m"; sourceTree = "<group>"; };
+		EEF7203517E033FCEA36A264B91E408E /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,17 +83,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		86C0EA2FE67BB76BFD063E4F5C85B7FF /* Frameworks */ = {
+		23075D6BD2672B70FF7EB5339379545C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B131E92904B8AFC39D4AB85206178CC4 /* Foundation.framework in Frameworks */,
+				A80A34780F512D1B37A0A39303BD7936 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7BC0DCA040E086F3C075E1B5873F3B5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FB96B4D66674679D95D7310E58EE3D5 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49756015CF9D76744657308B36CBE4CE /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AED182066EF404E167CBE173A1CF783C /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication */,
+				948A490A1D7ED37659F1A3AE269FCB73 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
 		74B354FEE42AB825E96690DF7F109CC3 /* Starscream */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,13 +124,20 @@
 			path = Starscream;
 			sourceTree = "<group>";
 		};
-		802A2D47C770631D446629F3A57F0821 /* Products */ = {
+		948A490A1D7ED37659F1A3AE269FCB73 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK */ = {
 			isa = PBXGroup;
 			children = (
-				FC77984AD21B914E612D6D916E519C0E /* Pods_AntMediaReferenceApplication.framework */,
-				891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */,
+				B7EE7E13AD20E34B1A825FC2069BF8ED /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.modulemap */,
+				C1B30B1DEC0DBA845B80F8C93F1E79A6 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-acknowledgements.markdown */,
+				92C667381BD1813CDD8EBE7F0D0309E1 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-acknowledgements.plist */,
+				ECD89CF5AB34055EE9B58F881468204C /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-dummy.m */,
+				BDBAAE7AFBAE3020301D37FED8906342 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-Info.plist */,
+				A3BB3C0216A5827C858EF4D7A180D206 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-umbrella.h */,
+				A287C0E60806F6410B29D48B3A7AEB5A /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig */,
+				98ABB437D14306DE8164C342E4D2A63F /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig */,
 			);
-			name = Products;
+			name = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK";
+			path = "Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK";
 			sourceTree = "<group>";
 		};
 		97C5288770E1953BDB40F8F908E40D46 /* Pods */ = {
@@ -105,21 +148,21 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		B949722BF562108F5A52B0861C752516 /* Pods-AntMediaReferenceApplication */ = {
+		AED182066EF404E167CBE173A1CF783C /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication */ = {
 			isa = PBXGroup;
 			children = (
-				58F3359BE4B0DB5E33776D893DABB8DE /* Pods-AntMediaReferenceApplication.modulemap */,
-				72DC832107FB58B4A64120D285B837FF /* Pods-AntMediaReferenceApplication-acknowledgements.markdown */,
-				A57C984538C03450C671644A0FA8D5A9 /* Pods-AntMediaReferenceApplication-acknowledgements.plist */,
-				572783AD0276A3B32E55E64E8872E60C /* Pods-AntMediaReferenceApplication-dummy.m */,
-				A53692B84E1E3EACE18843D6D0BF1918 /* Pods-AntMediaReferenceApplication-frameworks.sh */,
-				B107AC4DA60E85E966A392C49482D63D /* Pods-AntMediaReferenceApplication-Info.plist */,
-				0B35AA52F3332F55C913100EF0CECD2F /* Pods-AntMediaReferenceApplication-umbrella.h */,
-				4DC5B7903121CC63978E54E97745DE1C /* Pods-AntMediaReferenceApplication.debug.xcconfig */,
-				8E4BB9BB8F86DD381F6A162C7D36E9A2 /* Pods-AntMediaReferenceApplication.release.xcconfig */,
+				75E58A3301662AED9327E546AB8DCDEF /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.modulemap */,
+				E7C95361A33C662D6FEF2B37CF5A506B /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-acknowledgements.markdown */,
+				3897AEF38D25867B916C27DE83CC5353 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-acknowledgements.plist */,
+				4BB6212DCA25042AF9C899C46024E918 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-dummy.m */,
+				65F086A359C0DAEF8553D4D3AC30E85A /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks.sh */,
+				9316B3A8B47205FBA70904CA242B0CDB /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-Info.plist */,
+				06A41175B006447E64AC2BFEBDB49FEF /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-umbrella.h */,
+				EEF7203517E033FCEA36A264B91E408E /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig */,
+				310BFCF2A1FB06EAE1E8B59A8CFA2B07 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig */,
 			);
-			name = "Pods-AntMediaReferenceApplication";
-			path = "Target Support Files/Pods-AntMediaReferenceApplication";
+			name = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication";
+			path = "Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication";
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -130,22 +173,14 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		C0C3E105DEC48266465C4F38908680C0 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B949722BF562108F5A52B0861C752516 /* Pods-AntMediaReferenceApplication */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
 				97C5288770E1953BDB40F8F908E40D46 /* Pods */,
-				802A2D47C770631D446629F3A57F0821 /* Products */,
-				C0C3E105DEC48266465C4F38908680C0 /* Targets Support Files */,
+				F091CD215C7C53576371D21436BBBF70 /* Products */,
+				49756015CF9D76744657308B36CBE4CE /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,14 +206,32 @@
 			path = "../Target Support Files/Starscream";
 			sourceTree = "<group>";
 		};
+		F091CD215C7C53576371D21436BBBF70 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				792EE1FD9A1DE4FF08AC69D4E3430234 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */,
+				AE3E28C1D3E41F1439C6D928ED57CF6E /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */,
+				891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		5070AF169AF2261BB2C044AD7793E643 /* Headers */ = {
+		43E0F7D4F38EA7EA79ECE756942D322E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D55BA2FF4794D34031A9B68FADEBC296 /* Pods-AntMediaReferenceApplication-umbrella.h in Headers */,
+				4A686AEF21AFB3C3277B01F3CF703250 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		794993B51152489F1D9496D29248F1DD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9249AE234BE1B048F9AD336C70CF9077 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,23 +246,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		19FF235DDF4BD37091C308CAE587F561 /* Pods-AntMediaReferenceApplication */ = {
+		02C0D136FE77F309819EA38399C28676 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9392064D8D96F04573BC4FFF75ECCAD5 /* Build configuration list for PBXNativeTarget "Pods-AntMediaReferenceApplication" */;
+			buildConfigurationList = 61122114D8704D6A6CE39B9DD343ECB5 /* Build configuration list for PBXNativeTarget "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK" */;
 			buildPhases = (
-				5070AF169AF2261BB2C044AD7793E643 /* Headers */,
-				16A582B33C40C3E4018ADA262807BC19 /* Sources */,
-				86C0EA2FE67BB76BFD063E4F5C85B7FF /* Frameworks */,
-				12E1D571E242F88822630282CBE39906 /* Resources */,
+				794993B51152489F1D9496D29248F1DD /* Headers */,
+				CFE19E0FF8FD3E1F63172EB4BC2CF3CF /* Sources */,
+				23075D6BD2672B70FF7EB5339379545C /* Frameworks */,
+				DE50E38640D8A6D8F651EB3790183965 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				12719C3952915FEF29BCBC1AED2E8C0E /* PBXTargetDependency */,
+				D22FC1361801A64CE8708ADB97322233 /* PBXTargetDependency */,
 			);
-			name = "Pods-AntMediaReferenceApplication";
-			productName = "Pods-AntMediaReferenceApplication";
-			productReference = FC77984AD21B914E612D6D916E519C0E /* Pods_AntMediaReferenceApplication.framework */;
+			name = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK";
+			productName = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK";
+			productReference = AE3E28C1D3E41F1439C6D928ED57CF6E /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */ = {
@@ -230,6 +283,25 @@
 			productReference = 891B2270823847ED23F2ECFC28F935EC /* Starscream.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B1351ED96B7FCDB728F6295E31CAFE4F /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A63859F1CE794724A9A83FB0A195EE15 /* Build configuration list for PBXNativeTarget "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication" */;
+			buildPhases = (
+				43E0F7D4F38EA7EA79ECE756942D322E /* Headers */,
+				A2B5FA28B538720628152DA776FDB283 /* Sources */,
+				A7BC0DCA040E086F3C075E1B5873F3B5 /* Frameworks */,
+				0DD35AF9BF2DD8C155B1951E05B50654 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2761C1E1AB6E8F0F4BD1483702E88B41 /* PBXTargetDependency */,
+			);
+			name = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication";
+			productName = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication";
+			productReference = 792EE1FD9A1DE4FF08AC69D4E3430234 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -248,18 +320,19 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 802A2D47C770631D446629F3A57F0821 /* Products */;
+			productRefGroup = F091CD215C7C53576371D21436BBBF70 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				19FF235DDF4BD37091C308CAE587F561 /* Pods-AntMediaReferenceApplication */,
+				B1351ED96B7FCDB728F6295E31CAFE4F /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication */,
+				02C0D136FE77F309819EA38399C28676 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK */,
 				9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		12E1D571E242F88822630282CBE39906 /* Resources */ = {
+		0DD35AF9BF2DD8C155B1951E05B50654 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -273,17 +346,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		16A582B33C40C3E4018ADA262807BC19 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+		DE50E38640D8A6D8F651EB3790183965 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C49EF28FE8E2BBCA3276AEC80D11FC /* Pods-AntMediaReferenceApplication-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
 		621EE447A1C117BDCD418F5DE070FD3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,14 +368,36 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A2B5FA28B538720628152DA776FDB283 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				60AC96849E2ED422F488AEF97AC2D2DA /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFE19E0FF8FD3E1F63172EB4BC2CF3CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22EB1A2C86A9BE1597A7E25B4DB23425 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		12719C3952915FEF29BCBC1AED2E8C0E /* PBXTargetDependency */ = {
+		2761C1E1AB6E8F0F4BD1483702E88B41 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Starscream;
 			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
-			targetProxy = C4C4FFBD593B5090AEB8D6C59ABB6F42 /* PBXContainerItemProxy */;
+			targetProxy = 6928D9E63C0B039230EA9CFDEA9D85B2 /* PBXContainerItemProxy */;
+		};
+		D22FC1361801A64CE8708ADB97322233 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Starscream;
+			target = 9B78EE4AF6AE03E79D88886319853FF7 /* Starscream */;
+			targetProxy = 7D6FE25F20EAB08422FF93C4E286D0F8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -371,6 +465,45 @@
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
+		};
+		1A900444AC8105BEF47396CF2B941224 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 310BFCF2A1FB06EAE1E8B59A8CFA2B07 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
 		};
 		73968A14EF0365E654FA09AC14885BA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -443,9 +576,9 @@
 			};
 			name = Release;
 		};
-		9FDA393F394DB952B8FAC169DA163568 /* Release */ = {
+		8A4BA337033E1EC9607E811D08CCC5F1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8E4BB9BB8F86DD381F6A162C7D36E9A2 /* Pods-AntMediaReferenceApplication.release.xcconfig */;
+			baseConfigurationReference = EEF7203517E033FCEA36A264B91E408E /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -458,7 +591,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -467,7 +600,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -476,11 +609,48 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
+		};
+		9A141582D40A5C79E15D2FAC8317E878 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A287C0E60806F6410B29D48B3A7AEB5A /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		B01D14FDC83DCF9D4BE53066BEA96D05 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -542,9 +712,9 @@
 			};
 			name = Release;
 		};
-		C7C72F773CA921295BF8213597AC9428 /* Debug */ = {
+		D5EE9D67E77468CB93C1DAFCC00E30DC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4DC5B7903121CC63978E54E97745DE1C /* Pods-AntMediaReferenceApplication.debug.xcconfig */;
+			baseConfigurationReference = 98ABB437D14306DE8164C342E4D2A63F /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -557,7 +727,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication-Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -566,7 +736,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -575,10 +745,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -592,11 +763,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9392064D8D96F04573BC4FFF75ECCAD5 /* Build configuration list for PBXNativeTarget "Pods-AntMediaReferenceApplication" */ = {
+		61122114D8704D6A6CE39B9DD343ECB5 /* Build configuration list for PBXNativeTarget "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C7C72F773CA921295BF8213597AC9428 /* Debug */,
-				9FDA393F394DB952B8FAC169DA163568 /* Release */,
+				9A141582D40A5C79E15D2FAC8317E878 /* Debug */,
+				D5EE9D67E77468CB93C1DAFCC00E30DC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A63859F1CE794724A9A83FB0A195EE15 /* Build configuration list for PBXNativeTarget "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8A4BA337033E1EC9607E811D08CCC5F1 /* Debug */,
+				1A900444AC8105BEF47396CF2B941224 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -1,6 +1,0 @@
-framework module Pods_AntMediaReferenceApplication {
-  umbrella header "Pods-AntMediaReferenceApplication-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -485,7 +485,7 @@ open class AntMediaClient: NSObject {
         return request
     }
     
-    static func printf(_ msg: String) {
+    public static func printf(_ msg: String) {
         if (AntMediaClient.isDebug) {
             debugPrint("--> AntMediaSDK: " + msg)
         }
