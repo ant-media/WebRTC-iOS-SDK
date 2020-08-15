@@ -10,8 +10,20 @@ import Foundation
 import AVFoundation
 import WebRTC
 
+let COMMAND = "command"
+let STREAM_ID = "streamId"
+let TOKEN_ID = "token"
+let VIDEO = "video"
+let AUDIO = "audio"
+let ROOM_ID = "room";
+let NOTIFICATION = "notification";
+let JOINED_ROOM_DEFINITION = "joinedTheRoom";
+let DEFINITION = "definition";
+let STREAMS = "streams";
+let ROOM_INFORMATION_COMMAND = "roomInformation";
+
 public protocol AntMediaClientProtocol {
-    
+        
     /**
      Sets the required options to for Ant Media Client to Run
      - Parameters:
@@ -119,7 +131,14 @@ public protocol AntMediaClientProtocol {
     /**
      Set the debug mode. If it's true, log messages will be available.
      */
+    @available(*, deprecated, message: "Use static version of setDebug")
     func setDebug(_ value: Bool);
+    
+    
+    /**
+      Set the debug mode.  If it's true, log messages will be written to the console. It's disabled by default.
+     */
+    static func setDebug(_ value: Bool);
     
     /**
     Toggle audio in the current stream. If it's muted, it will be unmuted. If it's unmuted, it'll be muted.
@@ -130,6 +149,11 @@ public protocol AntMediaClientProtocol {
      Toggle video stream(enable, disable) in the current stream.
      */
     func toggleVideo();
+    
+    /**
+     Stream id that this client uses.
+     */
+    func getStreamId() -> String;
 }
 
 

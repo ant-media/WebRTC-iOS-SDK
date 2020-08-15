@@ -30,54 +30,54 @@ public protocol AntMediaClientDelegate {
      This is a low level communicatin and it's good to use in P2P mode.
      Not good to use in publish and play mode
      */
-    func remoteStreamStarted()
+    func remoteStreamStarted(streamId: String)
     
     /**
      Called when stream is removed from peer to peer connection
      This is a low level notification and it's good to use in P2P mode.
      Not good to use in publish and play mode
     */
-    func remoteStreamRemoved()
+    func remoteStreamRemoved(streamId: String)
     
     /**
      Called when local audio and video is started
      */
-    func localStreamStarted()
+    func localStreamStarted(streamId: String)
     
     
     /**
      Called when playing is started.
      Triggered by server.
      */
-    func playStarted()
+    func playStarted(streamId: String)
     
     /**
      Called when playing is finished.
      Triggered by server.
      */
-    func playFinished()
+    func playFinished(streamId: String)
     
     /**
      Called when publish is started.
      Triggered by server.
      */
-    func publishStarted()
+    func publishStarted(streamId: String)
     
     /**
      Called when publish is finished.
      Triggered by server.
      */
-    func publishFinished()
+    func publishFinished(streamId: String)
     
     /**
      Called when peer to peer connection is failed, disconnected or closed
     */
-    func disconnected()
+    func disconnected(streamId: String)
     
     /**
      Called when audio session start play or record
      */
-    func audioSessionDidStartPlayOrRecord()
+    func audioSessionDidStartPlayOrRecord(streamId: String)
     
     /**
      Called when data is received from webrtc data channel.

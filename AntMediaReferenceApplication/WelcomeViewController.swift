@@ -125,6 +125,8 @@ class WelcomeViewController: UIViewController {
                 return AntMediaClientMode.play
             case 2:
                 return AntMediaClientMode.publish
+            case 3:
+                return AntMediaClientMode.conference
             default:
                 return AntMediaClientMode.join
         }
@@ -136,12 +138,22 @@ class WelcomeViewController: UIViewController {
     
     private func showVideo()
     {
-        let controller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Video") as! VideoViewController
-        controller.clientUrl = self.clientUrl
-        controller.clientStreamId = self.clientRoom
-        controller.clientToken = self.clientToken
-        controller.clientMode = self.getMode()
-        self.show(controller, sender: nil)
+        if self.getMode() != AntMediaClientMode.conference {
+            let controller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Video") as! VideoViewController
+            controller.clientUrl = self.clientUrl
+            controller.clientStreamId = self.clientRoom
+            controller.clientToken = self.clientToken
+            controller.clientMode = self.getMode()
+            self.show(controller, sender: nil)
+        }
+        else {
+            let controller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Conference") as! ConferenceViewController;
+            controller.clientUrl = self.clientUrl;
+            controller.roomId = self.clientRoom;
+            
+           self.show(controller, sender: nil)
+        }
+         
     }
 }
 

@@ -32,7 +32,7 @@ class VideoViewController: UIViewController {
         super.viewDidLoad()
         self.setGesture()
     }
-    
+
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -198,16 +198,16 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     
-    func disconnected() {
-        print("Disconnected")
+    func disconnected(streamId: String) {
+        print("Disconnected -> \(streamId)")
     }
     
-    func remoteStreamStarted() {
-        print("Remote stream started")
+    func remoteStreamStarted(streamId: String) {
+        print("Remote stream started -> \(streamId)")
     }
     
-    func remoteStreamRemoved() {
-        print("Remote stream removed")
+    func remoteStreamRemoved(streamId: String) {
+        print("Remote stream removed -> \(streamId)")
         if (self.client.getCurrentMode() == .join) {
             Run.afterDelay(1, block: {
                 self.fullVideoView.isHidden = true
@@ -220,18 +220,18 @@ extension VideoViewController: AntMediaClientDelegate {
         }
     }
     
-    func localStreamStarted() {
+    func localStreamStarted(streamId: String) {
         print("Local stream added")
         self.fullVideoView.isHidden = false
     }
     
     
-    func playStarted()
+    func playStarted(streamId: String)
     {
         print("play started");
     }
     
-    func playFinished() {
+    func playFinished(streamId: String) {
         print("play finished")
         
         AlertHelper.getInstance().show("Caution!", message: "Remote stream is no longer available", cancelButtonText: "OK", cancelAction: {
@@ -239,7 +239,7 @@ extension VideoViewController: AntMediaClientDelegate {
         })
     }
 
-    func publishStarted()
+    func publishStarted(streamId: String)
     {
         Run.onMainThread
         {
@@ -251,11 +251,11 @@ extension VideoViewController: AntMediaClientDelegate {
         }
     }
     
-    func publishFinished() {
+    func publishFinished(streamId: String) {
         
     }
     
-    func audioSessionDidStartPlayOrRecord() {
+    func audioSessionDidStartPlayOrRecord(streamId: String) {
        // self.client.speakerOn()
     }
     

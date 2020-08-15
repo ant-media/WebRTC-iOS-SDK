@@ -16,6 +16,7 @@ public enum AntMediaClientMode: Int {
     case join = 1
     case play = 2
     case publish = 3
+    case conference = 4;
     
     func getLeaveMessage() -> String {
         switch self {
@@ -23,6 +24,8 @@ public enum AntMediaClientMode: Int {
                 return "leave"
             case .publish, .play:
                 return "stop"
+            case .conference:
+                return "leaveRoom"
         }
     }
     
@@ -34,6 +37,8 @@ public enum AntMediaClientMode: Int {
                 return "play"
             case .publish:
                 return "publish"
+            case .conference:
+                return "conference"
         }
     }
     
@@ -66,12 +71,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var targetWidth: Int = 480
     private var targetHeight: Int = 360
-    
-    private let COMMAND: String = "command"
-    private let STREAM_ID: String = "streamId"
-    private let TOKEN_ID: String = "token"
-    private let VIDEO: String = "video"
-    private let AUDIO: String = "audio"
     
     private var videoEnable: Bool = true
     private var audioEnable: Bool = true
@@ -120,6 +119,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public func setVideoEnable( enable: Bool) {
         self.videoEnable = enable
+    }
+    
+    public func getStreamId() -> String {
+        return self.streamId
     }
     
     func getHandshakeMessage() -> String {
@@ -208,9 +211,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      Connect to websocket
      */
     open func connectWebSocket() {
-        AntMediaClient.printf("Connect websocket \(String(describing: self.webSocket?.isConnected))")
+        AntMediaClient.printf("Connect websocket to \(self.getWsUrl())")
         if (!(self.webSocket?.isConnected ?? false)) { //provides backward compatibility
-            AntMediaClient.printf("Will connect to: \(self.getWsUrl())")
+            AntMediaClient.printf("Will connect to: \(self.getWsUrl()) for stream: \(self.streamId)")
         
             webSocket = WebSocket(request: self.getRequest())
             webSocket?.delegate = self
@@ -337,6 +340,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         AntMediaClient.isDebug = value
     }
     
+    public static func setDebug(_ value: Bool) {
+         AntMediaClient.isDebug = value
+    }
+    
     open func toggleAudio() {
         self.webRTCClient?.toggleAudioEnabled()
     }
@@ -391,7 +398,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private func onMessage(_ msg: String) {
         if let message = msg.toJSON() {
-            guard let command = message["command"] as? String else {
+            guard let command = message[COMMAND] as? String else {
                 return
             }
             self.onCommand(command, message: message)
@@ -401,7 +408,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     private func onCommand(_ command: String, message: [String: Any]) {
-        AntMediaClient.printf("Command: " + command)
+        
         switch command {
             case "start":
                 //if this is called, it's publisher or initiator in p2p
@@ -411,7 +418,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             case "stop":
                 self.webRTCClient?.stop()
                 self.webRTCClient = nil
-                self.delegate.remoteStreamRemoved()
+                self.delegate.remoteStreamRemoved(streamId: self.streamId)
                 break
             case "takeConfiguration":
                 self.initPeerConnection()
@@ -436,19 +443,19 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 }
                 else if definition == "play_started" {
                     AntMediaClient.printf("Play started: Let's go")
-                    self.delegate.playStarted()
+                    self.delegate.playStarted(streamId: self.streamId)
                 }
                 else if definition == "play_finished" {
                     AntMediaClient.printf("Playing has finished")
-                    self.delegate.playFinished()
+                    self.delegate.playFinished(streamId: self.streamId)
                 }
                 else if definition == "publish_started" {
                     AntMediaClient.printf("Publish started: Let's go")
-                    self.delegate.publishStarted()
+                    self.delegate.publishStarted(streamId: self.streamId)
                 }
                 else if definition == "publish_finished" {
                     AntMediaClient.printf("Play finished: Let's close")
-                    self.delegate.publishFinished()
+                    self.delegate.publishFinished(streamId: self.streamId)
                 }
                 break
             case "error":
@@ -484,11 +491,11 @@ extension AntMediaClient: WebRTCClientDelegate {
     }
     
     public func addLocalStream() {
-        self.delegate.localStreamStarted()
+        self.delegate.localStreamStarted(streamId: self.streamId)
     }
     
     public func addRemoteStream() {
-        self.delegate.remoteStreamStarted()
+        self.delegate.remoteStreamStarted(streamId: self.streamId)
     }
     
     public func connectionStateChanged(newState: RTCIceConnectionState) {
@@ -496,8 +503,8 @@ extension AntMediaClient: WebRTCClientDelegate {
             newState == RTCIceConnectionState.disconnected ||
             newState == RTCIceConnectionState.failed
         {
-            AntMediaClient.printf("connectionStateChanged: \(newState.rawValue)")
-            self.delegate.disconnected();
+            AntMediaClient.printf("connectionStateChanged: \(newState.rawValue) for stream: \(String(describing: self.streamId))")
+            self.delegate.disconnected(streamId: self.streamId);
         }
     }
     
@@ -559,7 +566,7 @@ extension AntMediaClient: RTCAudioSessionDelegate
 {
     
     public func audioSessionDidStartPlayOrRecord(_ session: RTCAudioSession) {
-        self.delegate.audioSessionDidStartPlayOrRecord()
+        self.delegate.audioSessionDidStartPlayOrRecord(streamId: self.streamId)
     }
 
 }
