@@ -47,6 +47,9 @@ class VideoViewController: UIViewController {
         //self.client.setMultiPeerMode(enable: true, mode: "play")
         /*
          Enable below line if you don't want to have mic permission dialog while playing
+         Please pay attention that if you enable below method, it will not use microphone.
+         Which means if you are publishing and playing at the same time, you should not enable
+         the below method
          */
         //dontAskMicPermissionForPlaying();
         
@@ -256,7 +259,7 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func audioSessionDidStartPlayOrRecord(streamId: String) {
-       // self.client.speakerOn()
+        self.client.speakerOn()
     }
     
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {

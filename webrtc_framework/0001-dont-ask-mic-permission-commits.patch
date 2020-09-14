@@ -1,0 +1,158 @@
+From ab66457038692ccac85c4d572bc8dfd37c19f8ae Mon Sep 17 00:00:00 2001
+From: mekya <ahmetmermerkaya@gmail.com>
+Date: Mon, 14 Sep 2020 10:24:56 +0300
+Subject: [PATCH] don't ask mic permission only playing
+
+---
+ .../src/audio/voice_processing_audio_unit.mm  | 115 +++++++++++-------
+ 1 file changed, 71 insertions(+), 44 deletions(-)
+
+diff --git a/sdk/objc/native/src/audio/voice_processing_audio_unit.mm b/sdk/objc/native/src/audio/voice_processing_audio_unit.mm
+index a2aa7f323b..6d97547e06 100644
+--- a/sdk/objc/native/src/audio/voice_processing_audio_unit.mm
++++ b/sdk/objc/native/src/audio/voice_processing_audio_unit.mm
+@@ -110,18 +110,25 @@ static OSStatus GetAGCState(AudioUnit audio_unit, UInt32* enabled) {
+   }
+ 
+   // Enable input on the input scope of the input element.
+-  UInt32 enable_input = 1;
+-  result = AudioUnitSetProperty(vpio_unit_, kAudioOutputUnitProperty_EnableIO,
+-                                kAudioUnitScope_Input, kInputBus, &enable_input,
+-                                sizeof(enable_input));
+-  if (result != noErr) {
+-    DisposeAudioUnit();
+-    RTCLogError(@"Failed to enable input on input scope of input element. "
+-                 "Error=%ld.",
+-                (long)result);
+-    return false;
++  RTCAudioSessionConfiguration* webRTCConfiguration =  [RTCAudioSessionConfiguration webRTCConfiguration];
++  
++  if (webRTCConfiguration.mode != AVAudioSessionModeMoviePlayback) {
++  
++    UInt32 enable_input = 1;
++    result = AudioUnitSetProperty(vpio_unit_, kAudioOutputUnitProperty_EnableIO,
++                                      kAudioUnitScope_Input, kInputBus, &enable_input,
++                                      sizeof(enable_input));
++    if (result != noErr) {
++        DisposeAudioUnit();
++        RTCLogError(@"Failed to enable input on input scope of input element. "
++                       "Error=%ld.",
++                      (long)result);
++        return false;
++    }
++  }
++  else {
++    RTCLog("@Not Enable input on the input scope of the input element.");
+   }
+-
+   // Enable output on the output scope of the output element.
+   UInt32 enable_output = 1;
+   result = AudioUnitSetProperty(vpio_unit_, kAudioOutputUnitProperty_EnableIO,
+@@ -153,35 +160,48 @@ static OSStatus GetAGCState(AudioUnit audio_unit, UInt32* enabled) {
+ 
+   // Disable AU buffer allocation for the recorder, we allocate our own.
+   // TODO(henrika): not sure that it actually saves resource to make this call.
+-  UInt32 flag = 0;
+-  result = AudioUnitSetProperty(
+-      vpio_unit_, kAudioUnitProperty_ShouldAllocateBuffer,
+-      kAudioUnitScope_Output, kInputBus, &flag, sizeof(flag));
+-  if (result != noErr) {
+-    DisposeAudioUnit();
+-    RTCLogError(@"Failed to disable buffer allocation on the input bus. "
+-                 "Error=%ld.",
+-                (long)result);
+-    return false;
+-  }
++  if (webRTCConfiguration.mode != AVAudioSessionModeMoviePlayback) {
++  
++        UInt32 flag = 0;
++        result = AudioUnitSetProperty(
++            vpio_unit_, kAudioUnitProperty_ShouldAllocateBuffer,
++            kAudioUnitScope_Output, kInputBus, &flag, sizeof(flag));
++        if (result != noErr) {
++          DisposeAudioUnit();
++          RTCLogError(@"Failed to disable buffer allocation on the input bus. "
++                       "Error=%ld.",
++                      (long)result);
++          return false;
++        }
++    }
++    else {
++       RTCLog("@NOT Disable AU buffer allocation for the recorder, we allocate our own.");
++    }
+ 
+   // Specify the callback to be called by the I/O thread to us when input audio
+   // is available. The recorded samples can then be obtained by calling the
+   // AudioUnitRender() method.
+-  AURenderCallbackStruct input_callback;
+-  input_callback.inputProc = OnDeliverRecordedData;
+-  input_callback.inputProcRefCon = this;
+-  result = AudioUnitSetProperty(vpio_unit_,
+-                                kAudioOutputUnitProperty_SetInputCallback,
+-                                kAudioUnitScope_Global, kInputBus,
+-                                &input_callback, sizeof(input_callback));
+-  if (result != noErr) {
+-    DisposeAudioUnit();
+-    RTCLogError(@"Failed to specify the input callback on the input bus. "
+-                 "Error=%ld.",
+-                (long)result);
+-    return false;
++  if (webRTCConfiguration.mode != AVAudioSessionModeMoviePlayback)
++  {
++        AURenderCallbackStruct input_callback;
++        input_callback.inputProc = OnDeliverRecordedData;
++        input_callback.inputProcRefCon = this;
++        result = AudioUnitSetProperty(vpio_unit_,
++                                      kAudioOutputUnitProperty_SetInputCallback,
++                                      kAudioUnitScope_Global, kInputBus,
++                                      &input_callback, sizeof(input_callback));
++        if (result != noErr) {
++          DisposeAudioUnit();
++          RTCLogError(@"Failed to specify the input callback on the input bus. "
++                       "Error=%ld.",
++                      (long)result);
++          return false;
++        }
+   }
++  else {
++        RTCLog("@NOT Specify the callback to be called by the I/O thread to us when input audio");
++    
++   }
+ 
+   state_ = kUninitialized;
+   return true;
+@@ -203,15 +223,22 @@ static OSStatus GetAGCState(AudioUnit audio_unit, UInt32* enabled) {
+ #endif
+ 
+   // Set the format on the output scope of the input element/bus.
+-  result =
+-      AudioUnitSetProperty(vpio_unit_, kAudioUnitProperty_StreamFormat,
+-                           kAudioUnitScope_Output, kInputBus, &format, size);
+-  if (result != noErr) {
+-    RTCLogError(@"Failed to set format on output scope of input bus. "
+-                 "Error=%ld.",
+-                (long)result);
+-    return false;
+-  }
++  RTCAudioSessionConfiguration* webRTCConfiguration =  [RTCAudioSessionConfiguration webRTCConfiguration];
++    if (webRTCConfiguration.mode != AVAudioSessionModeMoviePlayback)
++    {
++        result =
++          AudioUnitSetProperty(vpio_unit_, kAudioUnitProperty_StreamFormat,
++                                 kAudioUnitScope_Output, kInputBus, &format, size);
++        if (result != noErr) {
++          RTCLogError(@"Failed to set format on output scope of input bus. "
++                       "Error=%ld.",
++                      (long)result);
++          return false;
++        }
++    }
++    else {
++        RTCLog("@NOT setting the format on the output sscope of the input element because it's movie mode");
++    }
+ 
+   // Set the format on the input scope of the output element/bus.
+   result =
+-- 
+2.24.3 (Apple Git-128)
+

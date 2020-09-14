@@ -1,3 +1,8 @@
+- Aug 10, 13:14:55 2020
+  - Support data channel
+  - Build WebRTCiOSSDK as a binary framework
+  - Write descriptions for AntMediaClientProtocol
+
 - Jul 4 19:59:33 2020
   - Add ping/pong timer: Ping/pong timer is required in order to handle timeouts in the load balancer
   - Stop webrtclient in viewWillDisappear method
