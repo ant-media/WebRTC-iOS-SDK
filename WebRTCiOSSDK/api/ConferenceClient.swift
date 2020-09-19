@@ -118,9 +118,9 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                         roomInfoGetterTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { pingTimer in
                             let jsonString =
                                 [ COMMAND: "getRoomInfo",
-                                  ROOM_ID: self.roomId,
+                                  ROOM_ID: self.roomId as String,
                                   STREAM_ID: self.streamId ?? ""
-                                ] as [String: String]
+                                ] as [String: Any]
                             
                             self.webSocket.write(string: jsonString.json)
                         }

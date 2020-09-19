@@ -432,6 +432,23 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 let jsonString = getHandshakeMessage()
                 webSocket!.write(string: jsonString)
                 break
+            case STREAM_INFORMATION_COMMAND:
+                AntMediaClient.printf("stream information command")
+                var streamInformations: [StreamInformation] = [];
+                
+                if let streamInformationArray = message["streamInfo"] as? [Any]
+                {
+                    for result in streamInformationArray
+                    {
+                        if let resultObject = result as? [String:Any]
+                        {
+                            streamInformations.append(StreamInformation(json: resultObject))
+                        }
+                    }
+                }
+                self.delegate.streamInformation(streamInfo: streamInformations);
+                
+                break
             case "notification":
                 guard let definition = message["definition"] as? String else {
                     return
@@ -480,6 +497,28 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     public static func printf(_ msg: String) {
         if (AntMediaClient.isDebug) {
             debugPrint("--> AntMediaSDK: " + msg)
+        }
+    }
+    
+    public func getStreamInfo()
+    {
+        if (self.webSocket?.isConnected ?? false)
+        {
+            self.webSocket?.write(string: [COMMAND: GET_STREAM_INFO_COMMAND, STREAM_ID: self.streamId].json)
+        }
+        else {
+            AntMediaClient.printf("Websocket is not connected")
+        }
+    }
+    
+    public func forStreamQuality(resolutionHeight: Int)
+    {
+        if (self.webSocket?.isConnected ?? false)
+        {
+            self.webSocket?.write(string: [COMMAND: FORCE_STREAM_QUALITY_INFO, STREAM_ID: self.streamId as String, STREAM_HEIGHT_FIELD: resolutionHeight].json)
+        }
+        else {
+            AntMediaClient.printf("Websocket is not connected")
         }
     }
 }

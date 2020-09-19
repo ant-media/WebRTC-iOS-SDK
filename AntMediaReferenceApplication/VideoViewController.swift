@@ -271,6 +271,13 @@ extension VideoViewController: AntMediaClientDelegate {
         
     }
     
+    func streamInformation(streamInfo: [StreamInformation]) {
+        AntMediaClient.printf("Incoming stream infos")
+        for result in streamInfo {
+            AntMediaClient.printf("resolution width:\(result.streamWidth) heigh:\(result.streamHeight) video " + "bitrate:\(result.videoBitrate) audio bitrate:\(result.audioBitrate) codec:\(result.videoCodec)");
+        }
+    }
+    
     func showToast(controller: UIViewController, message : String, seconds: Double)
     {
         let alert = UIAlertController(title: "Received Message", message: message, preferredStyle: .alert)

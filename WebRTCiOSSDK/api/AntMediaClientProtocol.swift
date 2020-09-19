@@ -21,6 +21,10 @@ let JOINED_ROOM_DEFINITION = "joinedTheRoom";
 let DEFINITION = "definition";
 let STREAMS = "streams";
 let ROOM_INFORMATION_COMMAND = "roomInformation";
+let GET_STREAM_INFO_COMMAND = "getStreamInfo";
+let STREAM_INFORMATION_COMMAND = "streamInformation";
+let FORCE_STREAM_QUALITY_INFO = "forceStreamQuality";
+let STREAM_HEIGHT_FIELD = "streamHeight";
 
 public protocol AntMediaClientProtocol {
         
@@ -154,6 +158,22 @@ public protocol AntMediaClientProtocol {
      Stream id that this client uses.
      */
     func getStreamId() -> String;
+    
+    /**
+     Gets the stream info from the server side. Return information includes width, height, video bitrate, audio bitrates and video codec.
+     If there are more than one bitrate or resolution, it will provides a stream information list.
+     This method triggers streamInformation delegate method to be called. If there is no stream with initialized WebRTCClient, it will not trigger streamInformation.
+     Server return no stream exists error through websocket.
+     
+     With the information in the message of streamInformation, you can call the forceStreamQuality method.
+     */
+    func getStreamInfo();
+    
+    /**
+      It forces a specific resolution to be played. You can get the resolution height values by calling getStreamInfo.
+      If the resolution is set to 0, then automatic stream quality will be used according to the measured network speed.
+     */
+    func forStreamQuality(resolutionHeight:Int);
 }
 
 

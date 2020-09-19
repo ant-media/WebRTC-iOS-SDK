@@ -8,6 +8,21 @@
 
 import Foundation
 
+public class StreamInformation {
+   public let streamWidth: Int
+   public let streamHeight: Int
+   public let videoBitrate: Int
+   public let audioBitrate: Int
+   public let videoCodec: String
+    
+    init(json: [String: Any]!) {
+        self.streamWidth = json["streamWidth"] as! Int;
+        self.streamHeight = json["streamHeight"] as! Int;
+        self.videoBitrate = json["videoBitrate"] as! Int;
+        self.audioBitrate = json["audioBitrate"] as! Int;
+        self.videoCodec = json["videoCodec"] as! String;
+    }
+}
 public protocol AntMediaClientDelegate {
 
     /**
@@ -100,4 +115,6 @@ public protocol AntMediaClientDelegate {
      
      */
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool)
+    
+    func streamInformation(streamInfo: [StreamInformation])
 }

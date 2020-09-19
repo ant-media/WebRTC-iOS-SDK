@@ -106,7 +106,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "36D1BD74-4BA9-41E6-9631-466510737A3E - 6ab3d67f37dcec20"
+                  uuid = "36D1BD74-4BA9-41E6-9631-466510737A3E - 48a88dc1d0dc2516"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -122,7 +122,7 @@
                   offsetFromSymbolStart = "664">
                </Location>
                <Location
-                  uuid = "36D1BD74-4BA9-41E6-9631-466510737A3E - a2ddf0f09f61f21d"
+                  uuid = "36D1BD74-4BA9-41E6-9631-466510737A3E - 80c6ab4e78613b2b"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -138,7 +138,7 @@
                   offsetFromSymbolStart = "208">
                </Location>
                <Location
-                  uuid = "36D1BD74-4BA9-41E6-9631-466510737A3E - bc5a2e455b8a6549"
+                  uuid = "36D1BD74-4BA9-41E6-9631-466510737A3E - 9e4175fbbc8aac7f"
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -347,8 +347,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "462"
-            endingLineNumber = "462"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -365,8 +365,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "166"
             endingLineNumber = "166"
-            landmarkName = "createOffer()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -381,8 +381,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "168"
             endingLineNumber = "168"
-            landmarkName = "createOffer()"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -673,7 +673,7 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "2D6CD346-46D3-4CB5-9A99-C15096724696 - 67a6dce11c6ecf39"
+                  uuid = "2D6CD346-46D3-4CB5-9A99-C15096724696 - f8115f9004a9f917"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -688,7 +688,7 @@
                   offsetFromSymbolStart = "48">
                </Location>
                <Location
-                  uuid = "2D6CD346-46D3-4CB5-9A99-C15096724696 - 148cac54acf7ccba"
+                  uuid = "2D6CD346-46D3-4CB5-9A99-C15096724696 - 8b3b2f25b430fa94"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -715,8 +715,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "526"
-            endingLineNumber = "526"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
             landmarkName = "websocketDidConnect(socket:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -747,8 +747,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "543"
-            endingLineNumber = "543"
+            startingLineNumber = "582"
+            endingLineNumber = "582"
             landmarkName = "websocketDidDisconnect(socket:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -862,6 +862,38 @@
             startingLineNumber = "130"
             endingLineNumber = "130"
             landmarkName = "websocketDidReceiveMessage(socket:text:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C245AAB5-E659-4BE2-82ED-68E5843FAD0F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
+            landmarkName = "onCommand(_:message:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1D4A527D-2DB1-4062-BD09-9C51095F5A92"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AntMediaReferenceApplication/VideoViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
+            landmarkName = "streamInformation(streamInfo:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

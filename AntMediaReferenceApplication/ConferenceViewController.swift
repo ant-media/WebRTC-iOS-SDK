@@ -211,5 +211,9 @@ extension ConferenceViewController: AntMediaClientDelegate
         
     }
     
+    public func streamInformation(streamInfo: [StreamInformation]) {
+        
+    }
+    
     
 }
