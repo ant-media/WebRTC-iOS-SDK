@@ -81,6 +81,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var multiPeerStreamId: String?
     
+    private var captureScreenEnabled: Bool = false
+    
     /*
      This peer mode is used in multi peer streaming
      */
@@ -103,13 +105,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      
      }
     
-    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false) {
+    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, captureScreenEnabled: Bool = false) {
         self.wsUrl = url
         self.streamId = streamId
         self.token = token
         self.mode = mode
         self.rtcAudioSession.add(self)
         self.enableDataChannel = enableDataChannel
+        self.captureScreenEnabled = captureScreenEnabled
     }
     
     public func setMultiPeerMode(enable: Bool, mode: String) {
@@ -254,7 +257,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (self.webRTCClient == nil) {
             configureAudioSession()
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
-            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel)
+            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, captureScreen: self.captureScreenEnabled)
             
             self.webRTCClient!.setStreamId(streamId)
             self.webRTCClient!.setToken(self.token)

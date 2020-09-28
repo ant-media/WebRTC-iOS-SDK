@@ -40,7 +40,7 @@ public protocol AntMediaClientProtocol {
         on the server. If it's .publish, it mean your WebRTC client will publish stream with your stream id.
         - enableDataChannel: Enable or disable data channel on the mobile side. In order to make data channel work, you also need to enable it on server side
     */
-    func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool)
+    func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, captureScreenEnabled: Bool)
     
     /**
      Enable or disable video completely in the WebRTC Client.  It should be called before `initPeerConnection()` and `start()` method.

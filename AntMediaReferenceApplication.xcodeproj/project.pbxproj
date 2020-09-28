@@ -47,6 +47,7 @@
 		A89C909924DDBB39005F5D98 /* WebRTC.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7819AA6020DA2CFD007D6292 /* WebRTC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8C465C1248B9AA10027ADBA /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8C465B1248B9AA00027ADBA /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A8C465C5248B9AA10027ADBA /* WebRTCiOSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8C465AF248B9AA00027ADBA /* WebRTCiOSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8DAF6452520D64200560875 /* RTCCustomFrameCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		A8C465D7248BA2540027ADBA /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A8C465D8248BA2540027ADBA /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		A8C465DB248BA3CB0027ADBA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTCCustomFrameCapturer.swift; sourceTree = "<group>"; };
 		B9C79595D8958BD345F16A10 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
 		BD302308E8BA88C7E62F3C0D /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		CC60F64352D37D815D6BDC55 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 				A8C465A8248B9A420027ADBA /* Config.swift */,
 				A8C465A6248B99EB0027ADBA /* WebRTCClientDelegate.swift */,
 				A8C465A4248B99E30027ADBA /* WebRTCClient.swift */,
+				A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */,
 			);
 			path = webrtc;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8DAF6452520D64200560875 /* RTCCustomFrameCapturer.swift in Sources */,
 				A89C908C24DDAF8C005F5D98 /* AntMediaClient.swift in Sources */,
 				A89C908D24DDAF8C005F5D98 /* AntMediaClientDelegate.swift in Sources */,
 				A859E73C24E4238400494836 /* ConferenceClient.swift in Sources */,

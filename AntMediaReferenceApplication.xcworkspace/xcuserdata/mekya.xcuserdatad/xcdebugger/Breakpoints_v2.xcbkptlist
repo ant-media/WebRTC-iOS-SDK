@@ -276,22 +276,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0F8C662F-F64D-493B-8549-D0436D46EE2C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AntMediaReferenceApplication/VideoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7D3CB07E-68F7-42AE-86C9-A49F69EFEBE7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -315,24 +299,8 @@
             filePath = "AntMediaReferenceApplication/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1C2D2A11-F945-40C6-AE56-6BA2C2D07029"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AntMediaReferenceApplication/VideoViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -347,8 +315,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
+            startingLineNumber = "482"
+            endingLineNumber = "482"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -363,10 +331,10 @@
             filePath = "WebRTCiOSSDK/api/webrtc/WebRTCClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "createOffer()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -379,10 +347,10 @@
             filePath = "WebRTCiOSSDK/api/webrtc/WebRTCClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "createOffer()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -395,8 +363,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
+            startingLineNumber = "422"
+            endingLineNumber = "422"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -411,8 +379,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "364"
-            endingLineNumber = "364"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "onConnection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -427,8 +395,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
             landmarkName = "getHandshakeMessage()"
             landmarkType = "7">
          </BreakpointContent>
@@ -443,8 +411,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
             landmarkName = "connectWebSocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -459,8 +427,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
             landmarkName = "stop()"
             landmarkType = "7">
          </BreakpointContent>
@@ -507,8 +475,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
+            startingLineNumber = "257"
+            endingLineNumber = "257"
             landmarkName = "initPeerConnection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -523,8 +491,8 @@
             filePath = "AntMediaReferenceApplication/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "serverTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -539,8 +507,8 @@
             filePath = "AntMediaReferenceApplication/WelcomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "serverTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -715,8 +683,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
+            startingLineNumber = "568"
+            endingLineNumber = "568"
             landmarkName = "websocketDidConnect(socket:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -731,8 +699,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
             landmarkName = "connectWebSocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -747,8 +715,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
+            startingLineNumber = "585"
+            endingLineNumber = "585"
             landmarkName = "websocketDidDisconnect(socket:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -875,8 +843,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "436"
-            endingLineNumber = "436"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -894,6 +862,640 @@
             startingLineNumber = "276"
             endingLineNumber = "276"
             landmarkName = "streamInformation(streamInfo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
+            landmarkName = "printf(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 852fb4d5c174cd3a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in WebRTCiOSSDK.AntMediaClient.speakerOn() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "396">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - aec1a5275ccabaf3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static WebRTCiOSSDK.AntMediaClient.printf(Swift.String) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "20">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - e40ce3839400a47e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.connectWebSocket() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - e40ce3839400a47e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.connectWebSocket() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "696">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - e40ce3839400a47e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.connectWebSocket() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "1132">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 269792b6bfff9037"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.stop() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 60870788b6b8e55f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.initPeerConnection() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 60870788b6b8e55f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.initPeerConnection() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "412">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - fd14ea72f1e7f7d3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.(onConnection in _8542A12A5D436470EE274777D0A7B048)() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "260">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ba760de54f941c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.(onCommand in _8542A12A5D436470EE274777D0A7B048)(_: Swift.String, message: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "1076">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ba760de54f941c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.(onCommand in _8542A12A5D436470EE274777D0A7B048)(_: Swift.String, message: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "1888">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ba760de54f941c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.(onCommand in _8542A12A5D436470EE274777D0A7B048)(_: Swift.String, message: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "3016">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ba760de54f941c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.(onCommand in _8542A12A5D436470EE274777D0A7B048)(_: Swift.String, message: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "3392">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ba760de54f941c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.(onCommand in _8542A12A5D436470EE274777D0A7B048)(_: Swift.String, message: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "3716">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ba760de54f941c5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.(onCommand in _8542A12A5D436470EE274777D0A7B048)(_: Swift.String, message: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "4672">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 2f1f06b576baeb2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.getStreamInfo() -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "380">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ff99cdf710e7bb8d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.forStreamQuality(resolutionHeight: Swift.Int) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "476">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - c344a3a725d882cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.connectionStateChanged(newState: __C.RTCIceConnectionState) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 44962b3bb6496fdc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.websocketDidConnect(socket: Starscream.WebSocketClient) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "248">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ce732e1e7a8b00"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.websocketDidDisconnect(socket: Starscream.WebSocketClient, error: Swift.Optional&lt;Swift.Error&gt;) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "436">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - deb29c08bc2828cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.AntMediaClient.videoView(_: __C.RTCVideoRenderer, didChangeVideoSize: __C.CGSize) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "384">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 43dbf3f2d5f407b6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of WebRTCiOSSDK.AntMediaClient.websocketDidReceiveMessage(socket: Starscream.WebSocketClient, text: Swift.String) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "184">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 1889ba384051cf57"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of WebRTCiOSSDK.ConferenceClient.websocketDidReceiveMessage(socket: Starscream.WebSocketClient, text: Swift.String) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "188">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 5772a853207ee77b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Error&gt;) -&gt; () in WebRTCiOSSDK.WebRTCClient.setRemoteDescription(__C.RTCSessionDescription) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "244">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 5700cfd54daf5cc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.WebRTCClient.sendData(data: Foundation.Data, binary: Swift.Bool) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "468">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - f7b06b9f7977c54e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.WebRTCClient.(createDataChannel in _5A2F9B2D41BAF16B7925894168DFC251)() -&gt; Swift.Optional&lt;__C.RTCDataChannel&gt;"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ec394991727e6f0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.WebRTCClient.(startCapture in _5A2F9B2D41BAF16B7925894168DFC251)() -&gt; Swift.Bool"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "324">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ec394991727e6f0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.WebRTCClient.(startCapture in _5A2F9B2D41BAF16B7925894168DFC251)() -&gt; Swift.Bool"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "1296">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - ec394991727e6f0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.WebRTCClient.(startCapture in _5A2F9B2D41BAF16B7925894168DFC251)() -&gt; Swift.Bool"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "1892">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 4dfc6b2669cd1817"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WebRTCiOSSDK.WebRTCClient.(addLocalMediaStream in _5A2F9B2D41BAF16B7925894168DFC251)() -&gt; Swift.Bool"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - be634b5306a05707"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.dataChannelDidChangeState(__C.RTCDataChannel) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - be634b5306a05707"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.dataChannelDidChangeState(__C.RTCDataChannel) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - be634b5306a05707"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.dataChannelDidChangeState(__C.RTCDataChannel) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "252">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - be634b5306a05707"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[1] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.dataChannelDidChangeState(__C.RTCDataChannel) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 75fedca6780a4915"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.peerConnection(_: __C.RTCPeerConnection, didAdd: __C.RTCMediaStream) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 75fedca6780a4915"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.peerConnection(_: __C.RTCPeerConnection, didAdd: __C.RTCMediaStream) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "472">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 75fedca6780a4915"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.peerConnection(_: __C.RTCPeerConnection, didAdd: __C.RTCMediaStream) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "964">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - cc382967a11f3264"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead, Arg[1] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.peerConnection(_: __C.RTCPeerConnection, didRemove: __C.RTCMediaStream) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 9922790b7431a240"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.peerConnection(_: __C.RTCPeerConnection, didChange: __C.RTCIceConnectionState) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "348">
+               </Location>
+               <Location
+                  uuid = "E7696F6C-4E8F-40A6-927A-989260B2531C - 64dba970e99a7b2c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "function signature specialization &lt;Arg[0] = Dead&gt; of WebRTCiOSSDK.WebRTCClient.peerConnection(_: __C.RTCPeerConnection, didOpen: __C.RTCDataChannel) -&gt; ()"
+                  moduleName = "WebRTCiOSSDK"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mekya/git/WebRTCiOSReferenceProject/WebRTCiOSSDK/api/AntMediaClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "498"
+                  endingLineNumber = "498"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C065DC2-0AE2-4B8B-B247-0B64A0C43659"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WebRTCiOSSDK/api/webrtc/WebRTCClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "300"
+            endingLineNumber = "300"
+            landmarkName = "createVideoTrack()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

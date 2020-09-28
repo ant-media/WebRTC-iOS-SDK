@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import WebRTC
+import ReplayKit
 
 class WebRTCClient: NSObject {
     
@@ -42,6 +43,7 @@ class WebRTCClient: NSObject {
 
     private var audioEnabled: Bool = true
     private var videoEnabled: Bool = true
+    private var captureScreenEnabled: Bool = false;
     private var config = Config.init()
     private var mode: AntMediaClientMode = AntMediaClientMode.join
     
@@ -52,6 +54,7 @@ class WebRTCClient: NSObject {
     
     public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate) {
         super.init()
+        
         self.remoteVideoView = remoteVideoView
         self.localVideoView = localVideoView
         self.delegate = delegate
@@ -69,14 +72,19 @@ class WebRTCClient: NSObject {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false)
     }
-    
     public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool) {
+        self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
+                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, captureScreen: false)
+    }
+    
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, captureScreen: Bool) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate)
         self.mode = mode
         self.cameraPosition = cameraPosition
         self.targetWidth = targetWidth
         self.targetHeight = targetHeight
         self.videoEnabled = videoEnabled
+        self.captureScreenEnabled = captureScreen;
         
         if (self.mode != .play && !multiPeerActive) {
             self.addLocalMediaStream()
@@ -198,7 +206,8 @@ class WebRTCClient: NSObject {
     }
     
     public func stop() {
-        self.peerConnection?.close()
+        disconnect();
+        
     }
     
     private func createDataChannel() -> RTCDataChannel? {
@@ -218,6 +227,7 @@ class WebRTCClient: NSObject {
         self.remoteVideoView?.renderFrame(nil)
         self.localVideoTrack = nil
         self.remoteVideoTrack = nil
+        (self.videoCapturer as? RTCCustomFrameCapturer)?.stopCapture()
         self.peerConnection?.close()
     }
     
@@ -289,16 +299,22 @@ class WebRTCClient: NSObject {
     private func createVideoTrack() -> RTCVideoTrack?  {
         let videoSource = WebRTCClient.factory.videoSource()
         
-        #if TARGET_OS_SIMULATOR
-        self.videoCapturer = RTCFileVideoCapturer(delegate: videoSource)
-        #else
-        self.videoCapturer = RTCCameraVideoCapturer(delegate: videoSource)
-        
-        let captureStarted = startCapture()
-        if (!captureStarted) {
-            return nil;
+        if captureScreenEnabled
+        {
+            self.videoCapturer = RTCCustomFrameCapturer.init(delegate: videoSource, height: targetHeight)
+            (self.videoCapturer as? RTCCustomFrameCapturer)?.startCapture()
         }
-        #endif
+        else {
+            #if TARGET_OS_SIMULATOR
+            self.videoCapturer = RTCFileVideoCapturer(delegate: videoSource)
+            #else
+            self.videoCapturer = RTCCameraVideoCapturer(delegate: videoSource)
+            let captureStarted = startCapture()
+            if (!captureStarted) {
+                return nil;
+            }
+            #endif
+        }
         
         let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
         return videoTrack
