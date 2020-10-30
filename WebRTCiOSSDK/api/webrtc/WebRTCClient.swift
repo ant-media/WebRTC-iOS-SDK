@@ -97,6 +97,12 @@ class WebRTCClient: NSObject {
         }
     }
     
+    public func getStats(handler: @escaping (RTCStatisticsReport) -> Void) {
+        
+        
+        self.peerConnection?.statistics(completionHandler: handler);
+    }
+    
     public func setStreamId(_ streamId: String) {
         self.streamId = streamId
     }

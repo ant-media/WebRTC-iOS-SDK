@@ -174,6 +174,26 @@ public protocol AntMediaClientProtocol {
       If the resolution is set to 0, then automatic stream quality will be used according to the measured network speed.
      */
     func forStreamQuality(resolutionHeight:Int);
+    /**
+     It get webrtc statistis and calls completionHandler.  There is a sample code for below to get the audio level
+     in the application latyer
+     
+     self.client.getStats { (statisticsReport) in
+         
+         for stat in statisticsReport.statistics {
+            
+             if (stat.value.type == "track") {
+                 for value in stat.value.values
+                 {
+                     if (value.key == "audioLevel") {
+                         AntMediaClient.printf("audio level: \(value.value)");
+                     }
+                 }
+             }
+         }
+     };
+     */
+    func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void);
 }
 
 

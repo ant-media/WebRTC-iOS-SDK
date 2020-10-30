@@ -524,6 +524,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             AntMediaClient.printf("Websocket is not connected")
         }
     }
+    
+    public func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void) {
+        self.webRTCClient?.getStats(handler: completionHandler)
+    }
+    
+    
 }
 
 extension AntMediaClient: WebRTCClientDelegate {
