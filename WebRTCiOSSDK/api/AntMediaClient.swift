@@ -156,39 +156,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
-    public func configureAudioSession() {
-       
-        self.audioQueue.sync { [weak self] in
-            guard let self = self else {
-                 debugPrint("returning ConfigureAudioSession")
-                return
-            }
-            self.rtcAudioSession.lockForConfiguration()
-            
-            do {
-                 let configuration = RTCAudioSessionConfiguration.init()
-               
-                configuration.category = AVAudioSession.Category.ambient.rawValue;
-                configuration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers;
-                configuration.mode = AVAudioSession.Mode.default.rawValue;
-                
-                if (self.rtcAudioSession.isActive) {
-                    try self.rtcAudioSession.setConfiguration(configuration)
-                }
-                else {
-                    try self.rtcAudioSession.setConfiguration(configuration, active:true)
-                }
-            }
-            catch let error {
-                debugPrint("Error setting AVAudioSession category: \(error)")
-            }
-            
-            self.rtcAudioSession.unlockForConfiguration()
-        }
-        
-       
-    }
-    
     // Fallback to the default playing device: headphones/bluetooth/ear speaker
     public func speakerOff() {
         self.audioQueue.async { [weak self] in
@@ -255,7 +222,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     open func initPeerConnection() {
         
         if (self.webRTCClient == nil) {
-            configureAudioSession()
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
             self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, captureScreen: self.captureScreenEnabled)
             

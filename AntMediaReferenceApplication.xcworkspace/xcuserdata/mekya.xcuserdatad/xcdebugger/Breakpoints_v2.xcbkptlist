@@ -315,8 +315,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "482"
-            endingLineNumber = "482"
+            startingLineNumber = "448"
+            endingLineNumber = "448"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -363,8 +363,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "422"
-            endingLineNumber = "422"
+            startingLineNumber = "388"
+            endingLineNumber = "388"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -379,8 +379,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "367"
-            endingLineNumber = "367"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
             landmarkName = "onConnection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -411,8 +411,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "connectWebSocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -427,8 +427,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "stop()"
             landmarkType = "7">
          </BreakpointContent>
@@ -475,8 +475,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "initPeerConnection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -683,8 +683,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "574"
-            endingLineNumber = "574"
+            startingLineNumber = "540"
+            endingLineNumber = "540"
             landmarkName = "websocketDidConnect(socket:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -699,8 +699,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "connectWebSocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -715,8 +715,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
+            startingLineNumber = "557"
+            endingLineNumber = "557"
             landmarkName = "websocketDidDisconnect(socket:error:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -843,8 +843,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "439"
-            endingLineNumber = "439"
+            startingLineNumber = "405"
+            endingLineNumber = "405"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -875,8 +875,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "501"
-            endingLineNumber = "501"
+            startingLineNumber = "467"
+            endingLineNumber = "467"
             landmarkName = "printf(_:)"
             landmarkType = "7">
             <Locations>
