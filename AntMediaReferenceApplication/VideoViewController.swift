@@ -40,6 +40,8 @@ class VideoViewController: UIViewController {
         self.client.delegate = self
         self.client.setDebug(true)
         self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true)
+        
+        //self.client.setMaxVideoBps(videoBitratePerSecond: 500000)
 
         /*
          Enable the below line if you use multi peer node for embedded sdk

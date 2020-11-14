@@ -35,7 +35,7 @@ class WebRTCClient: NSObject {
     var remoteAudioTrack: RTCAudioTrack!
     var remoteVideoView: RTCVideoRenderer?
     var localVideoView: RTCVideoRenderer?
-    var videoSender: RTCRtpSender!
+    var videoSender: RTCRtpSender?
     var dataChannel: RTCDataChannel?
     
     private var token: String!
@@ -94,6 +94,14 @@ class WebRTCClient: NSObject {
             //in publish mode, client opens the data channel
             self.dataChannel = createDataChannel()
             self.dataChannel?.delegate = self
+        }
+    }
+    
+    public func setMaxVideoBps(maxVideoBps:NSNumber) {
+        AntMediaClient.printf("In setMaxVideoBps:\(maxVideoBps)")
+        if (maxVideoBps.intValue > 0) {
+            AntMediaClient.printf("setMaxVideoBps:\(maxVideoBps)")
+            self.peerConnection?.setBweMinBitrateBps(nil, currentBitrateBps: nil, maxBitrateBps: maxVideoBps)
         }
     }
     
@@ -349,8 +357,8 @@ class WebRTCClient: NSObject {
     
     public func switchCamera() {
         
-        if self.videoSender != nil {
-            peerConnection?.removeTrack(self.videoSender)
+        if let sender = self.videoSender {
+            peerConnection?.removeTrack(sender)
         }
         if self.cameraPosition == .front {
             self.cameraPosition = .back

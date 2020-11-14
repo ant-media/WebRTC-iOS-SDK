@@ -194,6 +194,11 @@ public protocol AntMediaClientProtocol {
      };
      */
     func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void);
+    
+    /**
+     Set the max video bitrate for publishing the stream
+     */
+    func setMaxVideoBps(videoBitratePerSecond: NSNumber);
 }
 
 

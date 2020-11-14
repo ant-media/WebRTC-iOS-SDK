@@ -72,6 +72,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private var targetWidth: Int = 480
     private var targetHeight: Int = 360
     
+    private var maxVideoBps: NSNumber = 0;
+    
     private var videoEnable: Bool = true
     private var audioEnable: Bool = true
     
@@ -113,6 +115,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.rtcAudioSession.add(self)
         self.enableDataChannel = enableDataChannel
         self.captureScreenEnabled = captureScreenEnabled
+    }
+    
+    public func setMaxVideoBps(videoBitratePerSecond: NSNumber) {
+        self.maxVideoBps = videoBitratePerSecond;
+        self.webRTCClient?.setMaxVideoBps(maxVideoBps: videoBitratePerSecond)
     }
     
     public func setMultiPeerMode(enable: Bool, mode: String) {
@@ -437,6 +444,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 }
                 else if definition == "publish_started" {
                     AntMediaClient.printf("Publish started: Let's go")
+                    self.webRTCClient?.setMaxVideoBps(maxVideoBps: self.maxVideoBps)
                     self.delegate.publishStarted(streamId: self.streamId)
                 }
                 else if definition == "publish_finished" {
