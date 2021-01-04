@@ -8,6 +8,9 @@
 - Oct 10, 15:30:12 2020
   - Fix simulator configuration in XCode 12
 
+- Sept 28, 15:30:12 2020
+  - Add screen sharing option
+
 - Sept 19, 17:14:12 2020
   - Support Force Stream Quality feature
   - Compile with XCode 12
