@@ -1,4 +1,24 @@
-- Aug 10, 13:14:55 2020
+- Nov 14, 17:31:11 2020
+  - Add setMaxVideoBps method
+
+- Oct 30, 12:26:11 2020
+  - Add stats method
+  - Fix microphone is muted in conference mode when another user start playing
+
+- Oct 10, 15:30:12 2020
+  - Fix simulator configuration in XCode 12
+
+- Sept 19, 17:14:12 2020
+  - Support Force Stream Quality feature
+  - Compile with XCode 12
+
+- Sept 14, 10:29:29 2020
+  - Update to WebRTC SDK M85
+
+- Aug 15, 18:36:25 2020
+  - Add Conference support
+
+- Aug 10, 13:14:51 2020
   - Support data channel
   - Build WebRTCiOSSDK as a binary framework
   - Write descriptions for AntMediaClientProtocol
