@@ -1,3 +1,6 @@
+- Jan 12, 08:41:32 2021
+  - Make compatible with Xcode12.3 by creating xcframework
+
 - Nov 14, 17:31:11 2020
   - Add setMaxVideoBps method
 
