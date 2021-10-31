@@ -47,6 +47,8 @@ class WebRTCClient: NSObject {
     private var config = Config.init()
     private var mode: AntMediaClientMode = AntMediaClientMode.join
     
+    private var enableDataChannel: Bool = false;
+    
     private var cameraPosition: AVCaptureDevice.Position = .front
     
     private var targetWidth: Int = 480
@@ -85,15 +87,10 @@ class WebRTCClient: NSObject {
         self.targetHeight = targetHeight
         self.videoEnabled = videoEnabled
         self.captureScreenEnabled = captureScreen;
+        self.enableDataChannel = enableDataChannel;
         
         if (self.mode != .play && !multiPeerActive) {
             self.addLocalMediaStream()
-        }
-        
-        if (enableDataChannel && self.mode == .publish) {
-            //in publish mode, client opens the data channel
-            self.dataChannel = createDataChannel()
-            self.dataChannel?.delegate = self
         }
     }
     
@@ -185,6 +182,14 @@ class WebRTCClient: NSObject {
     }
     
     public func createOffer() {
+        
+        //let the one who creates offer also create data channel.
+        //by doing that it will work both in publish-play and peer-to-peer mode
+        if (enableDataChannel) {
+            self.dataChannel = createDataChannel()
+            self.dataChannel?.delegate = self
+        }
+        
         let constraint = self.config.createAudioVideoConstraints()
 
         self.peerConnection?.offer(for: constraint, completionHandler: { (sdp, error) in
