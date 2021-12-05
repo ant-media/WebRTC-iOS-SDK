@@ -9,31 +9,36 @@
 import Foundation
 import WebRTC
 
-class Config: NSObject {
+public class Config: NSObject {
     
-    private let stunServer : String = "stun:stun.l.google.com:19302"
-    private let constraints: [String: String] = ["OfferToReceiveAudio": "true",
+    private static let stunServer : String = "stun:stun.l.google.com:19302"
+    private static let constraints: [String: String] = ["OfferToReceiveAudio": "true",
                                                  "OfferToReceiveVideo": "true",]
-    private let defaultConstraints: [String: String] = ["DtlsSrtpKeyAgreement": "true"]
+    private static let defaultConstraints: [String: String] = ["DtlsSrtpKeyAgreement": "true"]
     
-    func defaultStunServer() -> RTCIceServer {
-        let iceServer = RTCIceServer.init(urlStrings: [stunServer], username: "", credential: "")
+    static var iceServer:RTCIceServer = RTCIceServer.init(urlStrings: [stunServer], username: "", credential: "")
+    
+    public static func setDefaultStunServer(server: RTCIceServer) {
+        iceServer = server;
+    }
+    
+    static func defaultStunServer() -> RTCIceServer {
         return iceServer
     }
     
-    func createAudioVideoConstraints() -> RTCMediaConstraints {
+    static func createAudioVideoConstraints() -> RTCMediaConstraints {
         return RTCMediaConstraints.init(mandatoryConstraints: constraints, optionalConstraints: defaultConstraints)
     }
     
-    func createDefaultConstraint() -> RTCMediaConstraints {
+    static func createDefaultConstraint() -> RTCMediaConstraints {
         return RTCMediaConstraints.init(mandatoryConstraints: nil, optionalConstraints: defaultConstraints)
     }
     
-    func createTestConstraints() -> RTCMediaConstraints {
+    static func createTestConstraints() -> RTCMediaConstraints {
         return RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: constraints)
     }
     
-    func createConfiguration(server: RTCIceServer) -> RTCConfiguration {
+    static func createConfiguration(server: RTCIceServer) -> RTCConfiguration {
         let config = RTCConfiguration.init()
         config.iceServers = [server]
         return config

@@ -41,6 +41,11 @@ class VideoViewController: UIViewController {
         self.client.setDebug(true)
         self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true)
         
+        
+        //set default stunserver or turn server
+        //let iceServer:RTCIceServer = RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302"], username: "", credential: "")
+        //Config.setDefaultStunServer(server: iceServer);
+        
         //self.client.setMaxVideoBps(videoBitratePerSecond: 500000)
 
         /*
@@ -106,7 +111,9 @@ class VideoViewController: UIViewController {
     
     @IBAction func videoTapped(_ video: UIButton!) {
         video.isSelected = !video.isSelected
-        self.client.toggleVideo()
+        //self.client.toggleVideo()
+        
+        self.client.switchCamera()
     }
     
     @IBAction func closeTapped(_ sender: UIButton!) {

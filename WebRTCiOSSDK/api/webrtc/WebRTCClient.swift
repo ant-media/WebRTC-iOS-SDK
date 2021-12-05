@@ -44,7 +44,6 @@ class WebRTCClient: NSObject {
     private var audioEnabled: Bool = true
     private var videoEnabled: Bool = true
     private var captureScreenEnabled: Bool = false;
-    private var config = Config.init()
     private var mode: AntMediaClientMode = AntMediaClientMode.join
     
     private var enableDataChannel: Bool = false;
@@ -63,9 +62,9 @@ class WebRTCClient: NSObject {
         
         RTCPeerConnectionFactory.initialize()
         
-        let stunServer = config.defaultStunServer()
-        let defaultConstraint = config.createDefaultConstraint()
-        let configuration = config.createConfiguration(server: stunServer)
+        let stunServer = Config.defaultStunServer()
+        let defaultConstraint = Config.createDefaultConstraint()
+        let configuration = Config.createConfiguration(server: stunServer)
         
         self.peerConnection = WebRTCClient.factory.peerConnection(with: configuration, constraints: defaultConstraint, delegate: self)
     }
@@ -146,7 +145,7 @@ class WebRTCClient: NSObject {
 
     
     public func sendAnswer() {
-        let constraint = self.config.createAudioVideoConstraints()
+        let constraint = Config.createAudioVideoConstraints()
         self.peerConnection?.answer(for: constraint, completionHandler: { (sdp, error) in
             if (error != nil) {
                 AntMediaClient.printf("Error (sendAnswer): " + error!.localizedDescription)
@@ -190,7 +189,7 @@ class WebRTCClient: NSObject {
             self.dataChannel?.delegate = self
         }
         
-        let constraint = self.config.createAudioVideoConstraints()
+        let constraint = Config.createAudioVideoConstraints()
 
         self.peerConnection?.offer(for: constraint, completionHandler: { (sdp, error) in
             if (sdp?.type == RTCSdpType.offer) {
@@ -348,7 +347,7 @@ class WebRTCClient: NSObject {
 
             self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
         }
-        let audioSource = WebRTCClient.factory.audioSource(with: self.config.createTestConstraints())
+        let audioSource = WebRTCClient.factory.audioSource(with: Config.createTestConstraints())
         self.localAudioTrack = WebRTCClient.factory.audioTrack(with: audioSource, trackId: AUDIO_TRACK_ID)
         
         self.peerConnection?.add(self.localAudioTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
