@@ -73,7 +73,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
         roomInfoGetterTimer?.invalidate()
     }
     
-    public func websocketDidConnect(socket: WebSocketClient)
+    public func didConnected(socket: WebSocketClient)
     {
         let joinRoomMessage =  [
                             COMMAND: "joinRoom",
@@ -83,11 +83,9 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
         webSocket.write(string: joinRoomMessage.json)
     }
     
-    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        
-    }
+
     
-    public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
+    public func receiveMessage(socket: WebSocketClient, text: String) {
         
         AntMediaClient.printf("Received message \(text)")
         if let message = text.toJSON()
@@ -172,9 +170,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
         }
     }
     
-    public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        
-    }
+
     
     public func joinRoom(roomId: String, streamId:String) {
         self.roomId = roomId;
@@ -190,6 +186,40 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                                    STREAM_ID: self.streamId ?? "" ] as [String : Any]
                
         webSocket.write(string: joinRoomMessage.json)
+    }
+    
+    public func didReceive(event: WebSocketEvent, client: WebSocket) {
+        switch event {
+        case .connected(let headers):
+            AntMediaClient.printf("websocket is connected: \(headers)")
+            didConnected(socket: client);
+            break;
+        case .disconnected(let reason, let code):
+            AntMediaClient.printf("websocket is disconnected: \(reason) with code: \(code)");
+            break;
+        case .text(let string):
+            receiveMessage(socket: client, text: string)
+            break;
+        case .binary(let data):
+            print("Received data: \(data.count)")
+            break;
+        case .ping(_):
+            break
+        case .pong(_):
+            break
+        case .viabilityChanged(_):
+            break
+        case .reconnectSuggested(_):
+            break
+        case .cancelled:
+            break;
+        case .error(let error):
+            AntMediaClient.printf("Error occured on websocket connection \(String(describing: error))");
+            break;
+        default:
+            AntMediaClient.printf("Unexpected command received from websocket");
+            break;
+        }
     }
     
     

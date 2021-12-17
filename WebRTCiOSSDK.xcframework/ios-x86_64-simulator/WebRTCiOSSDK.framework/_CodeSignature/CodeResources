@@ -4,18 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Frameworks/WebRTC.framework/Info.plist</key>
-		<data>
-		ZGeOqA74DEG0vvyvLQbWQQt0Doo=
-		</data>
-		<key>Frameworks/WebRTC.framework/WebRTC</key>
-		<data>
-		Itzb76jbnpKzmWlMib8TJJPdScY=
-		</data>
-		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
-		<data>
-		uSX6VxGQfd90DT7tbM4MzyLzKow=
-		</data>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<data>
 		Vu5SWqHdQl+897iPeaIi85OqDQs=
@@ -34,11 +22,11 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		XN6Agl5JB0bK+OfavvTYyUH4KYs=
+		N5z7o0ayle3wlkxhjfEzTGCAeuk=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		xQO4Bpr00GbxHbR6JSSW1ehD7ss=
+		s9j0vsssfQSYfX/KAcNp3u1jmSs=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -46,11 +34,11 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		XN6Agl5JB0bK+OfavvTYyUH4KYs=
+		N5z7o0ayle3wlkxhjfEzTGCAeuk=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		xQO4Bpr00GbxHbR6JSSW1ehD7ss=
+		s9j0vsssfQSYfX/KAcNp3u1jmSs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -59,39 +47,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Frameworks/WebRTC.framework/Info.plist</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ZGeOqA74DEG0vvyvLQbWQQt0Doo=
-			</data>
-			<key>hash2</key>
-			<data>
-			4JoAzrEhqPAfQgph/qgrdblqwNhtTIo4sYbItCvD11g=
-			</data>
-		</dict>
-		<key>Frameworks/WebRTC.framework/WebRTC</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			Itzb76jbnpKzmWlMib8TJJPdScY=
-			</data>
-			<key>hash2</key>
-			<data>
-			xwQ50LXsQy9ugFOs6r/bRPW8KPTCkqZU0JOtWDNHVTc=
-			</data>
-		</dict>
-		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			uSX6VxGQfd90DT7tbM4MzyLzKow=
-			</data>
-			<key>hash2</key>
-			<data>
-			w0G5FXXqAgUKiP71Z3RT4IuSf+euTesHjUQj6vLLfjs=
-			</data>
-		</dict>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<dict>
 			<key>hash</key>
@@ -129,22 +84,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XN6Agl5JB0bK+OfavvTYyUH4KYs=
+			N5z7o0ayle3wlkxhjfEzTGCAeuk=
 			</data>
 			<key>hash2</key>
 			<data>
-			8b2LjnEHrq7xD2v43Or49eoEPVl8CUm5Q3gEevORqTw=
+			5iYYbsxjMg1tUzxF32e3Zjw/wa1kc+CoIKA+DEXY+rc=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xQO4Bpr00GbxHbR6JSSW1ehD7ss=
+			s9j0vsssfQSYfX/KAcNp3u1jmSs=
 			</data>
 			<key>hash2</key>
 			<data>
-			AG8b97OOxg/us4NuxftyvTCIcv6sJW4BqBW3y/kyvVc=
+			qnOVtJuXl64pCUpQ7vQrpl5108CQUQJXXIJUF9opMv4=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -162,22 +117,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			XN6Agl5JB0bK+OfavvTYyUH4KYs=
+			N5z7o0ayle3wlkxhjfEzTGCAeuk=
 			</data>
 			<key>hash2</key>
 			<data>
-			8b2LjnEHrq7xD2v43Or49eoEPVl8CUm5Q3gEevORqTw=
+			5iYYbsxjMg1tUzxF32e3Zjw/wa1kc+CoIKA+DEXY+rc=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			xQO4Bpr00GbxHbR6JSSW1ehD7ss=
+			s9j0vsssfQSYfX/KAcNp3u1jmSs=
 			</data>
 			<key>hash2</key>
 			<data>
-			AG8b97OOxg/us4NuxftyvTCIcv6sJW4BqBW3y/kyvVc=
+			qnOVtJuXl64pCUpQ7vQrpl5108CQUQJXXIJUF9opMv4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

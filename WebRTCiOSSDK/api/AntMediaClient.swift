@@ -85,6 +85,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var captureScreenEnabled: Bool = false
     
+    private var isWebSocketConnected: Bool = false;
+    
     /*
      This peer mode is used in multi peer streaming
      */
@@ -189,7 +191,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      */
     open func connectWebSocket() {
         AntMediaClient.printf("Connect websocket to \(self.getWsUrl())")
-        if (!(self.webSocket?.isConnected ?? false)) { //provides backward compatibility
+        if (!self.isWebSocketConnected) { //provides backward compatibility
             AntMediaClient.printf("Will connect to: \(self.getWsUrl()) for stream: \(self.streamId)")
         
             webSocket = WebSocket(request: self.getRequest())
@@ -217,7 +219,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      */
     open func stop() {
         AntMediaClient.printf("Stop is called")
-        if (self.webSocket?.isConnected ?? false) {
+        if (self.isWebSocketConnected) {
             let jsonString = self.getLeaveMessage().json
             webSocket?.write(string: jsonString)
             self.webSocket?.disconnect()
@@ -309,7 +311,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     open func isConnected() -> Bool {
-        return self.webSocket?.isConnected ?? false
+        return isWebSocketConnected;
     }
     
     open func setDebug(_ value: Bool) {
@@ -337,7 +339,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     private func onConnection() {
-        if (self.webSocket!.isConnected) {
+        if (isWebSocketConnected) {
             let jsonString = getHandshakeMessage()
             AntMediaClient.printf("onConnection message: \(jsonString)")
             webSocket!.write(string: jsonString)
@@ -479,7 +481,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public func getStreamInfo()
     {
-        if (self.webSocket?.isConnected ?? false)
+        if (self.isWebSocketConnected)
         {
             self.webSocket?.write(string: [COMMAND: GET_STREAM_INFO_COMMAND, STREAM_ID: self.streamId].json)
         }
@@ -490,7 +492,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public func forStreamQuality(resolutionHeight: Int)
     {
-        if (self.webSocket?.isConnected ?? false)
+        if (self.isWebSocketConnected)
         {
             self.webSocket?.write(string: [COMMAND: FORCE_STREAM_QUALITY_INFO, STREAM_ID: self.streamId as String, STREAM_HEIGHT_FIELD: resolutionHeight].json)
         }
@@ -541,46 +543,58 @@ extension AntMediaClient: WebSocketDelegate {
     
     public func getPingMessage() -> [String: String] {
            return [COMMAND: "ping"]
-       }
-       
+    }
     
-    public func websocketDidConnect(socket: WebSocketClient) {
-        AntMediaClient.printf("WebSocketDelegate->Connected: \(socket.isConnected)")
-        //no need to init peer connection but it opens camera and other stuff so that some users want at first
-        self.initPeerConnection()
-        self.onConnection()
-        self.delegate?.clientDidConnect(self)
+    public func didReceive(event: WebSocketEvent, client: WebSocket) {
+        switch event {
+        case .connected(let headers):
+            isWebSocketConnected = true;
+            AntMediaClient.printf("websocket is connected: \(headers)")
+            self.initPeerConnection()
+            self.onConnection()
+            self.delegate?.clientDidConnect(self)
+            
+            //too keep the connetion alive send ping command for every 10 seconds
+            pingTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { pingTimer in
+                let jsonString = self.getPingMessage().json
+                self.webSocket?.write(string: jsonString)
+            }
+            break;
+        case .disconnected(let reason, let code):
+            isWebSocketConnected = false;
+            AntMediaClient.printf("websocket is disconnected: \(reason) with code: \(code)")
+            pingTimer?.invalidate()
         
-        //too keep the connetion alive send ping command for every 10 seconds
-        pingTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { pingTimer in
-            let jsonString = self.getPingMessage().json
-            self.webSocket?.write(string: jsonString)
+            self.delegate?.clientDidDisconnect(String(code))
+            break;
+        case .text(let string):
+            AntMediaClient.printf("Received text: \(string)");
+            self.onMessage(string)
+            break;
+        case .binary(let data):
+            AntMediaClient.printf("Received data: \(data.count)")
+            break;
+        case .ping(_):
+            break
+        case .pong(_):
+            break
+        case .viabilityChanged(_):
+            break
+        case .reconnectSuggested(_):
+            break
+        case .cancelled:
+            isWebSocketConnected = false;
+            pingTimer?.invalidate()
+            break;
+        case .error(let error):
+            isWebSocketConnected = false;
+            pingTimer?.invalidate()
+            AntMediaClient.printf("Error occured on websocket connection \(String(describing: error))");
+            break;
+        default:
+            AntMediaClient.printf("Unexpected command received from websocket");
+            break;
         }
-    }
-    
-
-    
-    public func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-       
-        pingTimer?.invalidate()
-        AntMediaClient.printf("WebSocketDelegate->Disconnected connected: \(socket.isConnected) \(self.webSocket?.isConnected)")
-        
-        if let e = error as? WSError {
-            self.delegate?.clientDidDisconnect(e.message)
-        } else if let e = error {
-            self.delegate?.clientDidDisconnect(e.localizedDescription)
-        } else {
-            self.delegate?.clientDidDisconnect("Disconnected")
-        }
-    }
-    
-    public func websocketDidReceiveMessage(socket: WebSocketClient, text: String) {
-        AntMediaClient.printf("Receive Message: \(text)")
-        self.onMessage(text)
-    }
-    
-    public func websocketDidReceiveData(socket: WebSocketClient, data: Data) {
-        //AntMediaClient.printf("Receive Data: " + String(data: data, encoding: .utf8)!)
     }
 }
 

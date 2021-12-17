@@ -18,16 +18,16 @@ rm -rf $OS_DIR
 Xcodebuild -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK clean
 check
 
-Xcodebuild archive -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK -sdk iphonesimulator ARCHS=x86_64 -archivePath ${SIMULATOR_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+Xcodebuild archive -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS Simulator"  ARCHS=x86_64 -archivePath ${SIMULATOR_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 
 check
-Xcodebuild archive -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK -sdk iphoneos ARCHS=arm64 -archivePath ${OS_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+Xcodebuild archive -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS"  ARCHS=arm64 -archivePath ${OS_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 check
 
 rm -rf $UNIVERSAL_DIR
 mkdir $UNIVERSAL_DIR
 
-Xcodebuild -create-xcframework -framework $OS_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework -framework $SIMULATOR_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework -output $UNIVERSAL_DIR/WebRTCiOSSDK.xcframework
+Xcodebuild -create-xcframework -framework $OS_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework  -debug-symbols $OS_DIR/dSYMs/WebRTCiOSSDK.framework.dSYM -framework $SIMULATOR_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework -debug-symbols $SIMULATOR_DIR/dSYMs/WebRTCiOSSDK.framework.dSYM -output $UNIVERSAL_DIR/WebRTCiOSSDK.xcframework
 check
 
 

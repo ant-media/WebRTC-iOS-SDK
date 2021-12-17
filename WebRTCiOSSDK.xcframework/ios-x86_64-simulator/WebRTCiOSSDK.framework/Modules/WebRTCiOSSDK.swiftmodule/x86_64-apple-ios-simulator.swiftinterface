@@ -64,10 +64,7 @@ extension WebRTCiOSSDK.AntMediaClient {
 }
 extension WebRTCiOSSDK.AntMediaClient : Starscream.WebSocketDelegate {
   public func getPingMessage() -> [Swift.String : Swift.String]
-  public func websocketDidConnect(socket: Starscream.WebSocketClient)
-  public func websocketDidDisconnect(socket: Starscream.WebSocketClient, error: Swift.Error?)
-  public func websocketDidReceiveMessage(socket: Starscream.WebSocketClient, text: Swift.String)
-  public func websocketDidReceiveData(socket: Starscream.WebSocketClient, data: Foundation.Data)
+  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
 }
 extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCAudioSessionDelegate {
   @objc dynamic public func audioSessionDidStartPlayOrRecord(_ session: WebRTC.RTCAudioSession)
@@ -111,12 +108,11 @@ public protocol ConferenceClientDelegate {
 open class ConferenceClient : WebRTCiOSSDK.ConferenceClientProtocol, Starscream.WebSocketDelegate {
   public init(serverURL: Swift.String, conferenceClientDelegate: WebRTCiOSSDK.ConferenceClientDelegate)
   @objc deinit
-  public func websocketDidConnect(socket: Starscream.WebSocketClient)
-  public func websocketDidDisconnect(socket: Starscream.WebSocketClient, error: Swift.Error?)
-  public func websocketDidReceiveMessage(socket: Starscream.WebSocketClient, text: Swift.String)
-  public func websocketDidReceiveData(socket: Starscream.WebSocketClient, data: Foundation.Data)
+  public func didConnected(socket: Starscream.WebSocketClient)
+  public func receiveMessage(socket: Starscream.WebSocketClient, text: Swift.String)
   public func joinRoom(roomId: Swift.String, streamId: Swift.String)
   public func leaveRoom()
+  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
 }
 public protocol AntMediaClientProtocol {
   func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String, mode: WebRTCiOSSDK.AntMediaClientMode, enableDataChannel: Swift.Bool, captureScreenEnabled: Swift.Bool)
