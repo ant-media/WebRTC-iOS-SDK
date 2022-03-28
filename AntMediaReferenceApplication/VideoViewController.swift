@@ -10,8 +10,6 @@ import UIKit
 import WebRTC
 import AVFoundation
 import WebRTCiOSSDK
-import AVKit
-
 
 class VideoViewController: UIViewController {
     
@@ -48,8 +46,8 @@ class VideoViewController: UIViewController {
         //let iceServer:RTCIceServer = RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302"], username: "", credential: "")
         //Config.setDefaultStunServer(server: iceServer);
         
-        self.client.setMaxVideoBps(videoBitratePerSecond: 3000000)
-        
+        //self.client.setMaxVideoBps(videoBitratePerSecond: 500000)
+
         /*
          Enable the below line if you use multi peer node for embedded sdk
          */
@@ -61,9 +59,6 @@ class VideoViewController: UIViewController {
          the below method
          */
         //dontAskMicPermissionForPlaying();
-        
-        self.client.setVideoEnable(enable: true)
-        
         
         if self.client.getCurrentMode() == AntMediaClientMode.join {
             self.modeLabel.text = "Mode: P2P"
@@ -77,7 +72,7 @@ class VideoViewController: UIViewController {
             self.fullVideoView.isHidden = false
             self.modeLabel.text = "Mode: Publish"
             self.client.setCameraPosition(position: .front)
-            self.client.setTargetResolution(width: 1920, height: 1080)
+            self.client.setTargetResolution(width: 480, height: 360)
             self.client.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
            
         } else if self.client.getCurrentMode() == AntMediaClientMode.play {
@@ -89,23 +84,6 @@ class VideoViewController: UIViewController {
         //calling this method is not necessary. It just initializes the connection and opens the camera
         self.client.initPeerConnection()
         
-        //self.mirrorView(view:fullVideoView)
-        self.client.start()
-    }
-    
-    /*
-     Basic method to mirror the view.
-     You can give fullVideoView or pipVideoView as parameter to mirror the
-     view. It does not effect transcoded the video content, it only effects the UI.
-     */
-    func mirrorView(view:UIView)
-    {
-        view.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
-    }
-    
-    
-    @objc func playerDidFinishPlaying() {
-        print("Video Finished")
         self.client.start()
     }
     
@@ -117,18 +95,16 @@ class VideoViewController: UIViewController {
      *  ATTENTION: Calling this method in sending stream cause not sending the audio. So if you publish
      *  and play stream at the same time, don't use this method
      */
-    private func dontAskMicPermissionForPlaying()
-    {
+    private func dontAskMicPermissionForPlaying() {
         let webRTCConfiguration = RTCAudioSessionConfiguration.init()
         webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
         webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
         webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
-                                     
+                             
         RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
     }
     
-    @IBAction func audioTapped(_ sender: UIButton!)
-    {
+    @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
         self.client.toggleAudio()
     }
@@ -265,7 +241,6 @@ extension VideoViewController: AntMediaClientDelegate {
     func playStarted(streamId: String)
     {
         print("play started");
-        client.speakerOn()
     }
     
     func playFinished(streamId: String) {
@@ -289,7 +264,7 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func publishFinished(streamId: String) {
-        RTCAudioSession.sharedInstance();
+        
     }
     
     func audioSessionDidStartPlayOrRecord(streamId: String) {
