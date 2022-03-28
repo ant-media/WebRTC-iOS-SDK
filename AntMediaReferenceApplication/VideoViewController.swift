@@ -84,7 +84,17 @@ class VideoViewController: UIViewController {
         //calling this method is not necessary. It just initializes the connection and opens the camera
         self.client.initPeerConnection()
         
+        //Enable below method to have the mirror effect
+        //self.mirrorView(view: fullVideoView);
+        
         self.client.start()
+    }
+    
+    /*
+     * Mirror the view. fullVideoView or pipViewVideo can provided as parameter
+     */
+    private func mirrorView(view:UIView) {
+        view.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
     
     /*
