@@ -18,12 +18,8 @@ class WebRTCClient: NSObject {
     let AUDIO_TRACK_ID = "AUDIO"
     let LOCAL_MEDIA_STREAM_ID = "STREAM"
     
-    private static let factory: RTCPeerConnectionFactory = {
-        RTCInitializeSSL()
-        let videoEncoderFactory = RTCDefaultVideoEncoderFactory()
-        let videoDecoderFactory = RTCDefaultVideoDecoderFactory()
-        return RTCPeerConnectionFactory(encoderFactory: videoEncoderFactory, decoderFactory: videoDecoderFactory)
-    }()
+    private var audioDeviceModule: RTCAudioDeviceModule? = nil;
+    private static var factory: RTCPeerConnectionFactory! = nil;
     
     var delegate: WebRTCClientDelegate?
     var peerConnection : RTCPeerConnection?
@@ -53,7 +49,11 @@ class WebRTCClient: NSObject {
     private var targetWidth: Int = 480
     private var targetHeight: Int = 360
     
-    public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate) {
+    private var externalVideoCapture: Bool = false;
+    
+    private var externalAudio: Bool = false;
+    
+    public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, externalAudio:Bool) {
         super.init()
         
         self.remoteVideoView = remoteVideoView
@@ -61,6 +61,13 @@ class WebRTCClient: NSObject {
         self.delegate = delegate
         
         RTCPeerConnectionFactory.initialize()
+        
+        self.externalAudio = externalAudio;
+        if (externalAudio) {
+            self.audioDeviceModule = RTCAudioDeviceModule();
+        }
+        
+        WebRTCClient.factory = initFactory();
         
         let stunServer = Config.defaultStunServer()
         let defaultConstraint = Config.createDefaultConstraint()
@@ -78,8 +85,8 @@ class WebRTCClient: NSObject {
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, captureScreen: false)
     }
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, captureScreen: Bool) {
-        self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate)
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, captureScreen: Bool, externalAudio: Bool = false) {
+        self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate, externalAudio: externalAudio)
         self.mode = mode
         self.cameraPosition = cameraPosition
         self.targetWidth = targetWidth
@@ -90,6 +97,25 @@ class WebRTCClient: NSObject {
         
         if (self.mode != .play && !multiPeerActive) {
             self.addLocalMediaStream()
+        }
+    }
+    
+    public func externalVideoCapture(externalVideoCapture: Bool) {
+        self.externalVideoCapture = externalVideoCapture;
+    }
+    
+    private func initFactory() -> RTCPeerConnectionFactory {
+        RTCInitializeSSL()
+        let videoEncoderFactory = RTCDefaultVideoEncoderFactory()
+        let videoDecoderFactory = RTCDefaultVideoDecoderFactory()
+       
+        
+        if (audioDeviceModule == nil) {
+            return RTCPeerConnectionFactory(encoderFactory: videoEncoderFactory, decoderFactory: videoDecoderFactory)
+        }
+        else {
+            return RTCPeerConnectionFactory(encoderFactory: videoEncoderFactory, decoderFactory: videoDecoderFactory,
+                                                            audioDeviceModule: audioDeviceModule!)
         }
     }
     
@@ -315,11 +341,15 @@ class WebRTCClient: NSObject {
     }
     
     private func createVideoTrack() -> RTCVideoTrack?  {
+        
         let videoSource = WebRTCClient.factory.videoSource()
+        
         
         if captureScreenEnabled
         {
-            self.videoCapturer = RTCCustomFrameCapturer.init(delegate: videoSource, height: targetHeight)
+            //try with screencast video source
+            
+            self.videoCapturer = RTCCustomFrameCapturer.init(delegate: videoSource, height: targetHeight, externalCapture: externalVideoCapture, videoEnabled: true, audioEnabled: externalAudio)
             (self.videoCapturer as? RTCCustomFrameCapturer)?.startCapture()
         }
         else {
@@ -342,17 +372,20 @@ class WebRTCClient: NSObject {
         
         
         AntMediaClient.printf("Add local media streams")
-        if (self.videoEnabled) {
+        if (self.videoEnabled)
+        {
             self.localVideoTrack = createVideoTrack();
 
             self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
         }
+        
+        
         let audioSource = WebRTCClient.factory.audioSource(with: Config.createTestConstraints())
         self.localAudioTrack = WebRTCClient.factory.audioTrack(with: audioSource, trackId: AUDIO_TRACK_ID)
         
         self.peerConnection?.add(self.localAudioTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
         
-        if (self.localVideoTrack != nil) {
+        if (self.localVideoTrack != nil && self.localVideoView != nil) {
             self.localVideoTrack.add(localVideoView!)
         }
         self.delegate?.addLocalStream()
@@ -378,6 +411,15 @@ class WebRTCClient: NSObject {
         
         self.videoSender = self.peerConnection?.add(self.localVideoTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
         
+    }
+    
+    public func deliverExternalAudio(sampleBuffer: CMSampleBuffer)
+    {
+        self.audioDeviceModule?.deliverRecordedData(sampleBuffer)
+    }
+    
+    public func getVideoCapturer() -> RTCVideoCapturer? {
+        return videoCapturer;
     }
       
 }

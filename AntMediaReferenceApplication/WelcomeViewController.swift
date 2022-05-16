@@ -8,9 +8,12 @@
 
 import UIKit
 import WebRTCiOSSDK
+import ReplayKit
 
+@available(iOS 12.0, *)
 class WelcomeViewController: UIViewController {
     
+    @IBOutlet weak var screenRecord: RPSystemBroadcastPickerView!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var logoTopAnchor: NSLayoutConstraint!
     @IBOutlet weak var actionContainer: UIView! {
@@ -28,6 +31,7 @@ class WelcomeViewController: UIViewController {
             if let server = Defaults[.server] {
                 if (server.count > 0) {
                     self.serverButton.setTitle("Server ip: \(server)", for: .normal)
+                  
                 }
             }
         }
@@ -38,19 +42,34 @@ class WelcomeViewController: UIViewController {
     var clientToken: String!
     var isConnected = false
     var tapGesture: UITapGestureRecognizer!
+    let sharedDefault = UserDefaults(suiteName: "group.com.antmedia.ios.sdk")!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //Set the default video and audio values for screen broadcasting extension
+        sharedDefault.set("true", forKey:"videoEnabled");
+        sharedDefault.set("true", forKey:"audioEnabled");
     }
+    
+    @IBAction func streamIdEntered(_ sender: Any)
+    {
+        sharedDefault.set(self.roomField.text , forKey: "streamId")
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.setGesture()
         
+        self.screenRecord.preferredExtension = "com.antmedia.ios.sdk.ScreenShare";
+        self.screenRecord.showsMicrophoneButton = false;
+
         self.roomField.text = "stream1"
+        sharedDefault.set(self.roomField.text , forKey: "streamId")
         
         UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
-            self.logoTopAnchor.constant = 40
+            self.logoTopAnchor.constant = 0
             self.view.layoutIfNeeded()
         }, completion: { (completed) in
             UIView.animate(withDuration: 0.5, animations: {
@@ -58,6 +77,7 @@ class WelcomeViewController: UIViewController {
                 self.view.layoutIfNeeded()
             })
         })
+         
     }
     
     @IBAction func connectButton(_ sender: UIButton ) {
@@ -103,7 +123,9 @@ class WelcomeViewController: UIViewController {
             
             AntMediaClient.printf("Text field: \(textValue)")
             self.serverButton.setTitle("Server ip: \(textValue)", for: .normal)
+            
             Defaults[.server] = textValue
+            self.sharedDefault.set(textValue, forKey:"url");
         }))
 
         // 4. Present the alert.

@@ -1,5 +1,5 @@
 /*
- *  Copyright 2021 The WebRTC project authors. All Rights Reserved.
+ *  Copyright 2022 The WebRTC project authors. All Rights Reserved.
  *
  *  Use of this source code is governed by a BSD-style license
  *  that can be found in the LICENSE file in the root of the source
@@ -47,6 +47,7 @@
 #import <WebRTC/RTCCameraPreviewView.h>
 #import <WebRTC/RTCDispatcher.h>
 #import <WebRTC/UIDevice+RTCDevice.h>
+#import <WebRTC/RTCAudioDeviceModule.h>
 #import <WebRTC/RTCAudioSource.h>
 #import <WebRTC/RTCAudioTrack.h>
 #import <WebRTC/RTCConfiguration.h>

@@ -83,9 +83,17 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var multiPeerStreamId: String?
     
+    //Screen capture of the app's screen.
     private var captureScreenEnabled: Bool = false
     
     private var isWebSocketConnected: Bool = false;
+    
+    private var externalAudioEnabled: Bool = false;
+    
+    // External video capture is getting frames from Broadcast Extension.
+    //In order to make the broadcast extension to work both captureScreenEnable and
+    // externalVideoCapture should be true
+    private var externalVideoCapture: Bool = false;
     
     /*
      This peer mode is used in multi peer streaming
@@ -232,7 +240,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         if (self.webRTCClient == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
-            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, captureScreen: self.captureScreenEnabled)
+            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, captureScreen: self.captureScreenEnabled, externalAudio: self.externalAudioEnabled)
             
             self.webRTCClient!.setStreamId(streamId)
             self.webRTCClient!.setToken(self.token)
@@ -505,6 +513,24 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.webRTCClient?.getStats(handler: completionHandler)
     }
     
+    public func deliverExternalAudio(sampleBuffer: CMSampleBuffer)
+    {
+        self.webRTCClient?.deliverExternalAudio(sampleBuffer: sampleBuffer);
+    }
+    
+    
+    public func setExternalAudio(externalAudioEnabled: Bool) {
+        self.externalAudioEnabled = externalAudioEnabled;
+    }
+    
+    public func setExternalVideoCapture(externalVideoCapture: Bool) {
+        self.externalVideoCapture = externalVideoCapture;
+    }
+    
+    public func deliverExternalVideo(sampleBuffer: CMSampleBuffer)
+    {
+        (self.webRTCClient?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(sampleBuffer);
+    }
     
 }
 
