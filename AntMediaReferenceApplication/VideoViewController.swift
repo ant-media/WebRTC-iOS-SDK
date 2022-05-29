@@ -32,14 +32,17 @@ class VideoViewController: UIViewController {
         super.viewDidLoad()
         self.setGesture()
     }
-
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         self.client.delegate = self
         self.client.setDebug(true)
-        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true)
+        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true, captureScreenEnabled:false)
+        
+        //this should be enabled when an audio app or broadcast extension is used.
+        //Please check the sample in ScreenShare
+        self.client.setExternalAudio(externalAudioEnabled: false);
         
         
         //set default stunserver or turn server

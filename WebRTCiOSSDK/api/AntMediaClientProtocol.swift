@@ -39,6 +39,7 @@ public protocol AntMediaClientProtocol {
         - mode: The Mode of the Client. It should .play, .publish or .join. If it's .play, it means your WebRTC client will play a stream with your streamId
         on the server. If it's .publish, it mean your WebRTC client will publish stream with your stream id.
         - enableDataChannel: Enable or disable data channel on the mobile side. In order to make data channel work, you also need to enable it on server side
+        - captureScreenEnabled: Captures the screen of the application. If BroadcastExtension is used,  'setExternalVideoCapture' should be set also
     */
     func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, captureScreenEnabled: Bool)
     
@@ -199,6 +200,27 @@ public protocol AntMediaClientProtocol {
      Set the max video bitrate for publishing the stream
      */
     func setMaxVideoBps(videoBitratePerSecond: NSNumber);
+    
+    //
+    //Deliver external audio to the Ant Media Client. It's likely coming from Broadcast Extension
+    //
+    func deliverExternalAudio(sampleBuffer: CMSampleBuffer);
+    
+    //
+    //Set external audio if audio is coming from Broadcast Extension.
+    //It initializes the WebRTC client accordingly
+    //
+    func setExternalAudio(externalAudioEnabled: Bool);
+    
+    //
+    //Set external video if video is coming from Broadcast Extension
+    //
+    func setExternalVideoCapture(externalVideoCapture: Bool);
+    
+    //
+    //Deliver external frame
+    //
+    func deliverExternalVideo(sampleBuffer: CMSampleBuffer);
 }
 
 

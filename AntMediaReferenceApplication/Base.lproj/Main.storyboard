@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="U8S-UW-oXC">
-                                <rect key="frame" x="87.5" y="140" width="200" height="200"/>
+                                <rect key="frame" x="87.5" y="40" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="1mh-o1-svn"/>
                                     <constraint firstAttribute="width" secondItem="U8S-UW-oXC" secondAttribute="height" multiplier="1:1" id="KfE-gR-cN6"/>
@@ -25,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMz-6A-4JU">
-                                <rect key="frame" x="65" y="310" width="245" height="325"/>
+                                <rect key="frame" x="65" y="210" width="245" height="325"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-z3-Op3">
                                         <rect key="frame" x="5" y="10" width="235" height="62"/>
@@ -52,6 +53,9 @@ WebRTC Live Streaming</string>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                        <connections>
+                                            <action selector="streamIdEntered:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="t5v-V8-97x"/>
+                                        </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBa-xU-p76">
                                         <rect key="frame" x="115" y="90" width="30" height="30"/>
@@ -79,7 +83,7 @@ WebRTC Live Streaming</string>
                                             <constraint firstAttribute="height" constant="30" id="qIc-iU-6cO"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ym-6R-Akx">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ym-6R-Akx">
                                         <rect key="frame" x="3" y="260" width="239" height="35"/>
                                         <color key="backgroundColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -95,7 +99,7 @@ WebRTC Live Streaming</string>
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tve-qy-d3T">
-                                        <rect key="frame" x="3" y="185.5" width="239" height="32"/>
+                                        <rect key="frame" x="3" y="155.5" width="239" height="32"/>
                                         <segments>
                                             <segment title="P2P"/>
                                             <segment title="Play"/>
@@ -104,10 +108,10 @@ WebRTC Live Streaming</string>
                                         </segments>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </segmentedControl>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Inj-Ay-988">
-                                        <rect key="frame" x="6" y="297" width="233" height="28"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Inj-Ay-988">
+                                        <rect key="frame" x="6" y="226" width="233" height="36"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="28" id="vla-6X-HS0"/>
+                                            <constraint firstAttribute="height" constant="36" id="vla-6X-HS0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <state key="normal" title="Set server ip">
@@ -147,26 +151,37 @@ WebRTC Live Streaming</string>
                                     <constraint firstItem="Inj-Ay-988" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="dFZ-Tk-cdp"/>
                                     <constraint firstAttribute="bottom" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="30" id="eam-bM-qXm"/>
                                     <constraint firstItem="WPm-03-EZ0" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="g7x-Ws-hPN"/>
-                                    <constraint firstItem="Inj-Ay-988" firstAttribute="top" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="2" id="hHZ-tp-cby"/>
-                                    <constraint firstAttribute="bottom" secondItem="Inj-Ay-988" secondAttribute="bottom" id="hsr-1j-2ji"/>
+                                    <constraint firstItem="Inj-Ay-988" firstAttribute="bottom" secondItem="5ym-6R-Akx" secondAttribute="top" constant="2" id="hHZ-tp-cby"/>
                                     <constraint firstItem="Sor-To-6JJ" firstAttribute="top" secondItem="WPm-03-EZ0" secondAttribute="bottom" constant="4" id="nYK-a5-xmP"/>
                                     <constraint firstItem="Sor-To-6JJ" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="puv-3J-ZAC"/>
                                     <constraint firstItem="tve-qy-d3T" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="q5g-wG-vnA"/>
                                     <constraint firstItem="5ym-6R-Akx" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="3" id="tOA-K4-3PF"/>
-                                    <constraint firstAttribute="trailing" secondItem="Inj-Ay-988" secondAttribute="trailing" constant="6" id="vdV-GS-5gg"/>
-                                    <constraint firstItem="tve-qy-d3T" firstAttribute="top" secondItem="Sor-To-6JJ" secondAttribute="bottom" constant="60" id="yEi-Ni-znF"/>
+                                    <constraint firstItem="tve-qy-d3T" firstAttribute="top" secondItem="Sor-To-6JJ" secondAttribute="bottom" constant="30" id="yEi-Ni-znF"/>
+                                    <constraint firstItem="Inj-Ay-988" firstAttribute="centerX" secondItem="dMz-6A-4JU" secondAttribute="centerX" id="zzP-8P-Y14"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ9-KN-4BS" customClass="RPSystemBroadcastPickerView">
+                                <rect key="frame" x="162.5" y="535" width="50" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="27V-Uq-gnp"/>
+                                    <constraint firstAttribute="height" constant="50" id="Sx2-qW-rUm"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="U8S-UW-oXC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="140" id="6zy-xl-qt8"/>
+                            <constraint firstItem="GZ9-KN-4BS" firstAttribute="centerX" secondItem="dMz-6A-4JU" secondAttribute="centerX" id="45P-C8-nr8"/>
+                            <constraint firstItem="U8S-UW-oXC" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="6zy-xl-qt8"/>
                             <constraint firstItem="dMz-6A-4JU" firstAttribute="top" secondItem="U8S-UW-oXC" secondAttribute="bottom" constant="-30" id="7Hj-IJ-Nx0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="GZ9-KN-4BS" secondAttribute="bottom" constant="64" id="94n-LQ-tGw"/>
                             <constraint firstItem="dMz-6A-4JU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="65" id="TdP-c0-uMi"/>
+                            <constraint firstItem="GZ9-KN-4BS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="162.5" id="WHS-f1-PY7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dMz-6A-4JU" secondAttribute="trailing" constant="65" id="Wda-0o-WzD"/>
+                            <constraint firstItem="GZ9-KN-4BS" firstAttribute="top" secondItem="dMz-6A-4JU" secondAttribute="bottom" id="kvg-nc-YLD"/>
                             <constraint firstItem="U8S-UW-oXC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="swK-2M-D2s"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="actionContainer" destination="dMz-6A-4JU" id="re3-vy-nDr"/>
@@ -176,6 +191,7 @@ WebRTC Live Streaming</string>
                         <outlet property="modeSelection" destination="tve-qy-d3T" id="otx-gM-Jqk"/>
                         <outlet property="refreshButton" destination="qBa-xU-p76" id="2ts-oH-fbj"/>
                         <outlet property="roomField" destination="WPm-03-EZ0" id="zox-4O-VZM"/>
+                        <outlet property="screenRecord" destination="GZ9-KN-4BS" id="6P1-It-ZIV"/>
                         <outlet property="serverButton" destination="Inj-Ay-988" id="g57-SJ-bgK"/>
                         <outlet property="tokenField" destination="aM2-7T-G09" id="1FN-41-h4G"/>
                         <segue destination="xVm-wQ-O5q" kind="show" identifier="video" id="Im6-25-i5E"/>
@@ -183,7 +199,7 @@ WebRTC Live Streaming</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.13043478260872" y="124.72826086956523"/>
+            <point key="canvasLocation" x="138.40000000000001" y="124.58770614692655"/>
         </scene>
         <!--Conference View Controller-->
         <scene sceneID="dro-nO-g9i">
@@ -195,30 +211,31 @@ WebRTC Live Streaming</string>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBK-Om-nWf">
                                 <rect key="frame" x="16" y="0.0" width="171.5" height="323.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKz-rN-me0">
-                                <rect key="frame" x="187.5" y="0.0" width="179.5" height="323.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="199" y="0.0" width="168" height="323.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPy-8E-T6N">
                                 <rect key="frame" x="16" y="323.5" width="171.5" height="303.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXN-aK-Wm3">
                                 <rect key="frame" x="187.5" y="323.5" width="188.5" height="303.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwp-DO-5T7">
                                 <rect key="frame" x="252" y="467" width="90" height="160"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="dnu-X9-a9W"/>
                                     <constraint firstAttribute="width" constant="90" id="tMd-w9-0ro"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="dqn-Tz-Jj5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="LXN-aK-Wm3" secondAttribute="trailing" constant="-17" id="3Bd-dA-tuF" userLabel="trailingMargin = Remote View3.trailing"/>
                             <constraint firstItem="dqn-Tz-Jj5" firstAttribute="centerY" secondItem="zBK-Om-nWf" secondAttribute="bottom" id="4hl-T0-KDm"/>
@@ -242,7 +259,6 @@ WebRTC Live Streaming</string>
                             <constraint firstItem="LXN-aK-Wm3" firstAttribute="leading" secondItem="qPy-8E-T6N" secondAttribute="trailing" id="wgl-l8-6b7"/>
                             <constraint firstItem="LXN-aK-Wm3" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" id="xyb-wW-VhS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="dqn-Tz-Jj5"/>
                     </view>
                     <navigationItem key="navigationItem" id="l7b-W5-MXv"/>
                     <connections>
@@ -318,7 +334,7 @@ WebRTC Live Streaming</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="syx-6W-m27" userLabel="Data Button">
                                         <rect key="frame" x="2" y="104" width="40" height="40"/>
-                                        <color key="backgroundColor" systemColor="tertiaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" systemColor="tertiaryLabelColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="add-oX-NBh"/>
                                             <constraint firstAttribute="height" constant="40" id="xXk-9V-Veo"/>
@@ -326,7 +342,7 @@ WebRTC Live Streaming</string>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="titleShadowOffset" width="0.0" height="1"/>
                                         <state key="normal" image="message.fill" catalog="system">
-                                            <color key="titleShadowColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" systemColor="systemGray2Color"/>
                                         </state>
                                         <connections>
                                             <action selector="messageButtonTapped:" destination="xVm-wQ-O5q" eventType="touchUpInside" id="ezP-4b-n09"/>
@@ -374,6 +390,7 @@ WebRTC Live Streaming</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="nVm-o6-c59"/>
                         <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="H3f-3T-91O" firstAttribute="centerY" secondItem="LyJ-zl-XYS" secondAttribute="centerY" id="6jn-v9-NJQ"/>
@@ -388,7 +405,6 @@ WebRTC Live Streaming</string>
                             <constraint firstItem="nVm-o6-c59" firstAttribute="trailing" secondItem="lwh-ZV-HkX" secondAttribute="trailing" constant="30" id="tix-62-yP1"/>
                             <constraint firstItem="cFD-yb-BM7" firstAttribute="centerX" secondItem="LyJ-zl-XYS" secondAttribute="centerX" id="wb3-0L-f3V"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="nVm-o6-c59"/>
                     </view>
                     <navigationItem key="navigationItem" id="ikL-xj-lik"/>
                     <connections>
@@ -413,5 +429,14 @@ WebRTC Live Streaming</string>
         <image name="message.fill" catalog="system" width="128" height="113"/>
         <image name="videoOff" width="19" height="19"/>
         <image name="videoOn" width="18" height="14"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

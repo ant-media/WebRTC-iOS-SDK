@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5.2 (swiftlang-1300.0.47.5 clang-1300.0.29.30)
+// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name WebRTCiOSSDK
 import AVFoundation
 import Foundation
@@ -53,6 +53,10 @@ public enum AntMediaClientMode : Swift.Int {
   public func getStreamInfo()
   public func forStreamQuality(resolutionHeight: Swift.Int)
   public func getStats(completionHandler: @escaping (WebRTC.RTCStatisticsReport) -> Swift.Void)
+  public func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
+  public func setExternalAudio(externalAudioEnabled: Swift.Bool)
+  public func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
+  public func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
   @objc deinit
 }
 extension WebRTCiOSSDK.AntMediaClient {
@@ -140,6 +144,10 @@ public protocol AntMediaClientProtocol {
   func forStreamQuality(resolutionHeight: Swift.Int)
   func getStats(completionHandler: @escaping (WebRTC.RTCStatisticsReport) -> Swift.Void)
   func setMaxVideoBps(videoBitratePerSecond: Foundation.NSNumber)
+  func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
+  func setExternalAudio(externalAudioEnabled: Swift.Bool)
+  func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
+  func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
 }
 extension Swift.Dictionary {
   public var json: Swift.String {

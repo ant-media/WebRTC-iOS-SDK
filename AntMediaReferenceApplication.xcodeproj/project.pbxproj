@@ -18,6 +18,7 @@
 		78DC79D020CE8D6B0034CAAB /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */; };
 		78DC79D220D12C030034CAAB /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D120D12C030034CAAB /* SwiftyUserDefaults.swift */; };
 		78DC79D420D12DA20034CAAB /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79D320D12DA20034CAAB /* Defaults.swift */; };
+		918074226A0CBB28B2AE32CB /* Pods_AntMediaWebRTCSDK_ScreenShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01B20A091BCFB704E4F65883 /* Pods_AntMediaWebRTCSDK_ScreenShare.framework */; };
 		A81A459D275CECD6000EF59F /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82129F525ACC65E005F8E6C /* WebRTC.xcframework */; };
 		A81A459E275CECD6000EF59F /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A82129F525ACC65E005F8E6C /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A859E73C24E4238400494836 /* ConferenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859E73B24E4238400494836 /* ConferenceClient.swift */; };
@@ -31,14 +32,31 @@
 		A89C909124DDAF8C005F5D98 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465A8248B9A420027ADBA /* Config.swift */; };
 		A89C909224DDAF8C005F5D98 /* WebRTCClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465A6248B99EB0027ADBA /* WebRTCClientDelegate.swift */; };
 		A89C909324DDAF8C005F5D98 /* WebRTCClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C465A4248B99E30027ADBA /* WebRTCClient.swift */; };
+		A8A8CC8428251979000A335A /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8A8CC52281D40BD000A335A /* ReplayKit.framework */; };
+		A8A8CC8728251979000A335A /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8A8CC8628251979000A335A /* SampleHandler.swift */; };
+		A8A8CC8B28251979000A335A /* ScreenShare.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A8A8CC8328251979000A335A /* ScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A8B7CF0D282928AE0070C358 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82129F525ACC65E005F8E6C /* WebRTC.xcframework */; };
+		A8B7CF0E282928AE0070C358 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A82129F525ACC65E005F8E6C /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8B7CF1E282BF5850070C358 /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; };
+		A8B7CF1F282BF5850070C358 /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8B7CF21282E98290070C358 /* RTCCustomFrameCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */; };
 		A8C465C1248B9AA10027ADBA /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8C465B1248B9AA00027ADBA /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8DAF6452520D64200560875 /* RTCCustomFrameCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */; };
-		A8DD7074276C878E007C2F4D /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FF79BC2FE1DB8898EC2D1CD3 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */; };
+		A8DD7074276C878E007C2F4D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A8DD7076276C87CD007C2F4D /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD2091500B3DBE5FA014C05 /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */; };
 		A8DD7079276C880B007C2F4D /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82129F525ACC65E005F8E6C /* WebRTC.xcframework */; };
 		A8DD707F276C907F007C2F4D /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; };
 		A8DD7080276C907F007C2F4D /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A8A8CC8928251979000A335A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 78DC79AC20CE63AC0034CAAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A8A8CC8228251979000A335A;
+			remoteInfo = ScreenShare;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		7819AA6720DA2D07007D6292 /* Embed Frameworks */ = {
@@ -53,10 +71,35 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8A8CC5E281D40BD000A335A /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A8A8CC8B28251979000A335A /* ScreenShare.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8B7CF0F282928AE0070C358 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A8B7CF0E282928AE0070C358 /* WebRTC.xcframework in Embed Frameworks */,
+				A8B7CF1F282BF5850070C358 /* WebRTCiOSSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01B20A091BCFB704E4F65883 /* Pods_AntMediaWebRTCSDK_ScreenShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaWebRTCSDK_ScreenShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE5613638B72D3653D957A4 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig"; sourceTree = "<group>"; };
+		16803ED5EB02319DEBAEEA58 /* Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-ScreenShare/Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		2CD2091500B3DBE5FA014C05 /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62EB92D1E19240951AEBD4BA /* Pods-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AntMediaSDK.framework; sourceTree = "<group>"; };
@@ -90,6 +133,12 @@
 		A859E73B24E4238400494836 /* ConferenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceClient.swift; sourceTree = "<group>"; };
 		A859E73D24E55BB300494836 /* ConferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConferenceViewController.swift; sourceTree = "<group>"; };
 		A8747A3F24DEB76900E765A1 /* AntMediaClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AntMediaClientProtocol.swift; sourceTree = "<group>"; };
+		A896EC0628251D120069F850 /* AntMediaReferenceApplication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AntMediaReferenceApplication.entitlements; sourceTree = "<group>"; };
+		A896EC0728251D540069F850 /* ScreenShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShare.entitlements; sourceTree = "<group>"; };
+		A8A8CC52281D40BD000A335A /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
+		A8A8CC8328251979000A335A /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A8A8CC8628251979000A335A /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
+		A8A8CC8828251979000A335A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8C4659D248B98700027ADBA /* AntMediaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClient.swift; sourceTree = "<group>"; };
 		A8C4659E248B98700027ADBA /* AntMediaClientDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClientDelegate.swift; sourceTree = "<group>"; };
 		A8C4659F248B98700027ADBA /* AntMediaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaError.swift; sourceTree = "<group>"; };
@@ -104,10 +153,10 @@
 		A8C465DB248BA3CB0027ADBA /* Starscream.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Starscream.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTCCustomFrameCapturer.swift; sourceTree = "<group>"; };
 		A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTCiOSSDK.xcframework; sourceTree = "<group>"; };
+		ACA8C57C589E6A85E11CA83D /* Pods-AntMediaWebRTCSDK-ScreenShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-ScreenShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-ScreenShare/Pods-AntMediaWebRTCSDK-ScreenShare.release.xcconfig"; sourceTree = "<group>"; };
 		B9C79595D8958BD345F16A10 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig"; sourceTree = "<group>"; };
 		BF58A7AF85A1E5A351DE3D1F /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK/Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig"; sourceTree = "<group>"; };
 		CC60F64352D37D815D6BDC55 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
-		FF79BC2FE1DB8898EC2D1CD3 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,9 +164,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DD7074276C878E007C2F4D /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework in Frameworks */,
+				A8DD7074276C878E007C2F4D /* (null) in Frameworks */,
 				A81A459D275CECD6000EF59F /* WebRTC.xcframework in Frameworks */,
 				A8DD707F276C907F007C2F4D /* WebRTCiOSSDK.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A8CC8028251979000A335A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8B7CF0D282928AE0070C358 /* WebRTC.xcframework in Frameworks */,
+				A8A8CC8428251979000A335A /* ReplayKit.framework in Frameworks */,
+				918074226A0CBB28B2AE32CB /* Pods_AntMediaWebRTCSDK_ScreenShare.framework in Frameworks */,
+				A8B7CF1E282BF5850070C358 /* WebRTCiOSSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,8 +211,9 @@
 				7819AA6A20DA313A007D6292 /* AudioToolbox.framework */,
 				7819AA6820DA30FC007D6292 /* VideoToolbox.framework */,
 				7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */,
-				FF79BC2FE1DB8898EC2D1CD3 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */,
 				2CD2091500B3DBE5FA014C05 /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */,
+				A8A8CC52281D40BD000A335A /* ReplayKit.framework */,
+				01B20A091BCFB704E4F65883 /* Pods_AntMediaWebRTCSDK_ScreenShare.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,6 +224,7 @@
 				A82129F525ACC65E005F8E6C /* WebRTC.xcframework */,
 				78DC79B620CE63AC0034CAAB /* AntMediaReferenceApplication */,
 				A8C465B0248B9AA00027ADBA /* WebRTCiOSSDK */,
+				A8A8CC8528251979000A335A /* ScreenShare */,
 				5656254C28A8684D300692C6 /* Frameworks */,
 				78DC79B520CE63AC0034CAAB /* Products */,
 				B8F850D806BEFA4B3B88C62F /* Pods */,
@@ -174,6 +236,7 @@
 			children = (
 				78DC79B420CE63AC0034CAAB /* Ant Media.app */,
 				A8C465AF248B9AA00027ADBA /* WebRTCiOSSDK.framework */,
+				A8A8CC8328251979000A335A /* ScreenShare.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,6 +244,7 @@
 		78DC79B620CE63AC0034CAAB /* AntMediaReferenceApplication */ = {
 			isa = PBXGroup;
 			children = (
+				A896EC0628251D120069F850 /* AntMediaReferenceApplication.entitlements */,
 				78DC79B720CE63AC0034CAAB /* AppDelegate.swift */,
 				78DC79B920CE63AC0034CAAB /* WelcomeViewController.swift */,
 				78B4B3C920D242660058F57E /* VideoViewController.swift */,
@@ -220,6 +284,16 @@
 				78DC79CF20CE8D6B0034CAAB /* UIApplication.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		A8A8CC8528251979000A335A /* ScreenShare */ = {
+			isa = PBXGroup;
+			children = (
+				A896EC0728251D540069F850 /* ScreenShare.entitlements */,
+				A8A8CC8628251979000A335A /* SampleHandler.swift */,
+				A8A8CC8828251979000A335A /* Info.plist */,
+			);
+			path = ScreenShare;
 			sourceTree = "<group>";
 		};
 		A8C4659A248B97C20027ADBA /* api */ = {
@@ -267,6 +341,8 @@
 				B9C79595D8958BD345F16A10 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig */,
 				BF58A7AF85A1E5A351DE3D1F /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.debug.xcconfig */,
 				0BE5613638B72D3653D957A4 /* Pods-AntMediaWebRTCSDK-WebRTCiOSSDK.release.xcconfig */,
+				16803ED5EB02319DEBAEEA58 /* Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig */,
+				ACA8C57C589E6A85E11CA83D /* Pods-AntMediaWebRTCSDK-ScreenShare.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -295,15 +371,36 @@
 				78DC79B220CE63AC0034CAAB /* Resources */,
 				7819AA6720DA2D07007D6292 /* Embed Frameworks */,
 				5842EC9889B3FBBE5BFE0EF9 /* [CP] Embed Pods Frameworks */,
+				A8A8CC5E281D40BD000A335A /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A8A8CC8A28251979000A335A /* PBXTargetDependency */,
 			);
 			name = AntMediaReferenceApplication;
 			productName = AntMediaReferenceApplication;
 			productReference = 78DC79B420CE63AC0034CAAB /* Ant Media.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A8A8CC8228251979000A335A /* ScreenShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A8A8CC8C28251979000A335A /* Build configuration list for PBXNativeTarget "ScreenShare" */;
+			buildPhases = (
+				830BDD09EF826DD61525AA6E /* [CP] Check Pods Manifest.lock */,
+				A8A8CC7F28251979000A335A /* Sources */,
+				A8A8CC8028251979000A335A /* Frameworks */,
+				A8A8CC8128251979000A335A /* Resources */,
+				A8B7CF0F282928AE0070C358 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ScreenShare;
+			productName = ScreenShare;
+			productReference = A8A8CC8328251979000A335A /* ScreenShare.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 		A8C465AE248B9AA00027ADBA /* WebRTCiOSSDK */ = {
 			isa = PBXNativeTarget;
@@ -330,13 +427,16 @@
 		78DC79AC20CE63AC0034CAAB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = AntMedia;
 				TargetAttributes = {
 					78DC79B320CE63AC0034CAAB = {
 						CreatedOnToolsVersion = 9.3.1;
 						LastSwiftMigration = 1100;
+					};
+					A8A8CC8228251979000A335A = {
+						CreatedOnToolsVersion = 13.3.1;
 					};
 					A8C465AE248B9AA00027ADBA = {
 						CreatedOnToolsVersion = 11.4.1;
@@ -359,6 +459,7 @@
 			targets = (
 				78DC79B320CE63AC0034CAAB /* AntMediaReferenceApplication */,
 				A8C465AE248B9AA00027ADBA /* WebRTCiOSSDK */,
+				A8A8CC8228251979000A335A /* ScreenShare */,
 			);
 		};
 /* End PBXProject section */
@@ -371,6 +472,13 @@
 				78DC79C220CE63AE0034CAAB /* LaunchScreen.storyboard in Resources */,
 				78DC79BF20CE63AE0034CAAB /* Assets.xcassets in Resources */,
 				78DC79BD20CE63AC0034CAAB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8A8CC8128251979000A335A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +527,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		830BDD09EF826DD61525AA6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AntMediaWebRTCSDK-ScreenShare-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		B6B4A34B509CD3606DB16D0C /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,11 +590,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8A8CC7F28251979000A335A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A8A8CC8728251979000A335A /* SampleHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A8C465AB248B9AA00027ADBA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DAF6452520D64200560875 /* RTCCustomFrameCapturer.swift in Sources */,
+				A8B7CF21282E98290070C358 /* RTCCustomFrameCapturer.swift in Sources */,
 				A89C908C24DDAF8C005F5D98 /* AntMediaClient.swift in Sources */,
 				A89C908D24DDAF8C005F5D98 /* AntMediaClientDelegate.swift in Sources */,
 				A859E73C24E4238400494836 /* ConferenceClient.swift in Sources */,
@@ -479,6 +617,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A8A8CC8A28251979000A335A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A8A8CC8228251979000A335A /* ScreenShare */;
+			targetProxy = A8A8CC8928251979000A335A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		78DC79BB20CE63AC0034CAAB /* Main.storyboard */ = {
@@ -633,11 +779,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = CC60F64352D37D815D6BDC55 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = (
 					arm64,
 					x64,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AntMediaReferenceApplication/AntMediaReferenceApplication.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2YK9J8G25K;
@@ -655,7 +803,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.reference44;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk;
 				PRODUCT_NAME = "Ant Media";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -667,11 +815,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B9C79595D8958BD345F16A10 /* Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ARCHS = (
 					arm64,
 					x64,
 				);
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = AntMediaReferenceApplication/AntMediaReferenceApplication.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2YK9J8G25K;
@@ -689,9 +839,72 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.reference44;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk;
 				PRODUCT_NAME = "Ant Media";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A8A8CC8D28251979000A335A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16803ED5EB02319DEBAEEA58 /* Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = ScreenShare/ScreenShare.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScreenShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScreenShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 AntMedia. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk.ScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A8A8CC8E28251979000A335A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACA8C57C589E6A85E11CA83D /* Pods-AntMediaWebRTCSDK-ScreenShare.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = ScreenShare/ScreenShare.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ScreenShare/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = ScreenShare;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2022 AntMedia. All rights reserved.";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk.ScreenShare;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -734,7 +947,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.WebRTCiOSSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.sdk.webrtc;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -781,7 +994,7 @@
 				);
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.WebRTCiOSSDK;
+				PRODUCT_BUNDLE_IDENTIFIER = com.antmedia.ios.sdk.webrtc;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
@@ -809,6 +1022,15 @@
 			buildConfigurations = (
 				78DC79C720CE63AE0034CAAB /* Debug */,
 				78DC79C820CE63AE0034CAAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A8A8CC8C28251979000A335A /* Build configuration list for PBXNativeTarget "ScreenShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A8A8CC8D28251979000A335A /* Debug */,
+				A8A8CC8E28251979000A335A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
