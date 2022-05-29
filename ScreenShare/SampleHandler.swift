@@ -110,7 +110,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         else {
             NSLog("----> streamId: %@ , websocket url: %@, videoEnabled: %d , audioEnabled: %d", streamId as! String, url as! String,
                   videoEnabled, audioEnabled);
-            
+        
             self.client.delegate = self
             self.client.setDebug(true)
             self.client.setOptions(url: url as! String, streamId: streamId as! String, token: token as? String ?? "", mode: AntMediaClientMode.publish, enableDataChannel: true, captureScreenEnabled: true);
@@ -119,7 +119,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
                 self.client.setVideoEnable(enable: videoEnabled as! Bool);
                 self.client.setExternalVideoCapture(externalVideoCapture: true);
             }
-            
+                    
             self.client.setExternalAudio(externalAudioEnabled: true)
             
             self.client.initPeerConnection();

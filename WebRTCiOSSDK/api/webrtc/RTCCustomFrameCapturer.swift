@@ -35,7 +35,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         //if external capture is enabled videoEnabled and audioEnabled are ignored
         self.videoEnabled = videoEnabled;
         self.audioEnabled = audioEnabled;
-    
+            
         super.init(delegate: delegate)
         
     }
@@ -76,7 +76,41 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             let timeStampNs = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) *
                 kNanosecondsPerSecond;
             
-            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer, rotation: RTCVideoRotation._0, timeStampNs: Int64(timeStampNs))
+            var rotation = RTCVideoRotation._0;
+            if #available(iOS 11.0, *) {
+                if let orientationAttachment =  CMGetAttachment(sampleBuffer, key: RPVideoSampleOrientationKey as CFString, attachmentModeOut: nil) as? NSNumber
+                {
+                    let orientation = CGImagePropertyOrientation(rawValue: orientationAttachment.uint32Value)
+                    switch orientation {
+                               case .up:
+                                rotation = RTCVideoRotation._0;
+                                break;
+                               case .down:
+                                rotation = RTCVideoRotation._180;
+                                break;
+                             
+                                case .left:
+                                rotation = RTCVideoRotation._90;
+                                break;
+                               
+                               case .right:
+                                rotation = RTCVideoRotation._270;
+                                break;
+                             
+                                default:
+                                NSLog("orientation NOT FOUND");
+                    }
+                }
+                else {
+                    NSLog("CANNOT get image rotation")
+                    
+                }
+            } else {
+                NSLog("CANNOT get image rotation becaue iOS version is older than 11")
+            }
+
+            //NSLog("Device orientation width: %d, height:%d ", width, height);
+            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer, rotation: rotation, timeStampNs: Int64(timeStampNs))
             
             self.delegate?.capturer(self, didCapture: rtcVideoFrame)
            

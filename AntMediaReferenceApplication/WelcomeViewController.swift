@@ -62,7 +62,7 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
         self.setGesture()
         
-        self.screenRecord.preferredExtension = "com.antmedia.ios.sdk.ScreenShare";
+        self.screenRecord.preferredExtension = "io.antmedia.ios.sdk.ScreenShare";
         self.screenRecord.showsMicrophoneButton = false;
 
         self.roomField.text = "stream1"
