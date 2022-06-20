@@ -19,3 +19,7 @@ If you discover any issues regarding security, please disclose the information r
 ## Support
 
 Have any questions about the iOS SDK? Visit our [community platform](http://community.antmedia.io/).
+
+
+## Issues
+Create issues on the [Ant-Media-Server](https://github.com/ant-media/Ant-Media-Server/issues)
