@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import WebRTCiOSSDK
+import WebRTC
 
 open class ConferenceViewController: UIViewController {
    
@@ -24,6 +25,10 @@ open class ConferenceViewController: UIViewController {
     @IBOutlet var remoteView3: UIView!
         
     var remoteViews:[UIView] = []
+    
+    private let audioQueue = DispatchQueue(label: "audio")
+    
+    private let rtcAudioSession =  RTCAudioSession.sharedInstance()
     
     var viewFree:[Bool] = [true, true, true, true]
     
@@ -60,6 +65,39 @@ open class ConferenceViewController: UIViewController {
             client.playerClient.stop();
         }
         conferenceClient.leaveRoom()
+    }
+    
+    public func speakerOn() {
+       
+        self.audioQueue.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.rtcAudioSession.lockForConfiguration()
+            do {
+                try self.rtcAudioSession.overrideOutputAudioPort(.speaker)
+                try self.rtcAudioSession.setActive(true)
+            } catch let error {
+                AntMediaClient.printf("Couldn't force audio to speaker: \(error)")
+            }
+            self.rtcAudioSession.unlockForConfiguration()
+        }
+    }
+    
+    // Fallback to the default playing device: headphones/bluetooth/ear speaker
+    public func speakerOff() {
+        self.audioQueue.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.rtcAudioSession.lockForConfiguration()
+            do {
+                try self.rtcAudioSession.overrideOutputAudioPort(.none)
+            } catch let error {
+                debugPrint("Error setting AVAudioSession category: \(error)")
+            }
+            self.rtcAudioSession.unlockForConfiguration()
+        }
     }
     
     
@@ -184,6 +222,7 @@ extension ConferenceViewController: AntMediaClientDelegate
     
     public func playStarted(streamId: String) {
         print("play started");
+        self.speakerOn();
         
     }
     
