@@ -251,10 +251,10 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
-            landmarkName = "VideoViewController"
-            landmarkType = "21">
+            startingLineNumber = "285"
+            endingLineNumber = "285"
+            landmarkName = "audioSessionDidStartPlayOrRecord(streamId:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -267,9 +267,9 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
-            landmarkName = "disconnected(streamId:)"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "dataReceivedFromDataChannel(streamId:data:binary:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -283,9 +283,9 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "227"
-            endingLineNumber = "227"
-            landmarkName = "disconnected(streamId:)"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
+            landmarkName = "dataReceivedFromDataChannel(streamId:data:binary:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -411,9 +411,9 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
-            landmarkName = "disconnected(streamId:)"
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "dataReceivedFromDataChannel(streamId:data:binary:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -427,10 +427,10 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "messageButtonTapped(_:)"
-            landmarkType = "7">
+            startingLineNumber = "233"
+            endingLineNumber = "233"
+            landmarkName = "VideoViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -491,8 +491,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -507,8 +507,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -587,8 +587,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "newStreamsJoined(streams:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -603,8 +603,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "224"
+            endingLineNumber = "224"
             landmarkName = "playStarted(streamId:)"
             landmarkType = "7">
             <Locations>
@@ -715,8 +715,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "142"
-            endingLineNumber = "142"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "streamsLeaved(streams:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -731,8 +731,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "newStreamsJoined(streams:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -747,8 +747,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "newStreamsJoined(streams:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1429,8 +1429,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "broadcastStarted(withSetupInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1445,8 +1445,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "broadcastStarted(withSetupInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1461,8 +1461,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "broadcastStarted(withSetupInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1493,8 +1493,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "processSampleBuffer(_:with:)"
             landmarkType = "7">
          </BreakpointContent>
