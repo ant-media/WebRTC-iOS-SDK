@@ -322,10 +322,10 @@ class WebRTCClient: NSObject {
                 
                 let cameraVideoCapturer = self.videoCapturer as? RTCCameraVideoCapturer;
                 
-                
                 cameraVideoCapturer?.startCapture(with: camera!,
                                                   format: selectedFormat!,
                                                   fps: Int(fps))
+                
                 return true
             }
             else {
@@ -349,7 +349,8 @@ class WebRTCClient: NSObject {
         {
             //try with screencast video source
             
-            self.videoCapturer = RTCCustomFrameCapturer.init(delegate: videoSource, height: targetHeight, externalCapture: externalVideoCapture, videoEnabled: true, audioEnabled: externalAudio)
+            self.videoCapturer = RTCCustomFrameCapturer.init(delegate: videoSource, height: targetHeight, externalCapture: externalVideoCapture, videoEnabled: videoEnabled, audioEnabled: externalAudio)
+            (self.videoCapturer as? RTCCustomFrameCapturer)?.setWebRTCClient(webRTCClient: self);
             (self.videoCapturer as? RTCCustomFrameCapturer)?.startCapture()
         }
         else {

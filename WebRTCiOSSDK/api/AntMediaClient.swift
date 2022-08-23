@@ -242,6 +242,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
             self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, captureScreen: self.captureScreenEnabled, externalAudio: self.externalAudioEnabled)
             
+            self.webRTCClient!.externalVideoCapture(externalVideoCapture: self.externalVideoCapture)
             self.webRTCClient!.setStreamId(streamId)
             self.webRTCClient!.setToken(self.token)
         }

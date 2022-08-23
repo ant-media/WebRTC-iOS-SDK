@@ -417,7 +417,7 @@ WebRTC Live Streaming</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O0m-K1-lh4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1197.1014492753625" y="123.91304347826087"/>
+            <point key="canvasLocation" x="1196" y="123.68815592203899"/>
         </scene>
     </scenes>
     <resources>
