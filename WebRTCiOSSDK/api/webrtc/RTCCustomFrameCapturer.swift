@@ -58,14 +58,16 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             let width = Int32(CVPixelBufferGetWidth(pixelBuffer))
             let height = Int32(CVPixelBufferGetHeight(pixelBuffer))
             
-            var adaptedWidth = (width * Int32(self.targetHeight)) / height;
-            if (adaptedWidth % 2 == 1) {
-                adaptedWidth+=1;
+            var scaledWidth = (width * Int32(self.targetHeight)) / height;
+            if (scaledWidth % 2 == 1) {
+                scaledWidth+=1;
             }
+            
+            //NSLog("Incoming frame width:\(width) height:\(height) adapted width:\(scaledWidth) height:\(self.targetHeight)")
             
             let rtcPixelBuffer = RTCCVPixelBuffer(
                 pixelBuffer: pixelBuffer,
-                adaptedWidth:adaptedWidth,
+                adaptedWidth:scaledWidth,
                 adaptedHeight: Int32(self.targetHeight),
                 cropWidth: width,
                 cropHeight: height,
@@ -88,11 +90,9 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
                                case .down:
                                 rotation = RTCVideoRotation._180;
                                 break;
-                             
                                 case .left:
                                 rotation = RTCVideoRotation._90;
                                 break;
-                               
                                case .right:
                                 rotation = RTCVideoRotation._270;
                                 break;
@@ -110,9 +110,13 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             }
 
             //NSLog("Device orientation width: %d, height:%d ", width, height);
-            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer, rotation: rotation, timeStampNs: Int64(timeStampNs))
             
-            self.delegate?.capturer(self, didCapture: rtcVideoFrame)
+            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer,
+                                              
+                                              rotation: rotation, timeStampNs: Int64(timeStampNs))
+            
+            
+            self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
            
         }
         
