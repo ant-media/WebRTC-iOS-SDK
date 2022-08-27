@@ -27,11 +27,15 @@ check
 rm -rf $UNIVERSAL_DIR
 mkdir $UNIVERSAL_DIR
 
+echo "Creating $UNIVERSAL_DIR/WebRTCiOSSDK.xcframework"
 Xcodebuild -create-xcframework -framework $OS_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework  -debug-symbols $OS_DIR/dSYMs/WebRTCiOSSDK.framework.dSYM -framework $SIMULATOR_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework -debug-symbols $SIMULATOR_DIR/dSYMs/WebRTCiOSSDK.framework.dSYM -output $UNIVERSAL_DIR/WebRTCiOSSDK.xcframework
 check
 
-
+echo "Copying $UNIVERSAL_DIR/WebRTCiOSSDK.xcframework to WebRTCiOSSDK.xcframework"
+rm -rf WebRTCiOSSDK.xcframework
+cp -r $UNIVERSAL_DIR/WebRTCiOSSDK.xcframework .
+check 
 #rm -rf $SIMULATOR_DIR
 #rm -rf $OS_DIR
 
-echo "If everything is ok. Your XC Framework is $UNIVERSAL_DIR/WebRTCiOSSDK.xcframework"
+echo "WebRTCiOSSDK.xcframework is updated"
