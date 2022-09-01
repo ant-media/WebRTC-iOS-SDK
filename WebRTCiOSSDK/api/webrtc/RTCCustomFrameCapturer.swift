@@ -47,8 +47,10 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     public func capture(_ sampleBuffer: CMSampleBuffer) {
         
         if (CMSampleBufferGetNumSamples(sampleBuffer) != 1 || !CMSampleBufferIsValid(sampleBuffer) ||
-            !CMSampleBufferDataIsReady(sampleBuffer)) {
-          return;
+            !CMSampleBufferDataIsReady(sampleBuffer))
+        {
+            NSLog("Buffer is not ready and dropping");
+            return;
         }
         
         let _pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
@@ -118,6 +120,9 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             
             self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
            
+        }
+        else {
+            NSLog("Cannot get image buffer");
         }
         
     }
