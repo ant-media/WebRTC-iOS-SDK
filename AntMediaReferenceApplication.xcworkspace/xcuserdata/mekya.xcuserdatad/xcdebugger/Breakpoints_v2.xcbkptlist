@@ -1461,8 +1461,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "broadcastStarted(withSetupInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1493,8 +1493,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
             landmarkName = "processSampleBuffer(_:with:)"
             landmarkType = "7">
          </BreakpointContent>

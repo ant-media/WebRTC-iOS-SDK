@@ -69,8 +69,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var cameraPosition: AVCaptureDevice.Position = .front
     
-    private var targetWidth: Int = 480
-    private var targetHeight: Int = 360
+    private var targetWidth: Int = 1280
+    private var targetHeight: Int = 720
     
     private var maxVideoBps: NSNumber = 0;
     

@@ -26,7 +26,7 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		lOivkKowohRALLLgR5zKQ970EaY=
+		mUnyL9Wnb4h16h2X9cVNwwPVLPs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -83,11 +83,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			lOivkKowohRALLLgR5zKQ970EaY=
+			mUnyL9Wnb4h16h2X9cVNwwPVLPs=
 			</data>
 			<key>hash2</key>
 			<data>
-			ljEKOgWkKTp+bcWx4JRkpOhyhxyZozg8IIF7HQeP0hE=
+			mIyBjAGyPQKN7oYs2TsWcbfzg/jDpzqzryJiTv91UvQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

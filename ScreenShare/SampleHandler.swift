@@ -119,6 +119,8 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
                 self.client.setVideoEnable(enable: videoEnabled as! Bool);
                 self.client.setExternalVideoCapture(externalVideoCapture: true);
             }
+            
+            self.client.setTargetResolution(width: 1280, height: 720);
                     
             self.client.setExternalAudio(externalAudioEnabled: true)
             

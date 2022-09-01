@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5E991103B47FA5E65A93EDA7 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66822D83DCD1C0AE1E598EF8 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */; };
 		78B4B3CA20D242660058F57E /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B4B3C920D242660058F57E /* VideoViewController.swift */; };
 		78BCD2CB20D7F646003D2A58 /* Run.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BCD2CA20D7F646003D2A58 /* Run.swift */; };
 		78DC79B820CE63AC0034CAAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78DC79B720CE63AC0034CAAB /* AppDelegate.swift */; };
@@ -41,7 +42,7 @@
 		A8B7CF1F282BF5850070C358 /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8B7CF21282E98290070C358 /* RTCCustomFrameCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */; };
 		A8C465C1248B9AA10027ADBA /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8C465B1248B9AA00027ADBA /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8DD7074276C878E007C2F4D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		A8DD7074276C878E007C2F4D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
 		A8DD7076276C87CD007C2F4D /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD2091500B3DBE5FA014C05 /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */; };
 		A8DD7079276C880B007C2F4D /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82129F525ACC65E005F8E6C /* WebRTC.xcframework */; };
 		A8DD707F276C907F007C2F4D /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; };
@@ -102,6 +103,7 @@
 		16803ED5EB02319DEBAEEA58 /* Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaWebRTCSDK-ScreenShare/Pods-AntMediaWebRTCSDK-ScreenShare.debug.xcconfig"; sourceTree = "<group>"; };
 		2CD2091500B3DBE5FA014C05 /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62EB92D1E19240951AEBD4BA /* Pods-AntMediaReferenceApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AntMediaReferenceApplication.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AntMediaReferenceApplication/Pods-AntMediaReferenceApplication.debug.xcconfig"; sourceTree = "<group>"; };
+		66822D83DCD1C0AE1E598EF8 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7819AA5F20DA2CFD007D6292 /* AntMediaSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AntMediaSDK.framework; sourceTree = "<group>"; };
 		7819AA6820DA30FC007D6292 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		7819AA6A20DA313A007D6292 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -164,9 +166,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DD7074276C878E007C2F4D /* (null) in Frameworks */,
+				A8DD7074276C878E007C2F4D /* BuildFile in Frameworks */,
 				A81A459D275CECD6000EF59F /* WebRTC.xcframework in Frameworks */,
 				A8DD707F276C907F007C2F4D /* WebRTCiOSSDK.xcframework in Frameworks */,
+				5E991103B47FA5E65A93EDA7 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +217,7 @@
 				2CD2091500B3DBE5FA014C05 /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */,
 				A8A8CC52281D40BD000A335A /* ReplayKit.framework */,
 				01B20A091BCFB704E4F65883 /* Pods_AntMediaWebRTCSDK_ScreenShare.framework */,
+				66822D83DCD1C0AE1E598EF8 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -370,7 +374,6 @@
 				78DC79B120CE63AC0034CAAB /* Frameworks */,
 				78DC79B220CE63AC0034CAAB /* Resources */,
 				7819AA6720DA2D07007D6292 /* Embed Frameworks */,
-				5842EC9889B3FBBE5BFE0EF9 /* [CP] Embed Pods Frameworks */,
 				A8A8CC5E281D40BD000A335A /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -492,23 +495,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5842EC9889B3FBBE5BFE0EF9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5D9016099DDC43D46D018B04 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
