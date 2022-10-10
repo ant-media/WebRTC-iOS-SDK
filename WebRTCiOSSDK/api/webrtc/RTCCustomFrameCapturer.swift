@@ -14,6 +14,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     
     let kNanosecondsPerSecond: Float64 = 1000000000
     var nanoseconds: Float64 = 0
+    var lastSentFrameTimeStampNanoSeconds: Float64 = 0;
     private var targetHeight: Int
         
     private var videoEnabled: Bool = true;
@@ -21,13 +22,15 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     
     private var webRTCClient: WebRTCClient?;
     
+    private var frameRateIntervalNanoSeconds : Float64 = 0;
+    
     
     // if externalCapture is true, it means that capture method is called from an external component.
     // externalComponent is the BroadcastExtension
     private var externalCapture: Bool;
     
     
-    init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false)
+    init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false, fps: Int = 15)
     {
         self.targetHeight = height
         self.externalCapture = externalCapture;
@@ -35,6 +38,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         //if external capture is enabled videoEnabled and audioEnabled are ignored
         self.videoEnabled = videoEnabled;
         self.audioEnabled = audioEnabled;
+        self.frameRateIntervalNanoSeconds = kNanosecondsPerSecond/Double(fps);
             
         super.init(delegate: delegate)
         
@@ -51,6 +55,16 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         {
             NSLog("Buffer is not ready and dropping");
             return;
+        }
+        
+        let timeStampNs = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) *
+            kNanosecondsPerSecond;
+        
+        
+        if ((timeStampNs - lastSentFrameTimeStampNanoSeconds) < frameRateIntervalNanoSeconds ) {
+            NSLog("Dropping frame because of high fps. Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
+            return;
+            
         }
         
         let _pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
@@ -76,9 +90,6 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
                 cropX: 0,
                 cropY: 0)
             
-                        
-            let timeStampNs = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) *
-                kNanosecondsPerSecond;
             
             var rotation = RTCVideoRotation._0;
             if #available(iOS 11.0, *) {
@@ -117,8 +128,8 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
                                               
                                               rotation: rotation, timeStampNs: Int64(timeStampNs))
             
-            
             self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
+            lastSentFrameTimeStampNanoSeconds = timeStampNs;
            
         }
         else {
