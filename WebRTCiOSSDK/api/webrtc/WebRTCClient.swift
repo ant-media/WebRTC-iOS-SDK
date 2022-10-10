@@ -342,18 +342,18 @@ class WebRTCClient: NSObject {
     
     private func createVideoTrack() -> RTCVideoTrack?  {
         
-        let videoSource = WebRTCClient.factory.videoSource()
-        
-        
         if captureScreenEnabled
         {
             //try with screencast video source
-            
+            let videoSource = WebRTCClient.factory.videoSource(forScreenCast: true)
             self.videoCapturer = RTCCustomFrameCapturer.init(delegate: videoSource, height: targetHeight, externalCapture: externalVideoCapture, videoEnabled: videoEnabled, audioEnabled: externalAudio)
             (self.videoCapturer as? RTCCustomFrameCapturer)?.setWebRTCClient(webRTCClient: self);
             (self.videoCapturer as? RTCCustomFrameCapturer)?.startCapture()
+            let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
+            return videoTrack
         }
         else {
+            let videoSource = WebRTCClient.factory.videoSource()
             #if TARGET_OS_SIMULATOR
             self.videoCapturer = RTCFileVideoCapturer(delegate: videoSource)
             #else
@@ -363,10 +363,11 @@ class WebRTCClient: NSObject {
                 return nil;
             }
             #endif
+            let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
+            return videoTrack
         }
         
-        let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
-        return videoTrack
+       
     }
     
     private func addLocalMediaStream() -> Bool {
