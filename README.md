@@ -6,7 +6,7 @@ Ant Media Server is a streaming engine software that provides adaptive, ultra lo
 
 ## About iOS SDK
 
-This repository includes Ant Media iOS SDK for WebRTC. 
+This repository includes Ant Media iOS SDK for WebRTC. This repository is not compatible with the community edition. 
 
 ## Integration 
 
