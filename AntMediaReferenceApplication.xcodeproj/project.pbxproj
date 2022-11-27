@@ -42,7 +42,7 @@
 		A8B7CF1F282BF5850070C358 /* WebRTCiOSSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8B7CF21282E98290070C358 /* RTCCustomFrameCapturer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DAF6442520D64200560875 /* RTCCustomFrameCapturer.swift */; };
 		A8C465C1248B9AA10027ADBA /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8C465B1248B9AA00027ADBA /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8DD7074276C878E007C2F4D /* BuildFile in Frameworks */ = {isa = PBXBuildFile; };
+		A8DD7074276C878E007C2F4D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		A8DD7076276C87CD007C2F4D /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CD2091500B3DBE5FA014C05 /* Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework */; };
 		A8DD7079276C880B007C2F4D /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A82129F525ACC65E005F8E6C /* WebRTC.xcframework */; };
 		A8DD707F276C907F007C2F4D /* WebRTCiOSSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DD7062276B1E7D007C2F4D /* WebRTCiOSSDK.xcframework */; };
@@ -166,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DD7074276C878E007C2F4D /* BuildFile in Frameworks */,
+				A8DD7074276C878E007C2F4D /* (null) in Frameworks */,
 				A81A459D275CECD6000EF59F /* WebRTC.xcframework in Frameworks */,
 				A8DD707F276C907F007C2F4D /* WebRTCiOSSDK.xcframework in Frameworks */,
 				5E991103B47FA5E65A93EDA7 /* Pods_AntMediaWebRTCSDK_AntMediaReferenceApplication.framework in Frameworks */,
@@ -375,6 +375,7 @@
 				78DC79B220CE63AC0034CAAB /* Resources */,
 				7819AA6720DA2D07007D6292 /* Embed Frameworks */,
 				A8A8CC5E281D40BD000A335A /* Embed App Extensions */,
+				2464683997F51ED5B16F8EC4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -495,6 +496,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2464683997F51ED5B16F8EC4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication/Pods-AntMediaWebRTCSDK-AntMediaReferenceApplication-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5D9016099DDC43D46D018B04 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,12 +802,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk121;
 				PRODUCT_NAME = "Ant Media";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -820,12 +838,12 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = AntMediaReferenceApplication/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk121;
 				PRODUCT_NAME = "Ant Media";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -856,7 +874,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk1.ScreenShare1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk121.ScreenShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -887,7 +905,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk1.ScreenShare1;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.sdk121.ScreenShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -924,7 +942,7 @@
 				);
 				INFOPLIST_FILE = WebRTCiOSSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -972,7 +990,7 @@
 				);
 				INFOPLIST_FILE = WebRTCiOSSDK/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

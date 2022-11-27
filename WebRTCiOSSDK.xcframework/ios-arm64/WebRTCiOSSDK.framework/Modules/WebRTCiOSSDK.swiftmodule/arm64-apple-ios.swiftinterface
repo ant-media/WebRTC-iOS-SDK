@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name WebRTCiOSSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import Foundation
 import ReplayKit
@@ -9,6 +10,7 @@ import Swift
 import WebRTC
 @_exported import WebRTCiOSSDK
 import _Concurrency
+import _StringProcessing
 public enum AntMediaClientMode : Swift.Int {
   case join
   case play
@@ -74,7 +76,7 @@ extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCAudioSessionDelegate {
   @objc dynamic public func audioSessionDidStartPlayOrRecord(_ session: WebRTC.RTCAudioSession)
 }
 extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCVideoViewDelegate {
-  @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreGraphics.CGSize)
+  @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreFoundation.CGSize)
 }
 @_hasMissingDesignatedInitializers public class StreamInformation {
   final public let streamWidth: Swift.Int

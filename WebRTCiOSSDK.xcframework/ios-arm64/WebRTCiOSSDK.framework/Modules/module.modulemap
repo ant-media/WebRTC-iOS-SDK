@@ -6,6 +6,6 @@ framework module WebRTCiOSSDK {
 }
 
 module WebRTCiOSSDK.Swift {
-    header "WebRTCiOSSDK-Swift.h"
-    requires objc
+  header "WebRTCiOSSDK-Swift.h"
+  requires objc
 }

@@ -55,21 +55,17 @@ class VideoViewController: UIViewController {
          Enable the below line if you use multi peer node for embedded sdk
          */
         //self.client.setMultiPeerMode(enable: true, mode: "play")
-        /*
-         Enable below line if you don't want to have mic permission dialog while playing
-         Please pay attention that if you enable below method, it will not use microphone.
-         Which means if you are publishing and playing at the same time, you should not enable
-         the below method
-         */
-        //dontAskMicPermissionForPlaying();
+
         
         if self.client.getCurrentMode() == AntMediaClientMode.join {
+            resetDefaultWebRTCAudioConfiguation();
             self.modeLabel.text = "Mode: P2P"
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
             self.client.setLocalView(container: pipVideoView)
             self.client.setRemoteView(remoteContainer: fullVideoView)
         } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
+            resetDefaultWebRTCAudioConfiguation();
            // self.client.setVideoEnable(enable: true);
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
@@ -79,6 +75,14 @@ class VideoViewController: UIViewController {
             self.client.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
            
         } else if self.client.getCurrentMode() == AntMediaClientMode.play {
+            /*
+             Below line don't ask mic permission while playing
+             Please pay attention that if you enable below method, it will not use microphone.
+             Which means if you are publishing and playing at the same time, you should not enable
+             the below method
+             */
+            dontAskMicPermissionForPlaying();
+            
             self.fullVideoView.isHidden = false
             self.pipVideoView.isHidden = false
             self.client.setRemoteView(remoteContainer: fullVideoView, mode: .scaleAspectFit)
@@ -115,6 +119,10 @@ class VideoViewController: UIViewController {
         webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
                              
         RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
+    }
+    
+    private func resetDefaultWebRTCAudioConfiguation() {
+        RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration.init())
     }
     
     @IBAction func audioTapped(_ sender: UIButton!) {

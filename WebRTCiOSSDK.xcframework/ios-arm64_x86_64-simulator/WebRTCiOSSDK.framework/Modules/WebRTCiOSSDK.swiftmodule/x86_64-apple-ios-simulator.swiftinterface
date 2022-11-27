@@ -1,0 +1,170 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name WebRTCiOSSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import Foundation
+import ReplayKit
+import Starscream
+import Swift
+import WebRTC
+@_exported import WebRTCiOSSDK
+import _Concurrency
+import _StringProcessing
+public enum AntMediaClientMode : Swift.Int {
+  case join
+  case play
+  case publish
+  case conference
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers open class AntMediaClient : ObjectiveC.NSObject, WebRTCiOSSDK.AntMediaClientProtocol {
+  public var delegate: WebRTCiOSSDK.AntMediaClientDelegate!
+  @objc override dynamic public init()
+  public func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String = "", mode: WebRTCiOSSDK.AntMediaClientMode = .join, enableDataChannel: Swift.Bool = false, captureScreenEnabled: Swift.Bool = false)
+  public func setMaxVideoBps(videoBitratePerSecond: Foundation.NSNumber)
+  public func setMultiPeerMode(enable: Swift.Bool, mode: Swift.String)
+  public func setVideoEnable(enable: Swift.Bool)
+  public func getStreamId() -> Swift.String
+  public func getLeaveMessage() -> [Swift.String : Swift.String]
+  public func speakerOn()
+  public func speakerOff()
+  open func start()
+  open func connectWebSocket()
+  open func setCameraPosition(position: AVFoundation.AVCaptureDevice.Position)
+  open func setTargetResolution(width: Swift.Int, height: Swift.Int)
+  open func stop()
+  open func initPeerConnection()
+  open func switchCamera()
+  open func sendData(data: Foundation.Data, binary: Swift.Bool = false)
+  open func isDataChannelActive() -> Swift.Bool
+  open func setLocalView(container: UIKit.UIView, mode: UIKit.UIView.ContentMode = .scaleAspectFit)
+  open func setRemoteView(remoteContainer: UIKit.UIView, mode: UIKit.UIView.ContentMode = .scaleAspectFit)
+  open func isConnected() -> Swift.Bool
+  open func setDebug(_ value: Swift.Bool)
+  public static func setDebug(_ value: Swift.Bool)
+  open func toggleAudio()
+  open func toggleVideo()
+  open func getCurrentMode() -> WebRTCiOSSDK.AntMediaClientMode
+  open func getWsUrl() -> Swift.String
+  public static func printf(_ msg: Swift.String)
+  public func getStreamInfo()
+  public func forStreamQuality(resolutionHeight: Swift.Int)
+  public func getStats(completionHandler: @escaping (WebRTC.RTCStatisticsReport) -> Swift.Void)
+  public func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
+  public func setExternalAudio(externalAudioEnabled: Swift.Bool)
+  public func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
+  public func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
+  @objc deinit
+}
+extension WebRTCiOSSDK.AntMediaClient {
+  public func sendMessage(_ message: [Swift.String : Any])
+  public func addLocalStream()
+  public func addRemoteStream()
+  public func connectionStateChanged(newState: WebRTC.RTCIceConnectionState)
+  public func dataReceivedFromDataChannel(didReceiveData data: WebRTC.RTCDataBuffer)
+}
+extension WebRTCiOSSDK.AntMediaClient : Starscream.WebSocketDelegate {
+  public func getPingMessage() -> [Swift.String : Swift.String]
+  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
+}
+extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCAudioSessionDelegate {
+  @objc dynamic public func audioSessionDidStartPlayOrRecord(_ session: WebRTC.RTCAudioSession)
+}
+extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCVideoViewDelegate {
+  @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreFoundation.CGSize)
+}
+@_hasMissingDesignatedInitializers public class StreamInformation {
+  final public let streamWidth: Swift.Int
+  final public let streamHeight: Swift.Int
+  final public let videoBitrate: Swift.Int
+  final public let audioBitrate: Swift.Int
+  final public let videoCodec: Swift.String
+  @objc deinit
+}
+public protocol AntMediaClientDelegate {
+  func clientDidConnect(_ client: WebRTCiOSSDK.AntMediaClient)
+  func clientDidDisconnect(_ message: Swift.String)
+  func clientHasError(_ message: Swift.String)
+  func remoteStreamStarted(streamId: Swift.String)
+  func remoteStreamRemoved(streamId: Swift.String)
+  func localStreamStarted(streamId: Swift.String)
+  func playStarted(streamId: Swift.String)
+  func playFinished(streamId: Swift.String)
+  func publishStarted(streamId: Swift.String)
+  func publishFinished(streamId: Swift.String)
+  func disconnected(streamId: Swift.String)
+  func audioSessionDidStartPlayOrRecord(streamId: Swift.String)
+  func dataReceivedFromDataChannel(streamId: Swift.String, data: Foundation.Data, binary: Swift.Bool)
+  func streamInformation(streamInfo: [WebRTCiOSSDK.StreamInformation])
+}
+public protocol ConferenceClientProtocol {
+  func joinRoom(roomId: Swift.String, streamId: Swift.String)
+  func leaveRoom()
+}
+public protocol ConferenceClientDelegate {
+  func streamIdToPublish(streamId: Swift.String)
+  func newStreamsJoined(streams: [Swift.String])
+  func streamsLeaved(streams: [Swift.String])
+}
+open class ConferenceClient : WebRTCiOSSDK.ConferenceClientProtocol, Starscream.WebSocketDelegate {
+  public init(serverURL: Swift.String, conferenceClientDelegate: WebRTCiOSSDK.ConferenceClientDelegate)
+  @objc deinit
+  public func didConnected(socket: Starscream.WebSocketClient)
+  public func receiveMessage(socket: Starscream.WebSocketClient, text: Swift.String)
+  public func joinRoom(roomId: Swift.String, streamId: Swift.String)
+  public func leaveRoom()
+  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
+}
+public protocol AntMediaClientProtocol {
+  func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String, mode: WebRTCiOSSDK.AntMediaClientMode, enableDataChannel: Swift.Bool, captureScreenEnabled: Swift.Bool)
+  func setVideoEnable(enable: Swift.Bool)
+  func speakerOn()
+  func speakerOff()
+  func initPeerConnection()
+  func start()
+  func setCameraPosition(position: AVFoundation.AVCaptureDevice.Position)
+  func setTargetResolution(width: Swift.Int, height: Swift.Int)
+  func stop()
+  func switchCamera()
+  func sendData(data: Foundation.Data, binary: Swift.Bool)
+  func isDataChannelActive() -> Swift.Bool
+  func setLocalView(container: UIKit.UIView, mode: UIKit.UIView.ContentMode)
+  func setRemoteView(remoteContainer: UIKit.UIView, mode: UIKit.UIView.ContentMode)
+  func isConnected() -> Swift.Bool
+  @available(*, deprecated, message: "Use static version of setDebug")
+  func setDebug(_ value: Swift.Bool)
+  static func setDebug(_ value: Swift.Bool)
+  func toggleAudio()
+  func toggleVideo()
+  func getStreamId() -> Swift.String
+  func getStreamInfo()
+  func forStreamQuality(resolutionHeight: Swift.Int)
+  func getStats(completionHandler: @escaping (WebRTC.RTCStatisticsReport) -> Swift.Void)
+  func setMaxVideoBps(videoBitratePerSecond: Foundation.NSNumber)
+  func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
+  func setExternalAudio(externalAudioEnabled: Swift.Bool)
+  func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
+  func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
+}
+extension Swift.Dictionary {
+  public var json: Swift.String {
+    get
+  }
+}
+extension Swift.String {
+  public func toURL() -> Foundation.URL
+  public func toJSON() -> [Swift.String : Any]?
+}
+@objc @_inheritsConvenienceInitializers public class Config : ObjectiveC.NSObject {
+  public static func setDefaultStunServer(server: WebRTC.RTCIceServer)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension WebRTCiOSSDK.AntMediaClientMode : Swift.Equatable {}
+extension WebRTCiOSSDK.AntMediaClientMode : Swift.Hashable {}
+extension WebRTCiOSSDK.AntMediaClientMode : Swift.RawRepresentable {}
