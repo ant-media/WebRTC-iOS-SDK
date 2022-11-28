@@ -32,7 +32,12 @@ check
 
 #build fat binary for simulators
 mkdir -p $UNIVERSAL_SIMULATOR_DIR
+check
 cp -r $SIMULATOR_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework  $UNIVERSAL_SIMULATOR_DIR/
+check
+cp -r $SIMULATOR_ARM64_DIR/Products/Library/Frameworks/WebRTCiOSSDK.framework  $UNIVERSAL_SIMULATOR_DIR/
+check
+
 lipo -create -output ${UNIVERSAL_SIMULATOR_DIR}/WebRTCiOSSDK.framework/WebRTCiOSSDK ${SIMULATOR_DIR}/Products/Library/Frameworks/WebRTCiOSSDK.framework/WebRTCiOSSDK ${SIMULATOR_ARM64_DIR}/Products/Library/Frameworks/WebRTCiOSSDK.framework/WebRTCiOSSDK 
 check 
 

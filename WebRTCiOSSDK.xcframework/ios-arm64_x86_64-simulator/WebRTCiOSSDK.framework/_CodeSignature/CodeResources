@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<data>
-		Bi/rSAWG0KizwcBC+xF9uJgXVKg=
+		yx2iNUDcQZmgFcxedatW1YFAyL0=
 		</data>
 		<key>Headers/WebRTCiOSSDK.h</key>
 		<data>
@@ -14,27 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		XNuw8sgn4ufChUEzi5VEMXgSjgM=
+		XMykQ3DRxc2PEja4bupdI8xd4Qg=
 		</data>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
 		MuHheMTzml0BoRVsxdkxKU6X4mY=
 		</data>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		Oi3x/uZt0La/6kHU5ZTyOAxWo7o=
+		Rub6JRD6zr/yeoQj+EySGeBDSps=
 		</data>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		xaVu4NYLbrK7Eh04YSasC3VAQ6s=
+		+HTHdE/PZO8UOQUuwMWItQ5jZY8=
 		</data>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Oi3x/uZt0La/6kHU5ZTyOAxWo7o=
+		Rub6JRD6zr/yeoQj+EySGeBDSps=
 		</data>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		KM0HFkAUPC2Xwvy3SSn9WpDdkqg=
+		/UkJp6V7yy264n2lz7G6yEbSG1Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -45,87 +45,55 @@
 	<dict>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Bi/rSAWG0KizwcBC+xF9uJgXVKg=
-			</data>
 			<key>hash2</key>
 			<data>
-			jIuheQtGnllJ2GGds95Nu1n1Ke2COvcYkwZyetmddt0=
+			2lhwZaYVmMJ2XiU+Na3in7tIRJUsgv1NJhRes5t7bRs=
 			</data>
 		</dict>
 		<key>Headers/WebRTCiOSSDK.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			W43/JKuo8z2ozkn+aix3qizvlk0=
-			</data>
 			<key>hash2</key>
 			<data>
 			tDFVKmTR4wcY0waN2/xFozgyJWA2ZAF0J1oQ36o57Vs=
 			</data>
 		</dict>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			MuHheMTzml0BoRVsxdkxKU6X4mY=
-			</data>
 			<key>hash2</key>
 			<data>
 			WcWpHq1JwC3ThRfzK3G0BsE3qoSffVL85WAc0RBBZwU=
 			</data>
 		</dict>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Oi3x/uZt0La/6kHU5ZTyOAxWo7o=
-			</data>
 			<key>hash2</key>
 			<data>
-			GaTJaxNYkDtm5VQwHYacjxKKdw3wEpyqNEu33MnRZSw=
+			fjDB5vb/I4IDhPBs5SToiirGZx+lTYfJI6hlJD9VOA0=
 			</data>
 		</dict>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xaVu4NYLbrK7Eh04YSasC3VAQ6s=
-			</data>
 			<key>hash2</key>
 			<data>
-			aegm67eq7JD2M9XbLpo6rw6T2jWsLHlFJKsZmwM28kM=
+			A/HmeYg344rdBFkkSemDp9mDRvri44sr5DG5ZABHgE8=
 			</data>
 		</dict>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Oi3x/uZt0La/6kHU5ZTyOAxWo7o=
-			</data>
 			<key>hash2</key>
 			<data>
-			GaTJaxNYkDtm5VQwHYacjxKKdw3wEpyqNEu33MnRZSw=
+			fjDB5vb/I4IDhPBs5SToiirGZx+lTYfJI6hlJD9VOA0=
 			</data>
 		</dict>
-		<key>Modules/WebRTCiOSSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
+		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			KM0HFkAUPC2Xwvy3SSn9WpDdkqg=
-			</data>
 			<key>hash2</key>
 			<data>
-			M9rO2GswJvrlMt87YYZhNGzYGi0Rscjd23SEDlmOD4I=
+			amSlqPZp30tO//v4R4wJXQLKbK3GM42mrciPXeayDvs=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			quhGV89PsOFzvNCGwzeBDmTK+aQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			fWGxzMbCWYq+irt4+cC8jfrgO/XAXRe9uqrbAPVa62g=
