@@ -271,7 +271,14 @@ class WebRTCClient: NSObject {
         self.remoteVideoView?.renderFrame(nil)
         self.localVideoTrack = nil
         self.remoteVideoTrack = nil
-        (self.videoCapturer as? RTCCustomFrameCapturer)?.stopCapture()
+        
+        if self.videoCapturer is RTCCameraVideoCapturer {
+            (self.videoCapturer as? RTCCameraVideoCapturer)?.stopCapture()
+        }
+        else if self.videoCapturer is RTCCustomFrameCapturer {
+            (self.videoCapturer as? RTCCustomFrameCapturer)?.stopCapture()
+        }
+        
         self.peerConnection?.close()
     }
     

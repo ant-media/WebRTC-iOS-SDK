@@ -253,7 +253,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "285"
             endingLineNumber = "285"
-            landmarkName = "audioSessionDidStartPlayOrRecord(streamId:)"
+            landmarkName = "publishStarted(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -269,7 +269,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "288"
             endingLineNumber = "288"
-            landmarkName = "dataReceivedFromDataChannel(streamId:data:binary:)"
+            landmarkName = "publishFinished(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -285,7 +285,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "287"
             endingLineNumber = "287"
-            landmarkName = "dataReceivedFromDataChannel(streamId:data:binary:)"
+            landmarkName = "publishFinished(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -413,7 +413,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "289"
             endingLineNumber = "289"
-            landmarkName = "dataReceivedFromDataChannel(streamId:data:binary:)"
+            landmarkName = "publishFinished(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1415,7 +1415,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "344"
             endingLineNumber = "344"
-            landmarkName = "createVideoTrack()"
+            landmarkName = "startCapture()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

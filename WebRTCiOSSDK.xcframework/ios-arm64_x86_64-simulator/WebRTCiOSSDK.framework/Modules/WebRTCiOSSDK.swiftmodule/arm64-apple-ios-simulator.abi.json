@@ -1,0 +1,5475 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "ReplayKit",
+        "printedName": "ReplayKit",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Starscream",
+        "printedName": "Starscream",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AntMediaClientMode",
+        "printedName": "AntMediaClientMode",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "join",
+            "printedName": "join",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WebRTCiOSSDK.AntMediaClientMode.Type) -> WebRTCiOSSDK.AntMediaClientMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AntMediaClientMode",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                    "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntMediaClientMode",
+                        "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                        "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO4joinyA2CmF",
+            "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO4joinyA2CmF",
+            "moduleName": "WebRTCiOSSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "play",
+            "printedName": "play",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WebRTCiOSSDK.AntMediaClientMode.Type) -> WebRTCiOSSDK.AntMediaClientMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AntMediaClientMode",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                    "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntMediaClientMode",
+                        "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                        "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO4playyA2CmF",
+            "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO4playyA2CmF",
+            "moduleName": "WebRTCiOSSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "publish",
+            "printedName": "publish",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WebRTCiOSSDK.AntMediaClientMode.Type) -> WebRTCiOSSDK.AntMediaClientMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AntMediaClientMode",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                    "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntMediaClientMode",
+                        "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                        "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO7publishyA2CmF",
+            "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO7publishyA2CmF",
+            "moduleName": "WebRTCiOSSDK"
+          },
+          {
+            "kind": "Var",
+            "name": "conference",
+            "printedName": "conference",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WebRTCiOSSDK.AntMediaClientMode.Type) -> WebRTCiOSSDK.AntMediaClientMode",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AntMediaClientMode",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                    "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntMediaClientMode",
+                        "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                        "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO10conferenceyA2CmF",
+            "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO10conferenceyA2CmF",
+            "moduleName": "WebRTCiOSSDK"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "WebRTCiOSSDK.AntMediaClientMode?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AntMediaClientMode",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                    "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO8rawValueACSgSi_tcfc",
+            "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO8rawValueACSgSi_tcfc",
+            "moduleName": "WebRTCiOSSDK",
+            "implicit": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO8rawValueSivp",
+            "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO8rawValueSivp",
+            "moduleName": "WebRTCiOSSDK",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO8rawValueSivg",
+                "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO8rawValueSivg",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO",
+        "mangledName": "$s12WebRTCiOSSDK18AntMediaClientModeO",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "enumRawTypeName": "Int",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AntMediaClient",
+        "printedName": "AntMediaClient",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "delegate",
+            "printedName": "delegate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ImplicitlyUnwrappedOptional",
+                "printedName": "WebRTCiOSSDK.AntMediaClientDelegate?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AntMediaClientDelegate",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientDelegate",
+                    "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvp",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvp",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntMediaClientDelegate",
+                        "printedName": "WebRTCiOSSDK.AntMediaClientDelegate",
+                        "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvg",
+                "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvg",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "WebRTCiOSSDK.AntMediaClientDelegate?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "AntMediaClientDelegate",
+                        "printedName": "WebRTCiOSSDK.AntMediaClientDelegate",
+                        "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvs",
+                "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvs",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvM",
+                "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8delegateAA0deF8Delegate_pSgvM",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AntMediaClient",
+                "printedName": "WebRTCiOSSDK.AntMediaClient",
+                "usr": "c:@M@WebRTCiOSSDK@objc(cs)AntMediaClient"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@WebRTCiOSSDK@objc(cs)AntMediaClient(im)init",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientCACycfc",
+            "moduleName": "WebRTCiOSSDK",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override",
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "setOptions",
+            "printedName": "setOptions(url:streamId:token:mode:enableDataChannel:captureScreenEnabled:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AntMediaClientMode",
+                "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                "hasDefaultArg": true,
+                "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setMaxVideoBps",
+            "printedName": "setMaxVideoBps(videoBitratePerSecond:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSNumber",
+                "printedName": "Foundation.NSNumber",
+                "usr": "c:objc(cs)NSNumber"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC14setMaxVideoBps21videoBitratePerSecondySo8NSNumberC_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC14setMaxVideoBps21videoBitratePerSecondySo8NSNumberC_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setMultiPeerMode",
+            "printedName": "setMultiPeerMode(enable:mode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC16setMultiPeerMode6enable4modeySb_SStF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC16setMultiPeerMode6enable4modeySb_SStF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setVideoEnable",
+            "printedName": "setVideoEnable(enable:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC14setVideoEnable6enableySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC14setVideoEnable6enableySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStreamId",
+            "printedName": "getStreamId()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC11getStreamIdSSyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC11getStreamIdSSyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getLeaveMessage",
+            "printedName": "getLeaveMessage()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC15getLeaveMessageSDyS2SGyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC15getLeaveMessageSDyS2SGyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "speakerOn",
+            "printedName": "speakerOn()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC9speakerOnyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC9speakerOnyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "speakerOff",
+            "printedName": "speakerOff()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC10speakerOffyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC10speakerOffyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC5startyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC5startyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "connectWebSocket",
+            "printedName": "connectWebSocket()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC07connectA6SocketyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC07connectA6SocketyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setCameraPosition",
+            "printedName": "setCameraPosition(position:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Position",
+                "printedName": "AVFoundation.AVCaptureDevice.Position",
+                "usr": "c:@E@AVCaptureDevicePosition"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC17setCameraPosition8positionySo015AVCaptureDeviceI0V_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC17setCameraPosition8positionySo015AVCaptureDeviceI0V_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setTargetResolution",
+            "printedName": "setTargetResolution(width:height:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC19setTargetResolution5width6heightySi_SitF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC19setTargetResolution5width6heightySi_SitF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stop",
+            "printedName": "stop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC4stopyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC4stopyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "initPeerConnection",
+            "printedName": "initPeerConnection()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC18initPeerConnectionyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC18initPeerConnectionyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "switchCamera",
+            "printedName": "switchCamera()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC12switchCamerayyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC12switchCamerayyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendData",
+            "printedName": "sendData(data:binary:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC8sendData4data6binaryy10Foundation0H0V_SbtF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8sendData4data6binaryy10Foundation0H0V_SbtF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "isDataChannelActive",
+            "printedName": "isDataChannelActive()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC19isDataChannelActiveSbyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC19isDataChannelActiveSbyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setLocalView",
+            "printedName": "setLocalView(container:mode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContentMode",
+                "printedName": "UIKit.UIView.ContentMode",
+                "hasDefaultArg": true,
+                "usr": "c:@E@UIViewContentMode"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC12setLocalView9container4modeySo6UIViewC_So0L11ContentModeVtF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC12setLocalView9container4modeySo6UIViewC_So0L11ContentModeVtF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setRemoteView",
+            "printedName": "setRemoteView(remoteContainer:mode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContentMode",
+                "printedName": "UIKit.UIView.ContentMode",
+                "hasDefaultArg": true,
+                "usr": "c:@E@UIViewContentMode"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC13setRemoteView15remoteContainer4modeySo6UIViewC_So0M11ContentModeVtF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC13setRemoteView15remoteContainer4modeySo6UIViewC_So0M11ContentModeVtF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "isConnected",
+            "printedName": "isConnected()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC11isConnectedSbyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC11isConnectedSbyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDebug",
+            "printedName": "setDebug(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC8setDebugyySbF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8setDebugyySbF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDebug",
+            "printedName": "setDebug(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC8setDebugyySbFZ",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8setDebugyySbFZ",
+            "moduleName": "WebRTCiOSSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toggleAudio",
+            "printedName": "toggleAudio()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC11toggleAudioyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC11toggleAudioyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toggleVideo",
+            "printedName": "toggleVideo()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC11toggleVideoyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC11toggleVideoyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getCurrentMode",
+            "printedName": "getCurrentMode()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AntMediaClientMode",
+                "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC14getCurrentModeAA0defI0OyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC14getCurrentModeAA0defI0OyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getWsUrl",
+            "printedName": "getWsUrl()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC8getWsUrlSSyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8getWsUrlSSyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "printf",
+            "printedName": "printf(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC6printfyySSFZ",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC6printfyySSFZ",
+            "moduleName": "WebRTCiOSSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStreamInfo",
+            "printedName": "getStreamInfo()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC13getStreamInfoyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC13getStreamInfoyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "forStreamQuality",
+            "printedName": "forStreamQuality(resolutionHeight:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC16forStreamQuality16resolutionHeightySi_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC16forStreamQuality16resolutionHeightySi_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStats",
+            "printedName": "getStats(completionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WebRTC.RTCStatisticsReport) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RTCStatisticsReport",
+                    "printedName": "WebRTC.RTCStatisticsReport",
+                    "usr": "c:objc(cs)RTCStatisticsReport"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC8getStats17completionHandleryySo19RTCStatisticsReportCc_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC8getStats17completionHandleryySo19RTCStatisticsReportCc_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "deliverExternalAudio",
+            "printedName": "deliverExternalAudio(sampleBuffer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CMSampleBuffer",
+                "printedName": "CoreMedia.CMSampleBuffer",
+                "usr": "c:@T@CMSampleBufferRef"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC20deliverExternalAudio12sampleBufferySo08CMSampleK3Refa_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC20deliverExternalAudio12sampleBufferySo08CMSampleK3Refa_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setExternalAudio",
+            "printedName": "setExternalAudio(externalAudioEnabled:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC16setExternalAudio08externalI7EnabledySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC16setExternalAudio08externalI7EnabledySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setExternalVideoCapture",
+            "printedName": "setExternalVideoCapture(externalVideoCapture:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC23setExternalVideoCapture08externaliJ0ySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC23setExternalVideoCapture08externaliJ0ySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "deliverExternalVideo",
+            "printedName": "deliverExternalVideo(sampleBuffer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CMSampleBuffer",
+                "printedName": "CoreMedia.CMSampleBuffer",
+                "usr": "c:@T@CMSampleBufferRef"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC20deliverExternalVideo12sampleBufferySo08CMSampleK3Refa_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC20deliverExternalVideo12sampleBufferySo08CMSampleK3Refa_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendMessage",
+            "printedName": "sendMessage(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Any]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "Any"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC11sendMessageyySDySSypGF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC11sendMessageyySDySSypGF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addLocalStream",
+            "printedName": "addLocalStream()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC14addLocalStreamyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC14addLocalStreamyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addRemoteStream",
+            "printedName": "addRemoteStream()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC15addRemoteStreamyyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC15addRemoteStreamyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "connectionStateChanged",
+            "printedName": "connectionStateChanged(newState:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCIceConnectionState",
+                "printedName": "WebRTC.RTCIceConnectionState",
+                "usr": "c:@E@RTCIceConnectionState"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC22connectionStateChanged03newH0ySo016RTCIceConnectionH0V_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC22connectionStateChanged03newH0ySo016RTCIceConnectionH0V_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "dataReceivedFromDataChannel",
+            "printedName": "dataReceivedFromDataChannel(didReceiveData:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCDataBuffer",
+                "printedName": "WebRTC.RTCDataBuffer",
+                "usr": "c:objc(cs)RTCDataBuffer"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC27dataReceivedFromDataChannel010didReceiveJ0ySo13RTCDataBufferC_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC27dataReceivedFromDataChannel010didReceiveJ0ySo13RTCDataBufferC_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getPingMessage",
+            "printedName": "getPingMessage()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC14getPingMessageSDyS2SGyF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC14getPingMessageSDyS2SGyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didReceive",
+            "printedName": "didReceive(event:client:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketEvent",
+                "printedName": "Starscream.WebSocketEvent",
+                "usr": "s:10Starscream14WebSocketEventO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocket",
+                "printedName": "Starscream.WebSocket",
+                "usr": "s:10Starscream9WebSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aL0CtF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aL0CtF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "audioSessionDidStartPlayOrRecord",
+            "printedName": "audioSessionDidStartPlayOrRecord(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCAudioSession",
+                "printedName": "WebRTC.RTCAudioSession",
+                "usr": "c:objc(cs)RTCAudioSession"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@WebRTCiOSSDK@objc(cs)AntMediaClient(im)audioSessionDidStartPlayOrRecord:",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC32audioSessionDidStartPlayOrRecordyySo08RTCAudioH0CF",
+            "moduleName": "WebRTCiOSSDK",
+            "objc_name": "audioSessionDidStartPlayOrRecord:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "videoView",
+            "printedName": "videoView(_:didChangeVideoSize:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCVideoRenderer",
+                "printedName": "WebRTC.RTCVideoRenderer",
+                "usr": "c:objc(pl)RTCVideoRenderer"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@WebRTCiOSSDK@objc(cs)AntMediaClient(im)videoView:didChangeVideoSize:",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC9videoView_18didChangeVideoSizeySo16RTCVideoRenderer_p_So6CGSizeVtF",
+            "moduleName": "WebRTCiOSSDK",
+            "objc_name": "videoView:didChangeVideoSize:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "AccessControl"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@WebRTCiOSSDK@objc(cs)AntMediaClient",
+        "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC",
+        "moduleName": "WebRTCiOSSDK",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "AntMediaClientProtocol",
+            "printedName": "AntMediaClientProtocol",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "WebSocketDelegate",
+            "printedName": "WebSocketDelegate",
+            "usr": "s:10Starscream17WebSocketDelegateP",
+            "mangledName": "$s10Starscream17WebSocketDelegateP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "StreamInformation",
+        "printedName": "StreamInformation",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "streamWidth",
+            "printedName": "streamWidth",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12WebRTCiOSSDK17StreamInformationC11streamWidthSivp",
+            "mangledName": "$s12WebRTCiOSSDK17StreamInformationC11streamWidthSivp",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK17StreamInformationC11streamWidthSivg",
+                "mangledName": "$s12WebRTCiOSSDK17StreamInformationC11streamWidthSivg",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "streamHeight",
+            "printedName": "streamHeight",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12WebRTCiOSSDK17StreamInformationC12streamHeightSivp",
+            "mangledName": "$s12WebRTCiOSSDK17StreamInformationC12streamHeightSivp",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK17StreamInformationC12streamHeightSivg",
+                "mangledName": "$s12WebRTCiOSSDK17StreamInformationC12streamHeightSivg",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "videoBitrate",
+            "printedName": "videoBitrate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12WebRTCiOSSDK17StreamInformationC12videoBitrateSivp",
+            "mangledName": "$s12WebRTCiOSSDK17StreamInformationC12videoBitrateSivp",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK17StreamInformationC12videoBitrateSivg",
+                "mangledName": "$s12WebRTCiOSSDK17StreamInformationC12videoBitrateSivg",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "audioBitrate",
+            "printedName": "audioBitrate",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12WebRTCiOSSDK17StreamInformationC12audioBitrateSivp",
+            "mangledName": "$s12WebRTCiOSSDK17StreamInformationC12audioBitrateSivp",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK17StreamInformationC12audioBitrateSivg",
+                "mangledName": "$s12WebRTCiOSSDK17StreamInformationC12audioBitrateSivg",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "videoCodec",
+            "printedName": "videoCodec",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:12WebRTCiOSSDK17StreamInformationC10videoCodecSSvp",
+            "mangledName": "$s12WebRTCiOSSDK17StreamInformationC10videoCodecSSvp",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "Final",
+              "HasStorage",
+              "AccessControl"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:12WebRTCiOSSDK17StreamInformationC10videoCodecSSvg",
+                "mangledName": "$s12WebRTCiOSSDK17StreamInformationC10videoCodecSSvg",
+                "moduleName": "WebRTCiOSSDK",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:12WebRTCiOSSDK17StreamInformationC",
+        "mangledName": "$s12WebRTCiOSSDK17StreamInformationC",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "hasMissingDesignatedInitializers": true
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AntMediaClientDelegate",
+        "printedName": "AntMediaClientDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "clientDidConnect",
+            "printedName": "clientDidConnect(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AntMediaClient",
+                "printedName": "WebRTCiOSSDK.AntMediaClient",
+                "usr": "c:@M@WebRTCiOSSDK@objc(cs)AntMediaClient"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP16clientDidConnectyyAA0deF0CF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP16clientDidConnectyyAA0deF0CF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "clientDidDisconnect",
+            "printedName": "clientDidDisconnect(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP19clientDidDisconnectyySSF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP19clientDidDisconnectyySSF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "clientHasError",
+            "printedName": "clientHasError(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP14clientHasErroryySSF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP14clientHasErroryySSF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "remoteStreamStarted",
+            "printedName": "remoteStreamStarted(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP19remoteStreamStarted8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP19remoteStreamStarted8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "remoteStreamRemoved",
+            "printedName": "remoteStreamRemoved(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP19remoteStreamRemoved8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP19remoteStreamRemoved8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "localStreamStarted",
+            "printedName": "localStreamStarted(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP18localStreamStarted8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP18localStreamStarted8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "playStarted",
+            "printedName": "playStarted(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP11playStarted8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP11playStarted8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "playFinished",
+            "printedName": "playFinished(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP12playFinished8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP12playFinished8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "publishStarted",
+            "printedName": "publishStarted(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP14publishStarted8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP14publishStarted8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "publishFinished",
+            "printedName": "publishFinished(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP15publishFinished8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP15publishFinished8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "disconnected",
+            "printedName": "disconnected(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP12disconnected8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP12disconnected8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "audioSessionDidStartPlayOrRecord",
+            "printedName": "audioSessionDidStartPlayOrRecord(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP32audioSessionDidStartPlayOrRecord8streamIdySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP32audioSessionDidStartPlayOrRecord8streamIdySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "dataReceivedFromDataChannel",
+            "printedName": "dataReceivedFromDataChannel(streamId:data:binary:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP27dataReceivedFromDataChannel8streamId0H06binaryySS_10Foundation0K0VSbtF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP27dataReceivedFromDataChannel8streamId0H06binaryySS_10Foundation0K0VSbtF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "streamInformation",
+            "printedName": "streamInformation(streamInfo:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[WebRTCiOSSDK.StreamInformation]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "StreamInformation",
+                    "printedName": "WebRTCiOSSDK.StreamInformation",
+                    "usr": "s:12WebRTCiOSSDK17StreamInformationC"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP17streamInformation0H4InfoySayAA06StreamI0CG_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP17streamInformation0H4InfoySayAA06StreamI0CG_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientDelegate>",
+            "protocolReq": true,
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:12WebRTCiOSSDK22AntMediaClientDelegateP",
+        "mangledName": "$s12WebRTCiOSSDK22AntMediaClientDelegateP",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Starscream",
+        "printedName": "Starscream",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ConferenceClientProtocol",
+        "printedName": "ConferenceClientProtocol",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "joinRoom",
+            "printedName": "joinRoom(roomId:streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP8joinRoom6roomId06streamJ0ySS_SStF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP8joinRoom6roomId06streamJ0ySS_SStF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "leaveRoom",
+            "printedName": "leaveRoom()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP9leaveRoomyyF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP9leaveRoomyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP",
+        "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ConferenceClientDelegate",
+        "printedName": "ConferenceClientDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "streamIdToPublish",
+            "printedName": "streamIdToPublish(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP17streamIdToPublish0gH0ySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP17streamIdToPublish0gH0ySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "newStreamsJoined",
+            "printedName": "newStreamsJoined(streams:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP16newStreamsJoined7streamsySaySSG_tF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP16newStreamsJoined7streamsySaySSG_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "streamsLeaved",
+            "printedName": "streamsLeaved(streams:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP13streamsLeaved0G0ySaySSG_tF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP13streamsLeaved0G0ySaySSG_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP",
+        "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ConferenceClient",
+        "printedName": "ConferenceClient",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(serverURL:conferenceClientDelegate:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ConferenceClient",
+                "printedName": "WebRTCiOSSDK.ConferenceClient",
+                "usr": "s:12WebRTCiOSSDK16ConferenceClientC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ConferenceClientDelegate",
+                "printedName": "WebRTCiOSSDK.ConferenceClientDelegate",
+                "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC9serverURL010conferenceE8DelegateACSS_AA0deI0_ptcfc",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC9serverURL010conferenceE8DelegateACSS_AA0deI0_ptcfc",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "didConnected",
+            "printedName": "didConnected(socket:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketClient",
+                "printedName": "Starscream.WebSocketClient",
+                "usr": "s:10Starscream15WebSocketClientP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC12didConnected6sockety10Starscream0a6SocketE0_p_tF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC12didConnected6sockety10Starscream0a6SocketE0_p_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "receiveMessage",
+            "printedName": "receiveMessage(socket:text:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketClient",
+                "printedName": "Starscream.WebSocketClient",
+                "usr": "s:10Starscream15WebSocketClientP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC14receiveMessage6socket4texty10Starscream0a6SocketE0_p_SStF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC14receiveMessage6socket4texty10Starscream0a6SocketE0_p_SStF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "joinRoom",
+            "printedName": "joinRoom(roomId:streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC8joinRoom6roomId06streamI0ySS_SStF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC8joinRoom6roomId06streamI0ySS_SStF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "leaveRoom",
+            "printedName": "leaveRoom()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC9leaveRoomyyF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC9leaveRoomyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didReceive",
+            "printedName": "didReceive(event:client:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketEvent",
+                "printedName": "Starscream.WebSocketEvent",
+                "usr": "s:10Starscream14WebSocketEventO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocket",
+                "printedName": "Starscream.WebSocket",
+                "usr": "s:10Starscream9WebSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aK0CtF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aK0CtF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:12WebRTCiOSSDK16ConferenceClientC",
+        "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC",
+        "moduleName": "WebRTCiOSSDK",
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "ConferenceClientProtocol",
+            "printedName": "ConferenceClientProtocol",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "WebSocketDelegate",
+            "printedName": "WebSocketDelegate",
+            "usr": "s:10Starscream17WebSocketDelegateP",
+            "mangledName": "$s10Starscream17WebSocketDelegateP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "AntMediaClientProtocol",
+        "printedName": "AntMediaClientProtocol",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setOptions",
+            "printedName": "setOptions(url:streamId:token:mode:enableDataChannel:captureScreenEnabled:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "AntMediaClientMode",
+                "printedName": "WebRTCiOSSDK.AntMediaClientMode",
+                "usr": "s:12WebRTCiOSSDK18AntMediaClientModeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setVideoEnable",
+            "printedName": "setVideoEnable(enable:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP14setVideoEnable6enableySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP14setVideoEnable6enableySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "speakerOn",
+            "printedName": "speakerOn()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP9speakerOnyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP9speakerOnyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "speakerOff",
+            "printedName": "speakerOff()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP10speakerOffyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP10speakerOffyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "initPeerConnection",
+            "printedName": "initPeerConnection()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP18initPeerConnectionyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP18initPeerConnectionyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "start",
+            "printedName": "start()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP5startyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP5startyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setCameraPosition",
+            "printedName": "setCameraPosition(position:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Position",
+                "printedName": "AVFoundation.AVCaptureDevice.Position",
+                "usr": "c:@E@AVCaptureDevicePosition"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP17setCameraPosition8positionySo015AVCaptureDeviceJ0V_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP17setCameraPosition8positionySo015AVCaptureDeviceJ0V_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setTargetResolution",
+            "printedName": "setTargetResolution(width:height:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP19setTargetResolution5width6heightySi_SitF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP19setTargetResolution5width6heightySi_SitF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stop",
+            "printedName": "stop()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP4stopyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP4stopyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "switchCamera",
+            "printedName": "switchCamera()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP12switchCamerayyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP12switchCamerayyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sendData",
+            "printedName": "sendData(data:binary:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Data",
+                "printedName": "Foundation.Data",
+                "usr": "s:10Foundation4DataV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP8sendData4data6binaryy10Foundation0I0V_SbtF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP8sendData4data6binaryy10Foundation0I0V_SbtF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "isDataChannelActive",
+            "printedName": "isDataChannelActive()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP19isDataChannelActiveSbyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP19isDataChannelActiveSbyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setLocalView",
+            "printedName": "setLocalView(container:mode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContentMode",
+                "printedName": "UIKit.UIView.ContentMode",
+                "usr": "c:@E@UIViewContentMode"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP12setLocalView9container4modeySo6UIViewC_So0M11ContentModeVtF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP12setLocalView9container4modeySo6UIViewC_So0M11ContentModeVtF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setRemoteView",
+            "printedName": "setRemoteView(remoteContainer:mode:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIView",
+                "printedName": "UIKit.UIView",
+                "usr": "c:objc(cs)UIView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContentMode",
+                "printedName": "UIKit.UIView.ContentMode",
+                "usr": "c:@E@UIViewContentMode"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP13setRemoteView15remoteContainer4modeySo6UIViewC_So0N11ContentModeVtF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP13setRemoteView15remoteContainer4modeySo6UIViewC_So0N11ContentModeVtF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "isConnected",
+            "printedName": "isConnected()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP11isConnectedSbyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP11isConnectedSbyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDebug",
+            "printedName": "setDebug(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP8setDebugyySbF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP8setDebugyySbF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "deprecated": true,
+            "protocolReq": true,
+            "declAttributes": [
+              "Available",
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setDebug",
+            "printedName": "setDebug(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP8setDebugyySbFZ",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP8setDebugyySbFZ",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "static": true,
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toggleAudio",
+            "printedName": "toggleAudio()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP11toggleAudioyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP11toggleAudioyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toggleVideo",
+            "printedName": "toggleVideo()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP11toggleVideoyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP11toggleVideoyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStreamId",
+            "printedName": "getStreamId()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP11getStreamIdSSyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP11getStreamIdSSyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStreamInfo",
+            "printedName": "getStreamInfo()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP13getStreamInfoyyF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP13getStreamInfoyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "forStreamQuality",
+            "printedName": "forStreamQuality(resolutionHeight:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP16forStreamQuality16resolutionHeightySi_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP16forStreamQuality16resolutionHeightySi_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "getStats",
+            "printedName": "getStats(completionHandler:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(WebRTC.RTCStatisticsReport) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "RTCStatisticsReport",
+                    "printedName": "WebRTC.RTCStatisticsReport",
+                    "usr": "c:objc(cs)RTCStatisticsReport"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP8getStats17completionHandleryySo19RTCStatisticsReportCc_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP8getStats17completionHandleryySo19RTCStatisticsReportCc_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setMaxVideoBps",
+            "printedName": "setMaxVideoBps(videoBitratePerSecond:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSNumber",
+                "printedName": "Foundation.NSNumber",
+                "usr": "c:objc(cs)NSNumber"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP14setMaxVideoBps21videoBitratePerSecondySo8NSNumberC_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP14setMaxVideoBps21videoBitratePerSecondySo8NSNumberC_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "deliverExternalAudio",
+            "printedName": "deliverExternalAudio(sampleBuffer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CMSampleBuffer",
+                "printedName": "CoreMedia.CMSampleBuffer",
+                "usr": "c:@T@CMSampleBufferRef"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalAudio12sampleBufferySo08CMSampleL3Refa_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalAudio12sampleBufferySo08CMSampleL3Refa_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setExternalAudio",
+            "printedName": "setExternalAudio(externalAudioEnabled:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP16setExternalAudio08externalJ7EnabledySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP16setExternalAudio08externalJ7EnabledySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setExternalVideoCapture",
+            "printedName": "setExternalVideoCapture(externalVideoCapture:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP23setExternalVideoCapture08externaljK0ySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP23setExternalVideoCapture08externaljK0ySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "deliverExternalVideo",
+            "printedName": "deliverExternalVideo(sampleBuffer:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CMSampleBuffer",
+                "printedName": "CoreMedia.CMSampleBuffer",
+                "usr": "c:@T@CMSampleBufferRef"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalVideo12sampleBufferySo08CMSampleL3Refa_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalVideo12sampleBufferySo08CMSampleL3Refa_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP",
+        "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Config",
+        "printedName": "Config",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setDefaultStunServer",
+            "printedName": "setDefaultStunServer(server:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCIceServer",
+                "printedName": "WebRTC.RTCIceServer",
+                "usr": "c:objc(cs)RTCIceServer"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK6ConfigC20setDefaultStunServer6serverySo06RTCIceH0C_tFZ",
+            "mangledName": "$s12WebRTCiOSSDK6ConfigC20setDefaultStunServer6serverySo06RTCIceH0C_tFZ",
+            "moduleName": "WebRTCiOSSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Config",
+                "printedName": "WebRTCiOSSDK.Config",
+                "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config(im)init",
+            "mangledName": "$s12WebRTCiOSSDK6ConfigCACycfc",
+            "moduleName": "WebRTCiOSSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config",
+        "mangledName": "$s12WebRTCiOSSDK6ConfigC",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "ReplayKit",
+        "printedName": "ReplayKit",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Dictionary",
+        "printedName": "Dictionary",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "json",
+            "printedName": "json",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:SD12WebRTCiOSSDKE4jsonSSvp",
+            "mangledName": "$sSD12WebRTCiOSSDKE4jsonSSvp",
+            "moduleName": "WebRTCiOSSDK",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SD12WebRTCiOSSDKE4jsonSSvg",
+                "mangledName": "$sSD12WebRTCiOSSDKE4jsonSSvg",
+                "moduleName": "WebRTCiOSSDK",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Hashable>",
+                "sugared_genericSig": "<Key, Value where Key : Swift.Hashable>",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:SD",
+        "mangledName": "$sSD",
+        "moduleName": "Swift",
+        "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Hashable>",
+        "sugared_genericSig": "<Key, Value where Key : Swift.Hashable>",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sequence",
+            "printedName": "Sequence",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(key: τ_0_0, value: τ_0_1)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_0"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Iterator",
+                "printedName": "Iterator",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Iterator",
+                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Iterator",
+                    "usr": "s:SD8IteratorV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:ST",
+            "mangledName": "$sST"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Collection",
+            "printedName": "Collection",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(key: τ_0_0, value: τ_0_1)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_0"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Index",
+                "printedName": "Index",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Index",
+                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Index",
+                    "usr": "s:SD5IndexV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Iterator",
+                "printedName": "Iterator",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Iterator",
+                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Iterator",
+                    "usr": "s:SD8IteratorV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "SubSequence",
+                "printedName": "SubSequence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Slice",
+                    "printedName": "Swift.Slice<[τ_0_0 : τ_0_1]>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[τ_0_0 : τ_0_1]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_0"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_1"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:s5SliceV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Indices",
+                "printedName": "Indices",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DefaultIndices",
+                    "printedName": "Swift.DefaultIndices<[τ_0_0 : τ_0_1]>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[τ_0_0 : τ_0_1]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_0"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_1"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:SI"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:Sl",
+            "mangledName": "$sSl"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByDictionaryLiteral",
+            "printedName": "ExpressibleByDictionaryLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Key",
+                "printedName": "Key",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Value",
+                "printedName": "Value",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s30ExpressibleByDictionaryLiteralP",
+            "mangledName": "$ss30ExpressibleByDictionaryLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_HasCustomAnyHashableRepresentation",
+            "printedName": "_HasCustomAnyHashableRepresentation",
+            "usr": "s:s35_HasCustomAnyHashableRepresentationP",
+            "mangledName": "$ss35_HasCustomAnyHashableRepresentationP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomReflectable",
+            "printedName": "CustomReflectable",
+            "usr": "s:s17CustomReflectableP",
+            "mangledName": "$ss17CustomReflectableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSDictionary",
+                    "printedName": "Foundation.NSDictionary",
+                    "usr": "c:objc(cs)NSDictionary"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "String",
+        "printedName": "String",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "toURL",
+            "printedName": "toURL()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "URL",
+                "printedName": "Foundation.URL",
+                "usr": "s:10Foundation3URLV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:SS12WebRTCiOSSDKE5toURL10Foundation0E0VyF",
+            "mangledName": "$sSS12WebRTCiOSSDKE5toURL10Foundation0E0VyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "toJSON",
+            "printedName": "toJSON()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Swift.String : Any]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Any]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:SS12WebRTCiOSSDKE6toJSONSDySSypGSgyF",
+            "mangledName": "$sSS12WebRTCiOSSDKE6toJSONSDySSypGSgyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:SS",
+        "mangledName": "$sSS",
+        "moduleName": "Swift",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CodingKeyRepresentable",
+            "printedName": "CodingKeyRepresentable",
+            "usr": "s:s22CodingKeyRepresentableP",
+            "mangledName": "$ss22CodingKeyRepresentableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_HasContiguousBytes",
+            "printedName": "_HasContiguousBytes",
+            "usr": "s:s19_HasContiguousBytesP",
+            "mangledName": "$ss19_HasContiguousBytesP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomReflectable",
+            "printedName": "CustomReflectable",
+            "usr": "s:s17CustomReflectableP",
+            "mangledName": "$ss17CustomReflectableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_CustomPlaygroundQuickLookable",
+            "printedName": "_CustomPlaygroundQuickLookable",
+            "usr": "s:s30_CustomPlaygroundQuickLookableP",
+            "mangledName": "$ss30_CustomPlaygroundQuickLookableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "TextOutputStream",
+            "printedName": "TextOutputStream",
+            "usr": "s:s16TextOutputStreamP",
+            "mangledName": "$ss16TextOutputStreamP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "TextOutputStreamable",
+            "printedName": "TextOutputStreamable",
+            "usr": "s:s20TextOutputStreamableP",
+            "mangledName": "$ss20TextOutputStreamableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ExpressibleByBuiltinUnicodeScalarLiteral",
+            "printedName": "_ExpressibleByBuiltinUnicodeScalarLiteral",
+            "usr": "s:s41_ExpressibleByBuiltinUnicodeScalarLiteralP",
+            "mangledName": "$ss41_ExpressibleByBuiltinUnicodeScalarLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ExpressibleByBuiltinExtendedGraphemeClusterLiteral",
+            "printedName": "_ExpressibleByBuiltinExtendedGraphemeClusterLiteral",
+            "usr": "s:s51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP",
+            "mangledName": "$ss51_ExpressibleByBuiltinExtendedGraphemeClusterLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ExpressibleByBuiltinStringLiteral",
+            "printedName": "_ExpressibleByBuiltinStringLiteral",
+            "usr": "s:s34_ExpressibleByBuiltinStringLiteralP",
+            "mangledName": "$ss34_ExpressibleByBuiltinStringLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByStringLiteral",
+            "printedName": "ExpressibleByStringLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "StringLiteralType",
+                "printedName": "StringLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s26ExpressibleByStringLiteralP",
+            "mangledName": "$ss26ExpressibleByStringLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "printedName": "ExpressibleByExtendedGraphemeClusterLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ExtendedGraphemeClusterLiteralType",
+                "printedName": "ExtendedGraphemeClusterLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s43ExpressibleByExtendedGraphemeClusterLiteralP",
+            "mangledName": "$ss43ExpressibleByExtendedGraphemeClusterLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByUnicodeScalarLiteral",
+            "printedName": "ExpressibleByUnicodeScalarLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "UnicodeScalarLiteralType",
+                "printedName": "UnicodeScalarLiteralType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s33ExpressibleByUnicodeScalarLiteralP",
+            "mangledName": "$ss33ExpressibleByUnicodeScalarLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "BidirectionalCollection",
+            "printedName": "BidirectionalCollection",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Index",
+                "printedName": "Index",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Index",
+                    "printedName": "Swift.String.Index",
+                    "usr": "s:SS5IndexV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "SubSequence",
+                "printedName": "SubSequence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Substring",
+                    "printedName": "Swift.Substring",
+                    "usr": "s:Ss"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Indices",
+                "printedName": "Indices",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DefaultIndices",
+                    "printedName": "Swift.DefaultIndices<Swift.String>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SI"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SK",
+            "mangledName": "$sSK"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Collection",
+            "printedName": "Collection",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Index",
+                "printedName": "Index",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Index",
+                    "printedName": "Swift.String.Index",
+                    "usr": "s:SS5IndexV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Iterator",
+                "printedName": "Iterator",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Iterator",
+                    "printedName": "Swift.String.Iterator",
+                    "usr": "s:SS8IteratorV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "SubSequence",
+                "printedName": "SubSequence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Substring",
+                    "printedName": "Swift.Substring",
+                    "usr": "s:Ss"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Indices",
+                "printedName": "Indices",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DefaultIndices",
+                    "printedName": "Swift.DefaultIndices<Swift.String>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SI"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:Sl",
+            "mangledName": "$sSl"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sequence",
+            "printedName": "Sequence",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Iterator",
+                "printedName": "Iterator",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Iterator",
+                    "printedName": "Swift.String.Iterator",
+                    "usr": "s:SS8IteratorV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:ST",
+            "mangledName": "$sST"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Comparable",
+            "printedName": "Comparable",
+            "usr": "s:SL",
+            "mangledName": "$sSL"
+          },
+          {
+            "kind": "Conformance",
+            "name": "StringProtocol",
+            "printedName": "StringProtocol",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "UTF8View",
+                "printedName": "UTF8View",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UTF8View",
+                    "printedName": "Swift.String.UTF8View",
+                    "usr": "s:SS8UTF8ViewV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "UTF16View",
+                "printedName": "UTF16View",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UTF16View",
+                    "printedName": "Swift.String.UTF16View",
+                    "usr": "s:SS9UTF16ViewV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "UnicodeScalarView",
+                "printedName": "UnicodeScalarView",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UnicodeScalarView",
+                    "printedName": "Swift.String.UnicodeScalarView",
+                    "usr": "s:SS17UnicodeScalarViewV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "SubSequence",
+                "printedName": "SubSequence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Substring",
+                    "printedName": "Swift.Substring",
+                    "usr": "s:Ss"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:Sy",
+            "mangledName": "$sSy"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByStringInterpolation",
+            "printedName": "ExpressibleByStringInterpolation",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "StringInterpolation",
+                "printedName": "StringInterpolation",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DefaultStringInterpolation",
+                    "printedName": "Swift.DefaultStringInterpolation",
+                    "usr": "s:s26DefaultStringInterpolationV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s32ExpressibleByStringInterpolationP",
+            "mangledName": "$ss32ExpressibleByStringInterpolationP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "LosslessStringConvertible",
+            "printedName": "LosslessStringConvertible",
+            "usr": "s:s25LosslessStringConvertibleP",
+            "mangledName": "$ss25LosslessStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RangeReplaceableCollection",
+            "printedName": "RangeReplaceableCollection",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "SubSequence",
+                "printedName": "SubSequence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Substring",
+                    "printedName": "Swift.Substring",
+                    "usr": "s:Ss"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:Sm",
+            "mangledName": "$sSm"
+          },
+          {
+            "kind": "Conformance",
+            "name": "MirrorPath",
+            "printedName": "MirrorPath",
+            "usr": "s:s10MirrorPathP",
+            "mangledName": "$ss10MirrorPathP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSString",
+                    "printedName": "Foundation.NSString",
+                    "usr": "c:objc(cs)NSString"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 294,
+      "length": 10,
+      "value": "1000000000"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 336,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 391,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 474,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 517,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 635,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 932,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 960,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 987,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1005,
+      "length": 2,
+      "value": "15"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "StringLiteral",
+      "offset": 205,
+      "length": 22,
+      "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "StringLiteral",
+      "offset": 205,
+      "length": 22,
+      "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "StringLiteral",
+      "offset": 191,
+      "length": 16,
+      "value": "\"AntMedia_iOS: \""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 263,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 281,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 302,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 326,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 263,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 281,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 302,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 326,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 263,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 281,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 302,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 326,
+      "length": 1,
+      "value": "4"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1018,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "StringLiteral",
+      "offset": 1499,
+      "length": 7,
+      "value": "\"audio\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1790,
+      "length": 4,
+      "value": "1280"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1831,
+      "length": 3,
+      "value": "720"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1880,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1924,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1965,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2009,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2066,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2212,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2268,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2325,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2583,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "StringLiteral",
+      "offset": 2702,
+      "length": 6,
+      "value": "\"play\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "StringLiteral",
+      "offset": 3136,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3200,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3236,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8397,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/ConferenceClient.swift",
+      "kind": "Array",
+      "offset": 1600,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 215,
+      "length": 9,
+      "value": "\"command\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 241,
+      "length": 10,
+      "value": "\"streamId\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 267,
+      "length": 7,
+      "value": "\"token\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 287,
+      "length": 7,
+      "value": "\"video\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 307,
+      "length": 7,
+      "value": "\"audio\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 329,
+      "length": 6,
+      "value": "\"room\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 356,
+      "length": 14,
+      "value": "\"notification\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 401,
+      "length": 15,
+      "value": "\"joinedTheRoom\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 435,
+      "length": 12,
+      "value": "\"definition\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 463,
+      "length": 9,
+      "value": "\"streams\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 505,
+      "length": 17,
+      "value": "\"roomInformation\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 554,
+      "length": 15,
+      "value": "\"getStreamInfo\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 604,
+      "length": 19,
+      "value": "\"streamInformation\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 657,
+      "length": 20,
+      "value": "\"forceStreamQuality\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "kind": "StringLiteral",
+      "offset": 705,
+      "length": 14,
+      "value": "\"streamHeight\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "StringLiteral",
+      "offset": 249,
+      "length": 30,
+      "value": "\"stun:stun.l.google.com:19302\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "Dictionary",
+      "offset": 335,
+      "length": 112,
+      "value": "[(\"OfferToReceiveAudio\", \"true\"), (\"OfferToReceiveVideo\", \"true\")]"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "Dictionary",
+      "offset": 510,
+      "length": 32,
+      "value": "[(\"DtlsSrtpKeyAgreement\", \"true\")]"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "StringLiteral",
+      "offset": 642,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "StringLiteral",
+      "offset": 658,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 276,
+      "length": 7,
+      "value": "\"VIDEO\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 309,
+      "length": 7,
+      "value": "\"AUDIO\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 349,
+      "length": 8,
+      "value": "\"STREAM\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1062,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1104,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1154,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1275,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1393,
+      "length": 3,
+      "value": "480"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1433,
+      "length": 3,
+      "value": "360"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1487,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1537,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3970,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6623,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 216,
+      "length": 12,
+      "value": "\"WebRTCiOSSDK.WebRTCClient\""
+    }
+  ]
+}
