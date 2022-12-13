@@ -1,9 +1,9 @@
 # AntMediaSDK
 iOS SDK 
 
-* Get WebRTC source code, change directory to src folder with `cd src` and checkout the m107 branch -> branch-heads/5304
+* Get WebRTC source code, change directory to src folder with `cd src` and checkout the m108 branch -> branch-heads/5359
   ```
-  git checkout -b antmedia_m107 branch-heads/5304
+  git checkout -b antmedia_m108 branch-heads/5359
   ```
 
 * Apply patch in this directory
