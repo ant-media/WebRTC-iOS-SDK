@@ -60,9 +60,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var videoContentMode: UIView.ContentMode?
     
-    private let audioQueue = DispatchQueue(label: "audio")
+    private static let audioQueue = DispatchQueue(label: "audio")
     
-    private let rtcAudioSession =  RTCAudioSession.sharedInstance()
+    private static let rtcAudioSession =  RTCAudioSession.sharedInstance()
     
     private var localContainerBounds: CGRect?
     private var remoteContainerBounds: CGRect?
@@ -122,9 +122,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.streamId = streamId
         self.token = token
         self.mode = mode
-        self.rtcAudioSession.add(self)
         self.enableDataChannel = enableDataChannel
         self.captureScreenEnabled = captureScreenEnabled
+        AntMediaClient.rtcAudioSession.add(self);
     }
     
     public func setMaxVideoBps(videoBitratePerSecond: NSNumber) {
@@ -156,36 +156,32 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     // Force speaker
-    public func speakerOn() {
+    public static func speakerOn() {
        
-        self.audioQueue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.rtcAudioSession.lockForConfiguration()
+        audioQueue.async {() in
+          
+            rtcAudioSession.lockForConfiguration()
             do {
-                try self.rtcAudioSession.overrideOutputAudioPort(.speaker)
-                try self.rtcAudioSession.setActive(true)
+                try rtcAudioSession.overrideOutputAudioPort(.speaker)
+                try rtcAudioSession.setActive(true)
             } catch let error {
                 AntMediaClient.printf("Couldn't force audio to speaker: \(error)")
             }
-            self.rtcAudioSession.unlockForConfiguration()
+            rtcAudioSession.unlockForConfiguration()
         }
     }
     
     // Fallback to the default playing device: headphones/bluetooth/ear speaker
-    public func speakerOff() {
-        self.audioQueue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.rtcAudioSession.lockForConfiguration()
+    public static func speakerOff() {
+        audioQueue.async {() in
+            
+            rtcAudioSession.lockForConfiguration()
             do {
-                try self.rtcAudioSession.overrideOutputAudioPort(.none)
+                try rtcAudioSession.overrideOutputAudioPort(.none)
             } catch let error {
                 debugPrint("Error setting AVAudioSession category: \(error)")
             }
-            self.rtcAudioSession.unlockForConfiguration()
+            rtcAudioSession.unlockForConfiguration()
         }
     }
 
@@ -333,6 +329,44 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     open func toggleAudio() {
         self.webRTCClient?.toggleAudioEnabled()
+    }
+    
+    func sendNotification(eventType:String) {
+        let notification =  [
+            EVENT_TYPE: eventType,
+            STREAM_ID: self.streamId].json;
+        
+        if let data = notification.data(using: .utf8) {
+            self.webRTCClient?.sendData(data: data);
+        }
+       
+    }
+    
+    open func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
+    {
+        AntMediaClient.audioQueue.async { () in
+           
+            AntMediaClient.rtcAudioSession.lockForConfiguration()
+            do {
+                var category:String;
+                if (mute) {
+                    category = AVAudioSession.Category.soloAmbient.rawValue;
+                }
+                else {
+                    category = AVAudioSession.Category.playAndRecord.rawValue;
+                }
+                try AntMediaClient.rtcAudioSession.setCategory(category);
+                try AntMediaClient.rtcAudioSession.setActive(true);
+                self.webRTCClient?.setAudioEnabled(enabled: !mute);
+                self.sendNotification(eventType: mute ? EVENT_TYPE_MIC_MUTED : EVENT_TYPE_MIC_UNMUTED);
+                completionHandler(mute, nil);
+                
+            } catch let error {
+                AntMediaClient.printf("Couldn't set to mic status: \(error)")
+                completionHandler(mute, error);
+            }
+            AntMediaClient.rtcAudioSession.unlockForConfiguration()
+        }
     }
     
     open func toggleVideo() {
@@ -560,7 +594,17 @@ extension AntMediaClient: WebRTCClientDelegate {
     }
     
     public func dataReceivedFromDataChannel(didReceiveData data: RTCDataBuffer) {
-        self.delegate.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
+        
+        let rawJSON = String(decoding: data.data, as: UTF8.self)
+        let json = rawJSON.toJSON();
+      
+        if let eventType = json?[EVENT_TYPE] {
+            //event happened
+            self.delegate.eventHappened(streamId:json?[STREAM_ID] as! String, eventType:eventType as! String);
+        }
+        else {
+            self.delegate.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
+        }
     }
     
 }

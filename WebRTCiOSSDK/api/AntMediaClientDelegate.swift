@@ -117,4 +117,12 @@ public protocol AntMediaClientDelegate {
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool)
     
     func streamInformation(streamInfo: [StreamInformation])
+    
+    /**
+     It's called when there is an event happen such microphone is muted or unmuted for the specific streamId
+    - Parameters
+     - streamId: The id of the stream that the event happened
+     - evenType: The type of the event
+     */
+    func eventHappened(streamId:String, eventType:String);
 }

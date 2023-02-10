@@ -127,7 +127,14 @@ class VideoViewController: UIViewController {
     
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
-        self.client.toggleAudio()
+        self.client.setMicMute(mute: sender.isSelected, completionHandler: { (mute, error) in
+            if (error == nil) {
+                AntMediaClient.printf("Microphone is set to " + (mute ? "muted" : "unmuted"))
+            }
+            else {
+                AntMediaClient.printf("Failed to set microphone status to " + (mute ? "muted" : "unmuted"))
+            }
+        });
     }
     
     @IBAction func videoTapped(_ video: UIButton!) {
@@ -289,7 +296,7 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func audioSessionDidStartPlayOrRecord(streamId: String) {
-        self.client.speakerOn()
+        AntMediaClient.speakerOn()
     }
     
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
@@ -320,5 +327,9 @@ extension VideoViewController: AntMediaClientDelegate {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
+    }
+    
+    func eventHappened(streamId: String, eventType: String) {
+        
     }
 }

@@ -283,7 +283,11 @@ class WebRTCClient: NSObject {
     }
     
     public func toggleAudioEnabled() {
-        self.audioEnabled = !self.audioEnabled
+        self.setAudioEnabled(enabled:!self.audioEnabled);
+    }
+    
+    public func setAudioEnabled(enabled:Bool) {
+        self.audioEnabled = enabled;
         if (self.localAudioTrack != nil) {
             self.localAudioTrack.isEnabled = self.audioEnabled
         }

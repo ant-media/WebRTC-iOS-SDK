@@ -25,6 +25,9 @@ let GET_STREAM_INFO_COMMAND = "getStreamInfo";
 let STREAM_INFORMATION_COMMAND = "streamInformation";
 let FORCE_STREAM_QUALITY_INFO = "forceStreamQuality";
 let STREAM_HEIGHT_FIELD = "streamHeight";
+let EVENT_TYPE = "eventType";
+let EVENT_TYPE_MIC_MUTED = "MIC_MUTED"
+let EVENT_TYPE_MIC_UNMUTED = "MIC_UNMUTED";
 
 public protocol AntMediaClientProtocol {
         
@@ -55,13 +58,13 @@ public protocol AntMediaClientProtocol {
      Set the speaker on. It works if audio session is already started so calling this method may not work if it's called too early.
      The correct place to call it in AntMediaClientDelegate's `audioSessionDidStartPlayOrRecord` method.
      */
-    func speakerOn();
+    static func speakerOn();
     
     /**
     Set the speaker off. It works if audio session is already started so calling this method may not work if it's called too early.
     The correct place to call it in AntMediaClientDelegate's `audioSessionDidStartPlayOrRecord` method.
     */
-    func speakerOff();
+    static func speakerOff();
     
     /**
      Initializes the peer connection and opens the camera if it's publish mode but it does not start the streaming. It's not necessary to call this method. `start()` method calls this method if it's required. This method is generally used opening the camera and let the user tap a button to start publishing
@@ -146,9 +149,16 @@ public protocol AntMediaClientProtocol {
     static func setDebug(_ value: Bool);
     
     /**
-    Toggle audio in the current stream. If it's muted, it will be unmuted. If it's unmuted, it'll be muted.
-     */
+     Toggle audio mute/unmuted in the local stream that is being published to the AMS.. If it's muted, it will be unmuted. If it's unmuted, it'll be muted.
+      It does not mute/unmute the microphone. If you need to mute/unmute microphone, use ``setMicMute(mute:completionHandler:)``
+    */
     func toggleAudio();
+    
+    /**
+     Swith the audio muted/unmuted. If mute is true, audio is being set to mute. If mute is false, audio bis being set to unmute
+     */
+    func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
+
     
     /**
      Toggle video stream(enable, disable) in the current stream.

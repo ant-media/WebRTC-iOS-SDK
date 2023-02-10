@@ -251,8 +251,8 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
             landmarkName = "publishStarted(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -267,8 +267,8 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "288"
-            endingLineNumber = "288"
+            startingLineNumber = "295"
+            endingLineNumber = "295"
             landmarkName = "publishFinished(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -283,8 +283,8 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "287"
-            endingLineNumber = "287"
+            startingLineNumber = "294"
+            endingLineNumber = "294"
             landmarkName = "publishFinished(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -315,8 +315,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -331,8 +331,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "407"
-            endingLineNumber = "407"
+            startingLineNumber = "441"
+            endingLineNumber = "441"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -347,8 +347,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "352"
-            endingLineNumber = "352"
+            startingLineNumber = "386"
+            endingLineNumber = "386"
             landmarkName = "onConnection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -379,8 +379,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
             landmarkName = "connectWebSocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -395,8 +395,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "232"
-            endingLineNumber = "232"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
             landmarkName = "stop()"
             landmarkType = "7">
          </BreakpointContent>
@@ -411,8 +411,8 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "publishFinished(streamId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -427,8 +427,8 @@
             filePath = "AntMediaReferenceApplication/VideoViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "233"
-            endingLineNumber = "233"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "VideoViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -443,8 +443,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "239"
+            endingLineNumber = "239"
             landmarkName = "initPeerConnection()"
             landmarkType = "7">
          </BreakpointContent>
@@ -491,8 +491,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -507,8 +507,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -587,8 +587,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "newStreamsJoined(streams:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -603,8 +603,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "playStarted(streamId:)"
             landmarkType = "7">
             <Locations>
@@ -651,8 +651,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "201"
+            endingLineNumber = "201"
             landmarkName = "connectWebSocket()"
             landmarkType = "7">
          </BreakpointContent>
@@ -715,9 +715,9 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "streamsLeaved(streams:)"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "streamsLeft(streams:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -731,8 +731,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "newStreamsJoined(streams:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -747,8 +747,8 @@
             filePath = "AntMediaReferenceApplication/ConferenceViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "newStreamsJoined(streams:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -779,8 +779,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "424"
-            endingLineNumber = "424"
+            startingLineNumber = "458"
+            endingLineNumber = "458"
             landmarkName = "onCommand(_:message:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -795,8 +795,8 @@
             filePath = "WebRTCiOSSDK/api/AntMediaClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "487"
-            endingLineNumber = "487"
+            startingLineNumber = "521"
+            endingLineNumber = "521"
             landmarkName = "printf(_:)"
             landmarkType = "7">
             <Locations>
@@ -1413,8 +1413,8 @@
             filePath = "WebRTCiOSSDK/api/webrtc/WebRTCClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "348"
+            endingLineNumber = "348"
             landmarkName = "startCapture()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1429,8 +1429,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
             landmarkName = "broadcastStarted(withSetupInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1445,8 +1445,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "broadcastStarted(withSetupInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1461,8 +1461,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
             landmarkName = "broadcastStarted(withSetupInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1493,8 +1493,8 @@
             filePath = "ScreenShare/SampleHandler.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
             landmarkName = "processSampleBuffer(_:with:)"
             landmarkType = "7">
          </BreakpointContent>

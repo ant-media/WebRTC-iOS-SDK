@@ -24,6 +24,7 @@ open class ConferenceViewController: UIViewController {
     @IBOutlet var remoteView2: UIView!
     @IBOutlet var remoteView3: UIView!
         
+    @IBOutlet weak var joinButton: UIButton!
     var remoteViews:[UIView] = []
     
     private let audioQueue = DispatchQueue(label: "audio")
@@ -31,6 +32,8 @@ open class ConferenceViewController: UIViewController {
     private let rtcAudioSession =  RTCAudioSession.sharedInstance()
     
     var viewFree:[Bool] = [true, true, true, true]
+    
+    var publishStream:Bool = false;
     
     var publisherClient: AntMediaClient?;
     var playerClients:[AntMediaClientConference] = [];
@@ -45,8 +48,23 @@ open class ConferenceViewController: UIViewController {
         }
     }
     
-    
-    
+        
+    @IBAction func joinButtonTapped(_ sender: Any) {
+        AntMediaClient.printf("button tapped");
+        publishStream = !publishStream;
+        var title:String;
+        
+        //TODO: don't use flag(publishStream), use more trusted info @mekya
+        if (publishStream) {
+            self.publisherClient?.start();
+            title = "Stop";
+        }
+        else {
+            self.publisherClient?.stop();
+            title = "Publish"
+        }
+        joinButton.setTitle(title, for: .normal);
+    }
     open override func viewWillAppear(_ animated: Bool)
     {
         remoteViews.append(remoteView0)
@@ -66,41 +84,6 @@ open class ConferenceViewController: UIViewController {
         }
         conferenceClient.leaveRoom()
     }
-    
-    public func speakerOn() {
-       
-        self.audioQueue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.rtcAudioSession.lockForConfiguration()
-            do {
-                try self.rtcAudioSession.overrideOutputAudioPort(.speaker)
-                try self.rtcAudioSession.setActive(true)
-            } catch let error {
-                AntMediaClient.printf("Couldn't force audio to speaker: \(error)")
-            }
-            self.rtcAudioSession.unlockForConfiguration()
-        }
-    }
-    
-    // Fallback to the default playing device: headphones/bluetooth/ear speaker
-    public func speakerOff() {
-        self.audioQueue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.rtcAudioSession.lockForConfiguration()
-            do {
-                try self.rtcAudioSession.overrideOutputAudioPort(.none)
-            } catch let error {
-                debugPrint("Error setting AVAudioSession category: \(error)")
-            }
-            self.rtcAudioSession.unlockForConfiguration()
-        }
-    }
-    
-    
 }
 
 extension ConferenceViewController: ConferenceClientDelegate
@@ -119,7 +102,7 @@ extension ConferenceViewController: ConferenceClientDelegate
             self.publisherClient?.setLocalView(container: self.localView)
            
             self.publisherClient?.initPeerConnection()
-            self.publisherClient?.start()
+           // self.publisherClient?.start()
             
         }
            
@@ -168,7 +151,7 @@ extension ConferenceViewController: ConferenceClientDelegate
            
     }
        
-    public func streamsLeaved(streams: [String]) {
+    public func streamsLeft(streams: [String]) {
         
         Run.onMainThread {
         
@@ -194,8 +177,13 @@ extension ConferenceViewController: ConferenceClientDelegate
     }
 }
 
+
 extension ConferenceViewController: AntMediaClientDelegate
 {
+    public func eventHappened(streamId: String, eventType: String) {
+        AntMediaClient.printf("Event:\(eventType) happened in stream:\(streamId)")
+    }
+    
     public func clientDidConnect(_ client: AntMediaClient) {
         AntMediaClient.printf("Websocket is connected")
     }
@@ -222,7 +210,7 @@ extension ConferenceViewController: AntMediaClientDelegate
     
     public func playStarted(streamId: String) {
         print("play started");
-        self.speakerOn();
+        AntMediaClient.speakerOn();
         
     }
     
@@ -253,6 +241,5 @@ extension ConferenceViewController: AntMediaClientDelegate
     public func streamInformation(streamInfo: [StreamInformation]) {
         
     }
-    
-    
 }
+

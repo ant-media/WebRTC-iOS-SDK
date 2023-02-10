@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<data>
-		yx2iNUDcQZmgFcxedatW1YFAyL0=
+		Jpv1muYpthoSEQqe1qHg7J+EHkk=
 		</data>
 		<key>Headers/WebRTCiOSSDK.h</key>
 		<data>
@@ -14,27 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		XMykQ3DRxc2PEja4bupdI8xd4Qg=
+		gLLVPILBP+vjC7MJdi+896oQSjQ=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		MuHheMTzml0BoRVsxdkxKU6X4mY=
+		MNJl37CNWLyMYhwujX1FXG+WS+A=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		Rub6JRD6zr/yeoQj+EySGeBDSps=
+		j0iqBJFuSwDYh9vaih3LBmbkHwY=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		+HTHdE/PZO8UOQUuwMWItQ5jZY8=
+		bSVnyEc+YtZ5IiVELzTZ2lRmwho=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		Rub6JRD6zr/yeoQj+EySGeBDSps=
+		j0iqBJFuSwDYh9vaih3LBmbkHwY=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		/UkJp6V7yy264n2lz7G6yEbSG1Y=
+		Bb6BWForzsynY83htkeIZKjgEcw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -47,7 +47,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			2lhwZaYVmMJ2XiU+Na3in7tIRJUsgv1NJhRes5t7bRs=
+			QKJn/rGsbqjZd1ovhuk6y7af63XBR37HoD7X3ioMEuY=
 			</data>
 		</dict>
 		<key>Headers/WebRTCiOSSDK.h</key>
@@ -61,35 +61,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WcWpHq1JwC3ThRfzK3G0BsE3qoSffVL85WAc0RBBZwU=
+			XJ7nou2GGbrFhliB0Tb2xM9Es9+BHH/plx9CivTDU8w=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fjDB5vb/I4IDhPBs5SToiirGZx+lTYfJI6hlJD9VOA0=
+			soEJMADu3+7hauQU7NaZnVOxeXnTtsK2Ud94acVjk+8=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			A/HmeYg344rdBFkkSemDp9mDRvri44sr5DG5ZABHgE8=
+			y7lneoSJLD2LK0j6vjQfzCYGuEKG5QmLvAMVqNEtc9w=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			fjDB5vb/I4IDhPBs5SToiirGZx+lTYfJI6hlJD9VOA0=
+			soEJMADu3+7hauQU7NaZnVOxeXnTtsK2Ud94acVjk+8=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			amSlqPZp30tO//v4R4wJXQLKbK3GM42mrciPXeayDvs=
+			4oNySsfhD9iEKbHFRxKm1Z9p2pD6bhCq2Q8G2pqCenk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

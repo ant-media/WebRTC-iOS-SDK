@@ -11,6 +11,10 @@ import WebRTC
 import WebRTCiOSSDK
 
 class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
+    func eventHappened(streamId: String, eventType: String) {
+
+    }
+    
     func clientDidConnect(_ client: AntMediaClient) {
         
     }

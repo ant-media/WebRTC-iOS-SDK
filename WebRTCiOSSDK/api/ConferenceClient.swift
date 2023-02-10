@@ -44,7 +44,7 @@ public protocol ConferenceClientDelegate
      Called when some streams leaves from the room. So that players can be removed from the user interface
      - streams: stream id array of the stream that leaves from the room
      */
-    func streamsLeaved(streams: [String]);
+    func streamsLeft(streams: [String]);
 }
 
 open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
@@ -151,7 +151,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                         }
                         
                         if (leavedStreams.count > 0) {
-                            self.delegate.streamsLeaved(streams: leavedStreams)
+                            self.delegate.streamsLeft(streams: leavedStreams)
                         }
                                 
                     }
