@@ -117,7 +117,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         
             self.client.delegate = self
             self.client.setDebug(true)
-            self.client.setOptions(url: url as! String, streamId: streamId as! String, token: token as? String ?? "", mode: AntMediaClientMode.publish, enableDataChannel: true, captureScreenEnabled: true);
+            self.client.setOptions(url: url as! String, streamId: streamId as! String, token: token as? String ?? "", mode: AntMediaClientMode.publish, enableDataChannel: true, useExternalCameraSource: true);
             
             if (videoEnabled != nil) {
                 self.client.setVideoEnable(enable: videoEnabled as! Bool);

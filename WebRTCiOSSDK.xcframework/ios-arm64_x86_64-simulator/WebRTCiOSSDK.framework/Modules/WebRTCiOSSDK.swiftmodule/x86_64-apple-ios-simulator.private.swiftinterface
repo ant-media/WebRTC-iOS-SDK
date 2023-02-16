@@ -25,7 +25,7 @@ public enum AntMediaClientMode : Swift.Int {
 @objc @_inheritsConvenienceInitializers open class AntMediaClient : ObjectiveC.NSObject, WebRTCiOSSDK.AntMediaClientProtocol {
   public var delegate: WebRTCiOSSDK.AntMediaClientDelegate!
   @objc override dynamic public init()
-  public func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String = "", mode: WebRTCiOSSDK.AntMediaClientMode = .join, enableDataChannel: Swift.Bool = false, captureScreenEnabled: Swift.Bool = false)
+  public func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String = "", mode: WebRTCiOSSDK.AntMediaClientMode = .join, enableDataChannel: Swift.Bool = false, useExternalCameraSource: Swift.Bool = false)
   public func setMaxVideoBps(videoBitratePerSecond: Foundation.NSNumber)
   public func setMultiPeerMode(enable: Swift.Bool, mode: Swift.String)
   public func setVideoEnable(enable: Swift.Bool)
@@ -37,6 +37,7 @@ public enum AntMediaClientMode : Swift.Int {
   open func connectWebSocket()
   open func setCameraPosition(position: AVFoundation.AVCaptureDevice.Position)
   open func setTargetResolution(width: Swift.Int, height: Swift.Int)
+  open func setTargetFps(fps: Swift.Int)
   open func stop()
   open func initPeerConnection()
   open func switchCamera()
@@ -59,7 +60,7 @@ public enum AntMediaClientMode : Swift.Int {
   public func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
   public func setExternalAudio(externalAudioEnabled: Swift.Bool)
   public func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
-  public func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
+  public func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer, rotation: Swift.Int = -1)
   @objc deinit
 }
 extension WebRTCiOSSDK.AntMediaClient {
@@ -123,7 +124,7 @@ open class ConferenceClient : WebRTCiOSSDK.ConferenceClientProtocol, Starscream.
   public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
 }
 public protocol AntMediaClientProtocol {
-  func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String, mode: WebRTCiOSSDK.AntMediaClientMode, enableDataChannel: Swift.Bool, captureScreenEnabled: Swift.Bool)
+  func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String, mode: WebRTCiOSSDK.AntMediaClientMode, enableDataChannel: Swift.Bool, useExternalCameraSource: Swift.Bool)
   func setVideoEnable(enable: Swift.Bool)
   static func speakerOn()
   static func speakerOff()
@@ -131,6 +132,7 @@ public protocol AntMediaClientProtocol {
   func start()
   func setCameraPosition(position: AVFoundation.AVCaptureDevice.Position)
   func setTargetResolution(width: Swift.Int, height: Swift.Int)
+  func setTargetFps(fps: Swift.Int)
   func stop()
   func switchCamera()
   func sendData(data: Foundation.Data, binary: Swift.Bool)
@@ -152,7 +154,7 @@ public protocol AntMediaClientProtocol {
   func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
   func setExternalAudio(externalAudioEnabled: Swift.Bool)
   func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
-  func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
+  func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer, rotation: Swift.Int)
 }
 extension Swift.Dictionary {
   public var json: Swift.String {

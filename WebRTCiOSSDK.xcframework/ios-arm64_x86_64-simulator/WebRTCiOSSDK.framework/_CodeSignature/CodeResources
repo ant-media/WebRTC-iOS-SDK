@@ -14,27 +14,27 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		gLLVPILBP+vjC7MJdi+896oQSjQ=
+		5B3LV0MlakHlAl5s4TmC7vMSZ4M=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		MNJl37CNWLyMYhwujX1FXG+WS+A=
+		AogBhjKM3JclcinPMWjQivwCzGA=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		j0iqBJFuSwDYh9vaih3LBmbkHwY=
+		H9WqpOBYSfmuSXTN/vX5AiWK+UQ=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		bSVnyEc+YtZ5IiVELzTZ2lRmwho=
+		DGPiDcTsOYGVNE/d9EAfLGDqXKk=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		j0iqBJFuSwDYh9vaih3LBmbkHwY=
+		H9WqpOBYSfmuSXTN/vX5AiWK+UQ=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Bb6BWForzsynY83htkeIZKjgEcw=
+		nlW4tnBfxSFh6b/rAW4qWNuCAkY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,35 +61,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			XJ7nou2GGbrFhliB0Tb2xM9Es9+BHH/plx9CivTDU8w=
+			fKx7pwmTyRUfvy6HOPYIAouMFj+5fv/xNlY/NZJ27NQ=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			soEJMADu3+7hauQU7NaZnVOxeXnTtsK2Ud94acVjk+8=
+			3PRGZoRzLeo+ZBddEIntRzFCyDlUzudo5tiviJWI3Os=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			y7lneoSJLD2LK0j6vjQfzCYGuEKG5QmLvAMVqNEtc9w=
+			l5Cos5BM5gddYz7GnNHzFy6rgIg1OhL91PxVDOSYEU4=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			soEJMADu3+7hauQU7NaZnVOxeXnTtsK2Ud94acVjk+8=
+			3PRGZoRzLeo+ZBddEIntRzFCyDlUzudo5tiviJWI3Os=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4oNySsfhD9iEKbHFRxKm1Z9p2pD6bhCq2Q8G2pqCenk=
+			M5+r282NoTLOzBe106VviqOe9HRZ2mmVI57JGiO69Ws=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

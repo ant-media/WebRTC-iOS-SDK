@@ -42,9 +42,10 @@ public protocol AntMediaClientProtocol {
         - mode: The Mode of the Client. It should .play, .publish or .join. If it's .play, it means your WebRTC client will play a stream with your streamId
         on the server. If it's .publish, it mean your WebRTC client will publish stream with your stream id.
         - enableDataChannel: Enable or disable data channel on the mobile side. In order to make data channel work, you also need to enable it on server side
-        - captureScreenEnabled: Captures the screen of the application. If BroadcastExtension is used,  'setExternalVideoCapture' should be set also
+        - useExternalCameraSource: If useExternalCameraSource is false, it opens the local camera. If it's true, it does not open the local camera.
+        When it's set to true, it can record the screen in-app or you can give external frames through your application or BroadcastExtension. If you give external frames or you use BroadcastExtension, you need to set the externalVideoCapture to true as well
     */
-    func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, captureScreenEnabled: Bool)
+    func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, useExternalCameraSource: Bool)
     
     /**
      Enable or disable video completely in the WebRTC Client.  It should be called before `initPeerConnection()` and `start()` method.
@@ -90,6 +91,11 @@ public protocol AntMediaClientProtocol {
         - height:Resolution height
      */
     func setTargetResolution(width: Int, height: Int);
+    
+    /**
+     Set target camera fps(frame per second). It's 30fps by default
+     */
+    func setTargetFps(fps:Int);
     
     /**
     Stops the connection and release resources
@@ -227,10 +233,13 @@ public protocol AntMediaClientProtocol {
     //
     func setExternalVideoCapture(externalVideoCapture: Bool);
     
-    //
-    //Deliver external frame
-    //
-    func deliverExternalVideo(sampleBuffer: CMSampleBuffer);
+    /**
+     Deliver external video to the webrtc stack.
+     - sampleBuffer: Raw video frame buffer to pass to webrtc stack to be encoded
+     - rotation: The rotation of the frame. If you give -1 as parameter, then it will be tried to get rotation from sampleBuffer
+        you can give 0 for up,  180 for down, 90 for left, 270 for right
+     */
+    func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int);
 }
 
 

@@ -84,7 +84,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private var multiPeerStreamId: String?
     
     //Screen capture of the app's screen.
-    private var captureScreenEnabled: Bool = false
+    private var useExternalCameraSource: Bool = false
     
     private var isWebSocketConnected: Bool = false;
     
@@ -94,6 +94,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     //In order to make the broadcast extension to work both captureScreenEnable and
     // externalVideoCapture should be true
     private var externalVideoCapture: Bool = false;
+    
+    private var cameraSourceFPS: Int = 30;
     
     /*
      This peer mode is used in multi peer streaming
@@ -117,13 +119,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      
      }
     
-    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, captureScreenEnabled: Bool = false) {
+    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, useExternalCameraSource: Bool = false) {
         self.wsUrl = url
         self.streamId = streamId
         self.token = token
         self.mode = mode
         self.enableDataChannel = enableDataChannel
-        self.captureScreenEnabled = captureScreenEnabled
+        self.useExternalCameraSource = useExternalCameraSource
         AntMediaClient.rtcAudioSession.add(self);
     }
     
@@ -216,6 +218,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.targetHeight = height
     }
     
+    open func setTargetFps(fps: Int) {
+        self.cameraSourceFPS = fps;
+    }
+    
     /*
      Stops everything,
      Disconnects from websocket and
@@ -236,9 +242,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         if (self.webRTCClient == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
-            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, captureScreen: self.captureScreenEnabled, externalAudio: self.externalAudioEnabled)
+            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS);
             
-            self.webRTCClient!.externalVideoCapture(externalVideoCapture: self.externalVideoCapture)
+            
             self.webRTCClient!.setStreamId(streamId)
             self.webRTCClient!.setToken(self.token)
         }
@@ -562,9 +568,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.externalVideoCapture = externalVideoCapture;
     }
     
-    public func deliverExternalVideo(sampleBuffer: CMSampleBuffer)
+    public func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int = -1)
     {
-        (self.webRTCClient?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(sampleBuffer);
+        (self.webRTCClient?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(sampleBuffer, externalRotation: rotation);
     }
     
 }

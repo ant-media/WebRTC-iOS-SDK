@@ -476,7 +476,7 @@
           {
             "kind": "Function",
             "name": "setOptions",
-            "printedName": "setOptions(url:streamId:token:mode:enableDataChannel:captureScreenEnabled:)",
+            "printedName": "setOptions(url:streamId:token:mode:enableDataChannel:useExternalCameraSource:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -525,8 +525,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK14AntMediaClientC10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
-            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC10setOptions3url8streamId5token4mode17enableDataChannel23useExternalCameraSourceySS_S2SAA0deF4ModeOS2btF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC10setOptions3url8streamId5token4mode17enableDataChannel23useExternalCameraSourceySS_S2SAA0deF4ModeOS2btF",
             "moduleName": "WebRTCiOSSDK",
             "declAttributes": [
               "AccessControl"
@@ -815,6 +815,33 @@
             "declKind": "Func",
             "usr": "s:12WebRTCiOSSDK14AntMediaClientC19setTargetResolution5width6heightySi_SitF",
             "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC19setTargetResolution5width6heightySi_SitF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setTargetFps",
+            "printedName": "setTargetFps(fps:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC12setTargetFps3fpsySi_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC12setTargetFps3fpsySi_tF",
             "moduleName": "WebRTCiOSSDK",
             "isOpen": true,
             "declAttributes": [
@@ -1434,7 +1461,7 @@
           {
             "kind": "Function",
             "name": "deliverExternalVideo",
-            "printedName": "deliverExternalVideo(sampleBuffer:)",
+            "printedName": "deliverExternalVideo(sampleBuffer:rotation:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -1446,11 +1473,18 @@
                 "name": "CMSampleBuffer",
                 "printedName": "CoreMedia.CMSampleBuffer",
                 "usr": "c:@T@CMSampleBufferRef"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
               }
             ],
             "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK14AntMediaClientC20deliverExternalVideo12sampleBufferySo08CMSampleK3Refa_tF",
-            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC20deliverExternalVideo12sampleBufferySo08CMSampleK3Refa_tF",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC20deliverExternalVideo12sampleBuffer8rotationySo08CMSampleK3Refa_SitF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC20deliverExternalVideo12sampleBuffer8rotationySo08CMSampleK3Refa_SitF",
             "moduleName": "WebRTCiOSSDK",
             "declAttributes": [
               "AccessControl"
@@ -3010,7 +3044,7 @@
           {
             "kind": "Function",
             "name": "setOptions",
-            "printedName": "setOptions(url:streamId:token:mode:enableDataChannel:captureScreenEnabled:)",
+            "printedName": "setOptions(url:streamId:token:mode:enableDataChannel:useExternalCameraSource:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -3055,8 +3089,8 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
-            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP10setOptions3url8streamId5token4mode17enableDataChannel20captureScreenEnabledySS_S2SAA0deF4ModeOS2btF",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP10setOptions3url8streamId5token4mode17enableDataChannel23useExternalCameraSourceySS_S2SAA0deF4ModeOS2btF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP10setOptions3url8streamId5token4mode17enableDataChannel23useExternalCameraSourceySS_S2SAA0deF4ModeOS2btF",
             "moduleName": "WebRTCiOSSDK",
             "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
             "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
@@ -3251,6 +3285,36 @@
             "declKind": "Func",
             "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP19setTargetResolution5width6heightySi_SitF",
             "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP19setTargetResolution5width6heightySi_SitF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setTargetFps",
+            "printedName": "setTargetFps(fps:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP12setTargetFps3fpsySi_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP12setTargetFps3fpsySi_tF",
             "moduleName": "WebRTCiOSSDK",
             "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
             "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
@@ -3891,7 +3955,7 @@
           {
             "kind": "Function",
             "name": "deliverExternalVideo",
-            "printedName": "deliverExternalVideo(sampleBuffer:)",
+            "printedName": "deliverExternalVideo(sampleBuffer:rotation:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -3903,11 +3967,17 @@
                 "name": "CMSampleBuffer",
                 "printedName": "CoreMedia.CMSampleBuffer",
                 "usr": "c:@T@CMSampleBufferRef"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
               }
             ],
             "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalVideo12sampleBufferySo08CMSampleL3Refa_tF",
-            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalVideo12sampleBufferySo08CMSampleL3Refa_tF",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalVideo12sampleBuffer8rotationySo08CMSampleL3Refa_SitF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP20deliverExternalVideo12sampleBuffer8rotationySo08CMSampleL3Refa_SitF",
             "moduleName": "WebRTCiOSSDK",
             "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
             "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
@@ -5147,30 +5217,37 @@
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 932,
+      "offset": 963,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 960,
+      "offset": 991,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
-      "offset": 987,
+      "offset": 1018,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "IntegerLiteral",
-      "offset": 1005,
+      "offset": 1036,
       "length": 2,
       "value": "15"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1673,
+      "length": 2,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
@@ -5343,65 +5420,79 @@
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 2226,
+      "offset": 2229,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 2282,
+      "offset": 2285,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 2339,
+      "offset": 2342,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 2597,
+      "offset": 2600,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2651,
+      "length": 2,
+      "value": "30"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "StringLiteral",
-      "offset": 2716,
+      "offset": 2767,
       "length": 6,
       "value": "\"play\""
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "StringLiteral",
-      "offset": 3150,
+      "offset": 3201,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 3214,
+      "offset": 3265,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 3250,
+      "offset": 3304,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 8239,
+      "offset": 8399,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19774,
+      "length": 2,
+      "value": "1"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/ConferenceClient.swift",
@@ -5609,56 +5700,77 @@
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 1154,
+      "offset": 1546,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 1275,
+      "offset": 1667,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 1393,
+      "offset": 1785,
       "length": 3,
       "value": "480"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 1433,
+      "offset": 1825,
       "length": 3,
       "value": "360"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 1487,
+      "offset": 1879,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 1537,
+      "offset": 1929,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1980,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4430,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 3970,
+      "offset": 4466,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4496,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 6623,
+      "offset": 7265,
       "length": 5,
       "value": "false"
     },
