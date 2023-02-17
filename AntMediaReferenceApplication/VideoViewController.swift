@@ -38,7 +38,7 @@ class VideoViewController: UIViewController {
         
         self.client.delegate = self
         self.client.setDebug(true)
-        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true, captureScreenEnabled:false)
+        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true, useExternalCameraSource:false)
         
         //this should be enabled when an audio app or broadcast extension is used.
         //Please check the sample in ScreenShare
