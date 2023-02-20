@@ -12,14 +12,18 @@ import WebRTC
 
 let COMMAND = "command"
 let STREAM_ID = "streamId"
+let TRACK_ID = "trackId"
+let ENABLED = "enabled"
 let TOKEN_ID = "token"
 let VIDEO = "video"
 let AUDIO = "audio"
 let ROOM_ID = "room";
+let MODE = "mode";
 let NOTIFICATION = "notification";
 let JOINED_ROOM_DEFINITION = "joinedTheRoom";
 let DEFINITION = "definition";
 let STREAMS = "streams";
+let STREAM_LIST_IN_ROOM = "streamList";
 let ROOM_INFORMATION_COMMAND = "roomInformation";
 let GET_STREAM_INFO_COMMAND = "getStreamInfo";
 let STREAM_INFORMATION_COMMAND = "streamInformation";
@@ -28,6 +32,9 @@ let STREAM_HEIGHT_FIELD = "streamHeight";
 let EVENT_TYPE = "eventType";
 let EVENT_TYPE_MIC_MUTED = "MIC_MUTED"
 let EVENT_TYPE_MIC_UNMUTED = "MIC_UNMUTED";
+let ENABLE_TRACK_COMMAND = "enableTrack"
+let ENABLE_VIDEO_TRACK_COMMAND = "toggleVideo"
+let ENABLE_AUDIO_TRACK_COMMAND = "toggleAudio"
 
 public protocol AntMediaClientProtocol {
         
@@ -46,6 +53,11 @@ public protocol AntMediaClientProtocol {
         When it's set to true, it can record the screen in-app or you can give external frames through your application or BroadcastExtension. If you give external frames or you use BroadcastExtension, you need to set the externalVideoCapture to true as well
     */
     func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, useExternalCameraSource: Bool)
+    
+    /**
+     Set room Id to use in video conferencing
+     */
+    func setRoomId(roomId:String);
     
     /**
      Enable or disable video completely in the WebRTC Client.  It should be called before `initPeerConnection()` and `start()` method.
@@ -167,7 +179,7 @@ public protocol AntMediaClientProtocol {
 
     
     /**
-     Toggle video stream(enable, disable) in the current stream.
+     Toggle video stream(enable, disable) in the current stream for local video
      */
     func toggleVideo();
     
@@ -240,6 +252,21 @@ public protocol AntMediaClientProtocol {
         you can give 0 for up,  180 for down, 90 for left, 270 for right
      */
     func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int);
+    
+    /**
+     Enable/disable  to play the video track. If it's disabled, then server does not send video frames for the track.
+     - Parameters
+        - trackId
+     */
+    func enableVideoTrack(trackId:String, enabled:Bool);
+    
+    /**
+     Enable/disable to play the audio track. If it's disabled, then server does not send audio frame for the track.
+     */
+    func enableAudioTrack(trackId:String, enabled:Bool);
+    
+    /**
+     Enable/disable to play the  track(video,audio) track together.  If it's disabled, then server does not send audio frame for the track.
+     */
+    func enableTrack(trackId:String, enabled:Bool)
 }
-
-

@@ -7,46 +7,15 @@
 //
 
 import ReplayKit
-import WebRTC
 import WebRTCiOSSDK
+import WebRTC
 
 class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
-    func eventHappened(streamId: String, eventType: String) {
 
-    }
-    
-    func clientDidConnect(_ client: AntMediaClient) {
-        
-    }
-    
-    func clientDidDisconnect(_ message: String) {
-        
-    }
-    
     func clientHasError(_ message: String) {
         let userInfo = [NSLocalizedFailureReasonErrorKey: message]
        
         finishBroadcastWithError(NSError(domain: "ScreenShare", code: -99, userInfo: userInfo));
-        
-    }
-    
-    func remoteStreamStarted(streamId: String) {
-        
-    }
-    
-    func remoteStreamRemoved(streamId: String) {
-        
-    }
-    
-    func localStreamStarted(streamId: String) {
-        
-    }
-    
-    func playStarted(streamId: String) {
-       
-    }
-    
-    func playFinished(streamId: String) {
         
     }
     
@@ -58,23 +27,10 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         NSLog("Publish has finished");
     }
     
-    func disconnected(streamId: String) {
-        
-    }
-    
-    func audioSessionDidStartPlayOrRecord(streamId: String) {
-        
-    }
-    
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
         
     }
     
-    func streamInformation(streamInfo: [StreamInformation]) {
-        
-    }
-    
-
     let client: AntMediaClient = AntMediaClient.init()
     
     var videoEnabled: Bool = true;

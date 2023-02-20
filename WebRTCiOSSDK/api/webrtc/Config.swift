@@ -16,10 +16,16 @@ public class Config: NSObject {
                                                  "OfferToReceiveVideo": "true",]
     private static let defaultConstraints: [String: String] = ["DtlsSrtpKeyAgreement": "true"]
     
+    private static var rtcSdpSemantics = RTCSdpSemantics.unifiedPlan;
+    
     static var iceServer:RTCIceServer = RTCIceServer.init(urlStrings: [stunServer], username: "", credential: "")
     
     public static func setDefaultStunServer(server: RTCIceServer) {
         iceServer = server;
+    }
+    
+    public static func setSdpSemantics(sdpSemantics:RTCSdpSemantics) {
+        rtcSdpSemantics = sdpSemantics;
     }
     
     static func defaultStunServer() -> RTCIceServer {
@@ -41,6 +47,7 @@ public class Config: NSObject {
     static func createConfiguration(server: RTCIceServer) -> RTCConfiguration {
         let config = RTCConfiguration.init()
         config.iceServers = [server]
+        config.sdpSemantics = rtcSdpSemantics;
         return config
     }
 }

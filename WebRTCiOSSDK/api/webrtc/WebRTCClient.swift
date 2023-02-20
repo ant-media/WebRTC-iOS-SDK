@@ -2,7 +2,6 @@
 //  WebRTCClient.swift
 //  AntMediaSDK
 //
-//  Created by Oğulcan on 6.06.2018.
 //  Copyright © 2018 AntMedia. All rights reserved.
 //
 
@@ -149,14 +148,8 @@ class WebRTCClient: NSObject {
         self.token = token
     }
     
-    public func setRemoteDescription(_ description: RTCSessionDescription) {
-        self.peerConnection?.setRemoteDescription(description, completionHandler: {
-            (error) in
-            if (error != nil) {
-                AntMediaClient.printf("Error (setRemoteDescription): " + error!.localizedDescription + " debug description: " + error.debugDescription)
-                
-            }
-        })
+    public func setRemoteDescription(_ description: RTCSessionDescription, completionHandler: @escaping RTCSetSessionDescriptionCompletionHandler) {
+        self.peerConnection?.setRemoteDescription(description, completionHandler: completionHandler)
     }
     
     public func addCandidate(_ candidate: RTCIceCandidate) {
@@ -400,8 +393,7 @@ class WebRTCClient: NSObject {
 
             self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
         }
-        
-        
+            
         let audioSource = WebRTCClient.factory.audioSource(with: Config.createTestConstraints())
         self.localAudioTrack = WebRTCClient.factory.audioTrack(with: audioSource, trackId: AUDIO_TRACK_ID)
         
@@ -481,15 +473,39 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
         //AntMediaClient.printf("---> StateChanged:\(stateChanged.rawValue)")
     }
     
-    // addedStream
-    func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
-        AntMediaClient.printf("AddedStream")
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didAdd rtpReceiver: RTCRtpReceiver, streams mediaStreams: [RTCMediaStream]) {
         
-        if (stream.audioTracks.count > 1 || stream.videoTracks.count > 1) {
-            return
+        
+        AntMediaClient.printf("didAdd track:\(String(describing: rtpReceiver.track?.kind)) media streams count:\(mediaStreams.count) ")
+        
+        if let track = rtpReceiver.track {
+            self.delegate?.trackAdded(track:track, stream:mediaStreams);
+        }
+        else {
+            AntMediaClient.printf("New track added but it's nil")
         }
         
-        if (stream.videoTracks.count == 1) {
+    }
+    
+    func peerConnection(_ peerConnection: RTCPeerConnection, didRemove rtpReceiver: RTCRtpReceiver) {
+        AntMediaClient.printf("didRemove track:\(String(describing: rtpReceiver.track?.kind))")
+        
+        if let track = rtpReceiver.track {
+            self.delegate?.trackRemoved(track:track);
+        }
+        else {
+            AntMediaClient.printf("New track removed but it's nil")
+        }
+    }
+    
+    // addedStream
+    func peerConnection(_ peerConnection: RTCPeerConnection, didAdd stream: RTCMediaStream) {
+        
+        AntMediaClient.printf("addedStream. Stream has \(stream.videoTracks.count) video tracks and \(stream.audioTracks.count) audio tracks");
+       
+        if (stream.videoTracks.count == 1)
+        {
             AntMediaClient.printf("stream has video track");
             if (remoteVideoView != nil) {
                 remoteVideoTrack = stream.videoTracks[0]
@@ -498,16 +514,16 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
                 remoteVideoTrack.add(remoteVideoView!)
                 AntMediaClient.printf("Has delegate??? (signalingStateChanged): \(String(describing: self.delegate))")
             }
-            delegate?.addRemoteStream()
         }
-        else {
-            
-        }
+
+        
+        delegate?.remoteStreamAdded();
     }
     
     // removedStream
     func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
         AntMediaClient.printf("RemovedStream")
+        delegate?.remoteStreamRemoved();
         remoteVideoTrack = nil
         remoteAudioTrack = nil
     }

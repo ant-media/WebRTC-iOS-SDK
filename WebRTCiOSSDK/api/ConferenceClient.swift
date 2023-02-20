@@ -8,6 +8,7 @@
 
 import Foundation
 import Starscream
+import WebRTC
 
 public protocol ConferenceClientProtocol {
     
@@ -78,6 +79,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
         let joinRoomMessage =  [
                             COMMAND: "joinRoom",
                             ROOM_ID: self.roomId!,
+                            MODE: "multitrack",
                             STREAM_ID: self.streamId ?? "" ] as [String : Any]
         
         webSocket.write(string: joinRoomMessage.json)
@@ -87,7 +89,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
     
     public func receiveMessage(socket: WebSocketClient, text: String) {
         
-        AntMediaClient.printf("Received message \(text)")
+       // AntMediaClient.printf("Received message \(text)")
         if let message = text.toJSON()
         {
            
@@ -109,7 +111,9 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                         
                         if let streams = message[STREAMS] as? [String] {
                             self.streamsInTheRoom = streams;
-                            self.delegate.newStreamsJoined(streams:  streams);
+                            if (self.streamsInTheRoom.count > 0) {
+                                self.delegate.newStreamsJoined(streams:  streams);
+                            }
                         }
                         
                         //start periodic check

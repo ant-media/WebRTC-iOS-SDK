@@ -2,7 +2,6 @@
 //  VideoViewController.swift
 //  AntMediaReferenceApplication
 //
-//  Created by Oğulcan on 14.06.2018.
 //  Copyright © 2018 AntMedia. All rights reserved.
 //
 
@@ -222,15 +221,7 @@ class VideoViewController: UIViewController {
 }
 
 extension VideoViewController: AntMediaClientDelegate {
-    
-    func clientDidConnect(_ client: AntMediaClient) {
-        print("VideoViewController: Connected")
-    }
-    
-    func clientDidDisconnect(_ message: String) {
-        print("VideoViewController: Disconnected: \(message)")
-    }
-    
+        
     func clientHasError(_ message: String) {
         AlertHelper.getInstance().show("Error!", message: message, cancelButtonText: "OK", cancelAction: {
             self.dismiss(animated: true, completion: nil)
@@ -240,10 +231,6 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func disconnected(streamId: String) {
         print("Disconnected -> \(streamId)")
-    }
-    
-    func remoteStreamStarted(streamId: String) {
-        print("Remote stream started -> \(streamId)")
     }
     
     func remoteStreamRemoved(streamId: String) {
