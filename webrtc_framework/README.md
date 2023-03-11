@@ -24,7 +24,8 @@ iOS SDK
     ios_enable_code_signing = false
     ios_deployment_target="12.0"
     enable_run_ios_unittests_with_xctest=true
-    rtc_enable_objc_symbol_export=true 
+    rtc_enable_objc_symbol_export=true
+    enable_stripping=true
     ```
   * Run the command `ninja -C out/ios_arm64 framework_objc`   
 
@@ -41,7 +42,8 @@ iOS SDK
     ios_enable_code_signing = false
     ios_deployment_target="12.0"
     enable_run_ios_unittests_with_xctest=true
-    rtc_enable_objc_symbol_export=true 
+    rtc_enable_objc_symbol_export=true
+    enable_stripping=true
     ```
   * Run the command `ninja -C out/ios_arm64_simulator framework_objc`   
 
@@ -58,7 +60,8 @@ iOS SDK
     ios_enable_code_signing = false
     ios_deployment_target="12.0"
     enable_run_ios_unittests_with_xctest=true
-    rtc_enable_objc_symbol_export=true 
+    rtc_enable_objc_symbol_export=true
+    enable_stripping=true
     ```
   * Run the command `ninja -C out/ios_x64_simulator framework_objc`   
 

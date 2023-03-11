@@ -43,7 +43,6 @@ public enum AntMediaClientMode: Int {
     }
     
 }
-
 open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     internal static var isDebug: Bool = false
@@ -60,9 +59,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var videoContentMode: UIView.ContentMode?
     
-    private let audioQueue = DispatchQueue(label: "audio")
+    private static let audioQueue = DispatchQueue(label: "audio")
     
-    private let rtcAudioSession =  RTCAudioSession.sharedInstance()
+    private static let rtcAudioSession =  RTCAudioSession.sharedInstance()
     
     private var localContainerBounds: CGRect?
     private var remoteContainerBounds: CGRect?
@@ -84,7 +83,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private var multiPeerStreamId: String?
     
     //Screen capture of the app's screen.
-    private var captureScreenEnabled: Bool = false
+    private var useExternalCameraSource: Bool = false
     
     private var isWebSocketConnected: Bool = false;
     
@@ -95,12 +94,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     // externalVideoCapture should be true
     private var externalVideoCapture: Bool = false;
     
+    private var cameraSourceFPS: Int = 30;
+    
+    private var roomId:String? = nil;
+    
     /*
      This peer mode is used in multi peer streaming
      */
     private var multiPeerMode: String = "play"
     
     var pingTimer: Timer?
+    
+    var disableTrackId:String?
     
     struct HandshakeMessage:Codable {
         var command:String?
@@ -110,6 +115,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         var audio:Bool?
         var mode:String?
         var multiPeer:Bool?
+        var mainTrack:String?
+        var trackList:[String]
     }
     
     public override init() {
@@ -117,14 +124,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      
      }
     
-    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, captureScreenEnabled: Bool = false) {
+    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, useExternalCameraSource: Bool = false) {
         self.wsUrl = url
         self.streamId = streamId
         self.token = token
         self.mode = mode
-        self.rtcAudioSession.add(self)
         self.enableDataChannel = enableDataChannel
-        self.captureScreenEnabled = captureScreenEnabled
+        self.useExternalCameraSource = useExternalCameraSource
+        AntMediaClient.rtcAudioSession.add(self);
+    }
+    
+    public func setRoomId(roomId:String) {
+        self.roomId = roomId;
     }
     
     public func setMaxVideoBps(videoBitratePerSecond: NSNumber) {
@@ -147,7 +158,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     func getHandshakeMessage() -> String {
         
-        let handShakeMesage = HandshakeMessage(command: self.mode.getName(), streamId: self.streamId, token: self.token.isEmpty ? "" : self.token, video: self.videoEnable, audio:self.audioEnable, multiPeer: self.multiPeer && self.multiPeerStreamId != nil ? true : false)
+        var trackList:[String] = [];
+        AntMediaClient.printf("disable track id is \(String(describing: self.disableTrackId))");
+        if let trackId = self.disableTrackId {
+            AntMediaClient.printf("appending track id to the tracklist \(String(describing: self.disableTrackId))");
+            trackList.append("!" + trackId);
+        }
+        else {
+            AntMediaClient.printf("Disable track id is not set \(String(describing: self.disableTrackId))");
+        }
+        
+        let handShakeMesage = HandshakeMessage(command: self.mode.getName(), streamId: self.streamId, token: self.token.isEmpty ? "" : self.token, video: self.videoEnable, audio:self.audioEnable, multiPeer: self.multiPeer && self.multiPeerStreamId != nil ? true : false, mainTrack: self.roomId, trackList: trackList)
+        
         let json = try! JSONEncoder().encode(handShakeMesage)
         return String(data: json, encoding: .utf8)!
     }
@@ -156,36 +178,32 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     // Force speaker
-    public func speakerOn() {
+    public static func speakerOn() {
        
-        self.audioQueue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.rtcAudioSession.lockForConfiguration()
+        audioQueue.async {() in
+          
+            rtcAudioSession.lockForConfiguration()
             do {
-                try self.rtcAudioSession.overrideOutputAudioPort(.speaker)
-                try self.rtcAudioSession.setActive(true)
+                try rtcAudioSession.overrideOutputAudioPort(.speaker)
+                try rtcAudioSession.setActive(true)
             } catch let error {
                 AntMediaClient.printf("Couldn't force audio to speaker: \(error)")
             }
-            self.rtcAudioSession.unlockForConfiguration()
+            rtcAudioSession.unlockForConfiguration()
         }
     }
     
     // Fallback to the default playing device: headphones/bluetooth/ear speaker
-    public func speakerOff() {
-        self.audioQueue.async { [weak self] in
-            guard let self = self else {
-                return
-            }
-            self.rtcAudioSession.lockForConfiguration()
+    public static func speakerOff() {
+        audioQueue.async {() in
+            
+            rtcAudioSession.lockForConfiguration()
             do {
-                try self.rtcAudioSession.overrideOutputAudioPort(.none)
+                try rtcAudioSession.overrideOutputAudioPort(.none)
             } catch let error {
                 debugPrint("Error setting AVAudioSession category: \(error)")
             }
-            self.rtcAudioSession.unlockForConfiguration()
+            rtcAudioSession.unlockForConfiguration()
         }
     }
 
@@ -220,12 +238,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.targetHeight = height
     }
     
+    open func setTargetFps(fps: Int) {
+        self.cameraSourceFPS = fps;
+    }
+    
     /*
      Stops everything,
      Disconnects from websocket and
      stop webrtc
      */
     open func stop() {
+        AntMediaClient.rtcAudioSession.remove(self);
+        
         AntMediaClient.printf("Stop is called")
         if (self.isWebSocketConnected) {
             let jsonString = self.getLeaveMessage().json
@@ -240,9 +264,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         if (self.webRTCClient == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClient))")
-            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, captureScreen: self.captureScreenEnabled, externalAudio: self.externalAudioEnabled)
+            self.webRTCClient = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: self.mode, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS);
             
-            self.webRTCClient!.externalVideoCapture(externalVideoCapture: self.externalVideoCapture)
+            
             self.webRTCClient!.setStreamId(streamId)
             self.webRTCClient!.setToken(self.token)
         }
@@ -283,7 +307,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.localView = localRenderer
         self.localContainerBounds = container.bounds
         
-        self.embedView(localRenderer, into: container)
+        AntMediaClient.embedView(localRenderer, into: container)
     }
     
     open func setRemoteView(remoteContainer: UIView, mode:UIView.ContentMode = .scaleAspectFit) {
@@ -300,11 +324,15 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         self.remoteView = remoteRenderer
         self.remoteContainerBounds = remoteContainer.bounds
-        self.embedView(remoteRenderer, into: remoteContainer)
+        AntMediaClient.embedView(remoteRenderer, into: remoteContainer)
         
     }
     
-    private func embedView(_ view: UIView, into containerView: UIView) {
+    open func disableTrack(trackId:String) {
+        self.disableTrackId = trackId;
+    }
+    
+    public static func embedView(_ view: UIView, into containerView: UIView) {
         containerView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         containerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|",
@@ -333,6 +361,44 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     open func toggleAudio() {
         self.webRTCClient?.toggleAudioEnabled()
+    }
+    
+    func sendNotification(eventType:String) {
+        let notification =  [
+            EVENT_TYPE: eventType,
+            STREAM_ID: self.streamId].json;
+        
+        if let data = notification.data(using: .utf8) {
+            self.webRTCClient?.sendData(data: data);
+        }
+       
+    }
+    
+    open func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
+    {
+        AntMediaClient.audioQueue.async { () in
+           
+            AntMediaClient.rtcAudioSession.lockForConfiguration()
+            do {
+                var category:String;
+                if (mute) {
+                    category = AVAudioSession.Category.soloAmbient.rawValue;
+                }
+                else {
+                    category = AVAudioSession.Category.playAndRecord.rawValue;
+                }
+                try AntMediaClient.rtcAudioSession.setCategory(category);
+                try AntMediaClient.rtcAudioSession.setActive(true);
+                self.webRTCClient?.setAudioEnabled(enabled: !mute);
+                self.sendNotification(eventType: mute ? EVENT_TYPE_MIC_MUTED : EVENT_TYPE_MIC_UNMUTED);
+                completionHandler(mute, nil);
+                
+            } catch let error {
+                AntMediaClient.printf("Couldn't set to mic status: \(error)")
+                completionHandler(mute, error);
+            }
+            AntMediaClient.rtcAudioSession.unlockForConfiguration()
+        }
     }
     
     open func toggleVideo() {
@@ -367,11 +433,23 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         if type == "offer" {
             rtcSessionDesc = RTCSessionDescription.init(type: RTCSdpType.offer, sdp: sdp)
-            self.webRTCClient?.setRemoteDescription(rtcSessionDesc)
-            self.webRTCClient?.sendAnswer()
+            self.webRTCClient?.setRemoteDescription(rtcSessionDesc, completionHandler: {
+                (error) in
+                if (error == nil) {
+                    self.webRTCClient?.sendAnswer()
+                }
+                else {
+                    AntMediaClient.printf("Error (setRemoteDescription): " + error!.localizedDescription + " debug description: " + error.debugDescription)
+                    
+                }
+            })
+            
         } else if type == "answer" {
             rtcSessionDesc = RTCSessionDescription.init(type: RTCSdpType.answer, sdp: sdp)
-            self.webRTCClient?.setRemoteDescription(rtcSessionDesc)
+            self.webRTCClient?.setRemoteDescription(rtcSessionDesc, completionHandler: { (error ) in
+                
+                
+            })
         }
     }
     
@@ -405,7 +483,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             case "stop":
                 self.webRTCClient?.stop()
                 self.webRTCClient = nil
-                self.delegate.remoteStreamRemoved(streamId: self.streamId)
                 break
             case "takeConfiguration":
                 self.initPeerConnection()
@@ -528,15 +605,64 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.externalVideoCapture = externalVideoCapture;
     }
     
-    public func deliverExternalVideo(sampleBuffer: CMSampleBuffer)
+    public func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int = -1)
     {
-        (self.webRTCClient?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(sampleBuffer);
+        (self.webRTCClient?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(sampleBuffer, externalRotation: rotation);
+    }
+    
+
+    public func enableVideoTrack(trackId:String, enabled:Bool){
+        if (isWebSocketConnected) {
+            
+            let jsonString =  [
+                COMMAND: ENABLE_VIDEO_TRACK_COMMAND,
+                TRACK_ID: trackId,
+                STREAM_ID: streamId!,
+                ENABLED: enabled].json;
+            
+            webSocket!.write(string: jsonString);
+        }
+    }
+    
+    public func enableAudioTrack(trackId:String, enabled:Bool){
+        if (isWebSocketConnected) {
+            
+            let jsonString =  [
+                COMMAND: ENABLE_AUDIO_TRACK_COMMAND,
+                TRACK_ID: trackId,
+                STREAM_ID: streamId!,
+                ENABLED: enabled].json;
+            
+            webSocket!.write(string: jsonString);
+        }
+    }
+    
+    public func enableTrack(trackId:String, enabled:Bool){
+        if (isWebSocketConnected)
+        {
+            let jsonString =  [
+                COMMAND: ENABLE_TRACK_COMMAND,
+                TRACK_ID: trackId,
+                STREAM_ID: streamId!,
+                ENABLED: enabled].json;
+            
+            webSocket!.write(string: jsonString);
+        }
     }
     
 }
 
 extension AntMediaClient: WebRTCClientDelegate {
-
+    
+    func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {
+        self.delegate.trackAdded(track: track, stream: stream)
+    }
+    
+    func trackRemoved(track: RTCMediaStreamTrack) {
+        self.delegate.trackRemoved(track: track)
+    }
+    
+    
     public func sendMessage(_ message: [String : Any]) {
         self.webSocket?.write(string: message.json)
     }
@@ -545,9 +671,14 @@ extension AntMediaClient: WebRTCClientDelegate {
         self.delegate.localStreamStarted(streamId: self.streamId)
     }
     
-    public func addRemoteStream() {
+    public func remoteStreamAdded() {
         self.delegate.remoteStreamStarted(streamId: self.streamId)
     }
+    
+    func remoteStreamRemoved() {
+        self.delegate.remoteStreamRemoved(streamId: self.streamId)
+    }
+    
     
     public func connectionStateChanged(newState: RTCIceConnectionState) {
         if newState == RTCIceConnectionState.closed ||
@@ -560,7 +691,17 @@ extension AntMediaClient: WebRTCClientDelegate {
     }
     
     public func dataReceivedFromDataChannel(didReceiveData data: RTCDataBuffer) {
-        self.delegate.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
+        
+        let rawJSON = String(decoding: data.data, as: UTF8.self)
+        let json = rawJSON.toJSON();
+      
+        if let eventType = json?[EVENT_TYPE] {
+            //event happened
+            self.delegate.eventHappened(streamId:json?[STREAM_ID] as! String, eventType:eventType as! String);
+        }
+        else {
+            self.delegate.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
+        }
     }
     
 }
@@ -569,7 +710,7 @@ extension AntMediaClient: WebSocketDelegate {
     
     
     public func getPingMessage() -> [String: String] {
-           return [COMMAND: "ping"]
+        return [COMMAND: "ping"]
     }
     
     public func didReceive(event: WebSocketEvent, client: WebSocket) {
@@ -595,7 +736,7 @@ extension AntMediaClient: WebSocketDelegate {
             self.delegate?.clientDidDisconnect(String(code))
             break;
         case .text(let string):
-            AntMediaClient.printf("Received text: \(string)");
+            //AntMediaClient.printf("Received text: \(string)");
             self.onMessage(string)
             break;
         case .binary(let data):
@@ -648,6 +789,7 @@ extension AntMediaClient: RTCVideoViewDelegate {
         videoView.bounds = videoFrame
     
     }
+    
     public func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
         
         AntMediaClient.printf("Video size changed to " + String(Int(size.width)) + "x" + String(Int(size.height)))

@@ -12,19 +12,29 @@ import WebRTC
 
 let COMMAND = "command"
 let STREAM_ID = "streamId"
+let TRACK_ID = "trackId"
+let ENABLED = "enabled"
 let TOKEN_ID = "token"
 let VIDEO = "video"
 let AUDIO = "audio"
 let ROOM_ID = "room";
+let MODE = "mode";
 let NOTIFICATION = "notification";
 let JOINED_ROOM_DEFINITION = "joinedTheRoom";
 let DEFINITION = "definition";
 let STREAMS = "streams";
+let STREAM_LIST_IN_ROOM = "streamList";
 let ROOM_INFORMATION_COMMAND = "roomInformation";
 let GET_STREAM_INFO_COMMAND = "getStreamInfo";
 let STREAM_INFORMATION_COMMAND = "streamInformation";
 let FORCE_STREAM_QUALITY_INFO = "forceStreamQuality";
 let STREAM_HEIGHT_FIELD = "streamHeight";
+let EVENT_TYPE = "eventType";
+let EVENT_TYPE_MIC_MUTED = "MIC_MUTED"
+let EVENT_TYPE_MIC_UNMUTED = "MIC_UNMUTED";
+let ENABLE_TRACK_COMMAND = "enableTrack"
+let ENABLE_VIDEO_TRACK_COMMAND = "toggleVideo"
+let ENABLE_AUDIO_TRACK_COMMAND = "toggleAudio"
 
 public protocol AntMediaClientProtocol {
         
@@ -39,9 +49,15 @@ public protocol AntMediaClientProtocol {
         - mode: The Mode of the Client. It should .play, .publish or .join. If it's .play, it means your WebRTC client will play a stream with your streamId
         on the server. If it's .publish, it mean your WebRTC client will publish stream with your stream id.
         - enableDataChannel: Enable or disable data channel on the mobile side. In order to make data channel work, you also need to enable it on server side
-        - captureScreenEnabled: Captures the screen of the application. If BroadcastExtension is used,  'setExternalVideoCapture' should be set also
+        - useExternalCameraSource: If useExternalCameraSource is false, it opens the local camera. If it's true, it does not open the local camera.
+        When it's set to true, it can record the screen in-app or you can give external frames through your application or BroadcastExtension. If you give external frames or you use BroadcastExtension, you need to set the externalVideoCapture to true as well
     */
-    func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, captureScreenEnabled: Bool)
+    func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, useExternalCameraSource: Bool)
+    
+    /**
+     Set room Id to use in video conferencing
+     */
+    func setRoomId(roomId:String);
     
     /**
      Enable or disable video completely in the WebRTC Client.  It should be called before `initPeerConnection()` and `start()` method.
@@ -55,13 +71,13 @@ public protocol AntMediaClientProtocol {
      Set the speaker on. It works if audio session is already started so calling this method may not work if it's called too early.
      The correct place to call it in AntMediaClientDelegate's `audioSessionDidStartPlayOrRecord` method.
      */
-    func speakerOn();
+    static func speakerOn();
     
     /**
     Set the speaker off. It works if audio session is already started so calling this method may not work if it's called too early.
     The correct place to call it in AntMediaClientDelegate's `audioSessionDidStartPlayOrRecord` method.
     */
-    func speakerOff();
+    static func speakerOff();
     
     /**
      Initializes the peer connection and opens the camera if it's publish mode but it does not start the streaming. It's not necessary to call this method. `start()` method calls this method if it's required. This method is generally used opening the camera and let the user tap a button to start publishing
@@ -87,6 +103,11 @@ public protocol AntMediaClientProtocol {
         - height:Resolution height
      */
     func setTargetResolution(width: Int, height: Int);
+    
+    /**
+     Set target camera fps(frame per second). It's 30fps by default
+     */
+    func setTargetFps(fps:Int);
     
     /**
     Stops the connection and release resources
@@ -146,12 +167,19 @@ public protocol AntMediaClientProtocol {
     static func setDebug(_ value: Bool);
     
     /**
-    Toggle audio in the current stream. If it's muted, it will be unmuted. If it's unmuted, it'll be muted.
-     */
+     Toggle audio mute/unmuted in the local stream that is being published to the AMS.. If it's muted, it will be unmuted. If it's unmuted, it'll be muted.
+      It does not mute/unmute the microphone. If you need to mute/unmute microphone, use ``setMicMute(mute:completionHandler:)``
+    */
     func toggleAudio();
     
     /**
-     Toggle video stream(enable, disable) in the current stream.
+     Swith the audio muted/unmuted. If mute is true, audio is being set to mute. If mute is false, audio bis being set to unmute
+     */
+    func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
+
+    
+    /**
+     Toggle video stream(enable, disable) in the current stream for local video
      */
     func toggleVideo();
     
@@ -217,10 +245,28 @@ public protocol AntMediaClientProtocol {
     //
     func setExternalVideoCapture(externalVideoCapture: Bool);
     
-    //
-    //Deliver external frame
-    //
-    func deliverExternalVideo(sampleBuffer: CMSampleBuffer);
+    /**
+     Deliver external video to the webrtc stack.
+     - sampleBuffer: Raw video frame buffer to pass to webrtc stack to be encoded
+     - rotation: The rotation of the frame. If you give -1 as parameter, then it will be tried to get rotation from sampleBuffer
+        you can give 0 for up,  180 for down, 90 for left, 270 for right
+     */
+    func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int);
+    
+    /**
+     Enable/disable  to play the video track. If it's disabled, then server does not send video frames for the track.
+     - Parameters
+        - trackId
+     */
+    func enableVideoTrack(trackId:String, enabled:Bool);
+    
+    /**
+     Enable/disable to play the audio track. If it's disabled, then server does not send audio frame for the track.
+     */
+    func enableAudioTrack(trackId:String, enabled:Bool);
+    
+    /**
+     Enable/disable to play the  track(video,audio) track together.  If it's disabled, then server does not send audio frame for the track.
+     */
+    func enableTrack(trackId:String, enabled:Bool)
 }
-
-

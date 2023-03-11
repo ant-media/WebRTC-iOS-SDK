@@ -29,6 +29,8 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     // externalComponent is the BroadcastExtension
     private var externalCapture: Bool;
     
+    private var fps: Int;
+    
     
     init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false, fps: Int = 15)
     {
@@ -39,6 +41,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         self.videoEnabled = videoEnabled;
         self.audioEnabled = audioEnabled;
         self.frameRateIntervalNanoSeconds = kNanosecondsPerSecond/Double(fps);
+        self.fps = fps;
             
         super.init(delegate: delegate)
         
@@ -48,7 +51,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         self.webRTCClient = webRTCClient
     }
     
-    public func capture(_ sampleBuffer: CMSampleBuffer) {
+    public func capture(_ sampleBuffer: CMSampleBuffer, externalRotation:Int = -1) {
         
         if (CMSampleBufferGetNumSamples(sampleBuffer) != 1 || !CMSampleBufferIsValid(sampleBuffer) ||
             !CMSampleBufferDataIsReady(sampleBuffer))
@@ -59,10 +62,9 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         
         let timeStampNs = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) *
             kNanosecondsPerSecond;
-        
-        
+                
         if ((timeStampNs - lastSentFrameTimeStampNanoSeconds) < frameRateIntervalNanoSeconds ) {
-            NSLog("Dropping frame because of high fps. Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
+            AntMediaClient.printf("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
             return;
             
         }
@@ -90,36 +92,40 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
                 cropX: 0,
                 cropY: 0)
             
-            
             var rotation = RTCVideoRotation._0;
-            if #available(iOS 11.0, *) {
-                if let orientationAttachment =  CMGetAttachment(sampleBuffer, key: RPVideoSampleOrientationKey as CFString, attachmentModeOut: nil) as? NSNumber
-                {
-                    let orientation = CGImagePropertyOrientation(rawValue: orientationAttachment.uint32Value)
-                    switch orientation {
-                               case .up:
-                                rotation = RTCVideoRotation._0;
-                                break;
-                               case .down:
-                                rotation = RTCVideoRotation._180;
-                                break;
-                                case .left:
-                                rotation = RTCVideoRotation._90;
-                                break;
-                               case .right:
-                                rotation = RTCVideoRotation._270;
-                                break;
-                             
-                                default:
-                                NSLog("orientation NOT FOUND");
+            if (externalRotation == -1) {
+                if #available(iOS 11.0, *) {
+                    if let orientationAttachment =  CMGetAttachment(sampleBuffer, key: RPVideoSampleOrientationKey as CFString, attachmentModeOut: nil) as? NSNumber
+                    {
+                        let orientation = CGImagePropertyOrientation(rawValue: orientationAttachment.uint32Value)
+                        switch orientation {
+                        case .up:
+                            rotation = RTCVideoRotation._0;
+                            break;
+                        case .down:
+                            rotation = RTCVideoRotation._180;
+                            break;
+                        case .left:
+                            rotation = RTCVideoRotation._90;
+                            break;
+                        case .right:
+                            rotation = RTCVideoRotation._270;
+                            break;
+                            
+                        default:
+                            NSLog("orientation NOT FOUND");
+                        }
                     }
+                    else {
+                        NSLog("CANNOT get image rotation")
+                        
+                    }
+                } else {
+                    NSLog("CANNOT get image rotation becaue iOS version is older than 11")
                 }
-                else {
-                    NSLog("CANNOT get image rotation")
-                    
-                }
-            } else {
-                NSLog("CANNOT get image rotation becaue iOS version is older than 11")
+            }
+            else {
+                rotation = RTCVideoRotation(rawValue:externalRotation) ?? RTCVideoRotation._0;
             }
 
             //NSLog("Device orientation width: %d, height:%d ", width, height);

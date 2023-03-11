@@ -2,11 +2,11 @@
 //  AntMediaClientDelegate.swift
 //  AntMediaSDK
 //
-//  Created by Oğulcan on 25.05.2018.
 //  Copyright © 2018 AntMedia. All rights reserved.
 //
 
 import Foundation
+import WebRTC
 
 public class StreamInformation {
    public let streamWidth: Int
@@ -41,16 +41,12 @@ public protocol AntMediaClientDelegate {
     func clientHasError(_ message: String)
     
     /**
-     Called when stream is added to peer to peer connection.
-     This is a low level communicatin and it's good to use in P2P mode.
-     Not good to use in publish and play mode
+     Called when stream is added to peer connection.
      */
     func remoteStreamStarted(streamId: String)
     
     /**
      Called when stream is removed from peer to peer connection
-     This is a low level notification and it's good to use in P2P mode.
-     Not good to use in publish and play mode
     */
     func remoteStreamRemoved(streamId: String)
     
@@ -117,4 +113,83 @@ public protocol AntMediaClientDelegate {
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool)
     
     func streamInformation(streamInfo: [StreamInformation])
+    
+    /**
+     It's called when there is an event happen such microphone is muted or unmuted for the specific streamId
+    - Parameters
+     - streamId: The id of the stream that the event happened
+     - evenType: The type of the event
+     */
+    func eventHappened(streamId:String, eventType:String);
+    
+    /**
+     It's called when a new track is added to the stream
+     */
+    func trackAdded(track:RTCMediaStreamTrack, stream:[RTCMediaStream])
+    
+    /**
+     It's called when a tack is removed
+     */
+    func trackRemoved(track:RTCMediaStreamTrack)
+    
 }
+
+public extension AntMediaClientDelegate {
+    
+    func clientDidConnect(_ client: AntMediaClient) {
+        AntMediaClient.printf("Websocket is connected for \(client.getStreamId())")
+    }
+        
+    func eventHappened(streamId: String, eventType: String) {
+        AntMediaClient.printf("Event\(eventType) happened in stream:\(streamId) ")
+    }
+    
+    func clientDidDisconnect(_ message: String) {
+        AntMediaClient.printf("Websocket is disconnected with this problem:\(message)");
+    }
+    
+    func trackAdded(track:RTCMediaStreamTrack, stream:[RTCMediaStream]) {
+        AntMediaClient.printf("Track is added with id:\(track.trackId) and kind:\(track.kind)")
+    }
+    
+    func trackRemoved(track:RTCMediaStreamTrack) {
+        AntMediaClient.printf("Track is removed with id:\(track.trackId) and kind:\(track.kind)")
+    }
+    
+    func playFinished(streamId: String) {
+        AntMediaClient.printf("Play finished for stream with id:\(streamId)")
+    }
+
+    func playStarted(streamId: String) {
+        AntMediaClient.printf("Play started for stream with id:\(streamId)")
+    }
+
+    func remoteStreamStarted(streamId: String) {
+        AntMediaClient.printf("Remote stream is started for stream with id:\(streamId)")
+    }
+    
+    func remoteStreamRemoved(streamId: String) {
+        AntMediaClient.printf("Remote stream is removed for stream with id:\(streamId)")
+    }
+    
+    func localStreamStarted(streamId: String) {
+        AntMediaClient.printf("Local stream is started for stream with id:\(streamId)")
+    }
+    
+    func disconnected(streamId: String) {
+        AntMediaClient.printf("Peer connections is disconnected for stream with id:\(streamId)")
+    }
+    
+    func audioSessionDidStartPlayOrRecord(streamId: String) {
+        AntMediaClient.printf("Audio session is started to play or record for stream with id:\(streamId)")
+    }
+    
+    func streamInformation(streamInfo: [StreamInformation]) {
+        AntMediaClient.printf("Stream information has received")
+        for result in streamInfo {
+            AntMediaClient.printf("resolution width:\(result.streamWidth) heigh:\(result.streamHeight) video " + "bitrate:\(result.videoBitrate) audio bitrate:\(result.audioBitrate) codec:\(result.videoCodec)");
+        }
+    }
+    
+}
+

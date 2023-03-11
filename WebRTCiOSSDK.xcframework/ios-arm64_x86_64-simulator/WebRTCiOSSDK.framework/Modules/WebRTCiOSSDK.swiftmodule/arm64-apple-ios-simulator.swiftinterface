@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.7.1 (swiftlang-5.7.1.135.3 clang-1400.0.29.51)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target arm64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name WebRTCiOSSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
@@ -25,18 +25,20 @@ public enum AntMediaClientMode : Swift.Int {
 @objc @_inheritsConvenienceInitializers open class AntMediaClient : ObjectiveC.NSObject, WebRTCiOSSDK.AntMediaClientProtocol {
   public var delegate: WebRTCiOSSDK.AntMediaClientDelegate!
   @objc override dynamic public init()
-  public func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String = "", mode: WebRTCiOSSDK.AntMediaClientMode = .join, enableDataChannel: Swift.Bool = false, captureScreenEnabled: Swift.Bool = false)
+  public func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String = "", mode: WebRTCiOSSDK.AntMediaClientMode = .join, enableDataChannel: Swift.Bool = false, useExternalCameraSource: Swift.Bool = false)
+  public func setRoomId(roomId: Swift.String)
   public func setMaxVideoBps(videoBitratePerSecond: Foundation.NSNumber)
   public func setMultiPeerMode(enable: Swift.Bool, mode: Swift.String)
   public func setVideoEnable(enable: Swift.Bool)
   public func getStreamId() -> Swift.String
   public func getLeaveMessage() -> [Swift.String : Swift.String]
-  public func speakerOn()
-  public func speakerOff()
+  public static func speakerOn()
+  public static func speakerOff()
   open func start()
   open func connectWebSocket()
   open func setCameraPosition(position: AVFoundation.AVCaptureDevice.Position)
   open func setTargetResolution(width: Swift.Int, height: Swift.Int)
+  open func setTargetFps(fps: Swift.Int)
   open func stop()
   open func initPeerConnection()
   open func switchCamera()
@@ -44,10 +46,13 @@ public enum AntMediaClientMode : Swift.Int {
   open func isDataChannelActive() -> Swift.Bool
   open func setLocalView(container: UIKit.UIView, mode: UIKit.UIView.ContentMode = .scaleAspectFit)
   open func setRemoteView(remoteContainer: UIKit.UIView, mode: UIKit.UIView.ContentMode = .scaleAspectFit)
+  open func disableTrack(trackId: Swift.String)
+  public static func embedView(_ view: UIKit.UIView, into containerView: UIKit.UIView)
   open func isConnected() -> Swift.Bool
   open func setDebug(_ value: Swift.Bool)
   public static func setDebug(_ value: Swift.Bool)
   open func toggleAudio()
+  open func setMicMute(mute: Swift.Bool, completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
   open func toggleVideo()
   open func getCurrentMode() -> WebRTCiOSSDK.AntMediaClientMode
   open func getWsUrl() -> Swift.String
@@ -58,13 +63,16 @@ public enum AntMediaClientMode : Swift.Int {
   public func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
   public func setExternalAudio(externalAudioEnabled: Swift.Bool)
   public func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
-  public func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
+  public func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer, rotation: Swift.Int = -1)
+  public func enableVideoTrack(trackId: Swift.String, enabled: Swift.Bool)
+  public func enableAudioTrack(trackId: Swift.String, enabled: Swift.Bool)
+  public func enableTrack(trackId: Swift.String, enabled: Swift.Bool)
   @objc deinit
 }
 extension WebRTCiOSSDK.AntMediaClient {
   public func sendMessage(_ message: [Swift.String : Any])
   public func addLocalStream()
-  public func addRemoteStream()
+  public func remoteStreamAdded()
   public func connectionStateChanged(newState: WebRTC.RTCIceConnectionState)
   public func dataReceivedFromDataChannel(didReceiveData data: WebRTC.RTCDataBuffer)
 }
@@ -101,6 +109,24 @@ public protocol AntMediaClientDelegate {
   func audioSessionDidStartPlayOrRecord(streamId: Swift.String)
   func dataReceivedFromDataChannel(streamId: Swift.String, data: Foundation.Data, binary: Swift.Bool)
   func streamInformation(streamInfo: [WebRTCiOSSDK.StreamInformation])
+  func eventHappened(streamId: Swift.String, eventType: Swift.String)
+  func trackAdded(track: WebRTC.RTCMediaStreamTrack, stream: [WebRTC.RTCMediaStream])
+  func trackRemoved(track: WebRTC.RTCMediaStreamTrack)
+}
+extension WebRTCiOSSDK.AntMediaClientDelegate {
+  public func clientDidConnect(_ client: WebRTCiOSSDK.AntMediaClient)
+  public func eventHappened(streamId: Swift.String, eventType: Swift.String)
+  public func clientDidDisconnect(_ message: Swift.String)
+  public func trackAdded(track: WebRTC.RTCMediaStreamTrack, stream: [WebRTC.RTCMediaStream])
+  public func trackRemoved(track: WebRTC.RTCMediaStreamTrack)
+  public func playFinished(streamId: Swift.String)
+  public func playStarted(streamId: Swift.String)
+  public func remoteStreamStarted(streamId: Swift.String)
+  public func remoteStreamRemoved(streamId: Swift.String)
+  public func localStreamStarted(streamId: Swift.String)
+  public func disconnected(streamId: Swift.String)
+  public func audioSessionDidStartPlayOrRecord(streamId: Swift.String)
+  public func streamInformation(streamInfo: [WebRTCiOSSDK.StreamInformation])
 }
 public protocol ConferenceClientProtocol {
   func joinRoom(roomId: Swift.String, streamId: Swift.String)
@@ -109,7 +135,7 @@ public protocol ConferenceClientProtocol {
 public protocol ConferenceClientDelegate {
   func streamIdToPublish(streamId: Swift.String)
   func newStreamsJoined(streams: [Swift.String])
-  func streamsLeaved(streams: [Swift.String])
+  func streamsLeft(streams: [Swift.String])
 }
 open class ConferenceClient : WebRTCiOSSDK.ConferenceClientProtocol, Starscream.WebSocketDelegate {
   public init(serverURL: Swift.String, conferenceClientDelegate: WebRTCiOSSDK.ConferenceClientDelegate)
@@ -121,14 +147,16 @@ open class ConferenceClient : WebRTCiOSSDK.ConferenceClientProtocol, Starscream.
   public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
 }
 public protocol AntMediaClientProtocol {
-  func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String, mode: WebRTCiOSSDK.AntMediaClientMode, enableDataChannel: Swift.Bool, captureScreenEnabled: Swift.Bool)
+  func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String, mode: WebRTCiOSSDK.AntMediaClientMode, enableDataChannel: Swift.Bool, useExternalCameraSource: Swift.Bool)
+  func setRoomId(roomId: Swift.String)
   func setVideoEnable(enable: Swift.Bool)
-  func speakerOn()
-  func speakerOff()
+  static func speakerOn()
+  static func speakerOff()
   func initPeerConnection()
   func start()
   func setCameraPosition(position: AVFoundation.AVCaptureDevice.Position)
   func setTargetResolution(width: Swift.Int, height: Swift.Int)
+  func setTargetFps(fps: Swift.Int)
   func stop()
   func switchCamera()
   func sendData(data: Foundation.Data, binary: Swift.Bool)
@@ -140,6 +168,7 @@ public protocol AntMediaClientProtocol {
   func setDebug(_ value: Swift.Bool)
   static func setDebug(_ value: Swift.Bool)
   func toggleAudio()
+  func setMicMute(mute: Swift.Bool, completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
   func toggleVideo()
   func getStreamId() -> Swift.String
   func getStreamInfo()
@@ -149,7 +178,10 @@ public protocol AntMediaClientProtocol {
   func deliverExternalAudio(sampleBuffer: CoreMedia.CMSampleBuffer)
   func setExternalAudio(externalAudioEnabled: Swift.Bool)
   func setExternalVideoCapture(externalVideoCapture: Swift.Bool)
-  func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer)
+  func deliverExternalVideo(sampleBuffer: CoreMedia.CMSampleBuffer, rotation: Swift.Int)
+  func enableVideoTrack(trackId: Swift.String, enabled: Swift.Bool)
+  func enableAudioTrack(trackId: Swift.String, enabled: Swift.Bool)
+  func enableTrack(trackId: Swift.String, enabled: Swift.Bool)
 }
 extension Swift.Dictionary {
   public var json: Swift.String {
@@ -162,6 +194,7 @@ extension Swift.String {
 }
 @objc @_inheritsConvenienceInitializers public class Config : ObjectiveC.NSObject {
   public static func setDefaultStunServer(server: WebRTC.RTCIceServer)
+  public static func setSdpSemantics(sdpSemantics: WebRTC.RTCSdpSemantics)
   @objc override dynamic public init()
   @objc deinit
 }

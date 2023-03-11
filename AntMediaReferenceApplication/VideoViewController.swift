@@ -2,7 +2,6 @@
 //  VideoViewController.swift
 //  AntMediaReferenceApplication
 //
-//  Created by Oğulcan on 14.06.2018.
 //  Copyright © 2018 AntMedia. All rights reserved.
 //
 
@@ -38,7 +37,7 @@ class VideoViewController: UIViewController {
         
         self.client.delegate = self
         self.client.setDebug(true)
-        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true, captureScreenEnabled:false)
+        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true, useExternalCameraSource:false)
         
         //this should be enabled when an audio app or broadcast extension is used.
         //Please check the sample in ScreenShare
@@ -127,7 +126,14 @@ class VideoViewController: UIViewController {
     
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
-        self.client.toggleAudio()
+        self.client.setMicMute(mute: sender.isSelected, completionHandler: { (mute, error) in
+            if (error == nil) {
+                AntMediaClient.printf("Microphone is set to " + (mute ? "muted" : "unmuted"))
+            }
+            else {
+                AntMediaClient.printf("Failed to set microphone status to " + (mute ? "muted" : "unmuted"))
+            }
+        });
     }
     
     @IBAction func videoTapped(_ video: UIButton!) {
@@ -215,15 +221,7 @@ class VideoViewController: UIViewController {
 }
 
 extension VideoViewController: AntMediaClientDelegate {
-    
-    func clientDidConnect(_ client: AntMediaClient) {
-        print("VideoViewController: Connected")
-    }
-    
-    func clientDidDisconnect(_ message: String) {
-        print("VideoViewController: Disconnected: \(message)")
-    }
-    
+        
     func clientHasError(_ message: String) {
         AlertHelper.getInstance().show("Error!", message: message, cancelButtonText: "OK", cancelAction: {
             self.dismiss(animated: true, completion: nil)
@@ -233,10 +231,6 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func disconnected(streamId: String) {
         print("Disconnected -> \(streamId)")
-    }
-    
-    func remoteStreamStarted(streamId: String) {
-        print("Remote stream started -> \(streamId)")
     }
     
     func remoteStreamRemoved(streamId: String) {
@@ -289,7 +283,7 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func audioSessionDidStartPlayOrRecord(streamId: String) {
-        self.client.speakerOn()
+        AntMediaClient.speakerOn()
     }
     
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
@@ -320,5 +314,9 @@ extension VideoViewController: AntMediaClientDelegate {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
+    }
+    
+    func eventHappened(streamId: String, eventType: String) {
+        
     }
 }

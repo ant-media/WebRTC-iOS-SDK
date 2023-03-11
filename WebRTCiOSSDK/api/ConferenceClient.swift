@@ -8,6 +8,7 @@
 
 import Foundation
 import Starscream
+import WebRTC
 
 public protocol ConferenceClientProtocol {
     
@@ -44,7 +45,7 @@ public protocol ConferenceClientDelegate
      Called when some streams leaves from the room. So that players can be removed from the user interface
      - streams: stream id array of the stream that leaves from the room
      */
-    func streamsLeaved(streams: [String]);
+    func streamsLeft(streams: [String]);
 }
 
 open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
@@ -78,6 +79,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
         let joinRoomMessage =  [
                             COMMAND: "joinRoom",
                             ROOM_ID: self.roomId!,
+                            MODE: "multitrack",
                             STREAM_ID: self.streamId ?? "" ] as [String : Any]
         
         webSocket.write(string: joinRoomMessage.json)
@@ -87,7 +89,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
     
     public func receiveMessage(socket: WebSocketClient, text: String) {
         
-        AntMediaClient.printf("Received message \(text)")
+       // AntMediaClient.printf("Received message \(text)")
         if let message = text.toJSON()
         {
            
@@ -109,7 +111,9 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                         
                         if let streams = message[STREAMS] as? [String] {
                             self.streamsInTheRoom = streams;
-                            self.delegate.newStreamsJoined(streams:  streams);
+                            if (self.streamsInTheRoom.count > 0) {
+                                self.delegate.newStreamsJoined(streams:  streams);
+                            }
                         }
                         
                         //start periodic check
@@ -151,7 +155,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                         }
                         
                         if (leavedStreams.count > 0) {
-                            self.delegate.streamsLeaved(streams: leavedStreams)
+                            self.delegate.streamsLeft(streams: leavedStreams)
                         }
                                 
                     }
