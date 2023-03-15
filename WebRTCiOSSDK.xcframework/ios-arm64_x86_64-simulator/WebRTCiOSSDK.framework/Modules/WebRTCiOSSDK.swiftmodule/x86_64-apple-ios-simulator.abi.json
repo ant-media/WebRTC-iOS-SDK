@@ -5976,658 +5976,658 @@
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "IntegerLiteral",
       "offset": 294,
       "length": 10,
       "value": "1000000000"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "IntegerLiteral",
       "offset": 336,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "IntegerLiteral",
       "offset": 391,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
       "offset": 474,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
       "offset": 517,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "IntegerLiteral",
       "offset": 635,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
       "offset": 963,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
       "offset": 991,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "BooleanLiteral",
       "offset": 1018,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "IntegerLiteral",
       "offset": 1036,
       "length": 2,
       "value": "15"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "IntegerLiteral",
       "offset": 1673,
       "length": 2,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "StringLiteral",
       "offset": 205,
       "length": 22,
       "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
       "kind": "StringLiteral",
       "offset": 205,
       "length": 22,
       "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "StringLiteral",
       "offset": 191,
       "length": 16,
       "value": "\"AntMedia_iOS: \""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 263,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 281,
       "length": 1,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 302,
       "length": 1,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 326,
       "length": 1,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 263,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 281,
       "length": 1,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 302,
       "length": 1,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 326,
       "length": 1,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 263,
       "length": 1,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 281,
       "length": 1,
       "value": "2"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 302,
       "length": 1,
       "value": "3"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 326,
       "length": 1,
       "value": "4"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1017,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "StringLiteral",
       "offset": 1505,
       "length": 7,
       "value": "\"audio\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 1803,
       "length": 4,
       "value": "1280"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 1844,
       "length": 3,
       "value": "720"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 1893,
       "length": 1,
       "value": "0"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1937,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1978,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 2022,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 2079,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 2228,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 2284,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 2341,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 2599,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 2650,
       "length": 2,
       "value": "30"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "StringLiteral",
       "offset": 2809,
       "length": 6,
       "value": "\"play\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "StringLiteral",
       "offset": 3340,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 3404,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 3443,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
       "offset": 9235,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
       "offset": 21094,
       "length": 2,
       "value": "1"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/ConferenceClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/ConferenceClient.swift",
       "kind": "Array",
       "offset": 1612,
       "length": 2,
       "value": "[]"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 215,
       "length": 9,
       "value": "\"command\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 241,
       "length": 10,
       "value": "\"streamId\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 267,
       "length": 9,
       "value": "\"trackId\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 291,
       "length": 9,
       "value": "\"enabled\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 316,
       "length": 7,
       "value": "\"token\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 336,
       "length": 7,
       "value": "\"video\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 356,
       "length": 7,
       "value": "\"audio\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 378,
       "length": 6,
       "value": "\"room\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 397,
       "length": 6,
       "value": "\"mode\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 424,
       "length": 14,
       "value": "\"notification\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 469,
       "length": 15,
       "value": "\"joinedTheRoom\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 503,
       "length": 12,
       "value": "\"definition\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 531,
       "length": 9,
       "value": "\"streams\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 568,
       "length": 12,
       "value": "\"streamList\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 613,
       "length": 17,
       "value": "\"roomInformation\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 662,
       "length": 15,
       "value": "\"getStreamInfo\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 712,
       "length": 19,
       "value": "\"streamInformation\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 765,
       "length": 20,
       "value": "\"forceStreamQuality\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 813,
       "length": 14,
       "value": "\"streamHeight\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 846,
       "length": 11,
       "value": "\"eventType\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 886,
       "length": 11,
       "value": "\"MIC_MUTED\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 927,
       "length": 13,
       "value": "\"MIC_UNMUTED\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 969,
       "length": 13,
       "value": "\"enableTrack\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 1016,
       "length": 13,
       "value": "\"toggleVideo\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
       "kind": "StringLiteral",
       "offset": 1063,
       "length": 13,
       "value": "\"toggleAudio\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
       "kind": "StringLiteral",
       "offset": 249,
       "length": 30,
       "value": "\"stun:stun.l.google.com:19302\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
       "kind": "Dictionary",
       "offset": 335,
       "length": 112,
       "value": "[(\"OfferToReceiveAudio\", \"true\"), (\"OfferToReceiveVideo\", \"true\")]"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
       "kind": "Dictionary",
       "offset": 510,
       "length": 32,
       "value": "[(\"DtlsSrtpKeyAgreement\", \"true\")]"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
       "kind": "StringLiteral",
       "offset": 717,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
       "kind": "StringLiteral",
       "offset": 733,
       "length": 2,
       "value": "\"\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "StringLiteral",
       "offset": 238,
       "length": 7,
       "value": "\"VIDEO\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "StringLiteral",
       "offset": 271,
       "length": 7,
       "value": "\"AUDIO\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "StringLiteral",
       "offset": 311,
       "length": 8,
       "value": "\"STREAM\""
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1024,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1066,
       "length": 4,
       "value": "true"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1508,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1629,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
       "offset": 1747,
       "length": 3,
       "value": "480"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
       "offset": 1787,
       "length": 3,
       "value": "360"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1841,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 1891,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
       "offset": 1942,
       "length": 2,
       "value": "30"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 4392,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 4428,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "IntegerLiteral",
       "offset": 4458,
       "length": 2,
       "value": "30"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "BooleanLiteral",
       "offset": 7067,
       "length": 5,
       "value": "false"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "filePath": "\/Users\/mustafa\/antmedia\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
       "kind": "StringLiteral",
       "offset": 178,
       "length": 12,

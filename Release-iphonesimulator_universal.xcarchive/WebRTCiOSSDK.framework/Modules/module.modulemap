@@ -1,0 +1,11 @@
+framework module WebRTCiOSSDK {
+  umbrella header "WebRTCiOSSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module WebRTCiOSSDK.Swift {
+  header "WebRTCiOSSDK-Swift.h"
+  requires objc
+}
