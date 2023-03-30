@@ -121,7 +121,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public override init() {
         self.multiPeerStreamId = nil
-     
      }
     
     public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, useExternalCameraSource: Bool = false) {
@@ -388,6 +387,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     category = AVAudioSession.Category.playAndRecord.rawValue;
                 }
                 try AntMediaClient.rtcAudioSession.setCategory(category);
+                try AntMediaClient.rtcAudioSession.overrideOutputAudioPort(.speaker)
                 try AntMediaClient.rtcAudioSession.setActive(true);
                 self.webRTCClient?.setAudioEnabled(enabled: !mute);
                 self.sendNotification(eventType: mute ? EVENT_TYPE_MIC_MUTED : EVENT_TYPE_MIC_UNMUTED);

@@ -6265,35 +6265,35 @@
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "StringLiteral",
-      "offset": 3340,
+      "offset": 3334,
       "length": 2,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 3404,
+      "offset": 3398,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 3443,
+      "offset": 3437,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "BooleanLiteral",
-      "offset": 9235,
+      "offset": 9229,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 21094,
+      "offset": 21173,
       "length": 2,
       "value": "1"
     },
