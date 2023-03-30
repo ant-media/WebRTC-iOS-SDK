@@ -52,8 +52,10 @@ public enum AntMediaClientMode : Swift.Int {
   open func setDebug(_ value: Swift.Bool)
   public static func setDebug(_ value: Swift.Bool)
   open func toggleAudio()
+  open func setAudioTrack(enableTrack: Swift.Bool)
   open func setMicMute(mute: Swift.Bool, completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
   open func toggleVideo()
+  open func setVideoTrack(enableTrack: Swift.Bool)
   open func getCurrentMode() -> WebRTCiOSSDK.AntMediaClientMode
   open func getWsUrl() -> Swift.String
   public static func printf(_ msg: Swift.String)
@@ -168,8 +170,10 @@ public protocol AntMediaClientProtocol {
   func setDebug(_ value: Swift.Bool)
   static func setDebug(_ value: Swift.Bool)
   func toggleAudio()
+  func setAudioTrack(enableTrack: Swift.Bool)
   func setMicMute(mute: Swift.Bool, completionHandler: @escaping (Swift.Bool, Swift.Error?) -> Swift.Void)
   func toggleVideo()
+  func setVideoTrack(enableTrack: Swift.Bool)
   func getStreamId() -> Swift.String
   func getStreamInfo()
   func forStreamQuality(resolutionHeight: Swift.Int)

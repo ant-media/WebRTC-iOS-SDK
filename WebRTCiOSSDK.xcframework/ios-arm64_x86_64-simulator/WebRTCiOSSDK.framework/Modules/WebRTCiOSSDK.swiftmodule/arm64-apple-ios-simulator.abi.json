@@ -1226,6 +1226,33 @@
           },
           {
             "kind": "Function",
+            "name": "setAudioTrack",
+            "printedName": "setAudioTrack(enableTrack:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC13setAudioTrack06enableI0ySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC13setAudioTrack06enableI0ySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "setMicMute",
             "printedName": "setMicMute(mute:completionHandler:)",
             "children": [
@@ -1304,6 +1331,33 @@
             "declKind": "Func",
             "usr": "s:12WebRTCiOSSDK14AntMediaClientC11toggleVideoyyF",
             "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC11toggleVideoyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "isOpen": true,
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setVideoTrack",
+            "printedName": "setVideoTrack(enableTrack:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK14AntMediaClientC13setVideoTrack06enableI0ySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK14AntMediaClientC13setVideoTrack06enableI0ySb_tF",
             "moduleName": "WebRTCiOSSDK",
             "isOpen": true,
             "declAttributes": [
@@ -4287,6 +4341,36 @@
           },
           {
             "kind": "Function",
+            "name": "setAudioTrack",
+            "printedName": "setAudioTrack(enableTrack:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP13setAudioTrack06enableJ0ySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP13setAudioTrack06enableJ0ySb_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "setMicMute",
             "printedName": "setMicMute(mute:completionHandler:)",
             "children": [
@@ -4368,6 +4452,36 @@
             "declKind": "Func",
             "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP11toggleVideoyyF",
             "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP11toggleVideoyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setVideoTrack",
+            "printedName": "setVideoTrack(enableTrack:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK22AntMediaClientProtocolP13setVideoTrack06enableJ0ySb_tF",
+            "mangledName": "$s12WebRTCiOSSDK22AntMediaClientProtocolP13setVideoTrack06enableJ0ySb_tF",
             "moduleName": "WebRTCiOSSDK",
             "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.AntMediaClientProtocol>",
             "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.AntMediaClientProtocol>",
@@ -6293,7 +6407,7 @@
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
       "kind": "IntegerLiteral",
-      "offset": 21173,
+      "offset": 21502,
       "length": 2,
       "value": "1"
     },

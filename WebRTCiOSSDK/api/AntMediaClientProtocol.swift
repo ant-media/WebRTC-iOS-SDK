@@ -168,9 +168,18 @@ public protocol AntMediaClientProtocol {
     
     /**
      Toggle audio mute/unmuted in the local stream that is being published to the AMS.. If it's muted, it will be unmuted. If it's unmuted, it'll be muted.
+      Alternatively you can use ``setAudioTrack(enableTrack:)`` to have the same functionality.
       It does not mute/unmute the microphone. If you need to mute/unmute microphone, use ``setMicMute(mute:completionHandler:)``
+        
     */
     func toggleAudio();
+    
+    /**
+     Set the local audio track enable/disable. It does not change the mic status. It just enable/disable the local audio track.
+     This method is just another version of ``toggleAudio()``
+     If you need to mute/unmute microphone, use ``setMicMute(mute:completionHandler:)``
+     */
+    func setAudioTrack(enableTrack:Bool);
     
     /**
      Swith the audio muted/unmuted. If mute is true, audio is being set to mute. If mute is false, audio bis being set to unmute
@@ -182,6 +191,12 @@ public protocol AntMediaClientProtocol {
      Toggle video stream(enable, disable) in the current stream for local video
      */
     func toggleVideo();
+    
+    
+    /**
+     Set the video track status enable/disable. It does not open/close the camera status. Just disable/enable the in the local video track
+     */
+    func setVideoTrack(enableTrack:Bool);
     
     /**
      Stream id that this client uses.
