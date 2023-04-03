@@ -295,7 +295,11 @@ class WebRTCClient: NSObject {
     }
     
     public func toggleVideoEnabled() {
-        self.videoEnabled = !self.videoEnabled
+        self.setVideoEnabled(enabled: !self.videoEnabled)
+    }
+    
+    public func setVideoEnabled(enabled:Bool){
+        self.videoEnabled = enabled;
         if(self.localVideoTrack != nil) {
             self.localVideoTrack.isEnabled = self.videoEnabled
         }

@@ -121,7 +121,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public override init() {
         self.multiPeerStreamId = nil
-     
      }
     
     public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, useExternalCameraSource: Bool = false) {
@@ -363,6 +362,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.webRTCClient?.toggleAudioEnabled()
     }
     
+    open func setAudioTrack(enableTrack: Bool) {
+        self.webRTCClient?.setAudioEnabled(enabled: enableTrack);
+    }
+    
     func sendNotification(eventType:String) {
         let notification =  [
             EVENT_TYPE: eventType,
@@ -388,6 +391,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     category = AVAudioSession.Category.playAndRecord.rawValue;
                 }
                 try AntMediaClient.rtcAudioSession.setCategory(category);
+                //playAndRecord category defaults receiver to set to speaker
+                try AntMediaClient.rtcAudioSession.overrideOutputAudioPort(.speaker)
                 try AntMediaClient.rtcAudioSession.setActive(true);
                 self.webRTCClient?.setAudioEnabled(enabled: !mute);
                 self.sendNotification(eventType: mute ? EVENT_TYPE_MIC_MUTED : EVENT_TYPE_MIC_UNMUTED);
@@ -403,6 +408,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     open func toggleVideo() {
         self.webRTCClient?.toggleVideoEnabled()
+    }
+    
+    open func setVideoTrack(enableTrack: Bool) {
+        self.webRTCClient?.setVideoEnabled(enabled: enableTrack);
     }
     
     open func getCurrentMode() -> AntMediaClientMode {

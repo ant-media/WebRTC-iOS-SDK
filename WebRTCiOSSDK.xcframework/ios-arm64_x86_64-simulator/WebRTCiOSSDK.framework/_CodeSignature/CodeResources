@@ -18,23 +18,23 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		WcehMUsJRokW+wz7bFDNOPZyG9g=
+		YjmpHe2ntY7ps+MfWH/0Zh3x+4E=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		sdhyj+AmzZdeZTC73qQ/M06i5tY=
+		4ji0hNpB6+rlF/nw2ihTpB6bYCE=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		MEJOfZo0qTtyal/V1eYUDVVUNQQ=
+		mZm4zvUwnSd536Oa3nQ565DFPu0=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		sdhyj+AmzZdeZTC73qQ/M06i5tY=
+		4ji0hNpB6+rlF/nw2ihTpB6bYCE=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		fW0c4fgDR19YtD0XwxVWV9fo1Co=
+		5FoCUeMMslgvz6UFoWvXYqpCBDE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,35 +61,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			m8uDXNXcppiY3g0cCr9z43wFNtsweDaIWR94ewl2Rd0=
+			OJiCbNPkc9umZ8shkn29fzGert03xwy6ukfXTgR7sqg=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aLozwQ8nDgNfgme4FVaPR5+iantXG08r3ZcfT8cPVqM=
+			1RUhkNOLaz+24MJtJ3GL57K8AzvuqEKjhadkhM1RKuE=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WDxN5837xRcDhFRtMWvv7RNi2aB9HwSAX4aFrh4EfzI=
+			QZror2AhCvt/Wvs55hmh/Hv+FoFoEmswAR9GR3fjY3Q=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aLozwQ8nDgNfgme4FVaPR5+iantXG08r3ZcfT8cPVqM=
+			1RUhkNOLaz+24MJtJ3GL57K8AzvuqEKjhadkhM1RKuE=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0pgcZDFsMnEfB6VjuSNWHdRlMDzkYqnr57GA3JbXLlU=
+			YgMbsA47quFUmmnG3AinQHPekNeKe/eL/S4FDC5wa3s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
