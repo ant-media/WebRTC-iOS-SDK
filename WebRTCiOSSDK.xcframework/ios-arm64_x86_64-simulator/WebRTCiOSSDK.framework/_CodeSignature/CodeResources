@@ -18,7 +18,7 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		djqs5/oq+KpuDh9tAHRehAfdspY=
+		UlIT/un5xdbB9qZvwr9xuvWZWnQ=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		y8G6FoLXGUP1ZP4XXcsAcuflxO4=
+		9qvr0eLPoRw6krQWfMDTLB70yeU=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,7 +61,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			8L3WrKisQN+Mn26zE1YKwzyJZs8k1qbbfQfSBKsE1e8=
+			Aq1DfWzNSo731U/lEYJhrkH+kEYZFPbr3MrogN4Ce/8=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
@@ -89,7 +89,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+595AAhlB84NykzfMYo1YIrqA7XAbAkhQLihyi1aAks=
+			snL6GIajSH4mJmMvd4RTF++rpCPHR9md+UOHX+IrydI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

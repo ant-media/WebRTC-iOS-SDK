@@ -97,15 +97,8 @@ open class ConferenceViewController: UIViewController {
     @IBAction func audioButton(_ sender: Any) {
         self.audioButton.isSelected.toggle()
         
-        self.conferenceClient?.setMicMute(mute:  self.audioButton.isSelected,
-                                         completionHandler: { (mute, error) in
-            if (error == nil) {
-                AntMediaClient.printf("Microphone is set to " + (mute ? "muted" : "unmuted"))
-            }
-            else {
-                AntMediaClient.printf("Failed to set microphone status to " + (mute ? "muted" : "unmuted"))
-            }
-        });
+        self.conferenceClient?.setAudioTrack(enableTrack:self.audioButton.isSelected)
+        self.conferenceClient?.setVideoTrack(enableTrack:self.audioButton.isSelected)
         
     }
     
@@ -134,6 +127,11 @@ extension ConferenceViewController: AntMediaClientDelegate
             self.publisherStreamId = streamId;
             //opens the camera 
             self.conferenceClient?.initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish)
+            
+            //if you can mute and close the camera, you can do that here
+            //self.conferenceClient?.setAudioTrack(enableTrack: false)
+            //self.conferenceClient?.setVideoTrack(enableTrack: false)
+            
             
             //if you want to publish immediately, uncomment the line below and just call the method below
             //self.conferenceClient?.publish(streamId: self.publisherStreamId)

@@ -58,6 +58,8 @@ class WebRTCClient: NSObject {
     
     private var cameraSourceFPS: Int = 30;
     
+    var disconnectLock = NSLock()
+    
     public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, externalAudio:Bool) {
         super.init()
         
@@ -266,10 +268,11 @@ class WebRTCClient: NSObject {
     }
 
     public func disconnect() {
+        //disconnectLock.lock();
+        AntMediaClient.printf("disconnecting and releasing resources for \(streamId)")
         //TODO: how to clear all resources
-      //  self.localVideoTrack?.remove(self.localVideoView!)
+        self.localVideoTrack?.remove(self.localVideoView!)
         self.remoteVideoTrack?.remove(self.remoteVideoView!)
-      //  self.localVideoView?.renderFrame(nil)
         self.remoteVideoView?.renderFrame(nil)
         self.localVideoTrack = nil
         self.remoteVideoTrack = nil
@@ -281,7 +284,14 @@ class WebRTCClient: NSObject {
             (self.videoCapturer as? RTCCustomFrameCapturer)?.stopCapture()
         }
         
+        self.videoCapturer = nil;
+        
         self.peerConnection?.close()
+        self.peerConnection = nil;
+        AntMediaClient.printf("disconnected and released resources for \(streamId)")
+       // disconnectLock.unlock()
+        
+
     }
     
     public func toggleAudioEnabled() {
@@ -322,7 +332,6 @@ class WebRTCClient: NSObject {
                     selectedFormat = supportedFormat
                     currentDiff = diff
                 }
-                AntMediaClient.printf("Testing camera resolution: " + String(dimension.width) + "x" + String(dimension.height));
             }
             
             if (selectedFormat != nil) {

@@ -80,7 +80,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var videoContentMode: UIView.ContentMode?
     
-    private static let audioQueue = DispatchQueue(label: "audio")
+    private static let dispatchQueue = DispatchQueue(label: "audio")
     
     private static let rtcAudioSession =  RTCAudioSession.sharedInstance()
     
@@ -229,7 +229,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     // Force speaker
     public static func speakerOn() {
        
-        audioQueue.async {() in
+        dispatchQueue.async {() in
           
             rtcAudioSession.lockForConfiguration()
             do {
@@ -244,7 +244,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     // Fallback to the default playing device: headphones/bluetooth/ear speaker
     public static func speakerOff() {
-        audioQueue.async {() in
+        dispatchQueue.async {() in
             
             rtcAudioSession.lockForConfiguration()
             do {
@@ -293,8 +293,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
             webSocket!.write(string:leaveMessage.json)
         }
-        self.webRTCClientMap[streamId]?.disconnect()
-        self.webRTCClientMap.removeValue(forKey: self.getStreamId());
+        self.webRTCClientMap.removeValue(forKey: self.getStreamId())?.disconnect();
     }
     
     public func joinRoom(roomId:String, streamId: String = "") {
@@ -337,13 +336,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             AntMediaClient.printf("Sending leaveRoom message \(leaveRoomMessage.json)");
         }
         if let tmpStreamId = self.publisherStreamId {
-            self.webRTCClientMap[tmpStreamId]?.disconnect()
-            self.webRTCClientMap.removeValue(forKey: tmpStreamId);
+            self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect();
         }
         
         if let tmpStreamId = self.playerStreamId {
-            self.webRTCClientMap[tmpStreamId]?.disconnect()
-            self.webRTCClientMap.removeValue(forKey: tmpStreamId);
+            self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect()
         }
     }
     
@@ -438,14 +435,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 webSocket?.write(string: command.json)
             }
         }
-        self.webRTCClientMap[self.getStreamId(streamId)]?.disconnect()
-        self.webRTCClientMap.removeValue(forKey: self.getStreamId(streamId));
+        self.webRTCClientMap.removeValue(forKey: self.getStreamId(streamId))?.disconnect()
     }
     
     open func initPeerConnection(streamId: String = "", mode:AntMediaClientMode=AntMediaClientMode.unspecified, token: String = "") {
         
         var id = getStreamId(streamId);
-        
         
         if (self.webRTCClientMap[id] == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClientMap[id]))")
@@ -575,7 +570,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     open func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
     {
-        AntMediaClient.audioQueue.async { () in
+        AntMediaClient.dispatchQueue.async { () in
            
             AntMediaClient.rtcAudioSession.lockForConfiguration()
             do {
@@ -724,8 +719,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 break
             case "stop":
                 let streamId = message[STREAM_ID] as! String
-                self.webRTCClientMap[streamId]?.stop()
-                self.webRTCClientMap.removeValue(forKey: streamId);
+                AntMediaClient.dispatchQueue.async {
+                    self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
+                }
                 break
             case "takeConfiguration":
                 let streamId = message[STREAM_ID] as! String
@@ -775,8 +771,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Playing has finished")
                     self.streamsInTheRoom.removeAll();
-                    self.webRTCClientMap[streamId]?.disconnect();
-                    self.webRTCClientMap.removeValue(forKey: streamId);
+                    AntMediaClient.dispatchQueue.async {
+                        self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
+                    }
                     self.delegate.playFinished(streamId: message[STREAM_ID] as! String)
                 }
                 else if definition == "publish_started" {
@@ -788,8 +785,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 else if definition == "publish_finished" {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Publish finished: Let's close")
-                    self.webRTCClientMap[streamId]?.disconnect();
-                    self.webRTCClientMap.removeValue(forKey: streamId);
+                    AntMediaClient.dispatchQueue.async {
+                        self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
+                    }
                     self.delegate.publishFinished(streamId: streamId)
                 }
                 else if definition == JOINED_ROOM_DEFINITION
@@ -986,9 +984,18 @@ extension AntMediaClient: WebRTCClientDelegate {
             newState == RTCIceConnectionState.disconnected ||
             newState == RTCIceConnectionState.failed
         {
-            AntMediaClient.printf("connectionStateChanged: \(newState.rawValue) for stream: \(String(describing:streamId))")
-            self.webRTCClientMap[streamId]?.disconnect();
-            self.webRTCClientMap.removeValue(forKey: streamId);
+            var state:String = "closed"
+            if (newState == RTCIceConnectionState.disconnected) {
+                state = "disconnected";
+            }
+            else {
+                state = "failed";
+            }
+            AntMediaClient.printf("connectionStateChanged: \(state) for stream: \(String(describing:streamId))")
+            AntMediaClient.dispatchQueue.async {
+                self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect();
+            }
+           
             
             self.delegate.disconnected(streamId: streamId);
         }
