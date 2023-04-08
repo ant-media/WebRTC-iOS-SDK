@@ -70,7 +70,7 @@ class VideoViewController: UIViewController {
             self.fullVideoView.isHidden = false
             self.modeLabel.text = "Mode: Publish"
             self.client.setCameraPosition(position: .front)
-            self.client.setTargetResolution(width: 480, height: 360)
+            self.client.setTargetResolution(width: 640, height: 360)
             self.client.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
            
         } else if self.client.getCurrentMode() == AntMediaClientMode.play {
@@ -92,7 +92,7 @@ class VideoViewController: UIViewController {
         
         //Enable below method to have the mirror effect
         //self.mirrorView(view: fullVideoView);
-        
+                
         self.client.start()
     }
     

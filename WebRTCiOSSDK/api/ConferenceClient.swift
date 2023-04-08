@@ -48,6 +48,7 @@ public protocol ConferenceClientDelegate
     func streamsLeft(streams: [String]);
 }
 
+@available(*, deprecated, message: "Use AntMediaClient directly and take a look at the sample")
 open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
 {
     var serverURL: String;

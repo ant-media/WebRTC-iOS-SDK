@@ -81,16 +81,16 @@ class WebRTCClient: NSObject {
         self.peerConnection = WebRTCClient.factory.peerConnection(with: configuration, constraints: defaultConstraint, delegate: self)
     }
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
-                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false)
+                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, streamId: streamId)
     }
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
-                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, useExternalCameraSource: false)
+                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
     }
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, useExternalCameraSource: Bool, externalAudio: Bool = false, externalVideoCapture: Bool = false, cameraSourceFPS: Int = 30) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, useExternalCameraSource: Bool, externalAudio: Bool = false, externalVideoCapture: Bool = false, cameraSourceFPS: Int = 30, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate, externalAudio: externalAudio)
         self.mode = mode
         self.cameraPosition = cameraPosition
@@ -101,6 +101,7 @@ class WebRTCClient: NSObject {
         self.enableDataChannel = enableDataChannel;
         self.externalVideoCapture = externalVideoCapture;
         self.cameraSourceFPS = cameraSourceFPS;
+        self.streamId = streamId;
         
         if (self.mode != .play && !multiPeerActive) {
             self.addLocalMediaStream()
@@ -321,6 +322,7 @@ class WebRTCClient: NSObject {
                     selectedFormat = supportedFormat
                     currentDiff = diff
                 }
+                AntMediaClient.printf("Testing camera resolution: " + String(dimension.width) + "x" + String(dimension.height));
             }
             
             if (selectedFormat != nil) {
@@ -331,7 +333,7 @@ class WebRTCClient: NSObject {
                 }
                 let fps = fmin(maxSupportedFramerate, Double(self.cameraSourceFPS));
                 
-                 let dimension = CMVideoFormatDescriptionGetDimensions(selectedFormat!.formatDescription)
+                let dimension = CMVideoFormatDescriptionGetDimensions(selectedFormat!.formatDescription)
                 
                 AntMediaClient.printf("Camera resolution: " + String(dimension.width) + "x" + String(dimension.height)
                     + " fps: " + String(fps))
@@ -406,7 +408,7 @@ class WebRTCClient: NSObject {
         if (self.localVideoTrack != nil && self.localVideoView != nil) {
             self.localVideoTrack.add(localVideoView!)
         }
-        self.delegate?.addLocalStream()
+        self.delegate?.addLocalStream(streamId: self.streamId)
         return true
     }
     
@@ -445,7 +447,7 @@ class WebRTCClient: NSObject {
 extension WebRTCClient: RTCDataChannelDelegate
 {
     func dataChannel(_ dataChannel: RTCDataChannel, didReceiveMessageWith buffer: RTCDataBuffer) {
-        self.delegate?.dataReceivedFromDataChannel(didReceiveData: buffer)
+        self.delegate?.dataReceivedFromDataChannel(didReceiveData: buffer, streamId: self.streamId)
     }
     
     func dataChannelDidChangeState(_ parametersdataChannel: RTCDataChannel)  {
@@ -521,13 +523,13 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
         }
 
         
-        delegate?.remoteStreamAdded();
+        delegate?.remoteStreamAdded(streamId: self.streamId);
     }
     
     // removedStream
     func peerConnection(_ peerConnection: RTCPeerConnection, didRemove stream: RTCMediaStream) {
         AntMediaClient.printf("RemovedStream")
-        delegate?.remoteStreamRemoved();
+        delegate?.remoteStreamRemoved(streamId: self.streamId);
         remoteVideoTrack = nil
         remoteAudioTrack = nil
     }
@@ -546,7 +548,7 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     // iceConnectionChanged
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
         AntMediaClient.printf("---> iceConnectionChanged: \(newState.rawValue) for stream: \(self.streamId)")
-        self.delegate?.connectionStateChanged(newState: newState)
+        self.delegate?.connectionStateChanged(newState: newState, streamId:self.streamId)
     }
     
     // iceGatheringChanged
