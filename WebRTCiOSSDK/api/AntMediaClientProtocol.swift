@@ -328,6 +328,11 @@ public protocol AntMediaClientProtocol {
     func joinRoom(roomId:String, streamId: String)
     
     /**
+     Leave from a room. It stops both publishing and playing. If you just would like to stop publish or play, just call stop command with your streamId parameter
+     */
+    func leaveFromRoom()
+    
+    /**
     Join a P2P call
      */
     func join(streamId:String)

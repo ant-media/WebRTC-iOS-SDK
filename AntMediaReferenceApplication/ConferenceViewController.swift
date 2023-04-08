@@ -49,7 +49,7 @@ open class ConferenceViewController: UIViewController {
             title = "Stop";
         }
         else {
-            self.conferenceClient?.stop();
+            self.conferenceClient?.stop(streamId:publisherStreamId);
             title = "Publish"
         }
         joinButton.setTitle(title, for: .normal);
@@ -111,7 +111,7 @@ open class ConferenceViewController: UIViewController {
     
     
     open override func viewWillDisappear(_ animated: Bool) {
-        self.conferenceClient?.stop()
+        self.conferenceClient?.leaveFromRoom()
     }
 }
 
@@ -132,9 +132,10 @@ extension ConferenceViewController: AntMediaClientDelegate
         
             AntMediaClient.printf("stream id to publish \(streamId)")
             self.publisherStreamId = streamId;
+            //opens the camera 
             self.conferenceClient?.initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish)
             
-            //if you want to publish immediately, uncomment the line and just call the method below
+            //if you want to publish immediately, uncomment the line below and just call the method below
             //self.conferenceClient?.publish(streamId: self.publisherStreamId)
         }
         
@@ -150,7 +151,7 @@ extension ConferenceViewController: AntMediaClientDelegate
             if (!self.playMethodCalled) {
                 self.playMethodCalled = true;
                 self.conferenceClient?.play(streamId: self.roomId);
-                                                
+                AntMediaClient.printf("Calling play command for stream\(self.roomId)")
             }
         }
         
@@ -251,7 +252,7 @@ extension ConferenceViewController: AntMediaClientDelegate
     }
     
     public func playFinished(streamId: String) {
-        self.playMethodCalled = true;
+        self.playMethodCalled = false;
         Run.onMainThread { [self] in
             var i = 0;
             

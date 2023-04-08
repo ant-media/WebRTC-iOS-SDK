@@ -307,6 +307,22 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         else {
             sendJoinCommand(roomId)
         }
+        //start periodic check
+        roomInfoGetterTimer?.invalidate()
+        roomInfoGetterTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { pingTimer in
+            let jsonString =
+            [ COMMAND: "getRoomInfo",
+              ROOM_ID: roomId,
+              STREAM_ID: self.publisherStreamId ?? ""
+            ] as [String: Any]
+            if (self.isWebSocketConnected) {
+                self.webSocket!.write(string: jsonString.json)
+            }
+            else {
+                AntMediaClient.printf("Websocket is not connected to get room info")
+            }
+        }
+       
     }
     
     public func leaveFromRoom() {
@@ -319,6 +335,15 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             
             webSocket!.write(string: leaveRoomMessage.json)
             AntMediaClient.printf("Sending leaveRoom message \(leaveRoomMessage.json)");
+        }
+        if let tmpStreamId = self.publisherStreamId {
+            self.webRTCClientMap[tmpStreamId]?.disconnect()
+            self.webRTCClientMap.removeValue(forKey: tmpStreamId);
+        }
+        
+        if let tmpStreamId = self.playerStreamId {
+            self.webRTCClientMap[tmpStreamId]?.disconnect()
+            self.webRTCClientMap.removeValue(forKey: tmpStreamId);
         }
     }
     
@@ -405,9 +430,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     leave(streamId: tmpStreamId)
                 }
             }
-            else if (mode == AntMediaClientMode.conference) {
-                leaveFromRoom()
-            }
             else {
                 let command =  [
                     COMMAND: "stop",
@@ -416,21 +438,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 webSocket?.write(string: command.json)
             }
         }
-        if let tmpStreamId = self.publisherStreamId {
-            self.webRTCClientMap[tmpStreamId]?.disconnect()
-            self.webRTCClientMap.removeValue(forKey: tmpStreamId);
-        }
-        
-        if let tmpStreamId = self.playerStreamId {
-            self.webRTCClientMap[tmpStreamId]?.disconnect()
-            self.webRTCClientMap.removeValue(forKey: tmpStreamId);
-        }
-        
-        if let tmpStreamId = self.p2pStreamId {
-            self.webRTCClientMap[tmpStreamId]?.disconnect()
-            self.webRTCClientMap.removeValue(forKey: tmpStreamId);
-        }
-        
+        self.webRTCClientMap[self.getStreamId(streamId)]?.disconnect()
+        self.webRTCClientMap.removeValue(forKey: self.getStreamId(streamId));
     }
     
     open func initPeerConnection(streamId: String = "", mode:AntMediaClientMode=AntMediaClientMode.unspecified, token: String = "") {
@@ -765,6 +774,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 else if definition == "play_finished" {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Playing has finished")
+                    self.streamsInTheRoom.removeAll();
+                    self.webRTCClientMap[streamId]?.disconnect();
+                    self.webRTCClientMap.removeValue(forKey: streamId);
                     self.delegate.playFinished(streamId: message[STREAM_ID] as! String)
                 }
                 else if definition == "publish_started" {
@@ -775,7 +787,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 }
                 else if definition == "publish_finished" {
                     let streamId = message[STREAM_ID] as! String
-                    AntMediaClient.printf("Play finished: Let's close")
+                    AntMediaClient.printf("Publish finished: Let's close")
+                    self.webRTCClientMap[streamId]?.disconnect();
+                    self.webRTCClientMap.removeValue(forKey: streamId);
                     self.delegate.publishFinished(streamId: streamId)
                 }
                 else if definition == JOINED_ROOM_DEFINITION
@@ -791,24 +805,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                             self.delegate.newStreamsJoined(streams:  streams);
                         }
                     }
-                    
-                    //start periodic check
-                    if let roomId = self.mainTrackId {
-                        roomInfoGetterTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { pingTimer in
-                            let jsonString =
-                            [ COMMAND: "getRoomInfo",
-                              ROOM_ID: roomId,
-                              STREAM_ID: self.publisherStreamId ?? ""
-                            ] as [String: Any]
-                            if (self.isWebSocketConnected) {
-                                self.webSocket!.write(string: jsonString.json)
-                            }
-                        }
-                    }
-                    else {
-                        AntMediaClient.printf("RoomId is not specified so timer is not called")
-                    }
-                    
                 }
             
                 break;
@@ -991,6 +987,9 @@ extension AntMediaClient: WebRTCClientDelegate {
             newState == RTCIceConnectionState.failed
         {
             AntMediaClient.printf("connectionStateChanged: \(newState.rawValue) for stream: \(String(describing:streamId))")
+            self.webRTCClientMap[streamId]?.disconnect();
+            self.webRTCClientMap.removeValue(forKey: streamId);
+            
             self.delegate.disconnected(streamId: streamId);
         }
     }

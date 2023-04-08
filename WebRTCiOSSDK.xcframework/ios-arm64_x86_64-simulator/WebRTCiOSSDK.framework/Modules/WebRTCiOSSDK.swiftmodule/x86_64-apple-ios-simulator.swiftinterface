@@ -212,6 +212,7 @@ public protocol AntMediaClientProtocol {
   func enableAudioTrack(trackId: Swift.String, enabled: Swift.Bool)
   func enableTrack(trackId: Swift.String, enabled: Swift.Bool)
   func joinRoom(roomId: Swift.String, streamId: Swift.String)
+  func leaveFromRoom()
   func join(streamId: Swift.String)
 }
 extension Swift.Dictionary {
