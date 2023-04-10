@@ -57,9 +57,11 @@ class WebRTCClient: NSObject {
     private var externalAudio: Bool = false;
     
     private var cameraSourceFPS: Int = 30;
-    
-    var disconnectLock = NSLock()
-    
+    /*
+     State of the connection
+     */
+    var iceConnectionState:RTCIceConnectionState = .new;
+        
     public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, externalAudio:Bool) {
         super.init()
         
@@ -268,7 +270,6 @@ class WebRTCClient: NSObject {
     }
 
     public func disconnect() {
-        //disconnectLock.lock();
         AntMediaClient.printf("disconnecting and releasing resources for \(streamId)")
         //TODO: how to clear all resources
         self.localVideoTrack?.remove(self.localVideoView!)
@@ -289,9 +290,6 @@ class WebRTCClient: NSObject {
         self.peerConnection?.close()
         self.peerConnection = nil;
         AntMediaClient.printf("disconnected and released resources for \(streamId)")
-       // disconnectLock.unlock()
-        
-
     }
     
     public func toggleAudioEnabled() {
@@ -314,6 +312,10 @@ class WebRTCClient: NSObject {
         if(self.localVideoTrack != nil) {
             self.localVideoTrack.isEnabled = self.videoEnabled
         }
+    }
+    
+    public func getIceConnectionState() -> RTCIceConnectionState {
+        return iceConnectionState;
     }
     
     
@@ -557,6 +559,7 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     // iceConnectionChanged
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
         AntMediaClient.printf("---> iceConnectionChanged: \(newState.rawValue) for stream: \(self.streamId)")
+        self.iceConnectionState = newState;
         self.delegate?.connectionStateChanged(newState: newState, streamId:self.streamId)
     }
     

@@ -112,7 +112,7 @@ public protocol AntMediaClientProtocol {
     /**
      Publish stream to the server with streamId and roomId.
       - Parameters
-        - streamId: the id of the stream that is going to be published
+        - streamId: the id of the stream that is going to be published. 
         - mainTrackId: the id of the main stream or conference room  that this stream will be published. It's optional value
      */
     func publish(streamId:String, token:String, mainTrackId:String);

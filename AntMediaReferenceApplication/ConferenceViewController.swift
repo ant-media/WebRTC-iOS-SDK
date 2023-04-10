@@ -36,7 +36,7 @@ open class ConferenceViewController: UIViewController {
     var publishStream:Bool = false;
     
     var conferenceClient: AntMediaClient?;
-    var playMethodCalled = false
+    var playing = false
         
     @IBAction func joinButtonTapped(_ sender: Any) {
         AntMediaClient.printf("button tapped");
@@ -92,19 +92,27 @@ open class ConferenceViewController: UIViewController {
         self.conferenceClient?.joinRoom(roomId: roomId)
     }
     
-    @IBOutlet weak var audioButton: UIButton!
-    
-    @IBAction func audioButton(_ sender: Any) {
-        self.audioButton.isSelected.toggle()
-        
-        self.conferenceClient?.setAudioTrack(enableTrack:self.audioButton.isSelected)
-        self.conferenceClient?.setVideoTrack(enableTrack:self.audioButton.isSelected)
-        
-    }
-    
-    
     open override func viewWillDisappear(_ animated: Bool) {
         self.conferenceClient?.leaveFromRoom()
+    }
+    
+    public func removePlayers() {
+        self.playing = false;
+        Run.onMainThread { [self] in
+            var i = 0;
+            
+            while (i < remoteViewTrackMap.count)
+            {
+                remoteViewTrackMap[i] = nil;
+                if let view = remoteViews[i] as? RTCMTLVideoView {
+                    view.isHidden = true;
+                }
+                else if let view = remoteViews[i] as? RTCEAGLVideoView {
+                    view.isHidden = true;
+                }
+                i += 1
+            }
+        }
     }
 }
 
@@ -112,6 +120,8 @@ open class ConferenceViewController: UIViewController {
 extension ConferenceViewController: AntMediaClientDelegate
 {
     public func clientDidDisconnect(_ message: String) {
+        
+        removePlayers();
         
     }
     
@@ -146,8 +156,8 @@ extension ConferenceViewController: AntMediaClientDelegate
         }
         
         Run.onMainThread {
-            if (!self.playMethodCalled) {
-                self.playMethodCalled = true;
+            if (!self.playing) {
+                self.playing = true;
                 self.conferenceClient?.play(streamId: self.roomId);
                 AntMediaClient.printf("Calling play command for stream\(self.roomId)")
             }
@@ -155,8 +165,8 @@ extension ConferenceViewController: AntMediaClientDelegate
         
     }
        
-    public func streamsLeft(streams: [String]) {
-        
+    public func streamsLeft(streams: [String])
+    {
         for stream in streams {
             AntMediaClient.printf("Stream(\(stream)) left the room")
         }
@@ -250,24 +260,10 @@ extension ConferenceViewController: AntMediaClientDelegate
     }
     
     public func playFinished(streamId: String) {
-        self.playMethodCalled = false;
-        Run.onMainThread { [self] in
-            var i = 0;
-            
-            while (i < remoteViewTrackMap.count)
-            {
-                remoteViewTrackMap[i] = nil;
-                if let view = remoteViews[i] as? RTCMTLVideoView {
-                    view.isHidden = true;
-                }
-                else if let view = remoteViews[i] as? RTCEAGLVideoView {
-                    view.isHidden = true;
-                }
-                i += 1
-            }
-        }
-        
+        removePlayers();
     }
+    
+    
     
     public func publishStarted(streamId: String) {
         AntMediaClient.printf("Publish started for stream:\(streamId)")

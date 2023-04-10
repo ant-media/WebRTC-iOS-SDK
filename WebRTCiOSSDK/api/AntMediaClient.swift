@@ -125,7 +125,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     var pingTimer: Timer?
     
     var disableTrackId:String?
-    
+        
     struct HandshakeMessage:Codable {
         var command:String?
         var streamId:String?
@@ -263,7 +263,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             connectWebSocket()
         }
         else {
-            self.sendFirstMessage();
+            self.websocketConnected();
         }
     }
     
@@ -304,7 +304,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             connectWebSocket()
         }
         else {
-            sendJoinCommand(roomId)
+            sendJoinConferenceCommand()
         }
         //start periodic check
         roomInfoGetterTimer?.invalidate()
@@ -318,10 +318,28 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 self.webSocket!.write(string: jsonString.json)
             }
             else {
+                self.connectWebSocket()
                 AntMediaClient.printf("Websocket is not connected to get room info")
             }
         }
        
+    }
+    
+    /**
+     Called when the server responds with "joined room notification" as a response to "join room" command
+     */
+    private func joinedRoom(streamId:String, streams:[String]) {
+        
+        self.publisherStreamId = streamId;
+        self.delegate.streamIdToPublish(streamId: streamId);
+        self.streamsInTheRoom = streams;
+        
+        if (self.streamsInTheRoom.count > 0) {
+            self.delegate.newStreamsJoined(streams:  streams);
+        }
+        
+        reconnectIfRequires()
+        
     }
     
     public func leaveFromRoom() {
@@ -345,7 +363,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     
-    public func publish(streamId: String = "", token: String = "", mainTrackId: String = "") {
+    public func publish(streamId: String, token: String = "", mainTrackId: String = "") {
         
         guard let tmpStreamId = self.publisherStreamId else {
             self.publisherStreamId = getStreamId(streamId);
@@ -356,8 +374,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (!mainTrackId.isEmpty) {
             self.mainTrackId = mainTrackId
         }
-        self.publishToken = token;
-        
+        if (!token.isEmpty) {
+            self.publishToken = token;
+        }
         if (!isWebSocketConnected) {
             connectWebSocket();
         }
@@ -368,7 +387,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public func play(streamId: String, token: String = "") {
         self.playerStreamId = streamId;
-        self.playToken = token;
+        if (!token.isEmpty) {
+            self.playToken = token;
+        }
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.play, token: token)
         if (!isWebSocketConnected) {
             connectWebSocket();
@@ -381,23 +402,24 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     /*
      Connect to websocket.
-     - Returns: true if it's already connected.
-                false if it's going to be collected
      */
-    open func connectWebSocket() -> Bool {
-        AntMediaClient.printf("Connect websocket to \(self.getWsUrl())")
-        if (!self.isWebSocketConnected) { //provides backward compatibility
-            AntMediaClient.printf("Will connect to: \(self.getWsUrl()) for stream: \(self.getStreamId())")
-        
-            webSocket = WebSocket(request: self.getRequest())
-            webSocket?.delegate = self
-            webSocket?.connect()
-            
-            return false;
-        }
-        else {
-            AntMediaClient.printf("WebSocket is already connected to: \(self.getWsUrl())")
-            return true;
+    open func connectWebSocket()
+    {
+        AntMediaClient.dispatchQueue.async
+        {
+            AntMediaClient.printf("Connect websocket to \(self.getWsUrl())")
+            if (!self.isWebSocketConnected) { //provides backward compatibility
+                self.streamsInTheRoom.removeAll();
+                AntMediaClient.printf("Will connect to: \(self.getWsUrl()) for stream: \(self.getStreamId())")
+                
+                self.webSocket = WebSocket(request: self.getRequest())
+                self.webSocket?.delegate = self
+                self.webSocket?.connect()
+                
+            }
+            else {
+                AntMediaClient.printf("WebSocket is already connected to: \(self.getWsUrl())")
+            }
         }
     }
     
@@ -428,6 +450,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 }
             }
             else {
+                //removing means that user requests to stop
+                self.webRTCClientMap.removeValue(forKey: self.getStreamId(streamId))?.disconnect()
+                
                 let command =  [
                     COMMAND: "stop",
                     STREAM_ID: self.getStreamId(streamId)] as [String : String];
@@ -435,7 +460,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 webSocket?.write(string: command.json)
             }
         }
-        self.webRTCClientMap.removeValue(forKey: self.getStreamId(streamId))?.disconnect()
+       
     }
     
     open func initPeerConnection(streamId: String = "", mode:AntMediaClientMode=AntMediaClientMode.unspecified, token: String = "") {
@@ -641,7 +666,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         AntMediaClient.printf("P2P onConnection message: \(jsonString)")
     }
     
-    private func sendFirstMessage() {
+    private func websocketConnected() {
+        
         if (isWebSocketConnected) {
             if mode == AntMediaClientMode.conference {
                 sendJoinConferenceCommand();
@@ -654,6 +680,89 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
             else if let streamId = self.p2pStreamId {
                 sendJoinCommand(streamId)
+            }
+        }
+    }
+    
+    private func websocketDisconnected(message:String, code:UInt16) {
+        self.delegate?.clientDidDisconnect(message)
+        self.reconnectIfRequires()
+    }
+    
+    /**
+     Re-connection Scenario based on Ice Connection State because No matter websocket is disconnected or webrtc is disconnected
+     , ice Connection states changes to disconnected and below `reconnectIfRequires` method is called when ice connection is disconnected.
+     
+     `reconnectIfRequires` checks if connection is in the map because if the connection is stopped by the user, it's removed from the map, then there is nothing to do.
+     If it's not removed from the map and its state is closed, disconnected or failed it means that is a reconnect scenario is required.
+     
+    This method is also called after joining a room to check if it requires to reconnect
+     
+     */
+    private func reconnectIfRequires() {
+       
+        AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 2.0) {
+            
+            if let streamId = self.publisherStreamId {
+                //if there is a webRTCClient in the map, it means it's disconnected due to network issue
+                if (self.webRTCClientMap[streamId] != nil)
+                {
+                    let iceState = self.webRTCClientMap[streamId]?.getIceConnectionState();
+                    
+                    //check the ice state if this method is triggered consequently
+                    if ( iceState == RTCIceConnectionState.closed ||
+                         iceState == RTCIceConnectionState.disconnected ||
+                         iceState == RTCIceConnectionState.failed
+                    )
+                    {
+                        //clean the connection
+                        self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
+                        AntMediaClient.printf("Reconnecting to publish the stream:\(streamId)");
+                        self.publish(streamId:streamId)
+                    }
+                    else {
+                        AntMediaClient.printf("Not trying to reconnect to publish the stream:\(streamId) because ice connection state is not disconnected");
+                    }
+                }
+            }
+            
+            if let streamId = self.playerStreamId {
+                //if there is a webRTCClient in the map, it means it's disconnected due to network issue
+                
+                let iceState = self.webRTCClientMap[streamId]?.getIceConnectionState();
+                //check the ice state if this method is triggered consequently
+                if ( iceState == RTCIceConnectionState.closed ||
+                     iceState == RTCIceConnectionState.disconnected ||
+                     iceState == RTCIceConnectionState.failed
+                )
+                {
+                    //clean the connection
+                    self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
+                    AntMediaClient.printf("Reconnecting to play the stream:\(streamId)");
+                    self.play(streamId:streamId)
+                }
+                else {
+                    AntMediaClient.printf("Not trying to reconnect to play the stream:\(streamId) because ice connection state is not disconnected");
+                }
+            }
+            
+            if let streamId = self.p2pStreamId {
+                //if there is a webRTCClient in the map, it means it's disconnected due to network issue
+                if (self.webRTCClientMap[streamId] != nil) {
+                    
+                    let iceState = self.webRTCClientMap[streamId]?.getIceConnectionState();
+                    //check the ice state if this method is triggered consequently
+                    if ( iceState == RTCIceConnectionState.closed ||
+                         iceState == RTCIceConnectionState.disconnected ||
+                         iceState == RTCIceConnectionState.failed
+                    )
+                    {
+                        //clean the connection
+                        self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
+                        AntMediaClient.printf("Reconnecting to join the stream:\(streamId) because ice connection state is not disconnected");
+                        self.join(streamId:streamId)
+                    }
+                }
             }
         }
     }
@@ -771,9 +880,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Playing has finished")
                     self.streamsInTheRoom.removeAll();
-                    AntMediaClient.dispatchQueue.async {
-                        self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
-                    }
                     self.delegate.playFinished(streamId: message[STREAM_ID] as! String)
                 }
                 else if definition == "publish_started" {
@@ -785,24 +891,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 else if definition == "publish_finished" {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Publish finished: Let's close")
-                    AntMediaClient.dispatchQueue.async {
-                        self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
-                    }
                     self.delegate.publishFinished(streamId: streamId)
                 }
                 else if definition == JOINED_ROOM_DEFINITION
                 {
-                    if let streamId = message[STREAM_ID] as? String {
-                        self.publisherStreamId = streamId
-                        self.delegate.streamIdToPublish(streamId: streamId);
-                    }
-                    
-                    if let streams = message[STREAMS] as? [String] {
-                        self.streamsInTheRoom = streams;
-                        if (self.streamsInTheRoom.count > 0) {
-                            self.delegate.newStreamsJoined(streams:  streams);
-                        }
-                    }
+                    var streamId = message[STREAM_ID] as! String;
+                    var streams = message[STREAMS] as! [String];
+                    self.joinedRoom(streamId: streamId, streams:streams);
                 }
             
                 break;
@@ -991,13 +1086,12 @@ extension AntMediaClient: WebRTCClientDelegate {
             else {
                 state = "failed";
             }
+            
             AntMediaClient.printf("connectionStateChanged: \(state) for stream: \(String(describing:streamId))")
             AntMediaClient.dispatchQueue.async {
-                self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect();
+                self.reconnectIfRequires()
+                self.delegate.disconnected(streamId: streamId);
             }
-           
-            
-            self.delegate.disconnected(streamId: streamId);
         }
     }
     
@@ -1029,7 +1123,7 @@ extension AntMediaClient: WebSocketDelegate {
         case .connected(let headers):
             isWebSocketConnected = true;
             AntMediaClient.printf("websocket is connected: \(headers)")
-            self.sendFirstMessage()
+            self.websocketConnected()
             self.delegate?.clientDidConnect(self)
             
             //too keep the connetion alive send ping command for every 10 seconds
@@ -1042,8 +1136,8 @@ extension AntMediaClient: WebSocketDelegate {
             isWebSocketConnected = false;
             AntMediaClient.printf("websocket is disconnected: \(reason) with code: \(code)")
             pingTimer?.invalidate()
-        
-            self.delegate?.clientDidDisconnect(String(code))
+            self.websocketDisconnected(message:reason, code:code)
+          
             break;
         case .text(let string):
             //AntMediaClient.printf("Received text: \(string)");
@@ -1063,10 +1157,15 @@ extension AntMediaClient: WebSocketDelegate {
         case .cancelled:
             isWebSocketConnected = false;
             pingTimer?.invalidate()
+            webSocket!.disconnect();
+           
+            AntMediaClient.printf("Websocket is cancelled");
             break;
         case .error(let error):
             isWebSocketConnected = false;
             pingTimer?.invalidate()
+            webSocket!.disconnect();
+            self.websocketDisconnected(message: String(describing: error), code:0);
             AntMediaClient.printf("Error occured on websocket connection \(String(describing: error))");
             break;
         default:

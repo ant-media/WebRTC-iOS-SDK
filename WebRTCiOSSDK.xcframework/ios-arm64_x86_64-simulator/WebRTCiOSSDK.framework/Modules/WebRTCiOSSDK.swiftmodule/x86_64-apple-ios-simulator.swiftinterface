@@ -44,9 +44,9 @@ public enum AntMediaClientMode : Swift.Int {
   public func leave(streamId: Swift.String)
   public func joinRoom(roomId: Swift.String, streamId: Swift.String = "")
   public func leaveFromRoom()
-  public func publish(streamId: Swift.String = "", token: Swift.String = "", mainTrackId: Swift.String = "")
+  public func publish(streamId: Swift.String, token: Swift.String = "", mainTrackId: Swift.String = "")
   public func play(streamId: Swift.String, token: Swift.String = "")
-  open func connectWebSocket() -> Swift.Bool
+  open func connectWebSocket()
   open func setCameraPosition(position: AVFoundation.AVCaptureDevice.Position)
   open func setTargetResolution(width: Swift.Int, height: Swift.Int)
   open func setTargetFps(fps: Swift.Int)
