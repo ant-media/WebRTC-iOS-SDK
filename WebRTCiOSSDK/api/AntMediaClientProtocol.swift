@@ -336,4 +336,10 @@ public protocol AntMediaClientProtocol {
     Join a P2P call
      */
     func join(streamId:String)
+    
+    /**
+      Disconnects  websocket connection
+     */
+    func disconnect();
+    
 }

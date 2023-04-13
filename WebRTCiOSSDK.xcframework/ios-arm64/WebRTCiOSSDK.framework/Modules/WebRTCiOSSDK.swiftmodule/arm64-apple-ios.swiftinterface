@@ -24,7 +24,7 @@ public enum AntMediaClientMode : Swift.Int {
   }
 }
 @objc @_inheritsConvenienceInitializers open class AntMediaClient : ObjectiveC.NSObject, WebRTCiOSSDK.AntMediaClientProtocol {
-  public var delegate: WebRTCiOSSDK.AntMediaClientDelegate!
+  weak public var delegate: WebRTCiOSSDK.AntMediaClientDelegate?
   @objc override dynamic public init()
   public func setOptions(url: Swift.String, streamId: Swift.String, token: Swift.String = "", mode: WebRTCiOSSDK.AntMediaClientMode = .join, enableDataChannel: Swift.Bool = false, useExternalCameraSource: Swift.Bool = false)
   public func setWebSocketServerUrl(url: Swift.String)
@@ -80,6 +80,7 @@ public enum AntMediaClientMode : Swift.Int {
   public func enableVideoTrack(trackId: Swift.String, enabled: Swift.Bool)
   public func enableAudioTrack(trackId: Swift.String, enabled: Swift.Bool)
   public func enableTrack(trackId: Swift.String, enabled: Swift.Bool)
+  public func disconnect()
   @objc deinit
 }
 extension WebRTCiOSSDK.AntMediaClient {
@@ -107,7 +108,7 @@ extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCVideoViewDelegate {
   final public let videoCodec: Swift.String
   @objc deinit
 }
-public protocol AntMediaClientDelegate {
+public protocol AntMediaClientDelegate : AnyObject {
   func clientDidConnect(_ client: WebRTCiOSSDK.AntMediaClient)
   func clientDidDisconnect(_ message: Swift.String)
   func clientHasError(_ message: Swift.String)
@@ -151,7 +152,7 @@ public protocol ConferenceClientProtocol {
   func joinRoom(roomId: Swift.String, streamId: Swift.String)
   func leaveRoom()
 }
-public protocol ConferenceClientDelegate {
+public protocol ConferenceClientDelegate : AnyObject {
   func streamIdToPublish(streamId: Swift.String)
   func newStreamsJoined(streams: [Swift.String])
   func streamsLeft(streams: [Swift.String])
@@ -214,6 +215,7 @@ public protocol AntMediaClientProtocol {
   func joinRoom(roomId: Swift.String, streamId: Swift.String)
   func leaveFromRoom()
   func join(streamId: Swift.String)
+  func disconnect()
 }
 extension Swift.Dictionary {
   public var json: Swift.String {

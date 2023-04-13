@@ -18,23 +18,23 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		ByaNlynSH73wOGf0ld0L3lM22Iw=
+		hQlcKRSBUfCT4Pa38z8X2Tg+LSo=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		ilcvr+eDY6BCIApWELMbvkBLe9Y=
+		mK1Bi8Gouv8gjjxmYoJ4Rm3IuGo=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		KMTdOezmQxABPY4KQ1iE3BX3JfE=
+		wlSAGyxrli61i7mKU1kugR4aX+o=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		ilcvr+eDY6BCIApWELMbvkBLe9Y=
+		mK1Bi8Gouv8gjjxmYoJ4Rm3IuGo=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		VR5alaZj8ke4PcXKPl+dKcgvry0=
+		qITA+CyV2u4yiHYkBdFc5a5ryJs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,35 +61,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			m+H+/20iPfQZoyZa9Jv14uPHXUtIcJ+KKSaFH7rsuKQ=
+			G3S3GYcmnqnJvDpcJnvfqnR8ay6gVFKzox2LN0h01MI=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MYEIlIqVIZEJ4zqkIjlu22XuI0fe8Rn52G1kI3Me/lY=
+			y0Ik7DKIVxHnvbLyCrpv12EJp7vltvXSDvjc7Fo19i0=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			hSbv+Ea2MUfMl3KaHO9TaJZ0znabf7u5Gz1Mg8Wr7EU=
+			x+oNZ56INA/MUo/jF/WATJb6GbshPT7C4iYrKVTCEZc=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			MYEIlIqVIZEJ4zqkIjlu22XuI0fe8Rn52G1kI3Me/lY=
+			y0Ik7DKIVxHnvbLyCrpv12EJp7vltvXSDvjc7Fo19i0=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			XgnXTm6Y6UKtI/twgOrwVfBXJ5U4Aih6nBd6YrxUszs=
+			NFrfMOdxBlbdUi4W8YAMfjvxpGA9qyQ0kDkp0OQsaVk=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

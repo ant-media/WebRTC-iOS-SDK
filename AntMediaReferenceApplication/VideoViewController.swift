@@ -20,7 +20,7 @@ class VideoViewController: UIViewController {
     // Auto Layout Constraints used for animations
     @IBOutlet weak var containerLeftConstraint: NSLayoutConstraint?
     
-    let client: AntMediaClient = AntMediaClient.init()
+    var client: AntMediaClient?;
     var clientUrl: String!
     var clientStreamId: String!
     var clientToken: String!
@@ -35,13 +35,14 @@ class VideoViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.client.delegate = self
-        self.client.setDebug(true)
-        self.client.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true, useExternalCameraSource:false)
+        self.client = AntMediaClient.init()
+        self.client!.delegate = self
+        self.client!.setDebug(true)
+        self.client!.setOptions(url: self.clientUrl, streamId: self.clientStreamId, token: self.clientToken, mode: self.clientMode, enableDataChannel: true, useExternalCameraSource:false)
         
         //this should be enabled when an audio app or broadcast extension is used.
         //Please check the sample in ScreenShare
-        self.client.setExternalAudio(externalAudioEnabled: false);
+        self.client!.setExternalAudio(externalAudioEnabled: false);
         
         
         //set default stunserver or turn server
@@ -56,24 +57,24 @@ class VideoViewController: UIViewController {
         //self.client.setMultiPeerMode(enable: true, mode: "play")
 
         
-        if self.client.getCurrentMode() == AntMediaClientMode.join {
+        if self.client!.getCurrentMode() == AntMediaClientMode.join {
             resetDefaultWebRTCAudioConfiguation();
             self.modeLabel.text = "Mode: P2P"
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
-            self.client.setLocalView(container: pipVideoView)
-            self.client.setRemoteView(remoteContainer: fullVideoView)
-        } else if self.client.getCurrentMode() == AntMediaClientMode.publish {
+            self.client!.setLocalView(container: pipVideoView)
+            self.client!.setRemoteView(remoteContainer: fullVideoView)
+        } else if self.client!.getCurrentMode() == AntMediaClientMode.publish {
             resetDefaultWebRTCAudioConfiguation();
            // self.client.setVideoEnable(enable: true);
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
             self.modeLabel.text = "Mode: Publish"
-            self.client.setCameraPosition(position: .front)
-            self.client.setTargetResolution(width: 640, height: 360)
-            self.client.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
+            self.client!.setCameraPosition(position: .front)
+            self.client!.setTargetResolution(width: 640, height: 360)
+            self.client!.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
            
-        } else if self.client.getCurrentMode() == AntMediaClientMode.play {
+        } else if self.client!.getCurrentMode() == AntMediaClientMode.play {
             /*
              Below line don't ask mic permission while playing
              Please pay attention that if you enable below method, it will not use microphone.
@@ -84,16 +85,17 @@ class VideoViewController: UIViewController {
             
             self.fullVideoView.isHidden = false
             self.pipVideoView.isHidden = false
-            self.client.setRemoteView(remoteContainer: fullVideoView, mode: .scaleAspectFit)
+            self.client!.setRemoteView(remoteContainer: fullVideoView, mode: .scaleAspectFit)
             self.modeLabel.text = "Mode: Play"
         }
         //calling this method is not necessary. It just initializes the connection and opens the camera
-        self.client.initPeerConnection()
+        self.client!.initPeerConnection()
         
         //Enable below method to have the mirror effect
         //self.mirrorView(view: fullVideoView);
                 
-        self.client.start()
+        self.client!.start()
+         
     }
     
     /*
@@ -126,7 +128,7 @@ class VideoViewController: UIViewController {
     
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
-        self.client.setMicMute(mute: sender.isSelected, completionHandler: { (mute, error) in
+        self.client?.setMicMute(mute: sender.isSelected, completionHandler: { (mute, error) in
             if (error == nil) {
                 AntMediaClient.printf("Microphone is set to " + (mute ? "muted" : "unmuted"))
             }
@@ -140,17 +142,18 @@ class VideoViewController: UIViewController {
         video.isSelected = !video.isSelected
         //self.client.toggleVideo()
         
-        self.client.switchCamera()
+        self.client?.switchCamera()
     }
     
     @IBAction func closeTapped(_ sender: UIButton!) {
-        self.client.stop()
+        self.client?.stop()
         self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func messageButtonTapped(_ sender: Any) {
         //show alert window if data channel is enabled
-        if self.client.isDataChannelActive()
+        let active = self.client?.isDataChannelActive()
+        if (active == true)
         {
             
             let alert = UIAlertController(title: "Send Message", message: "Send message with WebRTC Datachannel", preferredStyle: .alert)
@@ -168,7 +171,7 @@ class VideoViewController: UIViewController {
                     /*
                      Send data through data channel
                     */
-                    self.client.sendData(data: data, binary: false)
+                    self.client?.sendData(data: data, binary: false)
                     
                     /*
                      You can either use some simple JSON formatting in order to have better
@@ -214,17 +217,16 @@ class VideoViewController: UIViewController {
     
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.client.stop()
+        self.client?.stop()
     }
-    
    
 }
 
 extension VideoViewController: AntMediaClientDelegate {
         
     func clientHasError(_ message: String) {
-        AlertHelper.getInstance().show("Error!", message: message, cancelButtonText: "OK", cancelAction: {
-            self.dismiss(animated: true, completion: nil)
+        AlertHelper.getInstance().show("Error!", message: message, cancelButtonText: "OK", cancelAction:  { [weak self] in
+            self?.dismiss(animated: true, completion: nil)
         })
     }
     
@@ -235,7 +237,7 @@ extension VideoViewController: AntMediaClientDelegate {
     
     func remoteStreamRemoved(streamId: String) {
         print("Remote stream removed -> \(streamId)")
-        if (self.client.getCurrentMode() == .join) {
+        if (self.client?.getCurrentMode() == .join) {
             Run.afterDelay(1, block: {
                 self.fullVideoView.isHidden = true
             })

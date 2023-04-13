@@ -23,7 +23,7 @@ public class StreamInformation {
         self.videoCodec = json["videoCodec"] as! String;
     }
 }
-public protocol AntMediaClientDelegate {
+public protocol AntMediaClientDelegate: AnyObject {
 
     /**
      Called when websocket is connected

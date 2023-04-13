@@ -52,7 +52,7 @@ public enum AntMediaClientMode: Int {
 open class AntMediaClient: NSObject, AntMediaClientProtocol {
  
     internal static var isDebug: Bool = false
-    public var delegate: AntMediaClientDelegate!
+    public weak var delegate: AntMediaClientDelegate?
 
     private var wsUrl: String!
     private var publisherStreamId: String?
@@ -331,11 +331,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private func joinedRoom(streamId:String, streams:[String]) {
         
         self.publisherStreamId = streamId;
-        self.delegate.streamIdToPublish(streamId: streamId);
+        self.delegate?.streamIdToPublish(streamId: streamId);
         self.streamsInTheRoom = streams;
         
         if (self.streamsInTheRoom.count > 0) {
-            self.delegate.newStreamsJoined(streams:  streams);
+            self.delegate?.newStreamsJoined(streams:  streams);
         }
         
         reconnectIfRequires()
@@ -453,12 +453,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             //removing means that user requests to stop
             self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect()
             
-            let command =  [
-                COMMAND: "stop",
-                STREAM_ID: tmpStreamId] as [String : String];
-            
-            webSocket?.write(string: command.json)
+            if (isWebSocketConnected) {
+                let command =  [
+                    COMMAND: "stop",
+                    STREAM_ID: tmpStreamId] as [String : String];
+                
+                webSocket?.write(string: command.json)
+            }
+            else {
+                AntMediaClient.printf("Websocket is not connected to stop stream:\(tmpStreamId)")
+            }
         }
+        
     }
     
     open func initPeerConnection(streamId: String = "", mode:AntMediaClientMode=AntMediaClientMode.unspecified, token: String = "") {
@@ -873,7 +879,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                         }
                     }
                 }
-                self.delegate.streamInformation(streamInfo: streamInformations);
+                self.delegate?.streamInformation(streamInfo: streamInformations);
                 
                 break
             case "notification":
@@ -888,24 +894,24 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 else if definition == "play_started" {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Play started: Let's go")
-                    self.delegate.playStarted(streamId: streamId)
+                    self.delegate?.playStarted(streamId: streamId)
                 }
                 else if definition == "play_finished" {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Playing has finished")
                     self.streamsInTheRoom.removeAll();
-                    self.delegate.playFinished(streamId: message[STREAM_ID] as! String)
+                    self.delegate?.playFinished(streamId: message[STREAM_ID] as! String)
                 }
                 else if definition == "publish_started" {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Publish started: Let's go")
                     self.webRTCClientMap[streamId]?.setMaxVideoBps(maxVideoBps: self.maxVideoBps)
-                    self.delegate.publishStarted(streamId: message[STREAM_ID] as! String)
+                    self.delegate?.publishStarted(streamId: message[STREAM_ID] as! String)
                 }
                 else if definition == "publish_finished" {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Publish finished: Let's close")
-                    self.delegate.publishFinished(streamId: streamId)
+                    self.delegate?.publishFinished(streamId: streamId)
                 }
                 else if definition == JOINED_ROOM_DEFINITION
                 {
@@ -937,11 +943,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     self.streamsInTheRoom = updatedStreamsInTheRoom
                     
                     if (newStreams.count > 0) {
-                        self.delegate.newStreamsJoined(streams: newStreams)
+                        self.delegate?.newStreamsJoined(streams: newStreams)
                     }
                     
                     if (leftStreams.count > 0) {
-                        self.delegate.streamsLeft(streams: leftStreams)
+                        self.delegate?.streamsLeft(streams: leftStreams)
                     }
                             
                 }
@@ -949,11 +955,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 break;
             case "error":
                 guard let definition = message["definition"] as? String else {
-                    self.delegate.clientHasError("An error occured, please try again")
+                    self.delegate?.clientHasError("An error occured, please try again")
                     return
                 }
                 
-                self.delegate.clientHasError(AntMediaError.localized(definition))
+                self.delegate?.clientHasError(AntMediaError.localized(definition))
                 break
             default:
                 break
@@ -1053,8 +1059,22 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 STREAM_ID: self.playerStreamId!,
                 ENABLED: enabled].json;
             
-            webSocket!.write(string: jsonString);
+            webSocket?.write(string: jsonString);
         }
+        else {
+            AntMediaClient.printf("Websocket is not connected to enableTRack for track: \(trackId) in stream: \(self.playerStreamId)")
+        }
+    }
+    
+    public func disconnect() {
+        for (streamId, webrtcClient) in self.webRTCClientMap {
+            webrtcClient.disconnect()
+        }
+             
+        self.webRTCClientMap.removeAll();
+        self.webSocket?.disconnect();
+        self.webSocket = nil;
+        
     }
     
 }
@@ -1063,11 +1083,11 @@ extension AntMediaClient: WebRTCClientDelegate {
 
         
     func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {
-        self.delegate.trackAdded(track: track, stream: stream)
+        self.delegate?.trackAdded(track: track, stream: stream)
     }
     
     func trackRemoved(track: RTCMediaStreamTrack) {
-        self.delegate.trackRemoved(track: track)
+        self.delegate?.trackRemoved(track: track)
     }
     
     
@@ -1076,15 +1096,15 @@ extension AntMediaClient: WebRTCClientDelegate {
     }
     
     public func addLocalStream(streamId:String) {
-        self.delegate.localStreamStarted(streamId: streamId)
+        self.delegate?.localStreamStarted(streamId: streamId)
     }
     
     public func remoteStreamAdded(streamId:String) {
-        self.delegate.remoteStreamStarted(streamId: streamId)
+        self.delegate?.remoteStreamStarted(streamId: streamId)
     }
     
     func remoteStreamRemoved(streamId:String) {
-        self.delegate.remoteStreamRemoved(streamId: streamId)
+        self.delegate?.remoteStreamRemoved(streamId: streamId)
     }
     
     
@@ -1104,7 +1124,7 @@ extension AntMediaClient: WebRTCClientDelegate {
             AntMediaClient.printf("connectionStateChanged: \(state) for stream: \(String(describing:streamId))")
             AntMediaClient.dispatchQueue.async {
                 self.reconnectIfRequires()
-                self.delegate.disconnected(streamId: streamId);
+                self.delegate?.disconnected(streamId: streamId);
             }
         }
     }
@@ -1116,10 +1136,10 @@ extension AntMediaClient: WebRTCClientDelegate {
       
         if let eventType = json?[EVENT_TYPE] {
             //event happened
-            self.delegate.eventHappened(streamId:json?[STREAM_ID] as! String, eventType:eventType as! String);
+            self.delegate?.eventHappened(streamId:json?[STREAM_ID] as! String, eventType:eventType as! String);
         }
         else {
-            self.delegate.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
+            self.delegate?.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
         }
     }
     
@@ -1193,7 +1213,7 @@ extension AntMediaClient: RTCAudioSessionDelegate
 {
     
     public func audioSessionDidStartPlayOrRecord(_ session: RTCAudioSession) {
-        self.delegate.audioSessionDidStartPlayOrRecord(streamId: self.getStreamId())
+        self.delegate?.audioSessionDidStartPlayOrRecord(streamId: self.getStreamId())
     }
 
 }
