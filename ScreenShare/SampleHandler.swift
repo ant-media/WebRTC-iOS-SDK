@@ -35,13 +35,14 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     
     var videoEnabled: Bool = true;
     var audioEnabled: Bool = true;
+    var streamId:String = "";
     
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
         
         let sharedDefault = UserDefaults(suiteName: "group.com.antmedia.ios.sdk")!
 
-        let streamId = sharedDefault.object(forKey: "streamId");
+        streamId = sharedDefault.object(forKey: "streamId") as! String;
         let url = sharedDefault.object(forKey: "url");
         let token = sharedDefault.object(forKey: "token");
         
@@ -101,7 +102,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     }
     
     override func broadcastFinished() {
-        self.client.stop();
+        self.client.stop(streamId: self.streamId);
     }
     
     override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType) {

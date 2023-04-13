@@ -11,7 +11,7 @@ import Foundation
 import WebRTC
 import WebRTCiOSSDK
 
-open class ConferenceViewController: UIViewController {
+open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate{
    
     /*
      PAY ATTENTION
@@ -135,7 +135,7 @@ extension ConferenceViewController: AntMediaClientDelegate
         
             AntMediaClient.printf("stream id to publish \(streamId)")
             self.publisherStreamId = streamId;
-            //opens the camera 
+            //opens the camera
             self.conferenceClient?.initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish)
             
             //if you can mute and close the camera, you can do that here
@@ -149,7 +149,6 @@ extension ConferenceViewController: AntMediaClientDelegate
         
     }
     
-
     public func newStreamsJoined(streams: [String]) {
         for stream in streams {
             AntMediaClient.printf("New stream in the room: \(stream)")
