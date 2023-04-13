@@ -73,8 +73,9 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         
             self.client.delegate = self
             self.client.setDebug(true)
-            self.client.setOptions(url: url as! String, streamId: streamId as! String, token: token as? String ?? "", mode: AntMediaClientMode.publish, enableDataChannel: true, useExternalCameraSource: true);
-            
+            self.client.setUseExternalCameraSource(useExternalCameraSource: true)
+            self.client.setWebSocketServerUrl(url: url as! String)
+                        
             if (videoEnabled != nil) {
                 self.client.setVideoEnable(enable: videoEnabled as! Bool);
                 self.client.setExternalVideoCapture(externalVideoCapture: true);
@@ -83,10 +84,8 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
             self.client.setTargetResolution(width: 1280, height: 720);
                     
             self.client.setExternalAudio(externalAudioEnabled: true)
-            
-            self.client.initPeerConnection();
-            
-            self.client.start();
+                        
+            self.client.publish(streamId: streamId as! String);
             
         }
         

@@ -272,8 +272,13 @@ class WebRTCClient: NSObject {
     public func disconnect() {
         AntMediaClient.printf("disconnecting and releasing resources for \(streamId)")
         //TODO: how to clear all resources
-        self.localVideoTrack?.remove(self.localVideoView!)
-        self.remoteVideoTrack?.remove(self.remoteVideoView!)
+        
+        if let view = self.localVideoView {
+            self.localVideoTrack?.remove(view)
+        }
+        if let view = self.remoteVideoView {
+            self.remoteVideoTrack?.remove(view)
+        }
         self.remoteVideoView?.renderFrame(nil)
         self.localVideoTrack = nil
         self.remoteVideoTrack = nil
