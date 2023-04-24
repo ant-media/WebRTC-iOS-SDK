@@ -50,6 +50,7 @@ public enum AntMediaClientMode: Int {
     
 }
 open class AntMediaClient: NSObject, AntMediaClientProtocol {
+    
  
     internal static var isDebug: Bool = false
     public weak var delegate: AntMediaClientDelegate?
@@ -1021,6 +1022,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     public func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int = -1)
     {
         (self.webRTCClientMap[self.getPublisherStreamId()]?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(sampleBuffer, externalRotation: rotation);
+    }
+    
+    public func deliverExternalPixelBuffer(pixelBuffer: CVPixelBuffer, rotation:RTCVideoRotation, timestampNs: Int64) {
+        (self.webRTCClientMap[self.getPublisherStreamId()]?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(pixelBuffer, rotation: rotation, timeStampNs: timestampNs);
     }
     
 

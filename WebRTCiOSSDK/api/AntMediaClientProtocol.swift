@@ -303,6 +303,11 @@ public protocol AntMediaClientProtocol {
     func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int);
     
     /**
+     Deliver external pixel buffer to the capturer.
+     */
+    func deliverExternalPixelBuffer(pixelBuffer: CVPixelBuffer, rotation:RTCVideoRotation, timestampNs: Int64);
+    
+    /**
      Enable/disable  to play the video track. If it's disabled, then server does not send video frames for the track.
      - Parameters
         - trackId
