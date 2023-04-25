@@ -52,13 +52,30 @@ public protocol AntMediaClientProtocol {
         - useExternalCameraSource: If useExternalCameraSource is false, it opens the local camera. If it's true, it does not open the local camera.
         When it's set to true, it can record the screen in-app or you can give external frames through your application or BroadcastExtension. If you give external frames or you use BroadcastExtension, you need to set the externalVideoCapture to true as well
     */
+    @available(*, deprecated, message: "Use setEnableDataChannel and useExternalCameraSource.")
     func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, useExternalCameraSource: Bool)
     
     /**
      Set room Id to use in video conferencing
      */
+    @available(*, deprecated, message: "Use joinRoom command as in the sample ")
     func setRoomId(roomId:String);
     
+    /**
+     Set websocket srver url such as wss://example.com:5443/WebRTCAppEE/websocket
+     */
+    func setWebSocketServerUrl(url: String)
+    
+    /**
+     Enable/disable data channel before starting the connection
+     */
+    func setEnableDataChannel(enableDataChannel: Bool)
+    
+    /**
+     Enable to use external camera source to publish stream
+     */
+    func setUseExternalCameraSource(useExternalCameraSource: Bool);
+        
     /**
      Enable or disable video completely in the WebRTC Client.  It should be called before `initPeerConnection()` and `start()` method.
      It's generally used for disabling video in order to have only audio streaming. If video is disabled by this method, it's not enabled in the same session again. Video is enabled by default.
@@ -81,13 +98,31 @@ public protocol AntMediaClientProtocol {
     
     /**
      Initializes the peer connection and opens the camera if it's publish mode but it does not start the streaming. It's not necessary to call this method. `start()` method calls this method if it's required. This method is generally used opening the camera and let the user tap a button to start publishing
+     - Parameters
+     streamId: is the id of the stream to be initialized
      */
-    func initPeerConnection()
+    func initPeerConnection(streamId:String, mode:AntMediaClientMode, token: String)
     
     /**
     Starts the streaming according to the mode of the client.
+     @Deprecated use `publish` and `play` method
     */
     func start();
+    
+    /**
+     Publish stream to the server with streamId and roomId.
+      - Parameters
+        - streamId: the id of the stream that is going to be published. 
+        - mainTrackId: the id of the main stream or conference room  that this stream will be published. It's optional value
+     */
+    func publish(streamId:String, token:String, mainTrackId:String);
+    
+    /**
+     Starts to play a stream on the server side
+     - Parameters
+       - streamId: the id of the stream or id of the conference room. It supports playing both of them
+    */
+    func play(streamId:String, token:String)
     
     /**
     Sets the camera position front or back. This method is effective if it's called before `initPeerConnection()` and `start()` method.
@@ -110,9 +145,9 @@ public protocol AntMediaClientProtocol {
     func setTargetFps(fps:Int);
     
     /**
-    Stops the connection and release resources
+    Stops the connection and release resources. It is a common method to stop publishing, stop playing, stop p2p and conferencing
      */
-    func stop();
+    func stop(streamId:String);
     
     /**
     Switches camera on the fly.
@@ -125,13 +160,13 @@ public protocol AntMediaClientProtocol {
         - data: The Data to send via data channel
         - binary:  The type of data. It should be true, if it's binary
      */
-    func sendData(data: Data, binary: Bool);
+    func sendData(data: Data, binary: Bool, streamId: String);
     
     /**
     Status of the data channel. Both server and mobile side, should enable data channel to let this method return true
     - Returns: true if data channel is active, false if it's disabled
     */
-    func isDataChannelActive() -> Bool;
+    func isDataChannelActive(streamId:String) -> Bool;
     
     /**
      The UIView element that local camera view will be rendered to.
@@ -192,17 +227,16 @@ public protocol AntMediaClientProtocol {
      */
     func toggleVideo();
     
-    
     /**
      Set the video track status enable/disable. It does not open/close the camera status. Just disable/enable the in the local video track
      */
     func setVideoTrack(enableTrack:Bool);
     
     /**
-     Stream id that this client uses.
+     Stream id that this client uses. There maybe more than one  stream id in the client such publish and play. It returns the one that is set.
      */
-    func getStreamId() -> String;
-    
+    func getStreamId(_ streamId:String) -> String;
+   
     /**
      Gets the stream info from the server side. Return information includes width, height, video bitrate, audio bitrates and video codec.
      If there are more than one bitrate or resolution, it will provides a stream information list.
@@ -237,7 +271,7 @@ public protocol AntMediaClientProtocol {
          }
      };
      */
-    func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void);
+    func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void, streamId:String);
     
     /**
      Set the max video bitrate for publishing the stream
@@ -269,6 +303,11 @@ public protocol AntMediaClientProtocol {
     func deliverExternalVideo(sampleBuffer: CMSampleBuffer, rotation:Int);
     
     /**
+     Deliver external pixel buffer to the capturer.
+     */
+    func deliverExternalPixelBuffer(pixelBuffer: CVPixelBuffer, rotation:RTCVideoRotation, timestampNs: Int64);
+    
+    /**
      Enable/disable  to play the video track. If it's disabled, then server does not send video frames for the track.
      - Parameters
         - trackId
@@ -284,4 +323,28 @@ public protocol AntMediaClientProtocol {
      Enable/disable to play the  track(video,audio) track together.  If it's disabled, then server does not send audio frame for the track.
      */
     func enableTrack(trackId:String, enabled:Bool)
+    
+    /**
+     Call this method to join a conference room
+     - Parameters
+      roomId: The id of the room to join.
+      streamId: The willing id of the stream to be published. It's optional. Server may accept the streamId or return with another streamId in streamIdToPublish method
+     */
+    func joinRoom(roomId:String, streamId: String)
+    
+    /**
+     Leave from a room. It stops both publishing and playing. If you just would like to stop publish or play, just call stop command with your streamId parameter
+     */
+    func leaveFromRoom()
+    
+    /**
+    Join a P2P call
+     */
+    func join(streamId:String)
+    
+    /**
+      Disconnects  websocket connection
+     */
+    func disconnect();
+    
 }

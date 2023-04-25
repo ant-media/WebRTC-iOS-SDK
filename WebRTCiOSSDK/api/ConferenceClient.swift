@@ -26,7 +26,7 @@ public protocol ConferenceClientProtocol {
     func leaveRoom();
 }
 
-public protocol ConferenceClientDelegate
+public protocol ConferenceClientDelegate: AnyObject
 {
     /**
      It's called after join to the room.
@@ -48,6 +48,7 @@ public protocol ConferenceClientDelegate
     func streamsLeft(streams: [String]);
 }
 
+@available(*, deprecated, message: "Use AntMediaClient directly and take a look at the sample")
 open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
 {
     var serverURL: String;
@@ -56,7 +57,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
     var streamId: String?;
     var streamsInTheRoom:[String] = [];
     
-    var delegate: ConferenceClientDelegate!;
+    weak var delegate: ConferenceClientDelegate?;
     
     var roomInfoGetterTimer: Timer?;
     
@@ -106,13 +107,13 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                     {
                         if let streamId = message[STREAM_ID] as? String {
                             self.streamId = streamId
-                            self.delegate.streamIdToPublish(streamId: streamId);
+                            self.delegate?.streamIdToPublish(streamId: streamId);
                         }
                         
                         if let streams = message[STREAMS] as? [String] {
                             self.streamsInTheRoom = streams;
                             if (self.streamsInTheRoom.count > 0) {
-                                self.delegate.newStreamsJoined(streams:  streams);
+                                self.delegate?.newStreamsJoined(streams:  streams);
                             }
                         }
                         
@@ -151,11 +152,11 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
                         self.streamsInTheRoom = updatedStreamsInTheRoom
                         
                         if (newStreams.count > 0) {
-                            self.delegate.newStreamsJoined(streams: newStreams)
+                            self.delegate?.newStreamsJoined(streams: newStreams)
                         }
                         
                         if (leavedStreams.count > 0) {
-                            self.delegate.streamsLeft(streams: leavedStreams)
+                            self.delegate?.streamsLeft(streams: leavedStreams)
                         }
                                 
                     }

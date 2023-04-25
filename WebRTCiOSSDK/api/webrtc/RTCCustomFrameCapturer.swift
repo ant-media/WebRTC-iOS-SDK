@@ -14,7 +14,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     
     let kNanosecondsPerSecond: Float64 = 1000000000
     var nanoseconds: Float64 = 0
-    var lastSentFrameTimeStampNanoSeconds: Float64 = 0;
+    var lastSentFrameTimeStampNanoSeconds: Int64 = 0;
     private var targetHeight: Int
         
     private var videoEnabled: Bool = true;
@@ -32,7 +32,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     private var fps: Int;
     
     
-    init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false, fps: Int = 15)
+    init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false, fps: Int = 30)
     {
         self.targetHeight = height
         self.externalCapture = externalCapture;
@@ -51,6 +51,25 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         self.webRTCClient = webRTCClient
     }
     
+    public func capture(_ pixelBuffer: CVPixelBuffer, rotation:RTCVideoRotation, timeStampNs: Int64 )
+    {
+        if ((Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < frameRateIntervalNanoSeconds ) {
+            AntMediaClient.printf("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
+            return;
+            
+        }
+        let rtcPixelBuffer = RTCCVPixelBuffer(
+            pixelBuffer: pixelBuffer)
+                
+        let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer,
+                                          
+                                          rotation: rotation, timeStampNs: Int64(timeStampNs))
+        
+        self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
+        lastSentFrameTimeStampNanoSeconds = timeStampNs;
+        
+    }
+    
     public func capture(_ sampleBuffer: CMSampleBuffer, externalRotation:Int = -1) {
         
         if (CMSampleBufferGetNumSamples(sampleBuffer) != 1 || !CMSampleBufferIsValid(sampleBuffer) ||
@@ -63,15 +82,17 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         let timeStampNs = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) *
             kNanosecondsPerSecond;
                 
-        if ((timeStampNs - lastSentFrameTimeStampNanoSeconds) < frameRateIntervalNanoSeconds ) {
+        if ((Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < frameRateIntervalNanoSeconds ) {
             AntMediaClient.printf("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
             return;
             
         }
         
-        let _pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+        let _pixelBuffer:CVPixelBuffer? = CMSampleBufferGetImageBuffer(sampleBuffer);
+        
         if let pixelBuffer = _pixelBuffer
         {
+            
             
             let width = Int32(CVPixelBufferGetWidth(pixelBuffer))
             let height = Int32(CVPixelBufferGetHeight(pixelBuffer))
@@ -82,15 +103,6 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             }
             
             //NSLog("Incoming frame width:\(width) height:\(height) adapted width:\(scaledWidth) height:\(self.targetHeight)")
-            
-            let rtcPixelBuffer = RTCCVPixelBuffer(
-                pixelBuffer: pixelBuffer,
-                adaptedWidth:scaledWidth,
-                adaptedHeight: Int32(self.targetHeight),
-                cropWidth: width,
-                cropHeight: height,
-                cropX: 0,
-                cropY: 0)
             
             var rotation = RTCVideoRotation._0;
             if (externalRotation == -1) {
@@ -130,12 +142,21 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
 
             //NSLog("Device orientation width: %d, height:%d ", width, height);
             
+            let rtcPixelBuffer = RTCCVPixelBuffer(
+                pixelBuffer: pixelBuffer,
+                adaptedWidth:scaledWidth,
+                adaptedHeight: Int32(self.targetHeight),
+                cropWidth: width,
+                cropHeight: height,
+                cropX: 0,
+                cropY: 0)
+            
             let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer,
                                               
                                               rotation: rotation, timeStampNs: Int64(timeStampNs))
             
             self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
-            lastSentFrameTimeStampNanoSeconds = timeStampNs;
+            lastSentFrameTimeStampNanoSeconds = Int64(timeStampNs);
            
         }
         else {

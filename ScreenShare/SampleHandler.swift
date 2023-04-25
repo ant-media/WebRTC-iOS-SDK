@@ -35,13 +35,14 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     
     var videoEnabled: Bool = true;
     var audioEnabled: Bool = true;
+    var streamId:String = "";
     
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
         
         let sharedDefault = UserDefaults(suiteName: "group.com.antmedia.ios.sdk")!
 
-        let streamId = sharedDefault.object(forKey: "streamId");
+        streamId = sharedDefault.object(forKey: "streamId") as! String;
         let url = sharedDefault.object(forKey: "url");
         let token = sharedDefault.object(forKey: "token");
         
@@ -73,8 +74,9 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
         
             self.client.delegate = self
             self.client.setDebug(true)
-            self.client.setOptions(url: url as! String, streamId: streamId as! String, token: token as? String ?? "", mode: AntMediaClientMode.publish, enableDataChannel: true, useExternalCameraSource: true);
-            
+            self.client.setUseExternalCameraSource(useExternalCameraSource: true)
+            self.client.setWebSocketServerUrl(url: url as! String)
+                        
             if (videoEnabled != nil) {
                 self.client.setVideoEnable(enable: videoEnabled as! Bool);
                 self.client.setExternalVideoCapture(externalVideoCapture: true);
@@ -83,10 +85,8 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
             self.client.setTargetResolution(width: 1280, height: 720);
                     
             self.client.setExternalAudio(externalAudioEnabled: true)
-            
-            self.client.initPeerConnection();
-            
-            self.client.start();
+                        
+            self.client.publish(streamId: streamId as! String);
             
         }
         
@@ -102,7 +102,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     }
     
     override func broadcastFinished() {
-        self.client.stop();
+        self.client.stop(streamId: self.streamId);
     }
     
     override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType) {

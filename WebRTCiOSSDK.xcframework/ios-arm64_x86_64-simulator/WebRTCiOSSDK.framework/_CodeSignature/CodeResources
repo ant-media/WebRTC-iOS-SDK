@@ -18,23 +18,23 @@
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		YjmpHe2ntY7ps+MfWH/0Zh3x+4E=
+		U53cf/op0tO6dv+Wkgji2xZ1RRE=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		4ji0hNpB6+rlF/nw2ihTpB6bYCE=
+		1h5Rl0PmzGaoadSyn9HOcGN+t0s=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		mZm4zvUwnSd536Oa3nQ565DFPu0=
+		zXTvZj1B+4kMwQUGntcxYG0IUg0=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		4ji0hNpB6+rlF/nw2ihTpB6bYCE=
+		1h5Rl0PmzGaoadSyn9HOcGN+t0s=
 		</data>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		5FoCUeMMslgvz6UFoWvXYqpCBDE=
+		j19A6iAajtConWNsRdEa+RwU+WY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -61,35 +61,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			OJiCbNPkc9umZ8shkn29fzGert03xwy6ukfXTgR7sqg=
+			MScheRASHSnSIloaL1hFV3f6N9q8jqD+OYNRr5Px7G8=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1RUhkNOLaz+24MJtJ3GL57K8AzvuqEKjhadkhM1RKuE=
+			GZOvkQs1ktLi+DF7Zrejc4+aqjH2v1JLrSJfbAca0cY=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QZror2AhCvt/Wvs55hmh/Hv+FoFoEmswAR9GR3fjY3Q=
+			xrMsY4FyNeBgSq0BTNAd1h9pcCGPW7wFwEBFvqD3/q0=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			1RUhkNOLaz+24MJtJ3GL57K8AzvuqEKjhadkhM1RKuE=
+			GZOvkQs1ktLi+DF7Zrejc4+aqjH2v1JLrSJfbAca0cY=
 			</data>
 		</dict>
 		<key>Modules/WebRTCiOSSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			YgMbsA47quFUmmnG3AinQHPekNeKe/eL/S4FDC5wa3s=
+			ThnzupTLFqWQzxYa+77+J4bT3RaTxI85b/rPyS/q3PI=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

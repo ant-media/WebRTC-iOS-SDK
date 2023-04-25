@@ -11,13 +11,12 @@ import Foundation
 import WebRTC
 import WebRTCiOSSDK
 
-open class ConferenceViewController: UIViewController {
+open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate{
    
     /*
      PAY ATTENTION
         ConferenceViewController supports Multitrack Conferencing and the old way is deprecated
      */
-    var conferenceClient: ConferenceClient!
     var clientUrl: String!
     var roomId: String!
     var publisherStreamId: String!
@@ -36,9 +35,8 @@ open class ConferenceViewController: UIViewController {
         
     var publishStream:Bool = false;
     
-    var publisherClient: AntMediaClient?;
-    var playerClient: AntMediaClient?;
-   
+    var conferenceClient: AntMediaClient?;
+    var playing = false
         
     @IBAction func joinButtonTapped(_ sender: Any) {
         AntMediaClient.printf("button tapped");
@@ -47,11 +45,11 @@ open class ConferenceViewController: UIViewController {
         
         //TODO: don't use flag(publishStream), use more trusted info @mekya
         if (publishStream) {
-            self.publisherClient?.start();
+            self.conferenceClient?.publish(streamId: publisherStreamId)
             title = "Stop";
         }
         else {
-            self.publisherClient?.stop();
+            self.conferenceClient?.stop(streamId:publisherStreamId);
             title = "Publish"
         }
         joinButton.setTitle(title, for: .normal);
@@ -87,67 +85,33 @@ open class ConferenceViewController: UIViewController {
        
         
         AntMediaClient.setDebug(true)
-        conferenceClient = ConferenceClient.init(serverURL: self.clientUrl, conferenceClientDelegate: self)
-        conferenceClient.joinRoom(roomId: self.roomId, streamId: "")
-        
+        self.conferenceClient =  AntMediaClient.init();
+        self.conferenceClient?.delegate = self
+        self.conferenceClient?.setWebSocketServerUrl(url: self.clientUrl)
+        self.conferenceClient?.setLocalView(container: self.localView)
+        self.conferenceClient?.joinRoom(roomId: roomId)
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
-        self.publisherClient?.stop()
-        self.playerClient?.stop();
-        conferenceClient.leaveRoom()
-    }
-}
-
-extension ConferenceViewController: ConferenceClientDelegate
-{
-    public func streamIdToPublish(streamId: String) {
-        
-        Run.onMainThread {
-        
-            AntMediaClient.printf("stream id to publish \(streamId)")
-            
-            self.publisherStreamId = streamId;
-            self.publisherClient =  AntMediaClient.init();
-            self.publisherClient?.delegate = self
-            self.publisherClient?.setOptions(url: self.clientUrl, streamId: self.publisherStreamId, token: "", mode: AntMediaClientMode.publish, enableDataChannel: false)
-            self.publisherClient?.setRoomId(roomId: self.roomId);
-            
-            self.publisherClient?.setLocalView(container: self.localView)
-           
-            self.publisherClient?.initPeerConnection()
-           // self.publisherClient?.start()
-            
-            
-        }
-        
+        self.conferenceClient?.leaveFromRoom()
     }
     
-
-    public func newStreamsJoined(streams: [String]) {
-        for stream in streams {
-            AntMediaClient.printf("New stream in the room: \(stream)")
-        }
-        
-        Run.onMainThread {
-            if (self.playerClient == nil) {
-                //Just initialize once because it handles adding/removing new tracks in the backend
-                self.playerClient = AntMediaClient.init()
-                self.playerClient?.delegate = self;
-                self.playerClient?.setOptions(url: self.clientUrl, streamId: self.roomId, token: "", mode: AntMediaClientMode.play, enableDataChannel: true);
-                AntMediaClient.printf("disable track id: \(self.publisherStreamId)")
-                self.playerClient?.disableTrack(trackId:self.publisherStreamId);
-                
-                self.playerClient?.start()
+    public func removePlayers() {
+        self.playing = false;
+        Run.onMainThread { [self] in
+            var i = 0;
+            
+            while (i < remoteViewTrackMap.count)
+            {
+                remoteViewTrackMap[i] = nil;
+                if let view = remoteViews[i] as? RTCMTLVideoView {
+                    view.isHidden = true;
+                }
+                else if let view = remoteViews[i] as? RTCEAGLVideoView {
+                    view.isHidden = true;
+                }
+                i += 1
             }
-        }
-        
-    }
-       
-    public func streamsLeft(streams: [String]) {
-        
-        for stream in streams {
-            AntMediaClient.printf("Stream(\(stream)) left the room")
         }
     }
 }
@@ -157,18 +121,61 @@ extension ConferenceViewController: AntMediaClientDelegate
 {
     public func clientDidDisconnect(_ message: String) {
         
+        removePlayers();
+        
     }
     
     public func clientHasError(_ message: String) {
         
     }
     
+    public func streamIdToPublish(streamId: String) {
+        
+        Run.onMainThread {
+        
+            AntMediaClient.printf("stream id to publish \(streamId)")
+            self.publisherStreamId = streamId;
+            //opens the camera
+            self.conferenceClient?.initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish)
+            
+            //if you can mute and close the camera, you can do that here
+            //self.conferenceClient?.setAudioTrack(enableTrack: false)
+            //self.conferenceClient?.setVideoTrack(enableTrack: false)
+            
+            
+            //if you want to publish immediately, uncomment the line below and just call the method below
+            //self.conferenceClient?.publish(streamId: self.publisherStreamId)
+        }
+        
+    }
+    
+    public func newStreamsJoined(streams: [String]) {
+        for stream in streams {
+            AntMediaClient.printf("New stream in the room: \(stream)")
+        }
+        
+        Run.onMainThread {
+            if (!self.playing) {
+                self.playing = true;
+                self.conferenceClient?.play(streamId: self.roomId);
+                AntMediaClient.printf("Calling play command for stream\(self.roomId)")
+            }
+        }
+        
+    }
+       
+    public func streamsLeft(streams: [String])
+    {
+        for stream in streams {
+            AntMediaClient.printf("Stream(\(stream)) left the room")
+        }
+    }
+    
+    
     public func playStarted(streamId: String) {
         print("play started");
         AntMediaClient.speakerOn();
     }
-    
-    
     
     public func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {
         
@@ -183,7 +190,7 @@ extension ConferenceViewController: AntMediaClientDelegate
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 //It's delay for 3 seconds because in some cases server enables while adding local stream
-                self.playerClient?.enableTrack(trackId: String(streamId), enabled: false);
+                self.conferenceClient?.enableTrack(trackId: String(streamId), enabled: false);
             }
             track.isEnabled = false;
             return;
@@ -252,31 +259,17 @@ extension ConferenceViewController: AntMediaClientDelegate
     }
     
     public func playFinished(streamId: String) {
-        self.playerClient = nil;
-        
-        Run.onMainThread { [self] in
-            var i = 0;
-            
-            while (i < remoteViewTrackMap.count)
-            {
-                remoteViewTrackMap[i] = nil;
-                if let view = remoteViews[i] as? RTCMTLVideoView {
-                    view.isHidden = true;
-                }
-                else if let view = remoteViews[i] as? RTCEAGLVideoView {
-                    view.isHidden = true;
-                }
-                i += 1
-            }
-        }
-        
+        removePlayers();
     }
+    
+    
     
     public func publishStarted(streamId: String) {
         AntMediaClient.printf("Publish started for stream:\(streamId)")
     }
     
     public func publishFinished(streamId: String) {
+        AntMediaClient.printf("Publish finished for stream:\(streamId)")
         
     }
     

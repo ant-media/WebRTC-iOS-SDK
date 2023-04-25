@@ -23,7 +23,7 @@ public class StreamInformation {
         self.videoCodec = json["videoCodec"] as! String;
     }
 }
-public protocol AntMediaClientDelegate {
+public protocol AntMediaClientDelegate: AnyObject {
 
     /**
      Called when websocket is connected
@@ -123,14 +123,33 @@ public protocol AntMediaClientDelegate {
     func eventHappened(streamId:String, eventType:String);
     
     /**
-     It's called when a new track is added to the stream
+     It's called when a new track is added to the stream. It works both on multirack streaming and conferencing
      */
     func trackAdded(track:RTCMediaStreamTrack, stream:[RTCMediaStream])
     
     /**
-     It's called when a tack is removed
+     It's called when a tack is removed. It works both on multitrack streaming and conferencing
      */
     func trackRemoved(track:RTCMediaStreamTrack)
+    
+    /**
+     It's called after join to the room.
+     - streamId: the id of the stream tha can be used to publish stream.
+        It's not an obligation to publish a stream. It changes according to the project
+     */
+    func streamIdToPublish(streamId: String);
+    
+    /**
+      Called when new streams join to the room
+     - streams:  stream id array of the streams that join to the room
+     */
+    func newStreamsJoined(streams: [String]);
+    
+    /**
+     Called when some streams leaves from the room. So that players can be removed from the user interface
+     - streams: stream id array of the stream that leaves from the room
+     */
+    func streamsLeft(streams: [String]);
     
 }
 
@@ -188,6 +207,30 @@ public extension AntMediaClientDelegate {
         AntMediaClient.printf("Stream information has received")
         for result in streamInfo {
             AntMediaClient.printf("resolution width:\(result.streamWidth) heigh:\(result.streamHeight) video " + "bitrate:\(result.videoBitrate) audio bitrate:\(result.audioBitrate) codec:\(result.videoCodec)");
+        }
+    }
+    
+    func streamIdToPublish(streamId: String) {
+        AntMediaClient.printf("Joined the room and stream Id to publish is \(streamId)")
+    }
+    
+    /**
+      Called when new streams join to the room
+     - streams:  stream id array of the streams that join to the room
+     */
+    func newStreamsJoined(streams: [String]) {
+        for stream in streams {
+            AntMediaClient.printf("New stream in the room: \(stream)")
+        }
+    }
+    
+    /**
+     Called when some streams leaves from the room. So that players can be removed from the user interface
+     - streams: stream id array of the stream that leaves from the room
+     */
+    func streamsLeft(streams: [String]) {
+        for stream in streams {
+            AntMediaClient.printf("Stream: \(stream) left from the room")
         }
     }
     
