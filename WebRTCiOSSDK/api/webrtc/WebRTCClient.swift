@@ -429,9 +429,9 @@ class WebRTCClient: NSObject {
     
     public func switchCamera() {
         
-        if let sender = self.videoSender {
-            peerConnection?.removeTrack(sender)
-        }
+        let cameraVideoCapturer = self.videoCapturer as? RTCCameraVideoCapturer;
+        cameraVideoCapturer?.stopCapture()
+        
         if self.cameraPosition == .front {
             self.cameraPosition = .back
         }
@@ -439,11 +439,8 @@ class WebRTCClient: NSObject {
             self.cameraPosition = .front
         }
         
-        self.localVideoTrack.remove(localVideoView!)
-        self.localVideoTrack = createVideoTrack()
-        
-        self.localVideoTrack.add(localVideoView!)
-        
+        startCapture()
+                
         self.videoSender = self.peerConnection?.add(self.localVideoTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
         
     }
