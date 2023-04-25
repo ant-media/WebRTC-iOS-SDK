@@ -440,9 +440,6 @@ class WebRTCClient: NSObject {
         }
         
         startCapture()
-                
-        self.videoSender = self.peerConnection?.add(self.localVideoTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
-        
     }
     
     public func deliverExternalAudio(sampleBuffer: CMSampleBuffer)
