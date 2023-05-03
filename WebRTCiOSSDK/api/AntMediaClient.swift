@@ -292,7 +292,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 COMMAND: "leave",
                 STREAM_ID: streamId] as [String : Any]
         
-            webSocket!.write(string:leaveMessage.json)
+            webSocket?.write(string:leaveMessage.json)
         }
         self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect();
     }
@@ -316,7 +316,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
               STREAM_ID: self.publisherStreamId ?? ""
             ] as [String: Any]
             if (self.isWebSocketConnected) {
-                self.webSocket!.write(string: jsonString.json)
+                self.webSocket?.write(string: jsonString.json)
             }
             else {
                 self.connectWebSocket()
@@ -345,14 +345,20 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public func leaveFromRoom() {
         roomInfoGetterTimer?.invalidate()
-        if (isWebSocketConnected) {
-            let leaveRoomMessage =  [
-                COMMAND: "leaveFromRoom",
-                ROOM_ID: self.mainTrackId!,
-                STREAM_ID: self.publisherStreamId ?? "" ] as [String : Any]
-            
-            webSocket!.write(string: leaveRoomMessage.json)
-            AntMediaClient.printf("Sending leaveRoom message \(leaveRoomMessage.json)");
+        if (isWebSocketConnected)
+        {
+            if let roomId = self.mainTrackId {
+                let leaveRoomMessage =  [
+                    COMMAND: "leaveFromRoom",
+                    ROOM_ID: roomId,
+                    STREAM_ID: self.publisherStreamId ?? "" ] as [String : Any]
+                
+                webSocket?.write(string: leaveRoomMessage.json)
+                AntMediaClient.printf("Sending leaveRoom message \(leaveRoomMessage.json)");
+            }
+            else {
+                AntMediaClient.printf("Websocket is not connected to send leave from room message");
+            }
         }
         if let tmpStreamId = self.publisherStreamId {
             self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect();
@@ -477,13 +483,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             
             self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: mode != .unspecified ? mode : self.mode , cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id);
             
-            self.webRTCClientMap[id]!.setToken(token)
+            self.webRTCClientMap[id]?.setToken(token)
             
             AntMediaClient.rtcAudioSession.add(self);
         }
         else {
             //it may initialized without correct token parameter because of backward compatibility
-            self.webRTCClientMap[id]!.setToken(token)
+            self.webRTCClientMap[id]?.setToken(token)
             AntMediaClient.printf("WebRTCClient already initialized for id:\(id) and mode:\(mode.getName())")
         }
     }
@@ -654,16 +660,21 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
-    func sendJoinConferenceCommand() {
-       
-        
-        if isWebSocketConnected {
-            let joinRoomMessage =  [
-                COMMAND: "joinRoom",
-                ROOM_ID: self.mainTrackId!,
-                MODE: "multitrack",
-                STREAM_ID: self.publisherStreamId ?? "" ] as [String : String]
-            webSocket?.write(string: joinRoomMessage.json)
+    func sendJoinConferenceCommand()
+    {
+        if isWebSocketConnected
+        {
+            if let roomId = self.mainTrackId {
+                let joinRoomMessage =  [
+                    COMMAND: "joinRoom",
+                    ROOM_ID: roomId,
+                    MODE: "multitrack",
+                    STREAM_ID: self.publisherStreamId ?? "" ] as [String : String]
+                webSocket?.write(string: joinRoomMessage.json)
+            }
+            else {
+                AntMediaClient.printf("mainTrackId is not specified to join the room ");
+            }
         }
         else {
             AntMediaClient.printf("Websocket is not connected to send joinConferece message for room \(self.mainTrackId)")
@@ -673,7 +684,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     fileprivate func sendPlayCommand(_ streamId: String) {
         if (isWebSocketConnected) {
             let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.play)
-            webSocket!.write(string: jsonString)
+            webSocket?.write(string: jsonString)
             AntMediaClient.printf("Play onConnection message: \(jsonString)")
         }
         else {
@@ -683,7 +694,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     fileprivate func sendJoinCommand(_ streamId: String) {
         let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.join)
-        webSocket!.write(string: jsonString)
+        webSocket?.write(string: jsonString)
         AntMediaClient.printf("P2P onConnection message: \(jsonString)")
     }
     
@@ -864,7 +875,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             case "connectWithNewId":
                 self.multiPeerStreamId = message["streamId"] as? String
             let jsonString = getHandshakeMessage(streamId: self.getStreamId(), mode: AntMediaClientMode.join)
-                webSocket!.write(string: jsonString)
+                webSocket?.write(string: jsonString)
                 break
             case STREAM_INFORMATION_COMMAND:
                 AntMediaClient.printf("stream information command")
@@ -1038,7 +1049,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 STREAM_ID: self.playerStreamId!,
                 ENABLED: enabled].json;
             
-            webSocket!.write(string: jsonString);
+            webSocket?.write(string: jsonString);
         }
     }
     
@@ -1051,7 +1062,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 STREAM_ID: self.playerStreamId!,
                 ENABLED: enabled].json;
             
-            webSocket!.write(string: jsonString);
+            webSocket?.write(string: jsonString);
         }
     }
     
@@ -1196,14 +1207,14 @@ extension AntMediaClient: WebSocketDelegate {
         case .cancelled:
             isWebSocketConnected = false;
             pingTimer?.invalidate()
-            webSocket!.disconnect();
+            webSocket?.disconnect();
            
             AntMediaClient.printf("Websocket is cancelled");
             break;
         case .error(let error):
             isWebSocketConnected = false;
             pingTimer?.invalidate()
-            webSocket!.disconnect();
+            webSocket?.disconnect();
             self.websocketDisconnected(message: String(describing: error), code:0);
             AntMediaClient.printf("Error occured on websocket connection \(String(describing: error))");
             break;
