@@ -4,6 +4,46 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/Info.plist</key>
+		<data>
+		og0y9IJdWZVK23V9dG58Wi1oNYs=
+		</data>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK</key>
+		<data>
+		lqgFAP8EEmpuRPk9Zt2tsWQXo48=
+		</data>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeDirectory</key>
+		<data>
+		52mi3lmo7vatxThC0pe+gxsDkTE=
+		</data>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeRequirements</key>
+		<data>
+		OnX22wWFKRSOFN1+obRynMCeyXM=
+		</data>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeRequirements-1</key>
+		<data>
+		LusRxpNE2d74FfNv17XTA/PpB3o=
+		</data>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeResources</key>
+		<data>
+		wVQXcoYPgD0zJgan5Hpbzf4csZI=
+		</data>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeSignature</key>
+		<data>
+		2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+		</data>
+		<key>Frameworks/WebRTC.framework/Info.plist</key>
+		<data>
+		uOyC+/QaCfQN4zeFgFePHzDh8LQ=
+		</data>
+		<key>Frameworks/WebRTC.framework/WebRTC</key>
+		<data>
+		ZPgpJNU6P5ipEvW55/sh7WB1XXM=
+		</data>
+		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
+		<data>
+		/PZ2JTg+ggjWGq/EZW4pX3pl2Fo=
+		</data>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<data>
 		Jpv1muYpthoSEQqe1qHg7J+EHkk=
@@ -43,6 +83,76 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			v5SRomcpzfobnmcQSxzIJv/ItqSb0nIL18oPhcA4sBU=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PSFt7eLFyImK9HCK/bJdtrY5u6L/81RpZlrStg768vY=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeDirectory</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			0WSRWQBI37e+G+iCrqURLLTq/dR/rvg3HkvhFUwQq+g=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeRequirements</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			mHkgkE6rZQ51eIwFSqCwUk5qgL/HGqMt+NI3phdD+YY=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeRequirements-1</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			JIG/j6Y95GV7dDuG4qKn0dwkbyEGibtzJEnswi+BOrA=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			25SY9YRdu2EpXawvs0Wx3rgPHw14KGx4KZzlOW0kfrs=
+			</data>
+		</dict>
+		<key>Frameworks/Pods_AntMediaWebRTCSDK_WebRTCiOSSDK.framework/_CodeSignature/CodeSignature</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=
+			</data>
+		</dict>
+		<key>Frameworks/WebRTC.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			aMWIq++VEmAixPb55iZqAfhcLaB5IQYizocY/fXPdbQ=
+			</data>
+		</dict>
+		<key>Frameworks/WebRTC.framework/WebRTC</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			6xcfX3B71MhcJp+aXiMuG6a0HArF4/fPtbjpCI8VKFY=
+			</data>
+		</dict>
+		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			PQT/Ao1784Qh11HCa/lUimf0S7rWgfs0Zcq26iSEBE4=
+			</data>
+		</dict>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
