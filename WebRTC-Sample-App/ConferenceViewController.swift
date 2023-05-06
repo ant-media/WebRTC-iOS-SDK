@@ -11,8 +11,8 @@ import Foundation
 import WebRTC
 import WebRTCiOSSDK
 
-open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate{
-   
+open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate, RTCVideoViewDelegate{
+    
     /*
      PAY ATTENTION
         ConferenceViewController supports Multitrack Conferencing and the old way is deprecated
@@ -286,6 +286,11 @@ extension ConferenceViewController: AntMediaClientDelegate
     }
     
     public func streamInformation(streamInfo: [StreamInformation]) {
+        
+    }
+    
+    public func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
+        AntMediaClient.printf("Video size changed to " + String(Int(size.width)) + "x" + String(Int(size.height)) + ". These changes are not handled in Simulator for now")
         
     }
 }

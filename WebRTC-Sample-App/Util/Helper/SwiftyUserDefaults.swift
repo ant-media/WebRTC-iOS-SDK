@@ -118,7 +118,7 @@ public extension UserDefaults {
     
     /// Returns getter proxy for `key`
     
-    public subscript(key: String) -> Proxy {
+     subscript(key: String) -> Proxy {
         return Proxy(self, key)
     }
     

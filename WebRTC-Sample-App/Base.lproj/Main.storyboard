@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
@@ -12,13 +12,13 @@
         <!--Welcome View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="Ant_Media" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="WelcomeViewController" customModule="WebRTC_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="U8S-UW-oXC">
-                                <rect key="frame" x="87.5" y="40" width="200" height="200"/>
+                                <rect key="frame" x="95" y="87" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="1mh-o1-svn"/>
                                     <constraint firstAttribute="width" secondItem="U8S-UW-oXC" secondAttribute="height" multiplier="1:1" id="KfE-gR-cN6"/>
@@ -26,10 +26,10 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMz-6A-4JU">
-                                <rect key="frame" x="65" y="210" width="245" height="343"/>
+                                <rect key="frame" x="65" y="257" width="260" height="439"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wtb-z3-Op3">
-                                        <rect key="frame" x="5" y="10" width="235" height="62"/>
+                                        <rect key="frame" x="12.666666666666686" y="10" width="235" height="62"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="235" id="0c1-KP-HAt"/>
                                             <constraint firstAttribute="height" constant="62" id="4qM-Ld-Ubq"/>
@@ -47,7 +47,7 @@ WebRTC Live Streaming</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Room name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPm-03-EZ0">
-                                        <rect key="frame" x="6" y="90" width="100" height="30"/>
+                                        <rect key="frame" x="6" y="90" width="248" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="lDx-qO-ch4"/>
                                         </constraints>
@@ -57,34 +57,15 @@ WebRTC Live Streaming</string>
                                             <action selector="streamIdEntered:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="t5v-V8-97x"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBa-xU-p76">
-                                        <rect key="frame" x="115" y="90" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="2zW-rk-e2r"/>
-                                            <constraint firstAttribute="height" constant="30" id="FJY-Fa-uq3"/>
-                                        </constraints>
-                                        <state key="normal" image="last_used"/>
-                                        <connections>
-                                            <action selector="refreshTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fKq-fu-zcp"/>
-                                        </connections>
-                                    </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sor-To-6JJ">
-                                        <rect key="frame" x="3" y="124" width="239" height="1.5"/>
+                                        <rect key="frame" x="3" y="124" width="254" height="1.6666666666666714"/>
                                         <color key="backgroundColor" red="0.8666666666666667" green="0.13725490196078433" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1.5" id="K1Q-Vw-hNs"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOm-jT-SR6">
-                                        <rect key="frame" x="151" y="91" width="1.5" height="30"/>
-                                        <color key="backgroundColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="1.5" id="J5f-3e-2Lm"/>
-                                            <constraint firstAttribute="height" constant="30" id="qIc-iU-6cO"/>
-                                        </constraints>
-                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5ym-6R-Akx">
-                                        <rect key="frame" x="3" y="278" width="239" height="35"/>
+                                        <rect key="frame" x="3" y="374" width="254" height="35"/>
                                         <color key="backgroundColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="th5-xa-8Fc"/>
@@ -99,17 +80,16 @@ WebRTC Live Streaming</string>
                                         </connections>
                                     </button>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="tve-qy-d3T">
-                                        <rect key="frame" x="3" y="155.5" width="239" height="32"/>
+                                        <rect key="frame" x="3" y="155.66666666666669" width="254" height="32"/>
                                         <segments>
-                                            <segment title="P2P"/>
-                                            <segment title="Play"/>
                                             <segment title="Publish"/>
+                                            <segment title="Play"/>
                                             <segment title="Conference"/>
                                         </segments>
                                         <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Inj-Ay-988">
-                                        <rect key="frame" x="6" y="244" width="233" height="36"/>
+                                        <rect key="frame" x="6" y="340" width="248" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="vla-6X-HS0"/>
                                         </constraints>
@@ -121,33 +101,17 @@ WebRTC Live Streaming</string>
                                             <action selector="serverTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7au-au-tqd"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Token" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aM2-7T-G09">
-                                        <rect key="frame" x="158.5" y="91" width="80.5" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="jRx-XT-oue"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
-                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="wtb-z3-Op3" firstAttribute="centerX" secondItem="dMz-6A-4JU" secondAttribute="centerX" id="5R0-jL-b38"/>
                                     <constraint firstItem="wtb-z3-Op3" firstAttribute="top" secondItem="dMz-6A-4JU" secondAttribute="top" constant="10" id="5rk-6a-6Lp"/>
-                                    <constraint firstItem="Sor-To-6JJ" firstAttribute="top" secondItem="aM2-7T-G09" secondAttribute="bottom" constant="3" id="7AT-Hc-YHe"/>
-                                    <constraint firstItem="aM2-7T-G09" firstAttribute="leading" secondItem="YOm-jT-SR6" secondAttribute="trailing" constant="6" id="7Re-a6-xqz"/>
-                                    <constraint firstItem="qBa-xU-p76" firstAttribute="top" secondItem="wtb-z3-Op3" secondAttribute="bottom" constant="18" id="C0o-NX-96T"/>
                                     <constraint firstItem="WPm-03-EZ0" firstAttribute="top" secondItem="wtb-z3-Op3" secondAttribute="bottom" constant="18" id="EXC-Ay-nq0"/>
-                                    <constraint firstAttribute="trailing" secondItem="aM2-7T-G09" secondAttribute="trailing" constant="6" id="GEn-2s-ZTS"/>
-                                    <constraint firstItem="aM2-7T-G09" firstAttribute="leading" secondItem="YOm-jT-SR6" secondAttribute="trailing" constant="6" id="IWh-sN-8hx"/>
+                                    <constraint firstAttribute="trailing" secondItem="WPm-03-EZ0" secondAttribute="trailing" constant="6" id="JG4-8p-goi"/>
                                     <constraint firstAttribute="trailing" secondItem="5ym-6R-Akx" secondAttribute="trailing" constant="3" id="KJx-UL-sNJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="qBa-xU-p76" secondAttribute="trailing" constant="100" id="MVm-GQ-mbe"/>
                                     <constraint firstAttribute="trailing" secondItem="Sor-To-6JJ" secondAttribute="trailing" constant="3" id="UX7-s2-uRw"/>
-                                    <constraint firstItem="YOm-jT-SR6" firstAttribute="top" secondItem="aM2-7T-G09" secondAttribute="top" id="Whr-xE-a8T"/>
                                     <constraint firstAttribute="height" constant="325" id="ag6-hd-ueA"/>
                                     <constraint firstAttribute="trailing" secondItem="tve-qy-d3T" secondAttribute="trailing" constant="3" id="b30-NY-29S"/>
-                                    <constraint firstItem="qBa-xU-p76" firstAttribute="leading" secondItem="WPm-03-EZ0" secondAttribute="trailing" constant="9" id="c8E-Qu-x18"/>
-                                    <constraint firstItem="YOm-jT-SR6" firstAttribute="leading" secondItem="qBa-xU-p76" secondAttribute="trailing" constant="6" id="cMN-lh-6vs"/>
                                     <constraint firstItem="Inj-Ay-988" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="dFZ-Tk-cdp"/>
                                     <constraint firstAttribute="bottom" secondItem="5ym-6R-Akx" secondAttribute="bottom" constant="30" id="eam-bM-qXm"/>
                                     <constraint firstItem="WPm-03-EZ0" firstAttribute="leading" secondItem="dMz-6A-4JU" secondAttribute="leading" constant="6" id="g7x-Ws-hPN"/>
@@ -161,7 +125,7 @@ WebRTC Live Streaming</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GZ9-KN-4BS" customClass="RPSystemBroadcastPickerView">
-                                <rect key="frame" x="162.5" y="553" width="50" height="50"/>
+                                <rect key="frame" x="162.66666666666666" y="696" width="65" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="27V-Uq-gnp"/>
@@ -189,11 +153,9 @@ WebRTC Live Streaming</string>
                         <outlet property="logo" destination="U8S-UW-oXC" id="3lq-Kh-VgJ"/>
                         <outlet property="logoTopAnchor" destination="6zy-xl-qt8" id="7Sq-W1-tKl"/>
                         <outlet property="modeSelection" destination="tve-qy-d3T" id="otx-gM-Jqk"/>
-                        <outlet property="refreshButton" destination="qBa-xU-p76" id="2ts-oH-fbj"/>
                         <outlet property="roomField" destination="WPm-03-EZ0" id="zox-4O-VZM"/>
                         <outlet property="screenRecord" destination="GZ9-KN-4BS" id="6P1-It-ZIV"/>
                         <outlet property="serverButton" destination="Inj-Ay-988" id="g57-SJ-bgK"/>
-                        <outlet property="tokenField" destination="aM2-7T-G09" id="1FN-41-h4G"/>
                         <segue destination="xVm-wQ-O5q" kind="show" identifier="video" id="Im6-25-i5E"/>
                     </connections>
                 </viewController>
@@ -204,29 +166,29 @@ WebRTC Live Streaming</string>
         <!--Conference View Controller-->
         <scene sceneID="dro-nO-g9i">
             <objects>
-                <viewController storyboardIdentifier="Conference" id="E4n-9I-LrE" customClass="ConferenceViewController" customModule="Ant_Media" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Conference" id="E4n-9I-LrE" customClass="ConferenceViewController" customModule="WebRTC_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CM5-Lj-3ty">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBK-Om-nWf">
-                                <rect key="frame" x="16" y="0.0" width="171.5" height="323.5"/>
+                                <rect key="frame" x="16" y="47" width="179" height="370"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKz-rN-me0">
-                                <rect key="frame" x="199" y="0.0" width="168" height="323.5"/>
+                                <rect key="frame" x="206.66666666666663" y="47" width="175.33333333333337" height="346.66666666666669"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPy-8E-T6N">
-                                <rect key="frame" x="16" y="323.5" width="171.5" height="303.5"/>
+                                <rect key="frame" x="16" y="417" width="179" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXN-aK-Wm3">
-                                <rect key="frame" x="187.5" y="323.5" width="188.5" height="303.5"/>
+                                <rect key="frame" x="195" y="417" width="196" height="350"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwp-DO-5T7">
-                                <rect key="frame" x="252" y="467" width="90" height="160"/>
+                                <rect key="frame" x="267" y="607" width="90" height="160"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="dnu-X9-a9W"/>
@@ -294,17 +256,17 @@ WebRTC Live Streaming</string>
         <!--Video View Controller-->
         <scene sceneID="pqe-YK-PtD">
             <objects>
-                <viewController storyboardIdentifier="Video" id="xVm-wQ-O5q" customClass="VideoViewController" customModule="Ant_Media" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Video" id="xVm-wQ-O5q" customClass="VideoViewController" customModule="WebRTC_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LyJ-zl-XYS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="47" width="390" height="740"/>
                                 <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="lwh-ZV-HkX" customClass="RTCEAGLVideoView">
-                                <rect key="frame" x="255" y="497" width="90" height="120"/>
+                                <rect key="frame" x="270" y="637" width="90" height="120"/>
                                 <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="FEQ-6q-T1I"/>
@@ -312,7 +274,7 @@ WebRTC Live Streaming</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-3T-91O">
-                                <rect key="frame" x="15" y="223.5" width="45" height="200"/>
+                                <rect key="frame" x="15" y="293.66666666666669" width="45" height="200"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5j2-CR-zdD" userLabel="Audio Button">
                                         <rect key="frame" x="2" y="0.0" width="40" height="40"/>
@@ -398,7 +360,7 @@ WebRTC Live Streaming</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Mode: P2P" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jr8-Ya-8WG">
-                                <rect key="frame" x="280" y="10" width="85" height="21"/>
+                                <rect key="frame" x="295" y="10" width="85" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="bi7-3P-nUP"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="l3P-Y1-asD"/>
@@ -442,8 +404,7 @@ WebRTC Live Streaming</string>
         <image name="audioOff" width="16" height="17"/>
         <image name="audioOn" width="13" height="17"/>
         <image name="close" width="25" height="9.5"/>
-        <image name="last_used" width="128" height="128"/>
-        <image name="logo" width="512" height="512"/>
+        <image name="logo" width="1000" height="1000"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="videoOff" width="19" height="19"/>
         <image name="videoOn" width="18" height="14"/>

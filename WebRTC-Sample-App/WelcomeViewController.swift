@@ -16,11 +16,8 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var screenRecord: RPSystemBroadcastPickerView!
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var logoTopAnchor: NSLayoutConstraint!
-    @IBOutlet weak var actionContainer: UIView! {
-        didSet {
-            self.actionContainer.alpha = 0
-        }
-    }
+    
+    @IBOutlet weak var actionContainer: UIView!;
     @IBOutlet weak var roomField: UITextField!
     @IBOutlet weak var tokenField: UITextField!
     @IBOutlet weak var refreshButton: UIButton!
@@ -62,22 +59,11 @@ class WelcomeViewController: UIViewController {
         super.viewDidAppear(animated)
         self.setGesture()
         
-        self.screenRecord.preferredExtension = "io.antmedia.ios.sdk.ScreenShare";
+        self.screenRecord.preferredExtension = "io.antmedia.ios.WebRTC-Sample-App.ScreenShare";
         self.screenRecord.showsMicrophoneButton = false;
 
         self.roomField.text = "stream1"
         sharedDefault.set(self.roomField.text , forKey: "streamId")
-        
-        UIView.animate(withDuration: 0.5, delay: 1.0, options: .curveEaseOut, animations: {
-            self.logoTopAnchor.constant = 0
-            self.view.layoutIfNeeded()
-        }, completion: { (completed) in
-            UIView.animate(withDuration: 0.5, animations: {
-                self.actionContainer.alpha = 1
-                self.view.layoutIfNeeded()
-            })
-        })
-         
     }
     
     @IBAction func connectButton(_ sender: UIButton ) {
@@ -89,11 +75,7 @@ class WelcomeViewController: UIViewController {
             self.clientUrl = Defaults[.server]!
             self.clientRoom = roomField.text!
             
-            if (!tokenField.text!.isEmpty) {
-                self.clientToken = tokenField.text!
-            } else {
-                self.clientToken = ""
-            }
+            self.clientToken = ""
             
             self.showVideo()
         }
@@ -142,15 +124,15 @@ class WelcomeViewController: UIViewController {
     private func getMode() -> AntMediaClientMode {
         switch self.modeSelection.selectedSegmentIndex {
             case 0:
-                return AntMediaClientMode.join
+                return AntMediaClientMode.publish
             case 1:
                 return AntMediaClientMode.play
             case 2:
-                return AntMediaClientMode.publish
-            case 3:
                 return AntMediaClientMode.conference
-            default:
+            case 3:
                 return AntMediaClientMode.join
+            default:
+                return AntMediaClientMode.publish
         }
     }
     

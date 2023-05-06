@@ -476,7 +476,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     open func initPeerConnection(streamId: String = "", mode:AntMediaClientMode=AntMediaClientMode.unspecified, token: String = "") {
         
-        var id = getStreamId(streamId);
+        let id = getStreamId(streamId);
         
         if (self.webRTCClientMap[id] == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClientMap[id]))")
@@ -677,7 +677,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
         }
         else {
-            AntMediaClient.printf("Websocket is not connected to send joinConferece message for room \(self.mainTrackId)")
+            AntMediaClient.printf("Websocket is not connected to send joinConferece message for room \(String(describing: self.mainTrackId))")
         }
     }
     
@@ -909,7 +909,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     self.delegate?.playStarted(streamId: streamId)
                 }
                 else if definition == "play_finished" {
-                    let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Playing has finished")
                     self.streamsInTheRoom.removeAll();
                     self.delegate?.playFinished(streamId: message[STREAM_ID] as! String)
@@ -927,8 +926,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 }
                 else if definition == JOINED_ROOM_DEFINITION
                 {
-                    var streamId = message[STREAM_ID] as! String;
-                    var streams = message[STREAMS] as! [String];
+                    let streamId = message[STREAM_ID] as! String;
+                    let streams = message[STREAMS] as! [String];
                     self.joinedRoom(streamId: streamId, streams:streams);
                 }
             

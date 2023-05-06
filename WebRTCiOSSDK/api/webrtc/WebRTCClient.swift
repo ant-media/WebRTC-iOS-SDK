@@ -556,7 +556,7 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     
     // iceConnectionChanged
     func peerConnection(_ peerConnection: RTCPeerConnection, didChange newState: RTCIceConnectionState) {
-        AntMediaClient.printf("---> iceConnectionChanged: \(newState.rawValue) for stream: \(self.streamId)")
+        AntMediaClient.printf("---> iceConnectionChanged: \(newState.rawValue) for stream: \(String(describing: self.streamId))")
         self.iceConnectionState = newState;
         self.delegate?.connectionStateChanged(newState: newState, streamId:self.streamId)
     }

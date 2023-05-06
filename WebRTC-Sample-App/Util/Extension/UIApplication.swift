@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIApplication {
     
-    public static func presentView(_ view: UIViewController) {
+    static func presentView(_ view: UIViewController) {
         if (view.isBeingPresented) {
             return
         }
