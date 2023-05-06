@@ -4,18 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Frameworks/WebRTC.framework/Info.plist</key>
-		<data>
-		uOyC+/QaCfQN4zeFgFePHzDh8LQ=
-		</data>
-		<key>Frameworks/WebRTC.framework/WebRTC</key>
-		<data>
-		ZPgpJNU6P5ipEvW55/sh7WB1XXM=
-		</data>
-		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
-		<data>
-		/PZ2JTg+ggjWGq/EZW4pX3pl2Fo=
-		</data>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<data>
 		Jpv1muYpthoSEQqe1qHg7J+EHkk=
@@ -55,27 +43,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Frameworks/WebRTC.framework/Info.plist</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			aMWIq++VEmAixPb55iZqAfhcLaB5IQYizocY/fXPdbQ=
-			</data>
-		</dict>
-		<key>Frameworks/WebRTC.framework/WebRTC</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			6xcfX3B71MhcJp+aXiMuG6a0HArF4/fPtbjpCI8VKFY=
-			</data>
-		</dict>
-		<key>Frameworks/WebRTC.framework/_CodeSignature/CodeResources</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			PQT/Ao1784Qh11HCa/lUimf0S7rWgfs0Zcq26iSEBE4=
-			</data>
-		</dict>
 		<key>Headers/WebRTCiOSSDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>

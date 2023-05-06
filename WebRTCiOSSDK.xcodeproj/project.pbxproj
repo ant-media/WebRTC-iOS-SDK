@@ -43,7 +43,6 @@
 		A8DAC04A2A063C4A0007CDE7 /* WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; };
 		A8DAC04B2A063C4A0007CDE7 /* WebRTCiOSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8DAC04F2A063C9B0007CDE7 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
-		A8DAC0502A063C9B0007CDE7 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8DAC0522A063D300007CDE7 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
 		A8DAC0532A063D300007CDE7 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -88,17 +87,6 @@
 			files = (
 				A8DAC0532A063D300007CDE7 /* WebRTC.xcframework in Embed Frameworks */,
 				A8DAC04B2A063C4A0007CDE7 /* WebRTCiOSSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		A8DAC0512A063C9B0007CDE7 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				A8DAC0502A063C9B0007CDE7 /* WebRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,7 +340,6 @@
 				A8DABFC62A0639D80007CDE7 /* Sources */,
 				A8DABFC72A0639D80007CDE7 /* Frameworks */,
 				A8DABFC82A0639D80007CDE7 /* Resources */,
-				A8DAC0512A063C9B0007CDE7 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
