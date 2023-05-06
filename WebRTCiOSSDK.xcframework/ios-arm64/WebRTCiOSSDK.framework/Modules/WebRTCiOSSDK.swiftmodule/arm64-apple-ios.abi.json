@@ -16,17 +16,441 @@
       },
       {
         "kind": "Import",
+        "name": "Starscream",
+        "printedName": "Starscream",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
         "name": "WebRTC",
         "printedName": "WebRTC",
         "declKind": "Import",
         "moduleName": "WebRTCiOSSDK"
       },
       {
+        "kind": "TypeDecl",
+        "name": "ConferenceClientProtocol",
+        "printedName": "ConferenceClientProtocol",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "joinRoom",
+            "printedName": "joinRoom(roomId:streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP8joinRoom6roomId06streamJ0ySS_SStF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP8joinRoom6roomId06streamJ0ySS_SStF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "leaveRoom",
+            "printedName": "leaveRoom()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP9leaveRoomyyF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP9leaveRoomyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientProtocol>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP",
+        "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ConferenceClientDelegate",
+        "printedName": "ConferenceClientDelegate",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "streamIdToPublish",
+            "printedName": "streamIdToPublish(streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP17streamIdToPublish0gH0ySS_tF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP17streamIdToPublish0gH0ySS_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "newStreamsJoined",
+            "printedName": "newStreamsJoined(streams:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP16newStreamsJoined7streamsySaySSG_tF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP16newStreamsJoined7streamsySaySSG_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "streamsLeft",
+            "printedName": "streamsLeft(streams:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP11streamsLeft0G0ySaySSG_tF",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP11streamsLeft0G0ySaySSG_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "reqNewWitnessTableEntry": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP",
+        "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP",
+        "moduleName": "WebRTCiOSSDK",
+        "genericSig": "<τ_0_0 : AnyObject>",
+        "sugared_genericSig": "<Self : AnyObject>",
+        "declAttributes": [
+          "AccessControl"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ConferenceClient",
+        "printedName": "ConferenceClient",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(serverURL:conferenceClientDelegate:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ConferenceClient",
+                "printedName": "WebRTCiOSSDK.ConferenceClient",
+                "usr": "s:12WebRTCiOSSDK16ConferenceClientC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ConferenceClientDelegate",
+                "printedName": "WebRTCiOSSDK.ConferenceClientDelegate",
+                "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC9serverURL010conferenceE8DelegateACSS_AA0deI0_ptcfc",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC9serverURL010conferenceE8DelegateACSS_AA0deI0_ptcfc",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "didConnected",
+            "printedName": "didConnected(socket:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketClient",
+                "printedName": "Starscream.WebSocketClient",
+                "usr": "s:10Starscream15WebSocketClientP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC12didConnected6sockety10Starscream0a6SocketE0_p_tF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC12didConnected6sockety10Starscream0a6SocketE0_p_tF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "receiveMessage",
+            "printedName": "receiveMessage(socket:text:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketClient",
+                "printedName": "Starscream.WebSocketClient",
+                "usr": "s:10Starscream15WebSocketClientP"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC14receiveMessage6socket4texty10Starscream0a6SocketE0_p_SStF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC14receiveMessage6socket4texty10Starscream0a6SocketE0_p_SStF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "joinRoom",
+            "printedName": "joinRoom(roomId:streamId:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC8joinRoom6roomId06streamI0ySS_SStF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC8joinRoom6roomId06streamI0ySS_SStF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "leaveRoom",
+            "printedName": "leaveRoom()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC9leaveRoomyyF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC9leaveRoomyyF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "didReceive",
+            "printedName": "didReceive(event:client:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocketEvent",
+                "printedName": "Starscream.WebSocketEvent",
+                "usr": "s:10Starscream14WebSocketEventO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "WebSocket",
+                "printedName": "Starscream.WebSocket",
+                "usr": "s:10Starscream9WebSocketC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK16ConferenceClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aK0CtF",
+            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aK0CtF",
+            "moduleName": "WebRTCiOSSDK",
+            "declAttributes": [
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "s:12WebRTCiOSSDK16ConferenceClientC",
+        "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC",
+        "moduleName": "WebRTCiOSSDK",
+        "deprecated": true,
+        "isOpen": true,
+        "declAttributes": [
+          "AccessControl",
+          "Available"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "ConferenceClientProtocol",
+            "printedName": "ConferenceClientProtocol",
+            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP",
+            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "WebSocketDelegate",
+            "printedName": "WebSocketDelegate",
+            "usr": "s:10Starscream17WebSocketDelegateP",
+            "mangledName": "$s10Starscream17WebSocketDelegateP"
+          }
+        ]
+      },
+      {
         "kind": "Import",
-        "name": "ReplayKit",
-        "printedName": "ReplayKit",
+        "name": "Foundation",
+        "printedName": "Foundation",
         "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK"
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
       },
       {
         "kind": "Import",
@@ -2559,6 +2983,241 @@
         "moduleName": "WebRTCiOSSDK"
       },
       {
+        "kind": "Import",
+        "name": "ReplayKit",
+        "printedName": "ReplayKit",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Config",
+        "printedName": "Config",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "setDefaultStunServer",
+            "printedName": "setDefaultStunServer(server:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCIceServer",
+                "printedName": "WebRTC.RTCIceServer",
+                "usr": "c:objc(cs)RTCIceServer"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK6ConfigC20setDefaultStunServer6serverySo06RTCIceH0C_tFZ",
+            "mangledName": "$s12WebRTCiOSSDK6ConfigC20setDefaultStunServer6serverySo06RTCIceH0C_tFZ",
+            "moduleName": "WebRTCiOSSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setSdpSemantics",
+            "printedName": "setSdpSemantics(sdpSemantics:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "RTCSdpSemantics",
+                "printedName": "WebRTC.RTCSdpSemantics",
+                "usr": "c:@E@RTCSdpSemantics"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:12WebRTCiOSSDK6ConfigC15setSdpSemantics03sdpG0ySo06RTCSdpG0V_tFZ",
+            "mangledName": "$s12WebRTCiOSSDK6ConfigC15setSdpSemantics03sdpG0ySo06RTCSdpG0V_tFZ",
+            "moduleName": "WebRTCiOSSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Config",
+                "printedName": "WebRTCiOSSDK.Config",
+                "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config(im)init",
+            "mangledName": "$s12WebRTCiOSSDK6ConfigCACycfc",
+            "moduleName": "WebRTCiOSSDK",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config",
+        "mangledName": "$s12WebRTCiOSSDK6ConfigC",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "ReplayKit",
+        "printedName": "ReplayKit",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "WebRTC",
+        "printedName": "WebRTC",
+        "declKind": "Import",
+        "moduleName": "WebRTCiOSSDK"
+      },
+      {
         "kind": "TypeDecl",
         "name": "StreamInformation",
         "printedName": "StreamInformation",
@@ -3960,421 +4619,10 @@
       },
       {
         "kind": "Import",
-        "name": "Starscream",
-        "printedName": "Starscream",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK"
-      },
-      {
-        "kind": "Import",
         "name": "WebRTC",
         "printedName": "WebRTC",
         "declKind": "Import",
         "moduleName": "WebRTCiOSSDK"
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "ConferenceClientProtocol",
-        "printedName": "ConferenceClientProtocol",
-        "children": [
-          {
-            "kind": "Function",
-            "name": "joinRoom",
-            "printedName": "joinRoom(roomId:streamId:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP8joinRoom6roomId06streamJ0ySS_SStF",
-            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP8joinRoom6roomId06streamJ0ySS_SStF",
-            "moduleName": "WebRTCiOSSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientProtocol>",
-            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientProtocol>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "leaveRoom",
-            "printedName": "leaveRoom()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP9leaveRoomyyF",
-            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP9leaveRoomyyF",
-            "moduleName": "WebRTCiOSSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientProtocol>",
-            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientProtocol>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Protocol",
-        "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP",
-        "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "AccessControl"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "ConferenceClientDelegate",
-        "printedName": "ConferenceClientDelegate",
-        "children": [
-          {
-            "kind": "Function",
-            "name": "streamIdToPublish",
-            "printedName": "streamIdToPublish(streamId:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP17streamIdToPublish0gH0ySS_tF",
-            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP17streamIdToPublish0gH0ySS_tF",
-            "moduleName": "WebRTCiOSSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
-            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "newStreamsJoined",
-            "printedName": "newStreamsJoined(streams:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[Swift.String]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP16newStreamsJoined7streamsySaySSG_tF",
-            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP16newStreamsJoined7streamsySaySSG_tF",
-            "moduleName": "WebRTCiOSSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
-            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "streamsLeft",
-            "printedName": "streamsLeft(streams:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "Array",
-                "printedName": "[Swift.String]",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "usr": "s:Sa"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP11streamsLeft0G0ySaySSG_tF",
-            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP11streamsLeft0G0ySaySSG_tF",
-            "moduleName": "WebRTCiOSSDK",
-            "genericSig": "<τ_0_0 where τ_0_0 : WebRTCiOSSDK.ConferenceClientDelegate>",
-            "sugared_genericSig": "<Self where Self : WebRTCiOSSDK.ConferenceClientDelegate>",
-            "protocolReq": true,
-            "declAttributes": [
-              "RawDocComment"
-            ],
-            "reqNewWitnessTableEntry": true,
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Protocol",
-        "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP",
-        "mangledName": "$s12WebRTCiOSSDK24ConferenceClientDelegateP",
-        "moduleName": "WebRTCiOSSDK",
-        "genericSig": "<τ_0_0 : AnyObject>",
-        "sugared_genericSig": "<Self : AnyObject>",
-        "declAttributes": [
-          "AccessControl"
-        ]
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "ConferenceClient",
-        "printedName": "ConferenceClient",
-        "children": [
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init(serverURL:conferenceClientDelegate:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "ConferenceClient",
-                "printedName": "WebRTCiOSSDK.ConferenceClient",
-                "usr": "s:12WebRTCiOSSDK16ConferenceClientC"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "ConferenceClientDelegate",
-                "printedName": "WebRTCiOSSDK.ConferenceClientDelegate",
-                "usr": "s:12WebRTCiOSSDK24ConferenceClientDelegateP"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "s:12WebRTCiOSSDK16ConferenceClientC9serverURL010conferenceE8DelegateACSS_AA0deI0_ptcfc",
-            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC9serverURL010conferenceE8DelegateACSS_AA0deI0_ptcfc",
-            "moduleName": "WebRTCiOSSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "init_kind": "Designated"
-          },
-          {
-            "kind": "Function",
-            "name": "didConnected",
-            "printedName": "didConnected(socket:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "WebSocketClient",
-                "printedName": "Starscream.WebSocketClient",
-                "usr": "s:10Starscream15WebSocketClientP"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK16ConferenceClientC12didConnected6sockety10Starscream0a6SocketE0_p_tF",
-            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC12didConnected6sockety10Starscream0a6SocketE0_p_tF",
-            "moduleName": "WebRTCiOSSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "receiveMessage",
-            "printedName": "receiveMessage(socket:text:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "WebSocketClient",
-                "printedName": "Starscream.WebSocketClient",
-                "usr": "s:10Starscream15WebSocketClientP"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK16ConferenceClientC14receiveMessage6socket4texty10Starscream0a6SocketE0_p_SStF",
-            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC14receiveMessage6socket4texty10Starscream0a6SocketE0_p_SStF",
-            "moduleName": "WebRTCiOSSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "joinRoom",
-            "printedName": "joinRoom(roomId:streamId:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK16ConferenceClientC8joinRoom6roomId06streamI0ySS_SStF",
-            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC8joinRoom6roomId06streamI0ySS_SStF",
-            "moduleName": "WebRTCiOSSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "leaveRoom",
-            "printedName": "leaveRoom()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK16ConferenceClientC9leaveRoomyyF",
-            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC9leaveRoomyyF",
-            "moduleName": "WebRTCiOSSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "didReceive",
-            "printedName": "didReceive(event:client:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "WebSocketEvent",
-                "printedName": "Starscream.WebSocketEvent",
-                "usr": "s:10Starscream14WebSocketEventO"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "WebSocket",
-                "printedName": "Starscream.WebSocket",
-                "usr": "s:10Starscream9WebSocketC"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK16ConferenceClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aK0CtF",
-            "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC10didReceive5event6clienty10Starscream0A11SocketEventO_AG0aK0CtF",
-            "moduleName": "WebRTCiOSSDK",
-            "declAttributes": [
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          }
-        ],
-        "declKind": "Class",
-        "usr": "s:12WebRTCiOSSDK16ConferenceClientC",
-        "mangledName": "$s12WebRTCiOSSDK16ConferenceClientC",
-        "moduleName": "WebRTCiOSSDK",
-        "deprecated": true,
-        "isOpen": true,
-        "declAttributes": [
-          "AccessControl",
-          "Available"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "ConferenceClientProtocol",
-            "printedName": "ConferenceClientProtocol",
-            "usr": "s:12WebRTCiOSSDK24ConferenceClientProtocolP",
-            "mangledName": "$s12WebRTCiOSSDK24ConferenceClientProtocolP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "WebSocketDelegate",
-            "printedName": "WebSocketDelegate",
-            "usr": "s:10Starscream17WebSocketDelegateP",
-            "mangledName": "$s10Starscream17WebSocketDelegateP"
-          }
-        ]
       },
       {
         "kind": "Import",
@@ -5936,610 +6184,6 @@
         ]
       },
       {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "WebRTC",
-        "printedName": "WebRTC",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK"
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "Config",
-        "printedName": "Config",
-        "children": [
-          {
-            "kind": "Function",
-            "name": "setDefaultStunServer",
-            "printedName": "setDefaultStunServer(server:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "RTCIceServer",
-                "printedName": "WebRTC.RTCIceServer",
-                "usr": "c:objc(cs)RTCIceServer"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK6ConfigC20setDefaultStunServer6serverySo06RTCIceH0C_tFZ",
-            "mangledName": "$s12WebRTCiOSSDK6ConfigC20setDefaultStunServer6serverySo06RTCIceH0C_tFZ",
-            "moduleName": "WebRTCiOSSDK",
-            "static": true,
-            "declAttributes": [
-              "Final",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Function",
-            "name": "setSdpSemantics",
-            "printedName": "setSdpSemantics(sdpSemantics:)",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
-              },
-              {
-                "kind": "TypeNominal",
-                "name": "RTCSdpSemantics",
-                "printedName": "WebRTC.RTCSdpSemantics",
-                "usr": "c:@E@RTCSdpSemantics"
-              }
-            ],
-            "declKind": "Func",
-            "usr": "s:12WebRTCiOSSDK6ConfigC15setSdpSemantics03sdpG0ySo06RTCSdpG0V_tFZ",
-            "mangledName": "$s12WebRTCiOSSDK6ConfigC15setSdpSemantics03sdpG0ySo06RTCSdpG0V_tFZ",
-            "moduleName": "WebRTCiOSSDK",
-            "static": true,
-            "declAttributes": [
-              "Final",
-              "AccessControl"
-            ],
-            "funcSelfKind": "NonMutating"
-          },
-          {
-            "kind": "Constructor",
-            "name": "init",
-            "printedName": "init()",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "Config",
-                "printedName": "WebRTCiOSSDK.Config",
-                "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config"
-              }
-            ],
-            "declKind": "Constructor",
-            "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config(im)init",
-            "mangledName": "$s12WebRTCiOSSDK6ConfigCACycfc",
-            "moduleName": "WebRTCiOSSDK",
-            "overriding": true,
-            "implicit": true,
-            "objc_name": "init",
-            "declAttributes": [
-              "Dynamic",
-              "ObjC",
-              "Override"
-            ],
-            "init_kind": "Designated"
-          }
-        ],
-        "declKind": "Class",
-        "usr": "c:@M@WebRTCiOSSDK@objc(cs)Config",
-        "mangledName": "$s12WebRTCiOSSDK6ConfigC",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "AccessControl",
-          "ObjC"
-        ],
-        "superclassUsr": "c:objc(cs)NSObject",
-        "inheritsConvenienceInitializers": true,
-        "superclassNames": [
-          "ObjectiveC.NSObject"
-        ],
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObservingPublishing",
-            "printedName": "_KeyValueCodingAndObservingPublishing",
-            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
-            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_KeyValueCodingAndObserving",
-            "printedName": "_KeyValueCodingAndObserving",
-            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
-            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomDebugStringConvertible",
-            "printedName": "CustomDebugStringConvertible",
-            "usr": "s:s28CustomDebugStringConvertibleP",
-            "mangledName": "$ss28CustomDebugStringConvertibleP"
-          }
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "WebRTC",
-        "printedName": "WebRTC",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK"
-      },
-      {
-        "kind": "Import",
-        "name": "Foundation",
-        "printedName": "Foundation",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK",
-        "declAttributes": [
-          "RawDocComment"
-        ]
-      },
-      {
-        "kind": "Import",
-        "name": "AVFoundation",
-        "printedName": "AVFoundation",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK"
-      },
-      {
-        "kind": "Import",
-        "name": "WebRTC",
-        "printedName": "WebRTC",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK"
-      },
-      {
-        "kind": "Import",
-        "name": "ReplayKit",
-        "printedName": "ReplayKit",
-        "declKind": "Import",
-        "moduleName": "WebRTCiOSSDK"
-      },
-      {
-        "kind": "TypeDecl",
-        "name": "Dictionary",
-        "printedName": "Dictionary",
-        "children": [
-          {
-            "kind": "Var",
-            "name": "json",
-            "printedName": "json",
-            "children": [
-              {
-                "kind": "TypeNominal",
-                "name": "String",
-                "printedName": "Swift.String",
-                "usr": "s:SS"
-              }
-            ],
-            "declKind": "Var",
-            "usr": "s:SD12WebRTCiOSSDKE4jsonSSvp",
-            "mangledName": "$sSD12WebRTCiOSSDKE4jsonSSvp",
-            "moduleName": "WebRTCiOSSDK",
-            "isFromExtension": true,
-            "accessors": [
-              {
-                "kind": "Accessor",
-                "name": "Get",
-                "printedName": "Get()",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "String",
-                    "printedName": "Swift.String",
-                    "usr": "s:SS"
-                  }
-                ],
-                "declKind": "Accessor",
-                "usr": "s:SD12WebRTCiOSSDKE4jsonSSvg",
-                "mangledName": "$sSD12WebRTCiOSSDKE4jsonSSvg",
-                "moduleName": "WebRTCiOSSDK",
-                "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Hashable>",
-                "sugared_genericSig": "<Key, Value where Key : Swift.Hashable>",
-                "isFromExtension": true,
-                "accessorKind": "get"
-              }
-            ]
-          }
-        ],
-        "declKind": "Struct",
-        "usr": "s:SD",
-        "mangledName": "$sSD",
-        "moduleName": "Swift",
-        "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Hashable>",
-        "sugared_genericSig": "<Key, Value where Key : Swift.Hashable>",
-        "declAttributes": [
-          "Frozen"
-        ],
-        "isExternal": true,
-        "conformances": [
-          {
-            "kind": "Conformance",
-            "name": "Equatable",
-            "printedName": "Equatable",
-            "usr": "s:SQ",
-            "mangledName": "$sSQ"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Encodable",
-            "printedName": "Encodable",
-            "usr": "s:SE",
-            "mangledName": "$sSE"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Decodable",
-            "printedName": "Decodable",
-            "usr": "s:Se",
-            "mangledName": "$sSe"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Sequence",
-            "printedName": "Sequence",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "Element",
-                "printedName": "Element",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(key: τ_0_0, value: τ_0_1)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "GenericTypeParam",
-                        "printedName": "τ_0_0"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "GenericTypeParam",
-                        "printedName": "τ_0_1"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "kind": "TypeWitness",
-                "name": "Iterator",
-                "printedName": "Iterator",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Iterator",
-                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Iterator",
-                    "usr": "s:SD8IteratorV"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:ST",
-            "mangledName": "$sST"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Collection",
-            "printedName": "Collection",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "Element",
-                "printedName": "Element",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Tuple",
-                    "printedName": "(key: τ_0_0, value: τ_0_1)",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "GenericTypeParam",
-                        "printedName": "τ_0_0"
-                      },
-                      {
-                        "kind": "TypeNominal",
-                        "name": "GenericTypeParam",
-                        "printedName": "τ_0_1"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "kind": "TypeWitness",
-                "name": "Index",
-                "printedName": "Index",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Index",
-                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Index",
-                    "usr": "s:SD5IndexV"
-                  }
-                ]
-              },
-              {
-                "kind": "TypeWitness",
-                "name": "Iterator",
-                "printedName": "Iterator",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Iterator",
-                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Iterator",
-                    "usr": "s:SD8IteratorV"
-                  }
-                ]
-              },
-              {
-                "kind": "TypeWitness",
-                "name": "SubSequence",
-                "printedName": "SubSequence",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "Slice",
-                    "printedName": "Swift.Slice<[τ_0_0 : τ_0_1]>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Dictionary",
-                        "printedName": "[τ_0_0 : τ_0_1]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GenericTypeParam",
-                            "printedName": "τ_0_0"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GenericTypeParam",
-                            "printedName": "τ_0_1"
-                          }
-                        ],
-                        "usr": "s:SD"
-                      }
-                    ],
-                    "usr": "s:s5SliceV"
-                  }
-                ]
-              },
-              {
-                "kind": "TypeWitness",
-                "name": "Indices",
-                "printedName": "Indices",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "DefaultIndices",
-                    "printedName": "Swift.DefaultIndices<[τ_0_0 : τ_0_1]>",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Dictionary",
-                        "printedName": "[τ_0_0 : τ_0_1]",
-                        "children": [
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GenericTypeParam",
-                            "printedName": "τ_0_0"
-                          },
-                          {
-                            "kind": "TypeNominal",
-                            "name": "GenericTypeParam",
-                            "printedName": "τ_0_1"
-                          }
-                        ],
-                        "usr": "s:SD"
-                      }
-                    ],
-                    "usr": "s:SI"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:Sl",
-            "mangledName": "$sSl"
-          },
-          {
-            "kind": "Conformance",
-            "name": "ExpressibleByDictionaryLiteral",
-            "printedName": "ExpressibleByDictionaryLiteral",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "Key",
-                "printedName": "Key",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "τ_0_0"
-                  }
-                ]
-              },
-              {
-                "kind": "TypeWitness",
-                "name": "Value",
-                "printedName": "Value",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "GenericTypeParam",
-                    "printedName": "τ_0_1"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:s30ExpressibleByDictionaryLiteralP",
-            "mangledName": "$ss30ExpressibleByDictionaryLiteralP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Hashable",
-            "printedName": "Hashable",
-            "usr": "s:SH",
-            "mangledName": "$sSH"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_HasCustomAnyHashableRepresentation",
-            "printedName": "_HasCustomAnyHashableRepresentation",
-            "usr": "s:s35_HasCustomAnyHashableRepresentationP",
-            "mangledName": "$ss35_HasCustomAnyHashableRepresentationP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomStringConvertible",
-            "printedName": "CustomStringConvertible",
-            "usr": "s:s23CustomStringConvertibleP",
-            "mangledName": "$ss23CustomStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomDebugStringConvertible",
-            "printedName": "CustomDebugStringConvertible",
-            "usr": "s:s28CustomDebugStringConvertibleP",
-            "mangledName": "$ss28CustomDebugStringConvertibleP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CustomReflectable",
-            "printedName": "CustomReflectable",
-            "usr": "s:s17CustomReflectableP",
-            "mangledName": "$ss17CustomReflectableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "Sendable",
-            "printedName": "Sendable",
-            "usr": "s:s8SendableP",
-            "mangledName": "$ss8SendableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "_ObjectiveCBridgeable",
-            "printedName": "_ObjectiveCBridgeable",
-            "children": [
-              {
-                "kind": "TypeWitness",
-                "name": "_ObjectiveCType",
-                "printedName": "_ObjectiveCType",
-                "children": [
-                  {
-                    "kind": "TypeNominal",
-                    "name": "NSDictionary",
-                    "printedName": "Foundation.NSDictionary",
-                    "usr": "c:objc(cs)NSDictionary"
-                  }
-                ]
-              }
-            ],
-            "usr": "s:s21_ObjectiveCBridgeableP",
-            "mangledName": "$ss21_ObjectiveCBridgeableP"
-          },
-          {
-            "kind": "Conformance",
-            "name": "CVarArg",
-            "printedName": "CVarArg",
-            "usr": "s:s7CVarArgP",
-            "mangledName": "$ss7CVarArgP"
-          }
-        ]
-      },
-      {
         "kind": "TypeDecl",
         "name": "String",
         "printedName": "String",
@@ -7133,101 +6777,373 @@
             "mangledName": "$ss7CVarArgP"
           }
         ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Dictionary",
+        "printedName": "Dictionary",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "json",
+            "printedName": "json",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:SD12WebRTCiOSSDKE4jsonSSvp",
+            "mangledName": "$sSD12WebRTCiOSSDKE4jsonSSvp",
+            "moduleName": "WebRTCiOSSDK",
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:SD12WebRTCiOSSDKE4jsonSSvg",
+                "mangledName": "$sSD12WebRTCiOSSDKE4jsonSSvg",
+                "moduleName": "WebRTCiOSSDK",
+                "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Hashable>",
+                "sugared_genericSig": "<Key, Value where Key : Swift.Hashable>",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:SD",
+        "mangledName": "$sSD",
+        "moduleName": "Swift",
+        "genericSig": "<τ_0_0, τ_0_1 where τ_0_0 : Swift.Hashable>",
+        "sugared_genericSig": "<Key, Value where Key : Swift.Hashable>",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isExternal": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sequence",
+            "printedName": "Sequence",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(key: τ_0_0, value: τ_0_1)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_0"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Iterator",
+                "printedName": "Iterator",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Iterator",
+                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Iterator",
+                    "usr": "s:SD8IteratorV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:ST",
+            "mangledName": "$sST"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Collection",
+            "printedName": "Collection",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(key: τ_0_0, value: τ_0_1)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_0"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "GenericTypeParam",
+                        "printedName": "τ_0_1"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Index",
+                "printedName": "Index",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Index",
+                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Index",
+                    "usr": "s:SD5IndexV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Iterator",
+                "printedName": "Iterator",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Iterator",
+                    "printedName": "Swift.Dictionary<τ_0_0, τ_0_1>.Iterator",
+                    "usr": "s:SD8IteratorV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "SubSequence",
+                "printedName": "SubSequence",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Slice",
+                    "printedName": "Swift.Slice<[τ_0_0 : τ_0_1]>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[τ_0_0 : τ_0_1]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_0"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_1"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:s5SliceV"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Indices",
+                "printedName": "Indices",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "DefaultIndices",
+                    "printedName": "Swift.DefaultIndices<[τ_0_0 : τ_0_1]>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Dictionary",
+                        "printedName": "[τ_0_0 : τ_0_1]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_0"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "GenericTypeParam",
+                            "printedName": "τ_0_1"
+                          }
+                        ],
+                        "usr": "s:SD"
+                      }
+                    ],
+                    "usr": "s:SI"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:Sl",
+            "mangledName": "$sSl"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByDictionaryLiteral",
+            "printedName": "ExpressibleByDictionaryLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Key",
+                "printedName": "Key",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_0"
+                  }
+                ]
+              },
+              {
+                "kind": "TypeWitness",
+                "name": "Value",
+                "printedName": "Value",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "τ_0_1"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s30ExpressibleByDictionaryLiteralP",
+            "mangledName": "$ss30ExpressibleByDictionaryLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_HasCustomAnyHashableRepresentation",
+            "printedName": "_HasCustomAnyHashableRepresentation",
+            "usr": "s:s35_HasCustomAnyHashableRepresentationP",
+            "mangledName": "$ss35_HasCustomAnyHashableRepresentationP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomReflectable",
+            "printedName": "CustomReflectable",
+            "usr": "s:s17CustomReflectableP",
+            "mangledName": "$ss17CustomReflectableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_ObjectiveCBridgeable",
+            "printedName": "_ObjectiveCBridgeable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "_ObjectiveCType",
+                "printedName": "_ObjectiveCType",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "NSDictionary",
+                    "printedName": "Foundation.NSDictionary",
+                    "usr": "c:objc(cs)NSDictionary"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s21_ObjectiveCBridgeableP",
+            "mangledName": "$ss21_ObjectiveCBridgeableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          }
+        ]
       }
     ],
     "json_format_version": 8
   },
   "ConstValues": [
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 294,
-      "length": 10,
-      "value": "1000000000"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 336,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 389,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 472,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 515,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 633,
-      "length": 1,
-      "value": "0"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 961,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 989,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1016,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1034,
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/ConferenceClient.swift",
+      "kind": "Array",
+      "offset": 1719,
       "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "IntegerLiteral",
-      "offset": 2652,
-      "length": 2,
-      "value": "1"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "StringLiteral",
-      "offset": 205,
-      "length": 22,
-      "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
-      "kind": "StringLiteral",
-      "offset": 205,
-      "length": 22,
-      "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
+      "value": "[]"
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClient.swift",
@@ -7587,11 +7503,249 @@
       "value": "1"
     },
     {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/ConferenceClient.swift",
-      "kind": "Array",
-      "offset": 1719,
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 294,
+      "length": 10,
+      "value": "1000000000"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 336,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 389,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 472,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 515,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 633,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 961,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 989,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1016,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1034,
       "length": 2,
-      "value": "[]"
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2652,
+      "length": 2,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "StringLiteral",
+      "offset": 205,
+      "length": 22,
+      "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/RTCCustomFrameCapturer.swift",
+      "kind": "StringLiteral",
+      "offset": 205,
+      "length": 22,
+      "value": "\"WebRTCiOSSDK.RTCCustomFrameCapturer\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "StringLiteral",
+      "offset": 249,
+      "length": 30,
+      "value": "\"stun:stun.l.google.com:19302\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "Dictionary",
+      "offset": 335,
+      "length": 112,
+      "value": "[(\"OfferToReceiveAudio\", \"true\"), (\"OfferToReceiveVideo\", \"true\")]"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "Dictionary",
+      "offset": 510,
+      "length": 32,
+      "value": "[(\"DtlsSrtpKeyAgreement\", \"true\")]"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "StringLiteral",
+      "offset": 717,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
+      "kind": "StringLiteral",
+      "offset": 733,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 238,
+      "length": 7,
+      "value": "\"VIDEO\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 271,
+      "length": 7,
+      "value": "\"AUDIO\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 311,
+      "length": 8,
+      "value": "\"STREAM\""
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1024,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1066,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1508,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1629,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1747,
+      "length": 3,
+      "value": "480"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1787,
+      "length": 3,
+      "value": "360"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1841,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1891,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1942,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4573,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4609,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4639,
+      "length": 2,
+      "value": "30"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7292,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
+      "kind": "StringLiteral",
+      "offset": 178,
+      "length": 12,
+      "value": "\"WebRTCiOSSDK.WebRTCClient\""
     },
     {
       "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/AntMediaClientProtocol.swift",
@@ -7767,160 +7921,6 @@
       "offset": 1063,
       "length": 13,
       "value": "\"toggleAudio\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
-      "kind": "StringLiteral",
-      "offset": 249,
-      "length": 30,
-      "value": "\"stun:stun.l.google.com:19302\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
-      "kind": "Dictionary",
-      "offset": 335,
-      "length": 112,
-      "value": "[(\"OfferToReceiveAudio\", \"true\"), (\"OfferToReceiveVideo\", \"true\")]"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
-      "kind": "Dictionary",
-      "offset": 510,
-      "length": 32,
-      "value": "[(\"DtlsSrtpKeyAgreement\", \"true\")]"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
-      "kind": "StringLiteral",
-      "offset": 717,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/Config.swift",
-      "kind": "StringLiteral",
-      "offset": 733,
-      "length": 2,
-      "value": "\"\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "StringLiteral",
-      "offset": 238,
-      "length": 7,
-      "value": "\"VIDEO\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "StringLiteral",
-      "offset": 271,
-      "length": 7,
-      "value": "\"AUDIO\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "StringLiteral",
-      "offset": 311,
-      "length": 8,
-      "value": "\"STREAM\""
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1024,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1066,
-      "length": 4,
-      "value": "true"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1508,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1629,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1747,
-      "length": 3,
-      "value": "480"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1787,
-      "length": 3,
-      "value": "360"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1841,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 1891,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "IntegerLiteral",
-      "offset": 1942,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 4573,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 4609,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "IntegerLiteral",
-      "offset": 4639,
-      "length": 2,
-      "value": "30"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "BooleanLiteral",
-      "offset": 7292,
-      "length": 5,
-      "value": "false"
-    },
-    {
-      "filePath": "\/Users\/mekya\/git\/WebRTC-iOS-SDK\/WebRTCiOSSDK\/api\/webrtc\/WebRTCClient.swift",
-      "kind": "StringLiteral",
-      "offset": 178,
-      "length": 12,
-      "value": "\"WebRTCiOSSDK.WebRTCClient\""
     }
   ]
 }
