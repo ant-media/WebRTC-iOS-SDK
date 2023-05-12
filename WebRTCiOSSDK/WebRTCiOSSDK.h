@@ -2,8 +2,7 @@
 //  WebRTCiOSSDK.h
 //  WebRTCiOSSDK
 //
-//  Created by mekya on 6.06.2020.
-//  Copyright © 2020 AntMedia. All rights reserved.
+//  Created by mekya on 06/05/2023.
 //
 
 #import <Foundation/Foundation.h>

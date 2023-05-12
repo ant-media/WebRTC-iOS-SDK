@@ -1,6 +1,6 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
-// swift-module-flags: -target x86_64-apple-ios12.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name WebRTCiOSSDK
+// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name WebRTCiOSSDK
 // swift-module-flags-ignorable: -enable-bare-slash-regex
 import AVFoundation
 import Foundation
@@ -11,6 +11,34 @@ import WebRTC
 @_exported import WebRTCiOSSDK
 import _Concurrency
 import _StringProcessing
+public protocol ConferenceClientProtocol {
+  func joinRoom(roomId: Swift.String, streamId: Swift.String)
+  func leaveRoom()
+}
+public protocol ConferenceClientDelegate : AnyObject {
+  func streamIdToPublish(streamId: Swift.String)
+  func newStreamsJoined(streams: [Swift.String])
+  func streamsLeft(streams: [Swift.String])
+}
+@available(*, deprecated, message: "Use AntMediaClient directly and take a look at the sample")
+open class ConferenceClient : WebRTCiOSSDK.ConferenceClientProtocol, Starscream.WebSocketDelegate {
+  public init(serverURL: Swift.String, conferenceClientDelegate: WebRTCiOSSDK.ConferenceClientDelegate)
+  @objc deinit
+  public func didConnected(socket: Starscream.WebSocketClient)
+  public func receiveMessage(socket: Starscream.WebSocketClient, text: Swift.String)
+  public func joinRoom(roomId: Swift.String, streamId: Swift.String)
+  public func leaveRoom()
+  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
+}
+extension Swift.String {
+  public func toURL() -> Foundation.URL
+  public func toJSON() -> [Swift.String : Any]?
+}
+extension Swift.Dictionary {
+  public var json: Swift.String {
+    get
+  }
+}
 public enum AntMediaClientMode : Swift.Int {
   case join
   case play
@@ -101,6 +129,12 @@ extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCAudioSessionDelegate {
 extension WebRTCiOSSDK.AntMediaClient : WebRTC.RTCVideoViewDelegate {
   @objc dynamic public func videoView(_ videoView: WebRTC.RTCVideoRenderer, didChangeVideoSize size: CoreFoundation.CGSize)
 }
+@objc @_inheritsConvenienceInitializers public class Config : ObjectiveC.NSObject {
+  public static func setDefaultStunServer(server: WebRTC.RTCIceServer)
+  public static func setSdpSemantics(sdpSemantics: WebRTC.RTCSdpSemantics)
+  @objc override dynamic public init()
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers public class StreamInformation {
   final public let streamWidth: Swift.Int
   final public let streamHeight: Swift.Int
@@ -148,25 +182,6 @@ extension WebRTCiOSSDK.AntMediaClientDelegate {
   public func streamIdToPublish(streamId: Swift.String)
   public func newStreamsJoined(streams: [Swift.String])
   public func streamsLeft(streams: [Swift.String])
-}
-public protocol ConferenceClientProtocol {
-  func joinRoom(roomId: Swift.String, streamId: Swift.String)
-  func leaveRoom()
-}
-public protocol ConferenceClientDelegate : AnyObject {
-  func streamIdToPublish(streamId: Swift.String)
-  func newStreamsJoined(streams: [Swift.String])
-  func streamsLeft(streams: [Swift.String])
-}
-@available(*, deprecated, message: "Use AntMediaClient directly and take a look at the sample")
-open class ConferenceClient : WebRTCiOSSDK.ConferenceClientProtocol, Starscream.WebSocketDelegate {
-  public init(serverURL: Swift.String, conferenceClientDelegate: WebRTCiOSSDK.ConferenceClientDelegate)
-  @objc deinit
-  public func didConnected(socket: Starscream.WebSocketClient)
-  public func receiveMessage(socket: Starscream.WebSocketClient, text: Swift.String)
-  public func joinRoom(roomId: Swift.String, streamId: Swift.String)
-  public func leaveRoom()
-  public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket)
 }
 public protocol AntMediaClientProtocol {
   @available(*, deprecated, message: "Use setEnableDataChannel and useExternalCameraSource.")
@@ -218,21 +233,6 @@ public protocol AntMediaClientProtocol {
   func leaveFromRoom()
   func join(streamId: Swift.String)
   func disconnect()
-}
-extension Swift.Dictionary {
-  public var json: Swift.String {
-    get
-  }
-}
-extension Swift.String {
-  public func toURL() -> Foundation.URL
-  public func toJSON() -> [Swift.String : Any]?
-}
-@objc @_inheritsConvenienceInitializers public class Config : ObjectiveC.NSObject {
-  public static func setDefaultStunServer(server: WebRTC.RTCIceServer)
-  public static func setSdpSemantics(sdpSemantics: WebRTC.RTCSdpSemantics)
-  @objc override dynamic public init()
-  @objc deinit
 }
 extension WebRTCiOSSDK.AntMediaClientMode : Swift.Equatable {}
 extension WebRTCiOSSDK.AntMediaClientMode : Swift.Hashable {}

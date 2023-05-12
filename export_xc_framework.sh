@@ -13,21 +13,23 @@ SIMULATOR_ARM64_DIR=$(PWD)/Release-iphonesimulator_arm64.xcarchive
 UNIVERSAL_SIMULATOR_DIR=$(PWD)/Release-iphonesimulator_universal.xcarchive
 OS_DIR=$(PWD)/Release-iphoneos.xcarchive
 UNIVERSAL_DIR=$(PWD)/Release-Universal
+PROJECT_FILE=WebRTCiOSSDK.xcodeproj
 
 rm -rf $SIMULATOR_DIR
 rm -rf $SIMULATOR_ARM64_DIR
 rm -rf $OS_DIR
 rm -rf $UNIVERSAL_SIMULATOR_DIR
 
-Xcodebuild -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK clean
+
+Xcodebuild -project $PROJECT_FILE clean
 check
 
 #create simulator x86_64 
-Xcodebuild archive -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS Simulator"  ARCHS=x86_64 -archivePath ${SIMULATOR_DIR}  SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+Xcodebuild archive -project $PROJECT_FILE -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS Simulator"  ARCHS=x86_64 -archivePath ${SIMULATOR_DIR}  SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 check
 
 #create simulator arm64
-Xcodebuild archive -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS Simulator"  ARCHS=arm64 -archivePath ${SIMULATOR_ARM64_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+Xcodebuild archive -project $PROJECT_FILE -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS Simulator"  ARCHS=arm64 -archivePath ${SIMULATOR_ARM64_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 check
 
 #build fat binary for simulators
@@ -51,7 +53,7 @@ lipo -create -output $UNIVERSAL_SIMULATOR_DIR/WebRTCiOSSDK.framework.dSYM/Conten
 check
 
 #create device arm64
-Xcodebuild archive -workspace AntMediaReferenceApplication.xcworkspace -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS"  ARCHS=arm64 -archivePath ${OS_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+Xcodebuild archive -project $PROJECT_FILE -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS"  ARCHS=arm64 -archivePath ${OS_DIR} SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
 check
 
 
