@@ -1,24 +1,21 @@
-![image](https://user-images.githubusercontent.com/54481799/95862105-16cb0e00-0d6b-11eb-9087-88888889825d.png)
+<img src="https://user-images.githubusercontent.com/54481799/95862105-16cb0e00-0d6b-11eb-9087-88888889825d.png" width=300px />
 
-## Basic overview
+## Overview
 
-Ant Media Server is a streaming engine software that provides adaptive, ultra low latency streaming by using WebRTC technology with ~0.5 seconds latency or low latency by using HLS or CMAF. Ant Media Server is highly scalable, running on-premises or on any cloud provider of your choice.
+<a href="https://antmedia.io">Ant Media Server</a> is a streaming engine software that provides adaptive, ultra low latency streaming by using WebRTC technology with ~0.5 seconds latency or low latency by using HLS or CMAF. Ant Media Server is highly scalable, running on-premises or on any cloud provider of your choice.
 
-## About iOS SDK
-
-This repository includes Ant Media iOS SDK for WebRTC. 
-
-If you have Ant Media Server Community Edition, you can only use WebRTC publishing feature.
+This repository includes Ant Media iOS SDK for WebRTC. If you have Ant Media Server Community Edition, you can only use WebRTC publishing feature.
 
 WebRTC play, Conference and Data Channel features are available in Ant Media Server Enterprise Edition.
 
-## Integration 
+## Quick Start 
 
-In order to integrate iOS SDK to your project, please follow [this link](https://resources.antmedia.io/docs/ios-sdk).
+- <a href="https://antmedia.io/build-and-try-webrtc-ios-app-for-dummies" />4 Simple Steps to Build WebRTC iOS Apps and Stream Like a Pro</a>
+
+- Access the <a href="https://antmedia.io/docs/guides/developer-sdk-and-api/sdk-integration/ios-sdk/"> Documentation </a>
 
 ## Support
-
-Have any questions about the iOS SDK? Visit our [community platform](http://community.antmedia.io/).
+For your questions, ask on [Ant Media Github Discussions](https://github.com/orgs/ant-media/discussions)
 
 
 ## Issues
