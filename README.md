@@ -12,7 +12,7 @@ WebRTC play, Conference and Data Channel features are available in Ant Media Ser
 
 - <a href="https://antmedia.io/build-and-try-webrtc-ios-app-for-dummies" />4 Simple Steps to Build WebRTC iOS Apps and Stream Like a Pro</a>
 
-- Access the <a href="https://antmedia.io/docs/guides/developer-sdk-and-api/sdk-integration/ios-sdk/"> Documentation </a>
+- <a href="https://antmedia.io/docs/guides/developer-sdk-and-api/sdk-integration/ios-sdk/"> Documentation </a>
 
 ## Support
 For your questions, ask on [Ant Media Github Discussions](https://github.com/orgs/ant-media/discussions)
