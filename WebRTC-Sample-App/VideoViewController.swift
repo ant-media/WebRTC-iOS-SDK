@@ -64,6 +64,7 @@ class VideoViewController: UIViewController {
             self.fullVideoView.isHidden = false
             self.client!.setLocalView(container: pipVideoView)
             self.client!.setRemoteView(remoteContainer: fullVideoView)
+            self.client!.start();
         } else if self.client!.getCurrentMode() == AntMediaClientMode.publish {
             resetDefaultWebRTCAudioConfiguation();
            // self.client.setVideoEnable(enable: true);
@@ -73,6 +74,14 @@ class VideoViewController: UIViewController {
             self.client!.setCameraPosition(position: .front)
             self.client!.setTargetResolution(width: 640, height: 360)
             self.client!.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
+            
+            //calling this method is not necessary. It just initializes the connection and opens the camera
+            self.client!.initPeerConnection(streamId: self.clientStreamId);
+            
+            //Enable below method to have the mirror effect
+            //self.mirrorView(view: fullVideoView);
+                    
+            self.client!.publish(streamId: self.clientStreamId);
            
         } else if self.client!.getCurrentMode() == AntMediaClientMode.play {
             /*
@@ -87,14 +96,12 @@ class VideoViewController: UIViewController {
             self.pipVideoView.isHidden = false
             self.client!.setRemoteView(remoteContainer: fullVideoView, mode: .scaleAspectFit)
             self.modeLabel.text = "Mode: Play"
+            
+            self.client!.play(streamId:self.clientStreamId);
         }
-        //calling this method is not necessary. It just initializes the connection and opens the camera
-        self.client!.initPeerConnection()
+       
         
-        //Enable below method to have the mirror effect
-        //self.mirrorView(view: fullVideoView);
-                
-        self.client!.start()
+        
          
     }
     
