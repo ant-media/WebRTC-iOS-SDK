@@ -651,7 +651,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     fileprivate func sendPublishCommand(_ streamId: String) {
         if isWebSocketConnected {
-            let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.publish);
+            let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.publish, token:self.publishToken ?? "");
             webSocket?.write(string: jsonString)
             AntMediaClient.printf("Send Publish onConnection message: \(jsonString)")
         }
@@ -683,7 +683,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     fileprivate func sendPlayCommand(_ streamId: String) {
         if (isWebSocketConnected) {
-            let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.play)
+            let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.play, token: self.playToken ?? "");
             webSocket?.write(string: jsonString)
             AntMediaClient.printf("Play onConnection message: \(jsonString)")
         }
