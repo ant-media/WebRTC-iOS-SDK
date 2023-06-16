@@ -126,6 +126,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     var pingTimer: Timer?
     
     var disableTrackId:String?
+    
+    
+    var reconnectIfRequiresScheduled: Bool = false;
         
     struct HandshakeMessage:Codable {
         var command:String?
@@ -654,6 +657,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.publish, token:self.publishToken ?? "");
             webSocket?.write(string: jsonString)
             AntMediaClient.printf("Send Publish onConnection message: \(jsonString)")
+            //Add 3 seconds delay here and reconnectIfRequires has also 3 seconds delay
+            AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 5.0) {
+                self.reconnectIfRequires();
+            };
         }
         else {
             AntMediaClient.printf("Websocket is not connected to send Publish message for stream\(streamId)")
@@ -686,6 +693,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.play, token: self.playToken ?? "");
             webSocket?.write(string: jsonString)
             AntMediaClient.printf("Play onConnection message: \(jsonString)")
+            
+            //Add 3 seconds delay here and reconnectIfRequires has also 3 seconds delay
+            AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 5.0) {
+                self.reconnectIfRequires();
+            };
+            
         }
         else {
             AntMediaClient.printf("Websocket is not connected to send play message for stream: \(streamId)")
@@ -733,7 +746,16 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      */
     private func reconnectIfRequires() {
        
-        AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 2.0) {
+        if (self.reconnectIfRequiresScheduled) {
+            AntMediaClient.printf("ReconnectIfRequires is already scheduled and it will work soon")
+            return;
+        }
+        
+        self.reconnectIfRequiresScheduled = true;
+        
+        AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 3.0) {
+            
+            self.reconnectIfRequiresScheduled = false;
             
             if let streamId = self.publisherStreamId {
                 //if there is a webRTCClient in the map, it means it's disconnected due to network issue
@@ -744,7 +766,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     //check the ice state if this method is triggered consequently
                     if ( iceState == RTCIceConnectionState.closed ||
                          iceState == RTCIceConnectionState.disconnected ||
-                         iceState == RTCIceConnectionState.failed
+                         iceState == RTCIceConnectionState.failed ||
+                         iceState == RTCIceConnectionState.new
                     )
                     {
                         //clean the connection
@@ -765,7 +788,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 //check the ice state if this method is triggered consequently
                 if ( iceState == RTCIceConnectionState.closed ||
                      iceState == RTCIceConnectionState.disconnected ||
-                     iceState == RTCIceConnectionState.failed
+                     iceState == RTCIceConnectionState.failed ||
+                     iceState == RTCIceConnectionState.new
                 )
                 {
                     //clean the connection
