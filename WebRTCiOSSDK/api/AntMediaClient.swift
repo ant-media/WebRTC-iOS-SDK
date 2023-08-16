@@ -658,7 +658,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             webSocket?.write(string: jsonString)
             AntMediaClient.printf("Send Publish onConnection message: \(jsonString)")
             //Add 3 seconds delay here and reconnectIfRequires has also 3 seconds delay
-            AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 5.0) {
+            AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 7.0) {
                 self.reconnectIfRequires();
             };
         }
@@ -695,7 +695,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             AntMediaClient.printf("Play onConnection message: \(jsonString)")
             
             //Add 3 seconds delay here and reconnectIfRequires has also 3 seconds delay
-            AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 5.0) {
+            AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 7.0) {
                 self.reconnectIfRequires();
             };
             
@@ -753,7 +753,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         self.reconnectIfRequiresScheduled = true;
         
-        AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 3.0) {
+        AntMediaClient.dispatchQueue.asyncAfter(deadline: .now() + 5.0) {
             
             self.reconnectIfRequiresScheduled = false;
             
