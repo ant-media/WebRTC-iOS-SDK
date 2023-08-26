@@ -58,7 +58,6 @@ class VideoViewController: UIViewController {
 
         
         if self.client!.getCurrentMode() == AntMediaClientMode.join {
-            resetDefaultWebRTCAudioConfiguation();
             self.modeLabel.text = "Mode: P2P"
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
@@ -66,7 +65,6 @@ class VideoViewController: UIViewController {
             self.client!.setRemoteView(remoteContainer: fullVideoView)
             self.client!.start();
         } else if self.client!.getCurrentMode() == AntMediaClientMode.publish {
-            resetDefaultWebRTCAudioConfiguation();
            // self.client.setVideoEnable(enable: true);
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
@@ -84,13 +82,6 @@ class VideoViewController: UIViewController {
             self.client!.publish(streamId: self.clientStreamId);
            
         } else if self.client!.getCurrentMode() == AntMediaClientMode.play {
-            /*
-             Below line don't ask mic permission while playing
-             Please pay attention that if you enable below method, it will not use microphone.
-             Which means if you are publishing and playing at the same time, you should not enable
-             the below method
-             */
-            dontAskMicPermissionForPlaying();
             
             self.fullVideoView.isHidden = false
             self.pipVideoView.isHidden = false
@@ -111,28 +102,7 @@ class VideoViewController: UIViewController {
     private func mirrorView(view:UIView) {
         view.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
-    
-    /*
-     *  WebRTC Framework ask for mic permission by default even it's only playing
-     *  stream. If you run this method before starting the webrtc client in play mode,
-     *  It will not ask for mic permission
-     *
-     *  ATTENTION: Calling this method in sending stream cause not sending the audio. So if you publish
-     *  and play stream at the same time, don't use this method
-     */
-    private func dontAskMicPermissionForPlaying() {
-        let webRTCConfiguration = RTCAudioSessionConfiguration.init()
-        webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
-        webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
-        webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
-                             
-        RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
-    }
-    
-    private func resetDefaultWebRTCAudioConfiguation() {
-        RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration.init())
-    }
-    
+        
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
         self.client?.setMicMute(mute: sender.isSelected, completionHandler: { (mute, error) in
