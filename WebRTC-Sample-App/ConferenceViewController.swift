@@ -45,7 +45,7 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         
         //TODO: don't use flag(publishStream), use more trusted info @mekya
         if (publishStream) {
-            self.conferenceClient?.publish(streamId: publisherStreamId)
+            self.conferenceClient?.publish(streamId: publisherStreamId, streamerName: "Muhammadjon", streamerMeta: "{ \"photoUrl\": \"https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg\"")
             title = "Stop";
         }
         else {

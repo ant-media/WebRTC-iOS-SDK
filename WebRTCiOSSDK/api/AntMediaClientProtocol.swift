@@ -47,13 +47,15 @@ public protocol AntMediaClientProtocol {
         - streamId: The stream id that you use in your connection. You either play or publish with this stream id.
         - token: If you active one-time token on server side, you should enter token value in here. If one-time token is not activated, just leave empty
         - mode: The Mode of the Client. It should .play, .publish or .join. If it's .play, it means your WebRTC client will play a stream with your streamId
+        - streamerName: Streamer name
         on the server. If it's .publish, it mean your WebRTC client will publish stream with your stream id.
         - enableDataChannel: Enable or disable data channel on the mobile side. In order to make data channel work, you also need to enable it on server side
         - useExternalCameraSource: If useExternalCameraSource is false, it opens the local camera. If it's true, it does not open the local camera.
         When it's set to true, it can record the screen in-app or you can give external frames through your application or BroadcastExtension. If you give external frames or you use BroadcastExtension, you need to set the externalVideoCapture to true as well
+        - meta: Additional information to be sent to the server as Json String
     */
     @available(*, deprecated, message: "Use setEnableDataChannel and useExternalCameraSource.")
-    func setOptions(url: String, streamId: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, useExternalCameraSource: Bool)
+    func setOptions(url: String, streamId: String, streamerName: String, token: String, mode: AntMediaClientMode ,enableDataChannel: Bool, useExternalCameraSource: Bool, meta: String?)
     
     /**
      Set room Id to use in video conferencing
@@ -109,13 +111,14 @@ public protocol AntMediaClientProtocol {
     */
     func start();
     
-    /**
-     Publish stream to the server with streamId and roomId.
-      - Parameters
-        - streamId: the id of the stream that is going to be published. 
-        - mainTrackId: the id of the main stream or conference room  that this stream will be published. It's optional value
-     */
-    func publish(streamId:String, token:String, mainTrackId:String);
+    /// Publish stream to the server with streamId and roomId.
+    /// - Parameters:
+    /// - streamId: the id of the stream that is going to be published.
+    /// - streamerName: Streamer name
+    /// - mainTrackId: the id of the main stream or conference room  that this stream will be published. It's optional value
+    /// - token: token for securing streaming
+    /// - streamerMeta: streaming additional info as Json String
+    func publish(streamId: String, streamerName: String, token: String, mainTrackId: String, streamerMeta: String);
     
     /**
      Starts to play a stream on the server side
@@ -327,10 +330,12 @@ public protocol AntMediaClientProtocol {
     /**
      Call this method to join a conference room
      - Parameters
-      roomId: The id of the room to join.
-      streamId: The willing id of the stream to be published. It's optional. Server may accept the streamId or return with another streamId in streamIdToPublish method
+     - roomId: The id of the room to join.
+     - streamId: The willing id of the stream to be published. It's optional. Server may accept the streamId or return with another streamId in streamIdToPublish method
+     - streamerName: The name of the streamer. It's optional
+     - meta: Meta data to be sent to the server. It's optional
      */
-    func joinRoom(roomId:String, streamId: String)
+    func joinRoom(roomId:String, streamId: String, streamerName: String, meta: String?)
     
     /**
      Leave from a room. It stops both publishing and playing. If you just would like to stop publish or play, just call stop command with your streamId parameter
