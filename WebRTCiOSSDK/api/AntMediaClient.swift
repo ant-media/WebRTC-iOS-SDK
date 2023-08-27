@@ -321,6 +321,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
               ROOM_ID: roomId,
               STREAM_ID: self.publisherStreamId ?? ""
             ] as [String: Any]
+            
             if (self.isWebSocketConnected) {
                 self.webSocket?.write(string: jsonString.json)
             }
@@ -328,6 +329,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 self.connectWebSocket()
                 AntMediaClient.printf("Websocket is not connected to get room info")
             }
+            
+            //send current video and audio status perodically
+            
+            if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
+                self.sendVideoTrackStatusNotification(enabled: videoEnabled)
+            }
+            
+            if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
+                self.sendAudioTrackStatusNotification(enabled: audioEnabled)
+            }
+            
+            
         }
        
     }
@@ -629,13 +642,29 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      */
     open func toggleAudio() {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.toggleAudioEnabled()
+        
+        if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
+            self.sendAudioTrackStatusNotification(enabled: audioEnabled)
+        }
+       
     }
     
+    func sendAudioTrackStatusNotification(enabled:Bool)
+    {
+        var eventType = EVENT_TYPE_MIC_MUTED;
+        if (enabled) {
+            eventType = EVENT_TYPE_MIC_UNMUTED;
+        }
+        if let streamId = self.publisherStreamId {
+            self.sendNotification(eventType: eventType, streamId:streamId);
+        }
+    }
     /*
      Set publisher audio track
      */
     open func setAudioTrack(enableTrack: Bool) {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.setAudioEnabled(enabled: enableTrack);
+        self.sendAudioTrackStatusNotification(enabled:enableTrack);
     }
     
     func sendNotification(eventType:String, streamId: String = "") {
@@ -680,10 +709,26 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     open func toggleVideo() {
         self.webRTCClientMap[getPublisherStreamId()]?.toggleVideoEnabled()
+        
+        if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
+            self.sendVideoTrackStatusNotification(enabled: videoEnabled)
+        }
     }
     
-    open func setVideoTrack(enableTrack: Bool) {
+    func sendVideoTrackStatusNotification(enabled:Bool) {
+        var eventType = EVENT_TYPE_CAM_TURNED_OFF;
+        if (enabled) {
+            eventType = EVENT_TYPE_CAM_TURNED_ON;
+        }
+        if let streamId = self.publisherStreamId {
+            self.sendNotification(eventType: eventType, streamId:streamId);
+        }
+    }
+    
+    open func setVideoTrack(enableTrack: Bool)
+    {
         self.webRTCClientMap[getPublisherStreamId()]?.setVideoEnabled(enabled: enableTrack);
+        self.sendVideoTrackStatusNotification(enabled:enableTrack);
     }
     
     open func getCurrentMode() -> AntMediaClientMode {

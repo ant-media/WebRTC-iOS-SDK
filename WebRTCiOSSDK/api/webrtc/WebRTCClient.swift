@@ -307,8 +307,16 @@ class WebRTCClient: NSObject {
         }
     }
     
+    public func isAudioEnabled() -> Bool {
+        return self.audioEnabled;
+    }
+    
     public func toggleVideoEnabled() {
         self.setVideoEnabled(enabled: !self.videoEnabled)
+    }
+    
+    func isVideoEnabled() -> Bool {
+        return self.videoEnabled;
     }
     
     public func setVideoEnabled(enabled:Bool){
