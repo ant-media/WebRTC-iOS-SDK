@@ -16,6 +16,7 @@ public enum AntMediaClientMode: Int {
     case join = 1
     case play = 2
     case publish = 3
+    //deprecated
     case conference = 4;
     case unspecified = 5;
     
@@ -56,7 +57,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     public weak var delegate: AntMediaClientDelegate?
 
     private var wsUrl: String!
-    private var publisherStreamId: String?
+    private var publisherStreamId: String? = nil;
     /**
      mainTrackId can also be used  the roomId of the conference
      */
@@ -262,6 +263,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
 
     
     open func start() {
+       
         initPeerConnection(streamId: self.getStreamId(), mode: self.mode, token: self.publishToken ?? (self.playToken ?? ""))
         if (!isWebSocketConnected) {
             connectWebSocket()
@@ -277,6 +279,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     public func join(streamId:String)
     {
         self.p2pStreamId = streamId;
+        resetDefaultWebRTCAudioConfiguation();
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.join)
         if (!isWebSocketConnected) {
             connectWebSocket();
@@ -372,10 +375,26 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
+    //this configuration don't ask for mic permission it's useful for playback
+    public func dontAskMicPermissionForPlaying() {
+        let webRTCConfiguration = RTCAudioSessionConfiguration.init()
+        webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
+        webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
+        webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
+                             
+        RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
+    }
+    
+    //this configuration ask mic permission and capture mic record
+    public func resetDefaultWebRTCAudioConfiguation() {
+        RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration.init())
+    }
     
     public func publish(streamId: String, token: String = "", mainTrackId: String = "") {
     
         self.publisherStreamId = streamId;
+        //reset default webrtc audio configuation to capture audio and mic
+        resetDefaultWebRTCAudioConfiguation();
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish, token: token)
         if (!mainTrackId.isEmpty) {
             self.mainTrackId = mainTrackId
@@ -397,6 +416,22 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (!token.isEmpty) {
             self.playToken = token;
         }
+        
+        if let streamId = self.publisherStreamId
+        {
+            if (self.webRTCClientMap[streamId] == nil)
+            {
+                //if there is not publisherStreamId, don't ask mic permission for playing
+                dontAskMicPermissionForPlaying();
+            }
+        }
+        else {
+            //if there is not publisherStreamId, don't ask mic permission for playing
+            dontAskMicPermissionForPlaying();
+        }
+        
+        
+        
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.play, token: token)
         if (!isWebSocketConnected) {
             connectWebSocket();
@@ -461,7 +496,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
         else {
             //removing means that user requests to stop
-            self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect()
+            self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect();
             
             if (isWebSocketConnected) {
                 let command =  [
@@ -472,6 +507,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
             else {
                 AntMediaClient.printf("Websocket is not connected to stop stream:\(tmpStreamId)")
+            }
+            
+            if (self.publisherStreamId == tmpStreamId) {
+                self.publisherStreamId = nil
+            }
+            else if (self.playerStreamId == tmpStreamId) {
+                self.playerStreamId = nil;
             }
         }
         
