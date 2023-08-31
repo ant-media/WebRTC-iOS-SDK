@@ -72,10 +72,9 @@ class WebRTCClient: NSObject {
         RTCPeerConnectionFactory.initialize()
         
         self.externalAudio = externalAudio;
-        if (externalAudio) {
-            self.audioDeviceModule = RTCAudioDeviceModule();
-        }
-        
+        self.audioDeviceModule = RTCAudioDeviceModule();
+        self.audioDeviceModule?.setExternalAudio(externalAudio)
+            
         WebRTCClient.factory = initFactory();
         
         let stunServer = Config.defaultStunServer()
