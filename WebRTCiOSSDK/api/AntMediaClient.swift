@@ -469,6 +469,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         //reset default webrtc audio configuation to capture audio and mic
         resetDefaultWebRTCAudioConfiguation();
+
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish, token: token)
         if (!mainTrackId.isEmpty) {
             self.mainTrackId = mainTrackId
