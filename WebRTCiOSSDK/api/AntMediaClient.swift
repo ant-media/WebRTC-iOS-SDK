@@ -464,11 +464,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration.init())
     }
     
-    public func publish(streamId: String, token: String = "", mainTrackId: String = "") {
-    
     public func publish(streamId: String, streamerName: String = "", token: String = "", mainTrackId: String = "", streamerMeta: String = "") {
         self.publisher = .init(streamId: streamId, name: streamerName, meta: streamerMeta)
-        self.publisherStreamId = streamId;
+        
         //reset default webrtc audio configuation to capture audio and mic
         resetDefaultWebRTCAudioConfiguation();
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish, token: token)
@@ -586,7 +584,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
             
             if (self.publisherStreamId == tmpStreamId) {
-                self.publisherStreamId = nil
+                self.publisher = nil
             }
             else if (self.playerStreamId == tmpStreamId) {
                 self.playerStreamId = nil;
