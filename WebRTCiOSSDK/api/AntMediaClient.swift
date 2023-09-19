@@ -16,6 +16,7 @@ public enum AntMediaClientMode: Int {
     case join = 1
     case play = 2
     case publish = 3
+    //deprecated
     case conference = 4;
     case unspecified = 5;
     
@@ -315,6 +316,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     
     open func start() {
+       
         initPeerConnection(streamId: self.getStreamId(), mode: self.mode, token: self.publishToken ?? (self.playToken ?? ""))
         if (!isWebSocketConnected) {
             connectWebSocket()
@@ -330,6 +332,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     public func join(streamId:String)
     {
         self.p2pStreamId = streamId;
+        resetDefaultWebRTCAudioConfiguation();
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.join)
         if (!isWebSocketConnected) {
             connectWebSocket();
@@ -371,6 +374,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
               ROOM_ID: roomId,
             STREAM_ID: self.publisherStreamId ?? ""
             ] as [String: Any]
+            
             if (self.isWebSocketConnected) {
                 self.webSocket?.write(string: jsonString.json)
             }
@@ -378,6 +382,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 self.connectWebSocket()
                 AntMediaClient.printf("Websocket is not connected to get room info")
             }
+            
+            //send current video and audio status perodically
+            
+            if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
+                self.sendVideoTrackStatusNotification(enabled: videoEnabled)
+            }
+            
+            if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
+                self.sendAudioTrackStatusNotification(enabled: audioEnabled)
+            }
+            
+            
         }
         
     }
@@ -433,8 +449,28 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
+    //this configuration don't ask for mic permission it's useful for playback
+    public func dontAskMicPermissionForPlaying() {
+        let webRTCConfiguration = RTCAudioSessionConfiguration.init()
+        webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
+        webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
+        webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
+                             
+        RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
+    }
+    
+    //this configuration ask mic permission and capture mic record
+    public func resetDefaultWebRTCAudioConfiguation() {
+        RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration.init())
+    }
+    
+    public func publish(streamId: String, token: String = "", mainTrackId: String = "") {
+    
     public func publish(streamId: String, streamerName: String = "", token: String = "", mainTrackId: String = "", streamerMeta: String = "") {
         self.publisher = .init(streamId: streamId, name: streamerName, meta: streamerMeta)
+        self.publisherStreamId = streamId;
+        //reset default webrtc audio configuation to capture audio and mic
+        resetDefaultWebRTCAudioConfiguation();
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish, token: token)
         if (!mainTrackId.isEmpty) {
             self.mainTrackId = mainTrackId
@@ -456,6 +492,22 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (!token.isEmpty) {
             self.playToken = token;
         }
+        
+        if let streamId = self.publisherStreamId
+        {
+            if (self.webRTCClientMap[streamId] == nil)
+            {
+                //if there is not publisherStreamId, don't ask mic permission for playing
+                dontAskMicPermissionForPlaying();
+            }
+        }
+        else {
+            //if there is not publisherStreamId, don't ask mic permission for playing
+            dontAskMicPermissionForPlaying();
+        }
+        
+        
+        
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.play, token: token)
         if (!isWebSocketConnected) {
             connectWebSocket();
@@ -520,7 +572,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
         else {
             //removing means that user requests to stop
-            self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect()
+            self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect();
             
             if (isWebSocketConnected) {
                 let command =  [
@@ -531,6 +583,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
             else {
                 AntMediaClient.printf("Websocket is not connected to stop stream:\(tmpStreamId)")
+            }
+            
+            if (self.publisherStreamId == tmpStreamId) {
+                self.publisherStreamId = nil
+            }
+            else if (self.playerStreamId == tmpStreamId) {
+                self.playerStreamId = nil;
             }
         }
         
@@ -646,13 +705,29 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      */
     open func toggleAudio() {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.toggleAudioEnabled()
+        
+        if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
+            self.sendAudioTrackStatusNotification(enabled: audioEnabled)
+        }
+       
     }
     
+    func sendAudioTrackStatusNotification(enabled:Bool)
+    {
+        var eventType = EVENT_TYPE_MIC_MUTED;
+        if (enabled) {
+            eventType = EVENT_TYPE_MIC_UNMUTED;
+        }
+        if let streamId = self.publisherStreamId {
+            self.sendNotification(eventType: eventType, streamId:streamId);
+        }
+    }
     /*
      Set publisher audio track
      */
     open func setAudioTrack(enableTrack: Bool) {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.setAudioEnabled(enabled: enableTrack);
+        self.sendAudioTrackStatusNotification(enabled:enableTrack);
     }
     
     func sendNotification(eventType:String, streamId: String = "") {
@@ -697,10 +772,26 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     open func toggleVideo() {
         self.webRTCClientMap[getPublisherStreamId()]?.toggleVideoEnabled()
+        
+        if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
+            self.sendVideoTrackStatusNotification(enabled: videoEnabled)
+        }
     }
     
-    open func setVideoTrack(enableTrack: Bool) {
+    func sendVideoTrackStatusNotification(enabled:Bool) {
+        var eventType = EVENT_TYPE_CAM_TURNED_OFF;
+        if (enabled) {
+            eventType = EVENT_TYPE_CAM_TURNED_ON;
+        }
+        if let streamId = self.publisherStreamId {
+            self.sendNotification(eventType: eventType, streamId:streamId);
+        }
+    }
+    
+    open func setVideoTrack(enableTrack: Bool)
+    {
         self.webRTCClientMap[getPublisherStreamId()]?.setVideoEnabled(enabled: enableTrack);
+        self.sendVideoTrackStatusNotification(enabled:enableTrack);
     }
     
     open func getCurrentMode() -> AntMediaClientMode {

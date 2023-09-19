@@ -72,10 +72,9 @@ class WebRTCClient: NSObject {
         RTCPeerConnectionFactory.initialize()
         
         self.externalAudio = externalAudio;
-        if (externalAudio) {
-            self.audioDeviceModule = RTCAudioDeviceModule();
-        }
-        
+        self.audioDeviceModule = RTCAudioDeviceModule();
+        self.audioDeviceModule?.setExternalAudio(externalAudio)
+            
         WebRTCClient.factory = initFactory();
         
         let stunServers = Config.defaultStunServers()
@@ -305,8 +304,16 @@ class WebRTCClient: NSObject {
         }
     }
     
+    public func isAudioEnabled() -> Bool {
+        return self.audioEnabled;
+    }
+    
     public func toggleVideoEnabled() {
         self.setVideoEnabled(enabled: !self.videoEnabled)
+    }
+    
+    func isVideoEnabled() -> Bool {
+        return self.videoEnabled;
     }
     
     public func setVideoEnabled(enabled:Bool){
