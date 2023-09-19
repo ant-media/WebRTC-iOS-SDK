@@ -27,6 +27,11 @@ class VideoViewController: UIViewController {
     var clientMode: AntMediaClientMode!
     var tapGesture: UITapGestureRecognizer!
     
+    var readerOutput: AVAssetReaderTrackOutput?;
+    var reader: AVAssetReader?;
+    
+    var audioFileUrl: URL? = nil ;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setGesture()
@@ -34,6 +39,12 @@ class VideoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        //NOTE for the one who wants to sends mp3. Just comment out below lines and return the method including return below 
+        //let audioFileURL = Bundle.main.url(forResource: "michael_jackson_audio_mono", withExtension: "mp3")!
+        //self.initAntMediaClientForExternalAudio(fileUrl: audioFileURL);
+        //self.modeLabel.text = "Mode: Audio Sending"
+        //return;
         
         self.client = AntMediaClient.init()
         self.client!.delegate = self
@@ -58,7 +69,6 @@ class VideoViewController: UIViewController {
 
         
         if self.client!.getCurrentMode() == AntMediaClientMode.join {
-            resetDefaultWebRTCAudioConfiguation();
             self.modeLabel.text = "Mode: P2P"
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
@@ -66,7 +76,6 @@ class VideoViewController: UIViewController {
             self.client!.setRemoteView(remoteContainer: fullVideoView)
             self.client!.start();
         } else if self.client!.getCurrentMode() == AntMediaClientMode.publish {
-            resetDefaultWebRTCAudioConfiguation();
            // self.client.setVideoEnable(enable: true);
             self.pipVideoView.isHidden = false
             self.fullVideoView.isHidden = false
@@ -84,13 +93,6 @@ class VideoViewController: UIViewController {
             self.client!.publish(streamId: self.clientStreamId);
            
         } else if self.client!.getCurrentMode() == AntMediaClientMode.play {
-            /*
-             Below line don't ask mic permission while playing
-             Please pay attention that if you enable below method, it will not use microphone.
-             Which means if you are publishing and playing at the same time, you should not enable
-             the below method
-             */
-            dontAskMicPermissionForPlaying();
             
             self.fullVideoView.isHidden = false
             self.pipVideoView.isHidden = false
@@ -102,6 +104,7 @@ class VideoViewController: UIViewController {
        
         
         
+        
          
     }
     
@@ -111,28 +114,7 @@ class VideoViewController: UIViewController {
     private func mirrorView(view:UIView) {
         view.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
-    
-    /*
-     *  WebRTC Framework ask for mic permission by default even it's only playing
-     *  stream. If you run this method before starting the webrtc client in play mode,
-     *  It will not ask for mic permission
-     *
-     *  ATTENTION: Calling this method in sending stream cause not sending the audio. So if you publish
-     *  and play stream at the same time, don't use this method
-     */
-    private func dontAskMicPermissionForPlaying() {
-        let webRTCConfiguration = RTCAudioSessionConfiguration.init()
-        webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
-        webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
-        webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
-                             
-        RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
-    }
-    
-    private func resetDefaultWebRTCAudioConfiguation() {
-        RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration.init())
-    }
-    
+        
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
         self.client?.setMicMute(mute: sender.isSelected, completionHandler: { (mute, error) in
@@ -285,6 +267,10 @@ extension VideoViewController: AntMediaClientDelegate {
                 }
             })
         }
+        
+        if let audioFile = self.audioFileUrl {
+            sendMp3File(url: audioFile);
+        }
     }
     
     func publishFinished(streamId: String) {
@@ -328,4 +314,75 @@ extension VideoViewController: AntMediaClientDelegate {
     func eventHappened(streamId: String, eventType: String) {
         
     }
+    
+    func initAntMediaClientForExternalAudio(fileUrl: URL) {
+      
+        client = AntMediaClient.init();
+        client?.delegate = self
+        client?.setDebug(true)
+        client?.setUseExternalCameraSource(useExternalCameraSource: false)
+        client?.setWebSocketServerUrl(url: self.clientUrl);
+        
+        client?.setVideoEnable(enable: false);
+        client?.setExternalVideoCapture(externalVideoCapture: false);
+    
+        client?.setExternalAudio(externalAudioEnabled: true)
+        
+        client?.publish(streamId: self.clientStreamId);
+        self.audioFileUrl = fileUrl;
+        
+    }
+    
+    func sendMp3File(url: URL) {
+        
+        let asset = AVAsset(url: url)
+        let track = asset.tracks(withMediaType: .audio).first!
+        
+        do {
+            reader = try AVAssetReader(asset: asset)
+            
+            /*
+             mSampleRate: 44100.0, mFormatID: 1819304813,
+             mFormatFlags: 14, mBytesPerPacket: 4, mFramesPerPacket: 1, mBytesPerFrame: 4, mChannelsPerFrame: 2,
+             mBitsPerChannel: 16, mReserved: 0
+             */
+            
+            readerOutput = AVAssetReaderTrackOutput(track: track, outputSettings: [
+                AVFormatIDKey: kAudioFormatLinearPCM,
+                AVSampleRateKey: 44100,
+                AVNumberOfChannelsKey: 2,
+                AVLinearPCMBitDepthKey: 16,
+                AVLinearPCMIsNonInterleaved: false,
+                AVLinearPCMIsFloatKey: false,
+                AVLinearPCMIsBigEndianKey: true
+            ])
+            
+            if let localReader = readerOutput {
+                reader?.add(localReader)
+                reader?.startReading()
+                
+                if let buffer = localReader.copyNextSampleBuffer() {
+                    sendCMSampleBuffer(sampleBuffer: buffer);
+                }
+            }
+        } catch {
+            print("Error occurred: \(error)")
+        }
+        
+    }
+    
+    func sendCMSampleBuffer(sampleBuffer:CMSampleBuffer)
+    {
+        
+        client?.deliverExternalAudio(sampleBuffer: sampleBuffer)
+        
+        if let buffer = readerOutput?.copyNextSampleBuffer()
+        {
+            DispatchQueue.main.asyncAfter(deadline: .now() + CMTimeGetSeconds(CMSampleBufferGetDuration(sampleBuffer)))
+            {
+                self.sendCMSampleBuffer(sampleBuffer: buffer);
+            }
+        }
+    }
+    
 }
