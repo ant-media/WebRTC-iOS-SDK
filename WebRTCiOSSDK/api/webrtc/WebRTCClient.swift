@@ -78,9 +78,9 @@ class WebRTCClient: NSObject {
         
         WebRTCClient.factory = initFactory();
         
-        let stunServer = Config.defaultStunServer()
+        let stunServers = Config.defaultStunServers()
         let defaultConstraint = Config.createDefaultConstraint()
-        let configuration = Config.createConfiguration(server: stunServer)
+        let configuration = Config.createConfiguration(servers: stunServers)
         
         self.peerConnection = WebRTCClient.factory.peerConnection(with: configuration, constraints: defaultConstraint, delegate: self)
     }
@@ -139,8 +139,6 @@ class WebRTCClient: NSObject {
     }
     
     public func getStats(handler: @escaping (RTCStatisticsReport) -> Void) {
-        
-        
         self.peerConnection?.statistics(completionHandler: handler);
     }
     

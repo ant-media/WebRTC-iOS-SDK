@@ -51,6 +51,10 @@ public protocol ConferenceClientDelegate: AnyObject
 @available(*, deprecated, message: "Use AntMediaClient directly and take a look at the sample")
 open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
 {
+    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
+        
+    }
+    
     var serverURL: String;
     var webSocket: WebSocket;
     var roomId: String!;

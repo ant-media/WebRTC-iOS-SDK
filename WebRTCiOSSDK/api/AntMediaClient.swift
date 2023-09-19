@@ -102,7 +102,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     
     //private var webRTCClient: WebRTCClient?;
-    private var webRTCClientMap: [String: WebRTCClient] = [:]
+    var webRTCClientMap: [String: WebRTCClient] = [:]
     
     private var localView: RTCVideoRenderer?
     private var remoteView: RTCVideoRenderer?
@@ -1251,7 +1251,9 @@ extension AntMediaClient: WebRTCClientDelegate {
 }
 
 extension AntMediaClient: WebSocketDelegate {
-    
+    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
+        
+    }
     
     public func getPingMessage() -> [String: String] {
         return [COMMAND: "ping"]
