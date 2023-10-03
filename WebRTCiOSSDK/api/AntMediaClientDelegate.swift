@@ -122,6 +122,14 @@ public protocol AntMediaClientDelegate: AnyObject {
      */
     func eventHappened(streamId:String, eventType:String);
     
+    func statusChangedMic(streamId: String, value:Bool)
+    
+    func statusChangedCam(streamId: String, value:Bool)
+    
+    func statusChangedPin(streamId: String, value:Bool)
+    
+    func statusChangedShareScreen(streamId: String, value:Bool)
+    
     /**
      It's called when a new track is added to the stream. It works both on multirack streaming and conferencing
      */
@@ -234,5 +242,20 @@ public extension AntMediaClientDelegate {
         }
     }
     
+    func statusChangedMic(streamId: String, value:Bool) {
+        AntMediaClient.printf("Mic status changed for stream with id:\(streamId) value:\(value)")
+    }
+    
+    func statusChangedCam(streamId: String, value:Bool) {
+        AntMediaClient.printf("Camera status changed for stream with id:\(streamId) value:\(value)")
+    }
+    
+    func statusChangedPin(streamId: String, value:Bool) {
+        AntMediaClient.printf("Pin status changed for stream with id:\(streamId) value:\(value)")
+    }
+    
+    func statusChangedShareScreen(streamId: String, value:Bool) {
+        AntMediaClient.printf("Share screen status changed for stream with id:\(streamId) value:\(value)")
+    }
 }
 

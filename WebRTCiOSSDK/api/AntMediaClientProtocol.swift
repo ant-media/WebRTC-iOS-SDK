@@ -35,9 +35,16 @@ let EVENT_TYPE_MIC_UNMUTED = "MIC_UNMUTED";
 let EVENT_TYPE_CAM_TURNED_OFF = "CAM_TURNED_OFF";
 let EVENT_TYPE_CAM_TURNED_ON = "CAM_TURNED_ON";
 
+let STATUS_MIC = "mic"
+let STATUS_CAM = "camera"
+let STATUS_PIN = "isPinned"
+let STATUS_SCREEN_SHARE = "isScreenShared"
+
 let ENABLE_TRACK_COMMAND = "enableTrack"
 let ENABLE_VIDEO_TRACK_COMMAND = "toggleVideo"
 let ENABLE_AUDIO_TRACK_COMMAND = "toggleAudio"
+
+let UPDATE_STATUS = "UPDATE_STATUS"
 
 public protocol AntMediaClientProtocol {
         

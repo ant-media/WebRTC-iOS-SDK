@@ -385,15 +385,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             
             //send current video and audio status perodically
             
-            if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
-                self.sendVideoTrackStatusNotification(enabled: videoEnabled)
-            }
-            
-            if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
-                self.sendAudioTrackStatusNotification(enabled: audioEnabled)
-            }
-            
-            
+            self.sendAudioVideoStatusNotification()
+            self.sendStatusUpdate()
         }
         
     }
@@ -711,6 +704,30 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
        
     }
     
+    func sendStatusUpdate() {
+        guard let peer = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")] else {
+            return
+        }
+        
+        self.sendNotification(eventType: UPDATE_STATUS, streamId: self.publisherStreamId ?? getStreamId(), info: [
+            STATUS_MIC: peer.isAudioEnabled(),
+            STATUS_CAM: peer.isVideoEnabled(),
+            STATUS_PIN: false, // for not it is false
+            STATUS_SCREEN_SHARE: false // for not it is false
+        ])
+    }
+    
+    @available(*, deprecated, renamed: "sendStatusUpdate", message: "Do not use this method, it will be deleted to the next release")
+    func sendAudioVideoStatusNotification() {
+        if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
+            self.sendVideoTrackStatusNotification(enabled: videoEnabled)
+        }
+        
+        if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
+            self.sendAudioTrackStatusNotification(enabled: audioEnabled)
+        }
+    }
+    
     func sendAudioTrackStatusNotification(enabled:Bool)
     {
         var eventType = EVENT_TYPE_MIC_MUTED;
@@ -729,15 +746,15 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.sendAudioTrackStatusNotification(enabled:enableTrack);
     }
     
-    func sendNotification(eventType:String, streamId: String = "") {
-        let notification =  [
+    func sendNotification(eventType:String, streamId: String = "", info: [String: Any]? = nil) {
+        let notification =  ([
             EVENT_TYPE: eventType,
-            STREAM_ID: self.getStreamId()].json;
+            STREAM_ID: self.getStreamId()
+        ] + (info ?? [:])).json;
         
         if let data = notification.data(using: .utf8) {
             self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.sendData(data: data);
         }
-        
     }
     
     open func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
@@ -1330,8 +1347,28 @@ extension AntMediaClient: WebRTCClientDelegate {
         let json = rawJSON.toJSON();
         
         if let eventType = json?[EVENT_TYPE] {
+            let streamId = json?[STREAM_ID] as! String
+            
+            if eventType as? String == UPDATE_STATUS {
+                if let mic = json?[STATUS_MIC] {
+                    self.delegate?.statusChangedMic(streamId: streamId, value: mic as? Bool ?? false)
+                }
+                
+                if let cam = json?[STATUS_CAM] {
+                    self.delegate?.statusChangedCam(streamId: streamId, value: cam as? Bool ?? false)
+                }
+                
+                if let pin = json?[STATUS_PIN] {
+                    self.delegate?.statusChangedPin(streamId: streamId, value: pin as? Bool ?? false)
+                }
+                
+                if let screenShare = json?[STATUS_SCREEN_SHARE] {
+                    self.delegate?.statusChangedShareScreen(streamId: streamId, value: screenShare as? Bool ?? false)
+                }
+            }
+            
             //event happened
-            self.delegate?.eventHappened(streamId:json?[STREAM_ID] as! String, eventType:eventType as! String);
+            self.delegate?.eventHappened(streamId: streamId, eventType: eventType as! String);
         }
         else {
             self.delegate?.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
@@ -1448,5 +1485,16 @@ extension AntMediaClient: RTCVideoViewDelegate {
         {
             resizeVideoFrame(bounds: bounds!, size: size, videoView: (videoView as? UIView)!)
         }
+    }
+}
+
+// where key and value is string
+extension Dictionary where Key == String, Value == Any {
+    static func + (left: [String: Any], right: [String: Any]) -> [String: Any] {
+        var result = left
+        right.forEach { (key, value) in
+            result[key] = value
+        }
+        return result
     }
 }
