@@ -754,7 +754,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         ] + (info ?? [:])).json;
         
         if let data = notification.data(using: .utf8) {
-            self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.sendData(data: data);
+            self.webRTCClientMap[mainTrackId ?? self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.sendData(data: data);
         }
     }
     
