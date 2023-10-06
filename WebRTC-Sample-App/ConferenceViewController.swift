@@ -42,7 +42,9 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         AntMediaClient.printf("button tapped");
         publishStream = !publishStream;
         var title:String;
-        
+        if publisherStreamId == nil {
+            publisherStreamId = "\(Int.random(in: 0..<200))_streamId"
+        }
         //TODO: don't use flag(publishStream), use more trusted info @mekya
         if (publishStream) {
             self.conferenceClient?.publish(streamId: publisherStreamId, streamerName: "Muhammadjon", streamerMeta: "{ \"photoUrl\": \"https://img.freepik.com/free-vector/businessman-character-avatar-isolated_24877-60111.jpg\"")

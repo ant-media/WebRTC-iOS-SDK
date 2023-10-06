@@ -158,7 +158,7 @@ class WebRTCClient: NSObject {
     }
     
     public func sendData(data: Data, binary: Bool = false) {
-        if (self.dataChannel?.readyState == .open && self.iceConnectionState != .disconnected && self.iceConnectionState != .failed) {
+        if (self.dataChannel?.readyState == .open) {
             let dataBuffer = RTCDataBuffer.init(data: data, isBinary: binary);
             self.dataChannel?.sendData(dataBuffer);
         }
