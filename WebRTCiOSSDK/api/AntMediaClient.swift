@@ -743,6 +743,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      */
     open func setAudioTrack(enableTrack: Bool) {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.setAudioEnabled(enabled: enableTrack);
+        
         self.sendAudioTrackStatusNotification(enabled:enableTrack);
     }
     
