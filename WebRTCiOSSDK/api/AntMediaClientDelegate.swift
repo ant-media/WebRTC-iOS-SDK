@@ -130,6 +130,8 @@ public protocol AntMediaClientDelegate: AnyObject {
     
     func statusChangedShareScreen(streamId: String, value:Bool)
     
+    func audioLevelChanged(streamId: String, value:Double)
+    
     /**
      It's called when a new track is added to the stream. It works both on multirack streaming and conferencing
      */

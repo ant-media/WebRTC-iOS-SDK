@@ -46,6 +46,10 @@ let ENABLE_AUDIO_TRACK_COMMAND = "toggleAudio"
 
 let UPDATE_STATUS = "UPDATE_STATUS"
 
+let AUDIO_LEVEL_CHANGED = "AUDIO_LEVEL_CHANGED"
+
+let AUDIO_LEVEL = "audioLevel"
+
 public protocol AntMediaClientProtocol {
         
     /**

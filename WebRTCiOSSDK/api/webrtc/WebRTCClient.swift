@@ -258,7 +258,9 @@ class WebRTCClient: NSObject {
     
     private func createDataChannel() -> RTCDataChannel? {
         let config = RTCDataChannelConfiguration()
-        guard let dataChannel = self.peerConnection?.dataChannel(forLabel: "WebRTCData", configuration: config) else {
+        config.isOrdered = true
+        config.maxRetransmits = 10
+        guard let dataChannel = self.peerConnection?.dataChannel(forLabel: streamId, configuration: config) else {
             AntMediaClient.printf("Warning: Couldn't create data channel.")
             return nil
         }

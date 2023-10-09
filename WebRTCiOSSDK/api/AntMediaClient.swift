@@ -1368,6 +1368,12 @@ extension AntMediaClient: WebRTCClientDelegate {
                 }
             }
             
+            if eventType as? String == AUDIO_LEVEL_CHANGED {
+                if let audioLevel = json?[AUDIO_LEVEL] as? Double {
+                    self.delegate?.audioLevelChanged(streamId: streamId, value: audioLevel)
+                }
+            }
+            
             //event happened
             self.delegate?.eventHappened(streamId: streamId, eventType: eventType as! String);
         }
