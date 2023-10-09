@@ -259,5 +259,9 @@ public extension AntMediaClientDelegate {
     func statusChangedShareScreen(streamId: String, value:Bool) {
 //        AntMediaClient.printf("Share screen status changed for stream with id:\(streamId) value:\(value)")
     }
+    
+    func audioLevelChanged(streamId: String, value:Double) {
+        
+    }
 }
 

@@ -698,10 +698,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     open func toggleAudio() {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.toggleAudioEnabled()
         
-        if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
-            self.sendAudioTrackStatusNotification(enabled: audioEnabled)
+        if let audio = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")] {
+            let enabled = audio.isAudioEnabled()
+            AntMediaClient.printf("Send audio status: isEnabled \(enabled)")
+            self.sendAudioTrackStatusNotification(enabled: enabled)
         }
-       
+        
     }
     
     func sendStatusUpdate() {
