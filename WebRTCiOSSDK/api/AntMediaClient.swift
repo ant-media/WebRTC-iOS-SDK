@@ -1272,13 +1272,15 @@ extension AntMediaClient: WebRTCClientDelegate {
 }
 
 extension AntMediaClient: WebSocketDelegate {
+   
+    
     
     
     public func getPingMessage() -> [String: String] {
         return [COMMAND: "ping"]
     }
     
-    public func didReceive(event: WebSocketEvent, client: WebSocket) {
+    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
         switch event {
         case .connected(let headers):
             isWebSocketConnected = true;
