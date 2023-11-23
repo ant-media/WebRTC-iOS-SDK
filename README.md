@@ -14,6 +14,12 @@ WebRTC play, Conference and Data Channel features are available in Ant Media Ser
 
 - <a href="https://antmedia.io/docs/guides/developer-sdk-and-api/sdk-integration/ios-sdk/"> Documentation </a>
 
+## How to run the sample applications
+
+Clone the project or download the zip file and open `WebRTCiOSSDK.xcodeproj` in Xcode as an existing project. 
+
+At the top of the editor, select from the dropdown menu to either open the screenshare application or the sample application. 
+
 ## Support
 For your questions, ask on [Ant Media Github Discussions](https://github.com/orgs/ant-media/discussions)
 
