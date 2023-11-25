@@ -88,6 +88,7 @@ class WebRTCClient: NSObject {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, streamId: streamId)
     }
+    
     public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
@@ -262,6 +263,7 @@ class WebRTCClient: NSObject {
             AntMediaClient.printf("Warning: Couldn't create data channel.")
             return nil
         }
+        
         return dataChannel
     }
 

@@ -776,18 +776,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }, streamId: streamId ?? self.getStreamId())
     }
     
-    public func sendAudioLevel(streamId: String? = nil, completion: @escaping (Double) -> Void) {
-        getAudioLevel { audioLevel in
-            if audioLevel > 0.8 {
-                self.sendNotification(eventType: AUDIO_LEVEL_CHANGED, streamId: streamId ?? self.getStreamId(), info: [
-                    AUDIO_LEVEL: audioLevel / 100
-                ])
-            }
-            
-            completion(audioLevel)
-        }
-    }
-    
     open func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
     {
         AntMediaClient.dispatchQueue.async { () in
