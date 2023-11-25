@@ -1366,6 +1366,7 @@ extension AntMediaClient: WebRTCClientDelegate {
         let json = rawJSON.toJSON();
         
         if let eventType = json?[EVENT_TYPE] {
+            debugPrint("Data channel received an event \(eventType) - \(json ?? [:])")
             let streamId = json?[STREAM_ID] as! String
             
             if eventType as? String == UPDATE_STATUS {
