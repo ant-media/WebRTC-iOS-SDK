@@ -2,7 +2,7 @@ name: iOS Build
 
 on: push
 
-obs:
+jobs:
   build:
     runs-on: macos-latest
 
