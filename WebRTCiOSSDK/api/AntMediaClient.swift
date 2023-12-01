@@ -1262,7 +1262,12 @@ extension AntMediaClient: WebRTCClientDelegate {
       
         if let eventType = json?[EVENT_TYPE] {
             //event happened
-            self.delegate?.eventHappened(streamId:json?[STREAM_ID] as! String, eventType:eventType as! String);
+            if let incomingStreamId = json?[STREAM_ID] {
+                self.delegate?.eventHappened(streamId:incomingStreamId as! String , eventType:eventType as! String);
+            }
+            else {
+                AntMediaClient.printf("Incoming message does not have streamId:\(json)")
+            }
         }
         else {
             self.delegate?.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
