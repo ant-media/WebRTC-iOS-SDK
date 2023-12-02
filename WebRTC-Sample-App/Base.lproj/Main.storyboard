@@ -195,21 +195,6 @@ WebRTC Live Streaming</string>
                                     <constraint firstAttribute="width" constant="90" id="tMd-w9-0ro"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zuA-ym-oro">
-                                <rect key="frame" x="140" y="592" width="90" height="35"/>
-                                <color key="backgroundColor" red="0.86666666670000003" green="0.13725490200000001" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="Lq3-hn-By8" userLabel="width = 90"/>
-                                    <constraint firstAttribute="height" constant="35" id="tVl-pt-owp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
-                                <state key="normal" title="Publish">
-                                    <color key="titleColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="joinButtonTapped:" destination="E4n-9I-LrE" eventType="touchUpInside" id="mo0-sJ-qQZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dqn-Tz-Jj5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -222,14 +207,12 @@ WebRTC Live Streaming</string>
                             <constraint firstAttribute="centerX" secondItem="zBK-Om-nWf" secondAttribute="trailing" id="E4k-YY-Q71" userLabel="centerX = Remote View1.trailing"/>
                             <constraint firstItem="dqn-Tz-Jj5" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" constant="20" id="Fpc-aE-wjW" userLabel="Safe Area.bottom = Local View.bottom"/>
                             <constraint firstItem="LXN-aK-Wm3" firstAttribute="top" secondItem="qPy-8E-T6N" secondAttribute="top" id="I4Q-cM-hh1"/>
-                            <constraint firstItem="zuA-ym-oro" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" id="PAI-ea-SqS"/>
                             <constraint firstItem="LXN-aK-Wm3" firstAttribute="leading" secondItem="qPy-8E-T6N" secondAttribute="trailing" id="Q0S-IU-LsM"/>
                             <constraint firstItem="qPy-8E-T6N" firstAttribute="centerX" secondItem="zBK-Om-nWf" secondAttribute="centerX" id="QRh-rT-aK6"/>
                             <constraint firstItem="zBK-Om-nWf" firstAttribute="leading" secondItem="CM5-Lj-3ty" secondAttribute="leadingMargin" id="S5L-m5-Yrb"/>
                             <constraint firstAttribute="centerY" secondItem="PKz-rN-me0" secondAttribute="bottom" id="Um9-Ar-5G8"/>
                             <constraint firstItem="qPy-8E-T6N" firstAttribute="top" secondItem="zBK-Om-nWf" secondAttribute="bottom" id="gap-oY-sdl"/>
                             <constraint firstItem="zBK-Om-nWf" firstAttribute="trailing" secondItem="qPy-8E-T6N" secondAttribute="trailing" id="jgL-N3-IEF"/>
-                            <constraint firstItem="zuA-ym-oro" firstAttribute="centerX" secondItem="CM5-Lj-3ty" secondAttribute="centerX" id="kYm-10-JHD"/>
                             <constraint firstItem="PKz-rN-me0" firstAttribute="leading" secondItem="zBK-Om-nWf" secondAttribute="trailing" constant="11.5" id="kqQ-65-DXL" userLabel="Remote View1.leading = Remote View0.trailing"/>
                             <constraint firstItem="dqn-Tz-Jj5" firstAttribute="trailing" secondItem="PKz-rN-me0" secondAttribute="trailing" constant="8" id="m4p-r2-kiA" userLabel="Safe Area.trailing = Remote View2.trailing"/>
                             <constraint firstItem="qPy-8E-T6N" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" id="m71-fp-qJf"/>
@@ -241,7 +224,6 @@ WebRTC Live Streaming</string>
                     </view>
                     <navigationItem key="navigationItem" id="l7b-W5-MXv"/>
                     <connections>
-                        <outlet property="joinButton" destination="zuA-ym-oro" id="a5B-gq-wgo"/>
                         <outlet property="localView" destination="Zwp-DO-5T7" id="ada-FF-Y7z"/>
                         <outlet property="remoteView0" destination="zBK-Om-nWf" id="pbU-sW-7CT"/>
                         <outlet property="remoteView1" destination="PKz-rN-me0" id="Uz2-bp-z9s"/>
