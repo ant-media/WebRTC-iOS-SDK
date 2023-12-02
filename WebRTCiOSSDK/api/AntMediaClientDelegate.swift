@@ -160,7 +160,7 @@ public extension AntMediaClientDelegate {
     }
         
     func eventHappened(streamId: String, eventType: String) {
-        AntMediaClient.printf("Event\(eventType) happened in stream:\(streamId) ")
+        AntMediaClient.printf("Event: \(eventType) happened in stream: \(streamId) ")
     }
     
     func clientDidDisconnect(_ message: String) {

@@ -27,7 +27,6 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
     @IBOutlet var remoteView2: UIView!
     @IBOutlet var remoteView3: UIView!
         
-    @IBOutlet weak var joinButton: UIButton!
     var remoteViews:[RTCVideoRenderer] = []
     
     //keeps which remoteView renders which track according to the index
@@ -37,24 +36,7 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
     
     var conferenceClient: AntMediaClient?;
     var playing = false
-        
-    @IBAction func joinButtonTapped(_ sender: Any) {
-        AntMediaClient.printf("button tapped");
-        publishStream = !publishStream;
-        var title:String;
-        
-        //TODO: don't use flag(publishStream), use more trusted info @mekya
-        if (publishStream) {
-            self.conferenceClient?.publish(streamId: publisherStreamId)
-            title = "Stop";
-        }
-        else {
-            self.conferenceClient?.stop(streamId:publisherStreamId);
-            title = "Publish"
-        }
-        joinButton.setTitle(title, for: .normal);
-    }
-    
+            
     func initRenderer(view: UIView)
     {
         #if arch(arm64)
@@ -135,16 +117,13 @@ extension ConferenceViewController: AntMediaClientDelegate
         
             AntMediaClient.printf("stream id to publish \(streamId)")
             self.publisherStreamId = streamId;
-            //opens the camera
-            self.conferenceClient?.initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish)
-            
+           
             //if you can mute and close the camera, you can do that here
             //self.conferenceClient?.setAudioTrack(enableTrack: false)
             //self.conferenceClient?.setVideoTrack(enableTrack: false)
             
             
-            //if you want to publish immediately, uncomment the line below and just call the method below
-            //self.conferenceClient?.publish(streamId: self.publisherStreamId)
+            self.conferenceClient?.publish(streamId: self.publisherStreamId)
         }
         
     }

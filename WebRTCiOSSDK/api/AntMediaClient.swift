@@ -98,13 +98,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var videoEnable: Bool = true
     private var audioEnable: Bool = true
-    
-    private var multiPeer: Bool = false
-        
+            
     private var enableDataChannel: Bool = true
-    
-    private var multiPeerStreamId: String?
-    
+        
     //Screen capture of the app's screen.
     private var useExternalCameraSource: Bool = false
     
@@ -118,11 +114,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private var externalVideoCapture: Bool = false;
     
     private var cameraSourceFPS: Int = 30;
-        
-    /*
-     This peer mode is used in multi peer streaming
-     */
-    private var multiPeerMode: String = "play"
     
     var pingTimer: Timer?
     
@@ -138,14 +129,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         var video:Bool?
         var audio:Bool?
         var mode:String?
-        var multiPeer:Bool?
         var mainTrack:String?
         var trackList:[String]
     }
     
     public override init() {
-        self.multiPeerStreamId = nil
-     }
+    }
     
     public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, useExternalCameraSource: Bool = false) {
         self.wsUrl = url
@@ -187,11 +176,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.webRTCClientMap[self.getPublisherStreamId()]?.setMaxVideoBps(maxVideoBps: videoBitratePerSecond)
     }
     
-    public func setMultiPeerMode(enable: Bool, mode: String) {
-        self.multiPeer = enable
-        self.multiPeerMode = mode;
-    }
-    
     public func setVideoEnable( enable: Bool) {
         self.videoEnable = enable
     }
@@ -222,7 +206,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             AntMediaClient.printf("Disable track id is not set \(String(describing: self.disableTrackId))");
         }
         
-        let handShakeMesage = HandshakeMessage(command: mode.getName(), streamId: streamId, token: token, video: self.videoEnable, audio:self.audioEnable, multiPeer: self.multiPeer && self.multiPeerStreamId != nil ? true : false, mainTrack: self.mainTrackId, trackList: trackList)
+        let handShakeMesage = HandshakeMessage(command: mode.getName(), streamId: streamId, token: token, video: self.videoEnable, audio:self.audioEnable, mainTrack: self.mainTrackId, trackList: trackList)
         
         let json = try! JSONEncoder().encode(handShakeMesage)
         return String(data: json, encoding: .utf8)!
@@ -539,7 +523,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (self.webRTCClientMap[id] == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClientMap[id]))")
             
-            self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: mode != .unspecified ? mode : self.mode , cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, multiPeerActive:  self.multiPeer, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id);
+            self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: mode != .unspecified ? mode : self.mode , cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id);
             
             self.webRTCClientMap[id]?.setToken(token)
             
@@ -983,11 +967,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 let streamId = message[STREAM_ID] as! String
                 self.onTakeCandidate(message: message, streamId: streamId)
                 break
-            case "connectWithNewId":
-                self.multiPeerStreamId = message["streamId"] as? String
-            let jsonString = getHandshakeMessage(streamId: self.getStreamId(), mode: AntMediaClientMode.join)
-                webSocket?.write(string: jsonString)
-                break
             case STREAM_INFORMATION_COMMAND:
                 AntMediaClient.printf("stream information command")
                 var streamInformations: [StreamInformation] = [];
@@ -1084,6 +1063,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 self.delegate?.clientHasError(AntMediaError.localized(definition))
                 break
             default:
+                AntMediaClient.printf("Unknown message received -> \(message)");
                 break
         }
     }
@@ -1262,7 +1242,12 @@ extension AntMediaClient: WebRTCClientDelegate {
       
         if let eventType = json?[EVENT_TYPE] {
             //event happened
-            self.delegate?.eventHappened(streamId:json?[STREAM_ID] as! String, eventType:eventType as! String);
+            if let incomingStreamId = json?[STREAM_ID] {
+                self.delegate?.eventHappened(streamId:incomingStreamId as! String , eventType:eventType as! String);
+            }
+            else {
+                AntMediaClient.printf("Incoming message does not have streamId:\(json)")
+            }
         }
         else {
             self.delegate?.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
