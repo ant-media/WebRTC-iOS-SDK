@@ -43,7 +43,6 @@ class WebRTCClient: NSObject {
      If it's true, it does not open the local camera. When it's set to true, it can record the screen in-app or you can give external frames through your application or BroadcastExtension. If you give external frames or through BroadcastExtension, you need to set the externalVideoCapture to true as well
      */
     private var useExternalCameraSource: Bool = false;
-    private var mode: AntMediaClientMode = AntMediaClientMode.join
     
     private var enableDataChannel: Bool = false;
     
@@ -86,16 +85,15 @@ class WebRTCClient: NSObject {
     
     public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
-                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, streamId: streamId)
+                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, streamId: streamId)
     }
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, streamId: String) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
-                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, multiPeerActive:false, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
+                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
     }
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, useExternalCameraSource: Bool, externalAudio: Bool = false, externalVideoCapture: Bool = false, cameraSourceFPS: Int = 30, streamId: String) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, useExternalCameraSource: Bool, externalAudio: Bool = false, externalVideoCapture: Bool = false, cameraSourceFPS: Int = 30, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate, externalAudio: externalAudio)
-        self.mode = mode
         self.cameraPosition = cameraPosition
         self.targetWidth = targetWidth
         self.targetHeight = targetHeight
@@ -106,7 +104,7 @@ class WebRTCClient: NSObject {
         self.cameraSourceFPS = cameraSourceFPS;
         self.streamId = streamId;
         
-        if (self.mode != .play && !multiPeerActive) {
+        if (mode != .play) {
             self.addLocalMediaStream()
         }
     }
