@@ -71,7 +71,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var wsUrl: String!
     private(set) var publisher: AntPeer?
-    
+    public var showLogAllDataComingFromDataChannel = false
     private var publisherStreamId: String? {
         publisher?.streamId
     }
@@ -1366,7 +1366,9 @@ extension AntMediaClient: WebRTCClientDelegate {
         let json = rawJSON.toJSON();
         
         if let eventType = json?[EVENT_TYPE] {
-            debugPrint("Data channel received an event \(eventType) - \(json ?? [:])")
+            if showLogAllDataComingFromDataChannel {
+                debugPrint("Data channel received an event \(eventType) - \(json ?? [:])")
+            }
             let streamId = json?[STREAM_ID] as! String
             
             if eventType as? String == UPDATE_STATUS {
