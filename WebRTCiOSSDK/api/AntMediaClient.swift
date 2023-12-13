@@ -68,6 +68,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     internal static var isDebug: Bool = false
     public weak var delegate: AntMediaClientDelegate?
+    public weak var audioRouteDelegate: AntMediaAudioRouteDelegate?
     
     private var wsUrl: String!
     private(set) var publisher: AntPeer?
@@ -286,7 +287,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     // Force speaker
     public static func speakerOn() {
-        
         dispatchQueue.async {() in
             
             rtcAudioSession.lockForConfiguration()
@@ -388,7 +388,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             self.sendAudioVideoStatusNotification()
             self.sendStatusUpdate()
         }
-        
     }
     
     /**
@@ -448,7 +447,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
         webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
         webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
-                             
         RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
     }
     
@@ -497,8 +495,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             //if there is not publisherStreamId, don't ask mic permission for playing
             dontAskMicPermissionForPlaying();
         }
-        
-        
         
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.play, token: token)
         if (!isWebSocketConnected) {
@@ -1306,8 +1302,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.webSocket?.disconnect();
         self.webSocket = nil;
         
+        NotificationCenter.default.removeObserver(AVAudioSession.routeChangeNotification)
     }
-    
 }
 
 extension AntMediaClient: WebRTCClientDelegate {
@@ -1525,4 +1521,39 @@ extension Dictionary where Key == String, Value == Any {
         }
         return result
     }
+}
+
+extension AntMediaClient {
+    public var hasExternalAudioRoutes: Bool {
+        audioPorts.contains { $0.portType == .headphones || $0.portType == .bluetoothA2DP }
+    }
+    
+    public var audioPorts: [AVAudioSessionPortDescription] {
+        AVAudioSession.sharedInstance().currentRoute.outputs
+    }
+    
+    public var canConnectToExternalAudioroute: Bool {
+        hasExternalAudioRoutes
+    }
+    
+    public func registerAudioRouteNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(audioRouteChanged(_:)), name: AVAudioSession.routeChangeNotification, object: nil)
+    }
+    
+    @objc func audioRouteChanged(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else {
+            return
+        }
+
+        audioPorts.forEach { port in
+            audioRouteDelegate?.audioRouteChange(type: port.portType, name: port.portName, reason: reason)
+        }
+    }
+}
+
+
+public protocol AntMediaAudioRouteDelegate: AnyObject {
+    func audioRouteChange(type: AVAudioSession.Port, name: String, reason: AVAudioSession.RouteChangeReason)
 }
