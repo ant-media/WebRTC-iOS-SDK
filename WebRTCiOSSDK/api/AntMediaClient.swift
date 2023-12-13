@@ -306,7 +306,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     // Fallback to the default playing device: headphones/bluetooth/ear speaker
     public static func speakerOff() {
-        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInSpeaker}) == nil else {
+        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInSpeaker}) != nil else {
             return
         }
 
