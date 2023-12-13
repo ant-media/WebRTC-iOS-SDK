@@ -287,6 +287,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     // Force speaker
     public static func speakerOn() {
+        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInReceiver}) != nil else {
+            return
+        }
+        
         dispatchQueue.async {() in
             
             rtcAudioSession.lockForConfiguration()
@@ -302,6 +306,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     // Fallback to the default playing device: headphones/bluetooth/ear speaker
     public static func speakerOff() {
+        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInSpeaker}) != nil else {
+            return
+        }
+
         dispatchQueue.async {() in
             
             rtcAudioSession.lockForConfiguration()
@@ -1552,7 +1560,6 @@ extension AntMediaClient {
         }
     }
 }
-
 
 public protocol AntMediaAudioRouteDelegate: AnyObject {
     func audioRouteChange(type: AVAudioSession.Port, name: String, reason: AVAudioSession.RouteChangeReason)
