@@ -287,7 +287,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     // Force speaker
     public static func speakerOn() {
-        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInReceiver}) != nil else {
+        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInReceiver}) == nil else {
             return
         }
         
