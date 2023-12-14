@@ -1391,12 +1391,16 @@ extension AntMediaClient: WebRTCClientDelegate {
                 if let screenShare = json?[STATUS_SCREEN_SHARE] {
                     self.delegate?.statusChangedShareScreen(streamId: streamId, value: screenShare as? Bool ?? false)
                 }
+                
+                return
             }
             
             if eventType as? String == AUDIO_LEVEL_CHANGED {
                 if let audioLevel = json?[AUDIO_LEVEL] as? Double {
                     self.delegate?.audioLevelChanged(streamId: streamId, value: audioLevel)
                 }
+                
+                return
             }
             
             //event happened
