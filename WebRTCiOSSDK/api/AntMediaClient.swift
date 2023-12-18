@@ -392,8 +392,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
             
             //send current video and audio status perodically
-            
-            self.sendAudioVideoStatusNotification()
             self.sendStatusUpdate()
         }
     }
