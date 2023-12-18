@@ -18,18 +18,22 @@ public class Config: NSObject {
     
     private static var rtcSdpSemantics = RTCSdpSemantics.unifiedPlan;
     
-    static var iceServer:RTCIceServer = RTCIceServer.init(urlStrings: [stunServer], username: "", credential: "")
+    static var iceServers: [RTCIceServer] = [RTCIceServer.init(urlStrings: [stunServer], username: "", credential: "")]
     
-    public static func setDefaultStunServer(server: RTCIceServer) {
-        iceServer = server;
+    public static func setDefaultStunServers(_ servers: [RTCIceServer]) {
+        iceServers = servers;
+    }
+    
+    public static func addStunServer(_ server: RTCIceServer) {
+        iceServers.append(server)
     }
     
     public static func setSdpSemantics(sdpSemantics:RTCSdpSemantics) {
         rtcSdpSemantics = sdpSemantics;
     }
     
-    static func defaultStunServer() -> RTCIceServer {
-        return iceServer
+    static func defaultStunServers() -> [RTCIceServer] {
+        return iceServers
     }
     
     static func createAudioVideoConstraints() -> RTCMediaConstraints {
@@ -44,9 +48,9 @@ public class Config: NSObject {
         return RTCMediaConstraints(mandatoryConstraints: nil, optionalConstraints: constraints)
     }
     
-    static func createConfiguration(server: RTCIceServer) -> RTCConfiguration {
+    static func createConfiguration(servers: [RTCIceServer]) -> RTCConfiguration {
         let config = RTCConfiguration.init()
-        config.iceServers = [server]
+        config.iceServers = servers
         config.sdpSemantics = rtcSdpSemantics;
         return config
     }

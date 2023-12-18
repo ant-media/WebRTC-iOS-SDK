@@ -36,7 +36,7 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
     
     var conferenceClient: AntMediaClient?;
     var playing = false
-            
+    
     func initRenderer(view: UIView)
     {
         #if arch(arm64)

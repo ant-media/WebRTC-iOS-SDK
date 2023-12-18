@@ -20,63 +20,92 @@ public enum AntMediaClientMode: Int {
     case conference = 4;
     case unspecified = 5;
     
-    
     func getLeaveMessage() -> String {
         switch self {
-            case .join:
-                return "leave"
-            case .publish, .play:
-                return "stop"
-            case .conference:
-                return "leaveRoom"
-            case .unspecified:
-                return "unspecified";
+        case .join:
+            return "leave"
+        case .publish, .play:
+            return "stop"
+        case .conference:
+            return "leaveRoom"
+        case .unspecified:
+            return "unspecified";
         }
     }
     
     func getName() -> String {
         switch self {
-            case .join:
-                return "join"
-            case .play:
-                return "play"
-            case .publish:
-                return "publish"
-            case .conference:
-                return "conference"
-            case .unspecified:
-                return "unspecified";
+        case .join:
+            return "join"
+        case .play:
+            return "play"
+        case .publish:
+            return "publish"
+        case .conference:
+            return "conference"
+        case .unspecified:
+            return "unspecified";
         }
     }
-    
 }
+
+public struct AntPeer: Hashable, Equatable {
+    public private(set) var streamId: String
+    public private(set) var name: String
+    public private(set) var meta: String?
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(streamId)
+    }
+    
+    public static func == (lhs: AntPeer, rhs: AntPeer) -> Bool {
+        return lhs.streamId == rhs.streamId
+    }
+}
+
 open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
- 
+    
     internal static var isDebug: Bool = false
     public weak var delegate: AntMediaClientDelegate?
-
+    public weak var audioRouteDelegate: AntMediaAudioRouteDelegate?
+    
     private var wsUrl: String!
-    private var publisherStreamId: String? = nil;
+    private(set) var publisher: AntPeer?
+    public var showLogAllDataComingFromDataChannel = false
+    private var publisherStreamId: String? {
+        publisher?.streamId
+    }
     /**
      mainTrackId can also be used  the roomId of the conference
      */
     private var mainTrackId: String?
+    
     private var playerStreamId: String?
+    
     private var p2pStreamId: String?
+    
     private var publishToken: String?
+    
     private var playToken: String?
+    
     private var webSocket: WebSocket?
+    
     //keep it for backward compatibility
     private var mode: AntMediaClientMode!
-    var streamsInTheRoom:[String] = [];
+    
+    var streamsInTheRoom: [String] {
+        streamersInRoom.map({$0.streamId})
+    }
+    
+    var streamersInRoom: Set<AntPeer> = []
     
     var roomInfoGetterTimer: Timer?;
-
-
+    
+    
     //private var webRTCClient: WebRTCClient?;
-    private var webRTCClientMap: [String: WebRTCClient] = [:]
-
+    var webRTCClientMap: [String: WebRTCClient] = [:]
+    
     private var localView: RTCVideoRenderer?
     private var remoteView: RTCVideoRenderer?
     
@@ -98,7 +127,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var videoEnable: Bool = true
     private var audioEnable: Bool = true
-            
+    private var multiPeer: Bool = false
+    
     private var enableDataChannel: Bool = true
         
     //Screen capture of the app's screen.
@@ -119,12 +149,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     var disableTrackId:String?
     
-    
     var reconnectIfRequiresScheduled: Bool = false;
-        
+    
     struct HandshakeMessage:Codable {
         var command:String?
         var streamId:String?
+        var streamName: String?
+        var metaData: String?
         var token:String?
         var video:Bool?
         var audio:Bool?
@@ -134,14 +165,15 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     public override init() {
+        
     }
     
-    public func setOptions(url: String, streamId: String, token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, useExternalCameraSource: Bool = false) {
+    public func setOptions(url: String, streamId: String, streamerName: String = "", token: String = "", mode: AntMediaClientMode = .join, enableDataChannel: Bool = false, useExternalCameraSource: Bool = false, meta: String? = nil) {
         self.wsUrl = url
         
         self.mode = mode
         if self.mode == AntMediaClientMode.publish {
-            self.publisherStreamId = streamId;
+            self.publisher = .init(streamId: streamId, name: streamerName, meta: meta)
             self.publishToken = token;
         }
         else if (self.mode == AntMediaClientMode.play) {
@@ -211,15 +243,40 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         let json = try! JSONEncoder().encode(handShakeMesage)
         return String(data: json, encoding: .utf8)!
     }
+    
+    func publishMessage(streamer: AntPeer, token: String = "") -> String {
+        
+        var trackList:[String] = [];
+        AntMediaClient.printf("disable track id is \(String(describing: self.disableTrackId))");
+        if let trackId = self.disableTrackId {
+            AntMediaClient.printf("appending track id to the tracklist \(String(describing: self.disableTrackId))");
+            trackList.append("!" + trackId);
+        }
+        else {
+            AntMediaClient.printf("Disable track id is not set \(String(describing: self.disableTrackId))");
+        }
+        
+        let handShakeMesage = HandshakeMessage(command: AntMediaClientMode.publish.getName(), streamId: streamer.streamId, streamName: streamer.name,
+                                               metaData: streamer.meta, token: token, video: self.videoEnable,
+                                               audio: self.audioEnable,
+                                               mainTrack: self.mainTrackId, trackList: trackList)
+        
+        let json = try! JSONEncoder().encode(handShakeMesage)
+        return String(data: json, encoding: .utf8)!
+    }
+    
     public func getLeaveMessage(streamId: String, mode:AntMediaClientMode) -> [String: String] {
         return [COMMAND: mode.getLeaveMessage(), STREAM_ID: streamId]
     }
     
     // Force speaker
     public static func speakerOn() {
-       
+        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInSpeaker}) == nil else {
+            return
+        }
+        
         dispatchQueue.async {() in
-          
+            
             rtcAudioSession.lockForConfiguration()
             do {
                 try rtcAudioSession.overrideOutputAudioPort(.speaker)
@@ -233,6 +290,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     // Fallback to the default playing device: headphones/bluetooth/ear speaker
     public static func speakerOff() {
+        guard rtcAudioSession.currentRoute.outputs.first(where: {$0.portType == .builtInReceiver}) == nil else {
+            return
+        }
+
         dispatchQueue.async {() in
             
             rtcAudioSession.lockForConfiguration()
@@ -244,7 +305,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             rtcAudioSession.unlockForConfiguration()
         }
     }
-
+    
     
     open func start() {
        
@@ -258,7 +319,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     /**
-    Join P2P call
+     Join P2P call
      */
     public func join(streamId:String)
     {
@@ -281,16 +342,16 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             let leaveMessage =  [
                 COMMAND: "leave",
                 STREAM_ID: streamId] as [String : Any]
-        
+            
             webSocket?.write(string:leaveMessage.json)
         }
         self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect();
     }
     
-    public func joinRoom(roomId:String, streamId: String = "") {
+    public func joinRoom(roomId:String, streamId: String = "", streamerName: String = "", meta: String? = nil) {
         self.mainTrackId = roomId;
-        self.publisherStreamId = streamId;
-        self.mode = AntMediaClientMode.conference;       
+        self.publisher = .init(streamId: streamId, name: streamerName, meta: meta)
+        self.mode = AntMediaClientMode.conference;
         if (!isWebSocketConnected) {
             connectWebSocket()
         }
@@ -303,7 +364,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             let jsonString =
             [ COMMAND: "getRoomInfo",
               ROOM_ID: roomId,
-              STREAM_ID: self.publisherStreamId ?? ""
+            STREAM_ID: self.publisherStreamId ?? ""
             ] as [String: Any]
             
             if (self.isWebSocketConnected) {
@@ -315,30 +376,28 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
             
             //send current video and audio status perodically
-            
-            if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
-                self.sendVideoTrackStatusNotification(enabled: videoEnabled)
-            }
-            
-            if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
-                self.sendAudioTrackStatusNotification(enabled: audioEnabled)
-            }
-            
-            
+            self.sendStatusUpdate()
         }
-       
     }
     
     /**
      Called when the server responds with "joined room notification" as a response to "join room" command
      */
-    private func joinedRoom(streamId:String, streams:[String]) {
+    private func joinedRoom(streamId: String, streams:[String], streamInfoList: [Any]) {
+        if self.publisher == nil {
+            self.publisher = .init(streamId: streamId, name: "")
+        }
         
-        self.publisherStreamId = streamId;
         self.delegate?.streamIdToPublish(streamId: streamId);
-        self.streamsInTheRoom = streams;
         
-        if (self.streamsInTheRoom.count > 0) {
+        self.streamersInRoom = Set(streamInfoList.compactMap { item in
+            if let user = item as? [String: Any] {
+                return AntPeer.init(streamId: user["streamId"] as! String, name: user["streamName"] as? String ?? "", meta: user["metaData"] as? String)
+            }
+            return nil
+        })
+        
+        if (!streamsInTheRoom.isEmpty) {
             self.delegate?.newStreamsJoined(streams:  streams);
         }
         
@@ -378,7 +437,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         webRTCConfiguration.mode = AVAudioSession.Mode.moviePlayback.rawValue
         webRTCConfiguration.category = AVAudioSession.Category.playback.rawValue
         webRTCConfiguration.categoryOptions = AVAudioSession.CategoryOptions.duckOthers
-                             
         RTCAudioSessionConfiguration.setWebRTC(webRTCConfiguration)
     }
     
@@ -387,11 +445,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration.init())
     }
     
-    public func publish(streamId: String, token: String = "", mainTrackId: String = "") {
-    
-        self.publisherStreamId = streamId;
+    public func publish(streamId: String, streamerName: String = "", token: String = "", mainTrackId: String = "", streamerMeta: String = "") {
+        self.publisher = .init(streamId: streamId, name: streamerName, meta: streamerMeta)
+        
         //reset default webrtc audio configuation to capture audio and mic
         resetDefaultWebRTCAudioConfiguation();
+
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish, token: token)
         if (!mainTrackId.isEmpty) {
             self.mainTrackId = mainTrackId
@@ -403,7 +462,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             connectWebSocket();
         }
         else {
-            sendPublishCommand(streamId)
+            sendPublishCommand(streamId, streamerName: streamerName, streamerMeta: streamerMeta)
         }
     }
     
@@ -427,8 +486,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             dontAskMicPermissionForPlaying();
         }
         
-        
-        
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.play, token: token)
         if (!isWebSocketConnected) {
             connectWebSocket();
@@ -448,7 +505,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         {
             AntMediaClient.printf("Connect websocket to \(self.getWsUrl())")
             if (!self.isWebSocketConnected) { //provides backward compatibility
-                self.streamsInTheRoom.removeAll();
+                self.streamersInRoom.removeAll();
                 AntMediaClient.printf("Will connect to: \(self.getWsUrl()) for stream: \(self.getStreamId())")
                 
                 self.webSocket = WebSocket(request: self.getRequest())
@@ -483,7 +540,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         let tmpStreamId = getStreamId(streamId)
         
         AntMediaClient.printf("Stop is called for \(tmpStreamId)")
-                            
+        
         if tmpStreamId == self.p2pStreamId
         {
             //provide backward compatibility
@@ -507,7 +564,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             }
             
             if (self.publisherStreamId == tmpStreamId) {
-                self.publisherStreamId = nil
+                self.publisher = nil
             }
             else if (self.playerStreamId == tmpStreamId) {
                 self.playerStreamId = nil;
@@ -542,7 +599,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     open func switchCamera() {
         self.webRTCClientMap[(self.publisherStreamId ?? (self.p2pStreamId)) ?? ""]?.switchCamera()
     }
-
+    
     /*
      Send data through WebRTC Data channel.
      */
@@ -551,20 +608,20 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     open func isDataChannelActive(streamId: String = "") -> Bool {
-       
+        
         return self.webRTCClientMap[getStreamId(streamId)]?.isDataChannelActive() ?? false
     }
-        
+    
     open func setLocalView( container: UIView, mode:UIView.ContentMode = .scaleAspectFit) {
-       
-        #if arch(arm64)
+        
+#if arch(arm64)
         let localRenderer = RTCMTLVideoView(frame: container.frame)
         localRenderer.videoContentMode =  mode
-        #else
+#else
         let localRenderer = RTCEAGLVideoView(frame: container.frame)
         localRenderer.delegate = self
-        #endif
- 
+#endif
+        
         localRenderer.frame = container.bounds
         self.localView = localRenderer
         self.localContainerBounds = container.bounds
@@ -573,14 +630,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     open func setRemoteView(remoteContainer: UIView, mode:UIView.ContentMode = .scaleAspectFit) {
-       
-        #if arch(arm64)
+        
+#if arch(arm64)
         let remoteRenderer = RTCMTLVideoView(frame: remoteContainer.frame)
         remoteRenderer.videoContentMode = mode
-        #else
+#else
         let remoteRenderer = RTCEAGLVideoView(frame: remoteContainer.frame)
         remoteRenderer.delegate = self
-        #endif
+#endif
         
         remoteRenderer.frame = remoteContainer.frame
         
@@ -618,7 +675,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     public static func setDebug(_ value: Bool) {
-         AntMediaClient.isDebug = value
+        AntMediaClient.isDebug = value
     }
     
     /*
@@ -627,10 +684,36 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     open func toggleAudio() {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.toggleAudioEnabled()
         
+        if let audio = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")] {
+            let enabled = audio.isAudioEnabled()
+            AntMediaClient.printf("Send audio status: isEnabled \(enabled)")
+            self.sendAudioTrackStatusNotification(enabled: enabled)
+        }
+        
+    }
+    
+    func sendStatusUpdate() {
+        guard let peer = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")] else {
+            return
+        }
+        
+        self.sendNotification(eventType: UPDATE_STATUS, streamId: self.publisherStreamId ?? getStreamId(), info: [
+            STATUS_MIC: peer.isAudioEnabled(),
+            STATUS_CAM: peer.isVideoEnabled(),
+            STATUS_PIN: false, // for not it is false
+            STATUS_SCREEN_SHARE: false // for not it is false
+        ])
+    }
+    
+    @available(*, deprecated, renamed: "sendStatusUpdate", message: "Do not use this method, it will be deleted to the next release")
+    func sendAudioVideoStatusNotification() {
+        if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
+            self.sendVideoTrackStatusNotification(enabled: videoEnabled)
+        }
+        
         if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
             self.sendAudioTrackStatusNotification(enabled: audioEnabled)
         }
-       
     }
     
     func sendAudioTrackStatusNotification(enabled:Bool)
@@ -648,24 +731,41 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      */
     open func setAudioTrack(enableTrack: Bool) {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.setAudioEnabled(enabled: enableTrack);
+        
         self.sendAudioTrackStatusNotification(enabled:enableTrack);
     }
     
-    func sendNotification(eventType:String, streamId: String = "") {
-        let notification =  [
+    func sendNotification(eventType:String, streamId: String = "", info: [String: Any]? = nil) {
+        let notification =  ([
             EVENT_TYPE: eventType,
-            STREAM_ID: self.getStreamId()].json;
+            STREAM_ID: self.getStreamId()
+        ] + (info ?? [:])).json;
         
         if let data = notification.data(using: .utf8) {
             self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.sendData(data: data);
         }
-       
+    }
+    
+    public func getAudioLevel(streamId: String? = nil, _ completion: @escaping (Double) -> Void) {
+        getStats(completionHandler:  { [weak self] stat in
+            guard let safe = self else {
+                return
+            }
+            
+            let audioLevels = stat.statistics.values.compactMap { st in
+                return st.values["audioLevel"] as? Double
+            }
+            
+            let audioLevel: Double = (audioLevels.first ?? 0) * 100
+            completion(audioLevel)
+            
+        }, streamId: streamId ?? self.getStreamId())
     }
     
     open func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
     {
         AntMediaClient.dispatchQueue.async { () in
-           
+            
             AntMediaClient.rtcAudioSession.lockForConfiguration()
             do {
                 var category:String;
@@ -723,9 +823,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         return wsUrl;
     }
     
-    fileprivate func sendPublishCommand(_ streamId: String) {
+    fileprivate func sendPublishCommand(_ streamId: String, streamerName: String = "", streamerMeta: String? = nil) {
         if isWebSocketConnected {
-            let jsonString = getHandshakeMessage(streamId: streamId, mode: AntMediaClientMode.publish, token:self.publishToken ?? "");
+            let jsonString = publishMessage(streamer: .init(streamId: streamId, name: streamerName, meta: streamerMeta),
+                                            token:self.publishToken ?? "");
             webSocket?.write(string: jsonString)
             AntMediaClient.printf("Send Publish onConnection message: \(jsonString)")
             //Add 3 seconds delay here and reconnectIfRequires has also 3 seconds delay
@@ -789,7 +890,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 sendJoinConferenceCommand();
             }
             else if let streamId = self.publisherStreamId {
-                sendPublishCommand(streamId)
+                sendPublishCommand(streamId, streamerName: publisher?.name ?? "", streamerMeta: publisher?.meta)
             }
             else if let streamId = self.playerStreamId {
                 sendPlayCommand(streamId)
@@ -812,11 +913,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      `reconnectIfRequires` checks if connection is in the map because if the connection is stopped by the user, it's removed from the map, then there is nothing to do.
      If it's not removed from the map and its state is closed, disconnected or failed it means that is a reconnect scenario is required.
      
-    This method is also called after joining a room to check if it requires to reconnect
+     This method is also called after joining a room to check if it requires to reconnect
      
      */
     private func reconnectIfRequires() {
-       
+        
         if (self.reconnectIfRequiresScheduled) {
             AntMediaClient.printf("ReconnectIfRequires is already scheduled and it will work soon")
             return;
@@ -828,11 +929,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             
             self.reconnectIfRequiresScheduled = false;
             
-            if let streamId = self.publisherStreamId {
+            if let p = self.publisher {
                 //if there is a webRTCClient in the map, it means it's disconnected due to network issue
-                if (self.webRTCClientMap[streamId] != nil)
+                if (self.webRTCClientMap[p.streamId] != nil)
                 {
-                    let iceState = self.webRTCClientMap[streamId]?.getIceConnectionState();
+                    let iceState = self.webRTCClientMap[p.streamId]?.getIceConnectionState();
                     
                     //check the ice state if this method is triggered consequently
                     if ( iceState == RTCIceConnectionState.closed ||
@@ -842,12 +943,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     )
                     {
                         //clean the connection
-                        self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
-                        AntMediaClient.printf("Reconnecting to publish the stream:\(streamId)");
-                        self.publish(streamId:streamId)
+                        self.webRTCClientMap.removeValue(forKey: p.streamId)?.disconnect()
+                        AntMediaClient.printf("Reconnecting to publish the stream:\(p.streamId)");
+                        self.publish(streamId: p.streamId, streamerName: p.name, streamerMeta: p.meta ?? "")
                     }
                     else {
-                        AntMediaClient.printf("Not trying to reconnect to publish the stream:\(streamId) because ice connection state is not disconnected");
+                        AntMediaClient.printf("Not trying to reconnect to publish the stream:\(p.streamId) because ice connection state is not disconnected");
                     }
                 }
             }
@@ -895,7 +996,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     private func onJoined() {
-
+        
     }
     
     
@@ -948,123 +1049,128 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private func onCommand(_ command: String, message: [String: Any]) {
         
         switch command {
-            case "start":
-                //if this is called, it's publisher or initiator in p2p
-                let streamId = message[STREAM_ID] as! String
-                self.webRTCClientMap[streamId]?.createOffer()
-                break
-            case "stop":
-                let streamId = message[STREAM_ID] as! String
-                AntMediaClient.dispatchQueue.async {
-                    self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
-                }
-                break
-            case "takeConfiguration":
-                let streamId = message[STREAM_ID] as! String
-                self.onTakeConfiguration(message: message, streamId: streamId)
-                break
-            case "takeCandidate":
-                let streamId = message[STREAM_ID] as! String
-                self.onTakeCandidate(message: message, streamId: streamId)
-                break
-            case STREAM_INFORMATION_COMMAND:
-                AntMediaClient.printf("stream information command")
-                var streamInformations: [StreamInformation] = [];
-                
-                if let streamInformationArray = message["streamInfo"] as? [Any]
-                {
-                    for result in streamInformationArray
-                    {
-                        if let resultObject = result as? [String:Any]
-                        {
-                            streamInformations.append(StreamInformation(json: resultObject))
-                        }
-                    }
-                }
-                self.delegate?.streamInformation(streamInfo: streamInformations);
-                
-                break
-            case "notification":
-                guard let definition = message["definition"] as? String else {
-                    return
-                }
-                
-                if definition == "joined" {
-                    AntMediaClient.printf("Joined: Let's go")
-                    self.onJoined()
-                }
-                else if definition == "play_started" {
-                    let streamId = message[STREAM_ID] as! String
-                    AntMediaClient.printf("Play started: Let's go")
-                    self.delegate?.playStarted(streamId: streamId)
-                }
-                else if definition == "play_finished" {
-                    AntMediaClient.printf("Playing has finished")
-                    self.streamsInTheRoom.removeAll();
-                    self.delegate?.playFinished(streamId: message[STREAM_ID] as! String)
-                }
-                else if definition == "publish_started" {
-                    let streamId = message[STREAM_ID] as! String
-                    AntMediaClient.printf("Publish started: Let's go")
-                    self.webRTCClientMap[streamId]?.setMaxVideoBps(maxVideoBps: self.maxVideoBps)
-                    self.delegate?.publishStarted(streamId: message[STREAM_ID] as! String)
-                }
-                else if definition == "publish_finished" {
-                    let streamId = message[STREAM_ID] as! String
-                    AntMediaClient.printf("Publish finished: Let's close")
-                    self.delegate?.publishFinished(streamId: streamId)
-                }
-                else if definition == JOINED_ROOM_DEFINITION
-                {
-                    let streamId = message[STREAM_ID] as! String;
-                    let streams = message[STREAMS] as! [String];
-                    self.joinedRoom(streamId: streamId, streams:streams);
-                }
+        case "start":
+            //if this is called, it's publisher or initiator in p2p
+            let streamId = message[STREAM_ID] as! String
+            self.webRTCClientMap[streamId]?.createOffer()
+            break
+        case "stop":
+            let streamId = message[STREAM_ID] as! String
+            AntMediaClient.dispatchQueue.async {
+                self.webRTCClientMap.removeValue(forKey: streamId)?.disconnect()
+            }
+            break
+        case "takeConfiguration":
+            let streamId = message[STREAM_ID] as! String
+            self.onTakeConfiguration(message: message, streamId: streamId)
+            break
+        case "takeCandidate":
+            let streamId = message[STREAM_ID] as! String
+            self.onTakeCandidate(message: message, streamId: streamId)
+            break
+        case STREAM_INFORMATION_COMMAND:
+            AntMediaClient.printf("stream information command")
+            var streamInformations: [StreamInformation] = [];
             
-                break;
-            case ROOM_INFORMATION_COMMAND:
-                if let updatedStreamsInTheRoom = message[STREAMS] as? [String] {
-                   //check that there is a new stream exists
-                    var newStreams:[String] = []
-                    var leftStreams: [String] = []
-                    for stream in updatedStreamsInTheRoom
+            if let streamInformationArray = message["streamInfo"] as? [Any]
+            {
+                for result in streamInformationArray
+                {
+                    if let resultObject = result as? [String:Any]
                     {
-                       // AntMedia.printf("stream in updatestreamInTheRoom \(stream)")
-                        if (!self.streamsInTheRoom.contains(stream)) {
-                            newStreams.append(stream)
-                        }
+                        streamInformations.append(StreamInformation(json: resultObject))
                     }
-                    //check that any stream is left
-                   for stream in self.streamsInTheRoom {
-                       if (!updatedStreamsInTheRoom.contains(stream)) {
-                           leftStreams.append(stream)
-                       }
-                   }
-                    
-                    self.streamsInTheRoom = updatedStreamsInTheRoom
-                    
-                    if (newStreams.count > 0) {
-                        self.delegate?.newStreamsJoined(streams: newStreams)
+                }
+            }
+            self.delegate?.streamInformation(streamInfo: streamInformations);
+            
+            break
+        case "notification":
+            guard let definition = message["definition"] as? String else {
+                return
+            }
+            
+            if definition == "joined" {
+                AntMediaClient.printf("Joined: Let's go")
+                self.onJoined()
+            }
+            else if definition == "play_started" {
+                let streamId = message[STREAM_ID] as! String
+                AntMediaClient.printf("Play started: Let's go")
+                self.delegate?.playStarted(streamId: streamId)
+            }
+            else if definition == "play_finished" {
+                AntMediaClient.printf("Playing has finished")
+                self.streamersInRoom.removeAll();
+                self.delegate?.playFinished(streamId: message[STREAM_ID] as! String)
+            }
+            else if definition == "publish_started" {
+                let streamId = message[STREAM_ID] as! String
+                AntMediaClient.printf("Publish started: Let's go")
+                self.webRTCClientMap[streamId]?.setMaxVideoBps(maxVideoBps: self.maxVideoBps)
+                self.delegate?.publishStarted(streamId: message[STREAM_ID] as! String)
+            }
+            else if definition == "publish_finished" {
+                let streamId = message[STREAM_ID] as! String
+                AntMediaClient.printf("Publish finished: Let's close")
+                self.delegate?.publishFinished(streamId: streamId)
+            }
+            else if definition == JOINED_ROOM_DEFINITION
+            {
+                let streamId = message[STREAM_ID] as! String;
+                let streams = message[STREAMS] as! [String];
+                let streamInfoList = message[STREAM_LIST_IN_ROOM] as? [Any] ?? []
+                
+                self.joinedRoom(streamId: streamId, streams:streams, streamInfoList: streamInfoList);
+            }
+            
+            break;
+        case ROOM_INFORMATION_COMMAND:
+            if let updatedStreamsInTheRoom = message[STREAMS] as? [String], let streameInfoList = (message[STREAM_LIST_IN_ROOM] as? [[String: Any]]) {
+                //check that there is a new stream exists
+                var newStreams:[String] = []
+                var leftStreams: [String] = []
+                
+                for stream in updatedStreamsInTheRoom
+                {
+                    // AntMedia.printf("stream in updatestreamInTheRoom \(stream)")
+                    if (!self.streamsInTheRoom.contains(stream)) {
+                        newStreams.append(stream)
                     }
-                    
-                    if (leftStreams.count > 0) {
-                        self.delegate?.streamsLeft(streams: leftStreams)
+                }
+                //check that any stream is left
+                for stream in self.streamsInTheRoom {
+                    if (!updatedStreamsInTheRoom.contains(stream)) {
+                        leftStreams.append(stream)
                     }
-                            
                 }
                 
-                break;
-            case "error":
-                guard let definition = message["definition"] as? String else {
-                    self.delegate?.clientHasError("An error occured, please try again")
-                    return
+                // TODO: - Need to be reconsider the logic. The problem is name is empty for now
+                self.streamersInRoom = Set(streameInfoList.compactMap({ item in
+                    return .init(streamId: item["streamId"] as! String, name: (item["streamName"] as? String) ?? "", meta: item["metaData"] as? String)
+                }))
+                
+                if (!newStreams.isEmpty) {
+                    self.delegate?.newStreamsJoined(streams: newStreams)
                 }
                 
-                self.delegate?.clientHasError(AntMediaError.localized(definition))
-                break
-            default:
-                AntMediaClient.printf("Unknown message received -> \(message)");
-                break
+                if (!leftStreams.isEmpty) {
+                    self.delegate?.streamsLeft(streams: leftStreams)
+                }
+            }
+            
+            break;
+        case "error":
+            guard let definition = message["definition"] as? String else {
+                self.delegate?.clientHasError("An error occured, please try again")
+                return
+            }
+            
+            self.delegate?.clientHasError(AntMediaError.localized(definition))
+            break
+        default:
+            AntMediaClient.printf("Unknown message received -> \(message)");
+            break
         }
     }
     
@@ -1129,7 +1235,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         (self.webRTCClientMap[self.getPublisherStreamId()]?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(pixelBuffer, rotation: rotation, timeStampNs: timestampNs);
     }
     
-
+    
     public func enableVideoTrack(trackId:String, enabled:Bool){
         if (isWebSocketConnected) {
             
@@ -1176,18 +1282,18 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         for (streamId, webrtcClient) in self.webRTCClientMap {
             webrtcClient.disconnect()
         }
-             
+        
         self.webRTCClientMap.removeAll();
         self.webSocket?.disconnect();
         self.webSocket = nil;
         
+        NotificationCenter.default.removeObserver(AVAudioSession.routeChangeNotification)
     }
-    
 }
 
 extension AntMediaClient: WebRTCClientDelegate {
-
-        
+    
+    
     func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {
         self.delegate?.trackAdded(track: track, stream: stream)
     }
@@ -1239,9 +1345,41 @@ extension AntMediaClient: WebRTCClientDelegate {
         
         let rawJSON = String(decoding: data.data, as: UTF8.self)
         let json = rawJSON.toJSON();
-      
+        
         if let eventType = json?[EVENT_TYPE] {
-            //event happened
+            if showLogAllDataComingFromDataChannel {
+                debugPrint("Data channel received an event \(eventType) - \(json ?? [:])")
+            }
+            let streamId = json?[STREAM_ID] as! String
+            
+            if eventType as? String == UPDATE_STATUS {
+                if let mic = json?[STATUS_MIC] {
+                    self.delegate?.statusChangedMic(streamId: streamId, value: mic as? Bool ?? false)
+                }
+                
+                if let cam = json?[STATUS_CAM] {
+                    self.delegate?.statusChangedCam(streamId: streamId, value: cam as? Bool ?? false)
+                }
+                
+                if let pin = json?[STATUS_PIN] {
+                    self.delegate?.statusChangedPin(streamId: streamId, value: pin as? Bool ?? false)
+                }
+                
+                if let screenShare = json?[STATUS_SCREEN_SHARE] {
+                    self.delegate?.statusChangedShareScreen(streamId: streamId, value: screenShare as? Bool ?? false)
+                }
+                
+                return
+            }
+            
+            if eventType as? String == AUDIO_LEVEL_CHANGED {
+                if let audioLevel = json?[AUDIO_LEVEL] as? Double {
+                    self.delegate?.audioLevelChanged(streamId: streamId, value: audioLevel)
+                }
+                
+                return
+            }
+            
             if let incomingStreamId = json?[STREAM_ID] {
                 self.delegate?.eventHappened(streamId:incomingStreamId as! String , eventType:eventType as! String);
             }
@@ -1257,9 +1395,9 @@ extension AntMediaClient: WebRTCClientDelegate {
 }
 
 extension AntMediaClient: WebSocketDelegate {
-   
-    
-    
+    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
+        
+    }
     
     public func getPingMessage() -> [String: String] {
         return [COMMAND: "ping"]
@@ -1284,7 +1422,7 @@ extension AntMediaClient: WebSocketDelegate {
             AntMediaClient.printf("websocket is disconnected: \(reason) with code: \(code)")
             pingTimer?.invalidate()
             self.websocketDisconnected(message:reason, code:code)
-          
+            
             break;
         case .text(let string):
             //AntMediaClient.printf("Received text: \(string)");
@@ -1305,7 +1443,7 @@ extension AntMediaClient: WebSocketDelegate {
             isWebSocketConnected = false;
             pingTimer?.invalidate()
             webSocket?.disconnect();
-           
+            
             AntMediaClient.printf("Websocket is cancelled");
             break;
         case .error(let error):
@@ -1328,7 +1466,7 @@ extension AntMediaClient: RTCAudioSessionDelegate
     public func audioSessionDidStartPlayOrRecord(_ session: RTCAudioSession) {
         self.delegate?.audioSessionDidStartPlayOrRecord(streamId: self.getStreamId())
     }
-
+    
 }
 
 /*
@@ -1337,13 +1475,13 @@ extension AntMediaClient: RTCAudioSessionDelegate
 extension AntMediaClient: RTCVideoViewDelegate {
     
     private func resizeVideoFrame(bounds: CGRect, size: CGSize, videoView: UIView) {
-    
+        
         let defaultAspectRatio: CGSize = CGSize(width: size.width, height: size.height)
-    
+        
         let videoFrame: CGRect = AVMakeRect(aspectRatio: defaultAspectRatio, insideRect: bounds)
-    
+        
         videoView.bounds = videoFrame
-    
+        
     }
     
     public func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
@@ -1359,10 +1497,55 @@ extension AntMediaClient: RTCVideoViewDelegate {
         {
             bounds = self.remoteContainerBounds ?? nil
         }
-       
+        
         if (bounds != nil)
         {
             resizeVideoFrame(bounds: bounds!, size: size, videoView: (videoView as? UIView)!)
         }
     }
+}
+
+// where key and value is string
+extension Dictionary where Key == String, Value == Any {
+    static func + (left: [String: Any], right: [String: Any]) -> [String: Any] {
+        var result = left
+        right.forEach { (key, value) in
+            result[key] = value
+        }
+        return result
+    }
+}
+
+extension AntMediaClient {
+    public var hasExternalAudioRoutes: Bool {
+        audioPorts.contains { $0.portType == .headphones || $0.portType == .bluetoothA2DP }
+    }
+    
+    public var audioPorts: [AVAudioSessionPortDescription] {
+        AVAudioSession.sharedInstance().currentRoute.outputs
+    }
+    
+    public var canConnectToExternalAudioroute: Bool {
+        hasExternalAudioRoutes
+    }
+    
+    public func registerAudioRouteNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(audioRouteChanged(_:)), name: AVAudioSession.routeChangeNotification, object: nil)
+    }
+    
+    @objc func audioRouteChanged(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let reasonValue = userInfo[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue) else {
+            return
+        }
+
+        audioPorts.forEach { port in
+            audioRouteDelegate?.audioRouteChange(type: port.portType, name: port.portName, reason: reason)
+        }
+    }
+}
+
+public protocol AntMediaAudioRouteDelegate: AnyObject {
+    func audioRouteChange(type: AVAudioSession.Port, name: String, reason: AVAudioSession.RouteChangeReason)
 }

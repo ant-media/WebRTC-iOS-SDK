@@ -76,9 +76,9 @@ class WebRTCClient: NSObject {
             
         WebRTCClient.factory = initFactory();
         
-        let stunServer = Config.defaultStunServer()
+        let stunServers = Config.defaultStunServers()
         let defaultConstraint = Config.createDefaultConstraint()
-        let configuration = Config.createConfiguration(server: stunServer)
+        let configuration = Config.createConfiguration(servers: stunServers)
         
         self.peerConnection = WebRTCClient.factory.peerConnection(with: configuration, constraints: defaultConstraint, delegate: self)
     }
@@ -87,7 +87,9 @@ class WebRTCClient: NSObject {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, streamId: streamId)
     }
+    
     public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, streamId: String) {
+        
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
     }
@@ -136,8 +138,6 @@ class WebRTCClient: NSObject {
     }
     
     public func getStats(handler: @escaping (RTCStatisticsReport) -> Void) {
-        
-        
         self.peerConnection?.statistics(completionHandler: handler);
     }
     
@@ -158,7 +158,7 @@ class WebRTCClient: NSObject {
     }
     
     public func sendData(data: Data, binary: Bool = false) {
-        if (self.dataChannel?.readyState == .open) {
+        if (self.dataChannel?.readyState == .open && self.iceConnectionState != .disconnected && self.iceConnectionState != .failed) {
             let dataBuffer = RTCDataBuffer.init(data: data, isBinary: binary);
             self.dataChannel?.sendData(dataBuffer);
         }
@@ -199,7 +199,7 @@ class WebRTCClient: NSObject {
                                        "command": "takeConfiguration",
                                        "sdp": sdp!.sdp,
                                        "streamId": self.streamId!,
-                                       "token": self.token] as [String : Any]
+                                       "token": self.token ?? ""] as [String : Any]
                     }
                     
                     self.delegate?.sendMessage(answerDict)
@@ -243,7 +243,7 @@ class WebRTCClient: NSObject {
                                       "command": "takeConfiguration",
                                       "sdp": sdp!.sdp,
                                       "streamId": self.streamId!,
-                                      "token": self.token] as [String : Any]
+                                      "token": self.token ?? ""] as [String : Any]
                 }
                 
                 self.delegate?.sendMessage(offerDict)
@@ -262,11 +262,12 @@ class WebRTCClient: NSObject {
             AntMediaClient.printf("Warning: Couldn't create data channel.")
             return nil
         }
+        
         return dataChannel
     }
 
     public func disconnect() {
-        AntMediaClient.printf("disconnecting and releasing resources for \(streamId)")
+        AntMediaClient.printf("disconnecting and releasing resources for \(streamId ?? "")")
         //TODO: how to clear all resources
         
         if let view = self.localVideoView {
@@ -290,7 +291,7 @@ class WebRTCClient: NSObject {
         
         self.peerConnection?.close()
         self.peerConnection = nil;
-        AntMediaClient.printf("disconnected and released resources for \(streamId)")
+        AntMediaClient.printf("disconnected and released resources for \(streamId ?? "")")
     }
     
     public func toggleAudioEnabled() {
@@ -327,7 +328,7 @@ class WebRTCClient: NSObject {
         return iceConnectionState;
     }
     
-    
+    @discardableResult
     private func startCapture() -> Bool {
         
          let camera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
@@ -409,6 +410,7 @@ class WebRTCClient: NSObject {
        
     }
     
+    @discardableResult
     private func addLocalMediaStream() -> Bool {
         
         
@@ -552,10 +554,10 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
         let candidateJson = ["command": "takeCandidate",
                              "type" : "candidate",
-                             "streamId": self.streamId,
+                             "streamId": self.streamId ?? "",
                              "candidate" : candidate.sdp,
                              "label": candidate.sdpMLineIndex,
-                             "id": candidate.sdpMid] as [String : Any]
+                             "id": candidate.sdpMid ?? ""] as [String : Any]
         self.delegate?.sendMessage(candidateJson)
     }
     
