@@ -87,12 +87,9 @@ class WebRTCClient: NSObject {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, streamId: streamId)
     }
-<<<<<<< HEAD
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, multiPeerActive: Bool, enableDataChannel: Bool, streamId: String) {
-=======
     public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, streamId: String) {
->>>>>>> master
+        
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
                   mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
     }
