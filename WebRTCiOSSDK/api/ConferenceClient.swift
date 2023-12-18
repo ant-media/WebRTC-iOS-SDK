@@ -197,7 +197,7 @@ open class ConferenceClient: ConferenceClientProtocol, WebSocketDelegate
         webSocket.write(string: joinRoomMessage.json)
     }
     
-    public func didReceive(event: WebSocketEvent, client: WebSocket) {
+    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
         switch event {
         case .connected(let headers):
             AntMediaClient.printf("websocket is connected: \(headers)")
