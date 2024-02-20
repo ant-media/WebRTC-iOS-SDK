@@ -32,11 +32,13 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
     //keeps which remoteView renders which track according to the index
     var remoteViewTrackMap: [RTCVideoTrack?] = [];
         
-    var publishStream:Bool = false;
-    
     var conferenceClient: AntMediaClient?;
-    var playing = false
             
+    func generateRandomAlphanumericString(length: Int) -> String {
+        let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in characters.randomElement()! })
+    }
+    
     func initRenderer(view: UIView)
     {
         #if arch(arm64)
@@ -71,7 +73,13 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         self.conferenceClient?.delegate = self
         self.conferenceClient?.setWebSocketServerUrl(url: self.clientUrl)
         self.conferenceClient?.setLocalView(container: self.localView)
-        self.conferenceClient?.joinRoom(roomId: roomId)
+        
+        //this publishes stream to the room
+        self.publisherStreamId = generateRandomAlphanumericString(length: 10);
+        self.conferenceClient?.publish(streamId: self.publisherStreamId, token: "", mainTrackId: roomId);
+        
+        //this plays the streams in the room
+        self.conferenceClient?.play(streamId: self.roomId);
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
@@ -79,7 +87,6 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
     }
     
     public func removePlayers() {
-        self.playing = false;
         Run.onMainThread { [self] in
             var i = 0;
             
@@ -101,56 +108,17 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
 
 extension ConferenceViewController: AntMediaClientDelegate
 {
-    public func clientDidDisconnect(_ message: String) {
-        
-        removePlayers();
-        
-    }
-    
     public func clientHasError(_ message: String) {
         
     }
     
-    public func streamIdToPublish(streamId: String) {
-        
-        Run.onMainThread {
-        
-            AntMediaClient.printf("stream id to publish \(streamId)")
-            self.publisherStreamId = streamId;
-           
-            //if you can mute and close the camera, you can do that here
-            //self.conferenceClient?.setAudioTrack(enableTrack: false)
-            //self.conferenceClient?.setVideoTrack(enableTrack: false)
-            
-            
-            self.conferenceClient?.publish(streamId: self.publisherStreamId)
-        }
+    public func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
         
     }
     
-    public func newStreamsJoined(streams: [String]) {
-        for stream in streams {
-            AntMediaClient.printf("New stream in the room: \(stream)")
-        }
-        
-        Run.onMainThread {
-            if (!self.playing) {
-                self.playing = true;
-                self.conferenceClient?.play(streamId: self.roomId);
-                AntMediaClient.printf("Calling play command for stream\(self.roomId)")
-            }
-        }
-        
+    public func clientDidDisconnect(_ message: String) {
+        removePlayers();
     }
-       
-    public func streamsLeft(streams: [String])
-    {
-        for stream in streams {
-            AntMediaClient.printf("Stream(\(stream)) left the room")
-        }
-    }
-    
-    
     public func playStarted(streamId: String) {
         print("play started");
         AntMediaClient.speakerOn();
@@ -241,36 +209,16 @@ extension ConferenceViewController: AntMediaClientDelegate
         removePlayers();
     }
     
-    
-    
     public func publishStarted(streamId: String) {
         AntMediaClient.printf("Publish started for stream:\(streamId)")
     }
     
     public func publishFinished(streamId: String) {
         AntMediaClient.printf("Publish finished for stream:\(streamId)")
-        
-    }
-    
-    public func disconnected(streamId: String) {
-        
-    }
-    
-    public func audioSessionDidStartPlayOrRecord(streamId: String) {
-        
-    }
-    
-    public func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
-        
-    }
-    
-    public func streamInformation(streamInfo: [StreamInformation]) {
-        
     }
     
     public func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
         AntMediaClient.printf("Video size changed to " + String(Int(size.width)) + "x" + String(Int(size.height)) + ". These changes are not handled in Simulator for now")
-        
     }
 }
 

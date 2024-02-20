@@ -137,6 +137,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A8522FE02B832967007BC5A8 /* WebRTC-Sample-AppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WebRTC-Sample-AppDebug.entitlements"; sourceTree = "<group>"; };
 		A8B965F42A06969900D67CA1 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8B965F52A06969900D67CA1 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		A8B965F82A06969900D67CA1 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
@@ -320,6 +321,7 @@
 		A8DAC0042A063AB30007CDE7 /* WebRTC-Sample-App */ = {
 			isa = PBXGroup;
 			children = (
+				A8522FE02B832967007BC5A8 /* WebRTC-Sample-AppDebug.entitlements */,
 				A8B966022A0698EC00D67CA1 /* WebRTC-Sample-App.entitlements */,
 				A8DAC0A22A0672040007CDE7 /* LaunchScreen.storyboard */,
 				A8DAC0402A063BC00007CDE7 /* ConferenceViewController.swift */,
@@ -755,7 +757,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenShare/ScreenShare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ScreenShare;
@@ -767,7 +769,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-App.ScreenShare";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.screen.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -782,7 +784,7 @@
 				CODE_SIGN_ENTITLEMENTS = ScreenShare/ScreenShare.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = ScreenShare/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = ScreenShare;
@@ -794,7 +796,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-App.ScreenShare";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.screen.share;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1027,10 +1029,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "WebRTC-Sample-App/WebRTC-Sample-App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "WebRTC-Sample-App/WebRTC-Sample-AppDebug.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WebRTC-Sample-App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "WebRTC Sample";
@@ -1047,8 +1050,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-App";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1065,9 +1069,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "WebRTC-Sample-App/WebRTC-Sample-App.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WebRTC-Sample-App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "WebRTC Sample";
@@ -1084,8 +1089,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-App";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -1102,11 +1108,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1122,11 +1128,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-AppTests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1141,11 +1147,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1160,11 +1166,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2YK9J8G25K;
+				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.WebRTC-Sample-AppUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
