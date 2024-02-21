@@ -83,7 +83,13 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
-        self.conferenceClient?.leaveFromRoom()
+        //stop playing
+        self.conferenceClient?.stop(streamId: self.roomId);
+        
+        //stop publishing
+        self.conferenceClient?.stop(streamId: self.publisherStreamId);
+
+        
     }
     
     public func removePlayers() {
