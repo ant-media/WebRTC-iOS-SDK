@@ -117,14 +117,22 @@ class VideoViewController: UIViewController {
         
     @IBAction func audioTapped(_ sender: UIButton!) {
         sender.isSelected = !sender.isSelected
-        self.client?.setMicMute(mute: sender.isSelected, completionHandler: { (mute, error) in
-            if (error == nil) {
-                AntMediaClient.printf("Microphone is set to " + (mute ? "muted" : "unmuted"))
-            }
-            else {
-                AntMediaClient.printf("Failed to set microphone status to " + (mute ? "muted" : "unmuted"))
-            }
-        });
+        
+        if (self.client?.getCurrentMode() == .play) {
+            AntMediaClient.printf("It's in play mode and calling to mute/unmute the incoming stream with enableAudioTrack:\(!sender.isSelected) ");
+            //mute/unmute the incoming stream audio
+            self.client?.enableAudioTrack(trackId: self.clientStreamId, enabled: !sender.isSelected);
+        }
+        else {
+            AntMediaClient.printf("It's in publis mode and calling to mute/unmute the local audio to send");
+
+            //mute/unmute the microphone for the publisher
+            self.client?.setAudioTrack(enableTrack: !sender.isSelected);
+        }
+        
+        
+        
+        
     }
     
     @IBAction func videoTapped(_ video: UIButton!) {
