@@ -84,7 +84,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private static let dispatchQueue = DispatchQueue(label: "audio")
     
-    private static let rtcAudioSession =  RTCAudioSession.sharedInstance()
+    static let rtcAudioSession =  RTCAudioSession.sharedInstance()
     
     private var localContainerBounds: CGRect?
     private var remoteContainerBounds: CGRect?
@@ -247,7 +247,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
 
     
     open func start() {
-       
         initPeerConnection(streamId: self.getStreamId(), mode: self.mode, token: self.publishToken ?? (self.playToken ?? ""))
         if (!isWebSocketConnected) {
             connectWebSocket()
@@ -454,6 +453,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 self.webSocket = WebSocket(request: self.getRequest())
                 self.webSocket?.delegate = self
                 self.webSocket?.connect()
+                
                 
             }
             else {
@@ -798,11 +798,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 sendJoinCommand(streamId)
             }
         }
+        
+        self.setupAudioNotifications()
     }
     
     private func websocketDisconnected(message:String, code:UInt16) {
         self.delegate?.clientDidDisconnect(message)
         self.reconnectIfRequires()
+        self.removeAudioNotifications()
     }
     
     /**
@@ -1257,15 +1260,7 @@ extension AntMediaClient: WebRTCClientDelegate {
 }
 
 extension AntMediaClient: WebSocketDelegate {
-   
-    
-    
-    
-    public func getPingMessage() -> [String: String] {
-        return [COMMAND: "ping"]
-    }
-    
-    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocketClient) {
+    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
         switch event {
         case .connected(let headers):
             isWebSocketConnected = true;
@@ -1319,6 +1314,10 @@ extension AntMediaClient: WebSocketDelegate {
             AntMediaClient.printf("Unexpected command received from websocket");
             break;
         }
+    }
+    
+    public func getPingMessage() -> [String: String] {
+        return [COMMAND: "ping"]
     }
 }
 
