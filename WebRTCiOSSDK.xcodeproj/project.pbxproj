@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E216D362BB809C70035C239 /* ClientStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E216D352BB809C70035C239 /* ClientStatistics.swift */; };
+		2E216D3D2BB8239D0035C239 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E216D3C2BB8239D0035C239 /* Dictionary+Extensions.swift */; };
 		2EA8C5312BABD23B00F6C304 /* AntMediaClient+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA8C5302BABD23B00F6C304 /* AntMediaClient+Audio.swift */; };
 		A8B965F62A06969900D67CA1 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B965F52A06969900D67CA1 /* ReplayKit.framework */; };
 		A8B965F92A06969900D67CA1 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B965F82A06969900D67CA1 /* SampleHandler.swift */; };
@@ -138,6 +140,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E216D352BB809C70035C239 /* ClientStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStatistics.swift; sourceTree = "<group>"; };
+		2E216D3C2BB8239D0035C239 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
 		2EA8C5302BABD23B00F6C304 /* AntMediaClient+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AntMediaClient+Audio.swift"; sourceTree = "<group>"; };
 		A8522FE02B832967007BC5A8 /* WebRTC-Sample-AppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WebRTC-Sample-AppDebug.entitlements"; sourceTree = "<group>"; };
 		A8B965F42A06969900D67CA1 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,6 +243,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E216D342BB809B80035C239 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				2E216D352BB809C70035C239 /* ClientStatistics.swift */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		2E216D3B2BB823910035C239 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2E216D3C2BB8239D0035C239 /* Dictionary+Extensions.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		A8B965F72A06969900D67CA1 /* ScreenShare */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +300,8 @@
 		A8DABFCC2A0639D80007CDE7 /* WebRTCiOSSDK */ = {
 			isa = PBXGroup;
 			children = (
+				2E216D3B2BB823910035C239 /* extensions */,
+				2E216D342BB809B80035C239 /* utils */,
 				A8DABFE22A063A020007CDE7 /* api */,
 				A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */,
 			);
@@ -643,7 +665,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2EA8C5312BABD23B00F6C304 /* AntMediaClient+Audio.swift in Sources */,
+				2E216D362BB809C70035C239 /* ClientStatistics.swift in Sources */,
 				A8DABFEF2A063A020007CDE7 /* ConferenceClient.swift in Sources */,
+				2E216D3D2BB8239D0035C239 /* Dictionary+Extensions.swift in Sources */,
 				A8DABFF92A063A020007CDE7 /* String.swift in Sources */,
 				A8DABFF82A063A020007CDE7 /* Dictionary.swift in Sources */,
 				A8DABFF02A063A020007CDE7 /* AntMediaClient.swift in Sources */,

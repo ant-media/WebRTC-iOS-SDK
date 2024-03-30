@@ -29,6 +29,8 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         
     var remoteViews:[RTCVideoRenderer] = []
     
+    var timer: Timer?
+    
     //keeps which remoteView renders which track according to the index
     var remoteViewTrackMap: [RTCVideoTrack?] = [];
         
@@ -82,6 +84,19 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         self.conferenceClient?.play(streamId: self.roomId);
     }
     
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        timer = .scheduledTimer(withTimeInterval: 2, repeats: true, block: { _ in
+            guard let client = self.conferenceClient, client.isDataChannelActive() else {
+                return
+            }
+            
+            client.getStats { statistics in
+                debugPrint("AudioLevel: \(statistics.audioLevel)")
+            }
+        })
+    }
+    
     open override func viewWillDisappear(_ animated: Bool) {
         //stop playing
         self.conferenceClient?.stop(streamId: self.roomId);
@@ -89,7 +104,7 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         //stop publishing
         self.conferenceClient?.stop(streamId: self.publisherStreamId);
 
-        
+        timer?.invalidate()
     }
     
     public func removePlayers() {
