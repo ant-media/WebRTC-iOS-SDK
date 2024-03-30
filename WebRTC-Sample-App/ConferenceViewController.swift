@@ -91,8 +91,8 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
                 return
             }
             
-            client.getStats { statistics in
-                debugPrint("AudioLevel: \(statistics.audioLevel)")
+            client.getStatistics { statistics in
+                // TODO: handle statistics
             }
         })
     }
