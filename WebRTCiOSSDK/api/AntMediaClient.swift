@@ -289,7 +289,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     public func joinRoom(roomId:String, streamId: String = "") {
         self.mainTrackId = roomId;
         self.publisherStreamId = streamId;
-        self.mode = AntMediaClientMode.conference;       
+        self.mode = AntMediaClientMode.conference;
         if (!isWebSocketConnected) {
             connectWebSocket()
         }
@@ -1107,6 +1107,15 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     public func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void, streamId:String = "") {
         self.webRTCClientMap[self.getStreamId(streamId)]?.getStats(handler: completionHandler)
+    }
+    
+    public func getStatistics(
+        for streamId: String = "",
+        completion: @escaping (ClientStatistics) -> Void
+    ) {
+        getStats(completionHandler: { report in
+            completion(.init(items: report.statistics.extractRTCStatItems()))
+        }, streamId: streamId)
     }
     
     public func deliverExternalAudio(sampleBuffer: CMSampleBuffer)
