@@ -205,16 +205,20 @@ class WebRTCClient: NSObject {
                     var answerDict = [String: Any]()
                     
                     if (self.token.isEmpty) {
-                        answerDict =  ["type": "answer",
-                                       "command": "takeConfiguration",
-                                       "sdp": sdp!.sdp,
-                                       "streamId": self.streamId!] as [String : Any]
+                        answerDict =  [
+                            "type": "answer",
+                            "command": "takeConfiguration",
+                            "sdp": sdp!.sdp,
+                            "streamId": self.streamId!
+                        ] as [String : Any]
                     } else {
-                        answerDict =  ["type": "answer",
-                                       "command": "takeConfiguration",
-                                       "sdp": sdp!.sdp,
-                                       "streamId": self.streamId!,
-                                       "token": self.token] as [String : Any]
+                        answerDict =  [
+                            "type": "answer",
+                            "command": "takeConfiguration",
+                            "sdp": sdp!.sdp,
+                            "streamId": self.streamId!,
+                            "token": self.token ?? ""
+                        ] as [String : Any]
                     }
                     
                     self.delegate?.sendMessage(answerDict)

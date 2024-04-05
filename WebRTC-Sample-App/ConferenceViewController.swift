@@ -232,6 +232,20 @@ extension ConferenceViewController: AntMediaClientDelegate
     
     public func publishStarted(streamId: String) {
         AntMediaClient.printf("Publish started for stream:\(streamId)")
+        
+        conferenceClient?.getBroadcastObject(forStreamId: self.roomId)
+    }
+    
+    public func eventHappened(streamId: String, eventType: String, payload: [String : Any]?) {
+        debugPrint("Event: \(streamId) - \(eventType) \(payload ?? [:])")
+        if eventType == "TRACK_LIST_UPDATED" {
+            conferenceClient?.getBroadcastObject(forStreamId: streamId)
+        }
+    }
+    
+    public func onLoadBroadcastObject(streamId: String, message: [String : Any]) {
+        debugPrint(streamId)
+        debugPrint(message)
     }
     
     public func publishFinished(streamId: String) {
