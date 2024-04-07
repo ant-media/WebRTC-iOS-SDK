@@ -105,6 +105,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private var useExternalCameraSource: Bool = false
     
     private var isWebSocketConnected: Bool = false;
+    private var isWebSocketConnecting: Bool = false;
     
     private var externalAudioEnabled: Bool = false;
     
@@ -447,7 +448,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         AntMediaClient.dispatchQueue.async
         {
             AntMediaClient.printf("Connect websocket to \(self.getWsUrl())")
-            if (!self.isWebSocketConnected) { //provides backward compatibility
+            if (!self.isWebSocketConnected && !self.isWebSocketConnecting) { //provides backward compatibility
+                self.isWebSocketConnecting = true;
                 self.streamsInTheRoom.removeAll();
                 AntMediaClient.printf("Will connect to: \(self.getWsUrl()) for stream: \(self.getStreamId())")
                 
@@ -457,7 +459,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 
             }
             else {
-                AntMediaClient.printf("WebSocket is already connected to: \(self.getWsUrl())")
+                if (self.isWebSocketConnected) {
+                    AntMediaClient.printf("WebSocket is already connected to: \(self.getWsUrl())")
+                }
+                if (self.isWebSocketConnecting) {
+                    AntMediaClient.printf("WebSocket is connecting to: \(self.getWsUrl())")
+                }
             }
         }
     }
@@ -788,13 +795,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             if mode == AntMediaClientMode.conference {
                 sendJoinConferenceCommand();
             }
-            else if let streamId = self.publisherStreamId {
+            //multiple modes can be active at a time so they are "if" statement
+            if let streamId = self.publisherStreamId {
                 sendPublishCommand(streamId)
             }
-            else if let streamId = self.playerStreamId {
+            if let streamId = self.playerStreamId {
                 sendPlayCommand(streamId)
             }
-            else if let streamId = self.p2pStreamId {
+            if let streamId = self.p2pStreamId {
                 sendJoinCommand(streamId)
             }
         }
@@ -1269,6 +1277,7 @@ extension AntMediaClient: WebSocketDelegate {
         switch event {
         case .connected(let headers):
             isWebSocketConnected = true;
+            isWebSocketConnecting = false;
             AntMediaClient.printf("websocket is connected: \(headers)")
             self.websocketConnected()
             self.delegate?.clientDidConnect(self)
@@ -1281,6 +1290,7 @@ extension AntMediaClient: WebSocketDelegate {
             break;
         case .disconnected(let reason, let code):
             isWebSocketConnected = false;
+            isWebSocketConnecting = false;
             AntMediaClient.printf("websocket is disconnected: \(reason) with code: \(code)")
             pingTimer?.invalidate()
             self.websocketDisconnected(message:reason, code:code)
@@ -1303,6 +1313,7 @@ extension AntMediaClient: WebSocketDelegate {
             break
         case .cancelled:
             isWebSocketConnected = false;
+            isWebSocketConnecting = false;
             pingTimer?.invalidate()
             webSocket?.disconnect();
            
@@ -1310,6 +1321,7 @@ extension AntMediaClient: WebSocketDelegate {
             break;
         case .error(let error):
             isWebSocketConnected = false;
+            isWebSocketConnecting = false;
             pingTimer?.invalidate()
             webSocket?.disconnect();
             self.websocketDisconnected(message: String(describing: error), code:0);
