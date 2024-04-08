@@ -1305,7 +1305,7 @@ extension AntMediaClient: WebRTCClientDelegate {
 }
 
 extension AntMediaClient: WebSocketDelegate {
-    public func didReceive(event: Starscream.WebSocketEvent, client: Starscream.WebSocket) {
+    public func didReceive(event: Starscream.WebSocketEvent, client: any Starscream.WebSocketClient) {
         switch event {
         case .connected(let headers):
             isWebSocketConnected = true;
