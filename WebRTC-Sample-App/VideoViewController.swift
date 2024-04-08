@@ -83,7 +83,7 @@ class VideoViewController: UIViewController {
             self.client!.setCameraPosition(position: .front)
             self.client!.setTargetResolution(width: 640, height: 360)
             self.client!.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
-            
+
             //calling this method is not necessary. It just initializes the connection and opens the camera
             self.client!.initPeerConnection(streamId: self.clientStreamId);
             

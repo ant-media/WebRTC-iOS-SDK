@@ -60,6 +60,9 @@ class WebRTCClient: NSObject {
      State of the connection
      */
     var iceConnectionState:RTCIceConnectionState = .new;
+    
+    private var lastReport: RTCStatisticsReport?
+    private var isGeneratingReport: Bool = false
         
     public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, externalAudio:Bool) {
         super.init()
@@ -136,9 +139,21 @@ class WebRTCClient: NSObject {
     }
     
     public func getStats(handler: @escaping (RTCStatisticsReport) -> Void) {
+        if isGeneratingReport, let lastReport {
+            handler(lastReport)
+            return
+        }
         
-        
-        self.peerConnection?.statistics(completionHandler: handler);
+        isGeneratingReport = true
+        self.peerConnection?.statistics(completionHandler: { [weak self] report in
+            guard let self else {
+                return
+            }
+            
+            self.lastReport = report
+            self.isGeneratingReport = false
+            handler(report)
+        });
     }
     
     public func setStreamId(_ streamId: String) {
@@ -190,16 +205,20 @@ class WebRTCClient: NSObject {
                     var answerDict = [String: Any]()
                     
                     if (self.token.isEmpty) {
-                        answerDict =  ["type": "answer",
-                                       "command": "takeConfiguration",
-                                       "sdp": sdp!.sdp,
-                                       "streamId": self.streamId!] as [String : Any]
+                        answerDict =  [
+                            "type": "answer",
+                            "command": "takeConfiguration",
+                            "sdp": sdp!.sdp,
+                            "streamId": self.streamId!
+                        ] as [String : Any]
                     } else {
-                        answerDict =  ["type": "answer",
-                                       "command": "takeConfiguration",
-                                       "sdp": sdp!.sdp,
-                                       "streamId": self.streamId!,
-                                       "token": self.token] as [String : Any]
+                        answerDict =  [
+                            "type": "answer",
+                            "command": "takeConfiguration",
+                            "sdp": sdp!.sdp,
+                            "streamId": self.streamId!,
+                            "token": self.token ?? ""
+                        ] as [String : Any]
                     }
                     
                     self.delegate?.sendMessage(answerDict)
