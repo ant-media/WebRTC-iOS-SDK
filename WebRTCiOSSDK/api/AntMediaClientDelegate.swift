@@ -120,7 +120,10 @@ public protocol AntMediaClientDelegate: AnyObject {
      - streamId: The id of the stream that the event happened
      - evenType: The type of the event
      */
+    @available(*, deprecated, message: "Will be removed soon")
     func eventHappened(streamId:String, eventType:String);
+    
+    func eventHappened(streamId:String, eventType:String, payload: [String:Any]?)
     
     /**
      It's called when a new track is added to the stream. It works both on multirack streaming and conferencing
@@ -153,16 +156,25 @@ public protocol AntMediaClientDelegate: AnyObject {
     @available(*, deprecated, message: "No need to use. New streams are removed automatically. trackRemoved is called automatically")
     func streamsLeft(streams: [String]);
     
+    func onLoadBroadcastObject(streamId: String, message: [String: Any])
 }
 
 public extension AntMediaClientDelegate {
+    func onLoadBroadcastObject(streamId: String, message: [String: Any]) {
+        
+    }
+    
+    func eventHappened(streamId:String, eventType:String, payload: [String:Any]?) {
+        AntMediaClient.printf("\(streamId) \(eventType) with")
+        AntMediaClient.printf(payload ?? [:])
+    }
     
     func clientDidConnect(_ client: AntMediaClient) {
         AntMediaClient.printf("Websocket is connected for \(client.getStreamId())")
     }
         
     func eventHappened(streamId: String, eventType: String) {
-        AntMediaClient.printf("Event: \(eventType) happened in stream: \(streamId) ")
+        // Deprecated
     }
     
     func clientDidDisconnect(_ message: String) {
