@@ -40,7 +40,7 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     override func broadcastStarted(withSetupInfo setupInfo: [String : NSObject]?) {
         // User has requested to start the broadcast. Setup info from the UI extension can be supplied but optional.
         
-        let sharedDefault = UserDefaults(suiteName: "group.com.antmedia.ios.sdk")!
+        let sharedDefault = UserDefaults(suiteName: "group.io.antmedia.ios.webrtc.sample")!
 
         streamId = sharedDefault.object(forKey: "streamId") as! String;
         let url = sharedDefault.object(forKey: "url");

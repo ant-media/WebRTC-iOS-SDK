@@ -2,7 +2,6 @@
 //  ViewController.swift
 //  AntMediaReferenceApplication
 //
-//  Created by Oğulcan on 11.06.2018.
 //  Copyright © 2018 AntMedia. All rights reserved.
 //
 
@@ -28,7 +27,8 @@ class WelcomeViewController: UIViewController {
             if let server = Defaults[.server] {
                 if (server.count > 0) {
                     self.serverButton.setTitle("Server ip: \(server)", for: .normal)
-                  
+                    self.sharedDefault.set(server, forKey:"url");
+
                 }
             }
         }
@@ -39,7 +39,7 @@ class WelcomeViewController: UIViewController {
     var clientToken: String!
     var isConnected = false
     var tapGesture: UITapGestureRecognizer!
-    let sharedDefault = UserDefaults(suiteName: "group.com.antmedia.ios.sdk")!
+    let sharedDefault = UserDefaults(suiteName: "group.io.antmedia.ios.webrtc.sample")!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,6 +64,7 @@ class WelcomeViewController: UIViewController {
 
         self.roomField.text = "stream1"
         sharedDefault.set(self.roomField.text , forKey: "streamId")
+        
     }
     
     @IBAction func connectButton(_ sender: UIButton ) {
