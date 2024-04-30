@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E216D362BB809C70035C239 /* ClientStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E216D352BB809C70035C239 /* ClientStatistics.swift */; };
 		2E216D3D2BB8239D0035C239 /* Dictionary+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E216D3C2BB8239D0035C239 /* Dictionary+Extensions.swift */; };
+		2E2350892BE11B000091FEA9 /* NetworkQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E2350882BE11B000091FEA9 /* NetworkQuality.swift */; };
 		2EA8C5312BABD23B00F6C304 /* AntMediaClient+Audio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA8C5302BABD23B00F6C304 /* AntMediaClient+Audio.swift */; };
 		A8B965F62A06969900D67CA1 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B965F52A06969900D67CA1 /* ReplayKit.framework */; };
 		A8B965F92A06969900D67CA1 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B965F82A06969900D67CA1 /* SampleHandler.swift */; };
@@ -142,6 +143,7 @@
 /* Begin PBXFileReference section */
 		2E216D352BB809C70035C239 /* ClientStatistics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientStatistics.swift; sourceTree = "<group>"; };
 		2E216D3C2BB8239D0035C239 /* Dictionary+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Extensions.swift"; sourceTree = "<group>"; };
+		2E2350882BE11B000091FEA9 /* NetworkQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkQuality.swift; sourceTree = "<group>"; };
 		2EA8C5302BABD23B00F6C304 /* AntMediaClient+Audio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AntMediaClient+Audio.swift"; sourceTree = "<group>"; };
 		A8522FE02B832967007BC5A8 /* WebRTC-Sample-AppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WebRTC-Sample-AppDebug.entitlements"; sourceTree = "<group>"; };
 		A8B965F42A06969900D67CA1 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,6 +341,7 @@
 				A8DABFEC2A063A020007CDE7 /* WebRTCClient.swift */,
 				A8DABFED2A063A020007CDE7 /* Dictionary.swift */,
 				A8DABFEE2A063A020007CDE7 /* String.swift */,
+				2E2350882BE11B000091FEA9 /* NetworkQuality.swift */,
 			);
 			path = webrtc;
 			sourceTree = "<group>";
@@ -673,6 +676,7 @@
 				A8DABFF02A063A020007CDE7 /* AntMediaClient.swift in Sources */,
 				A8DABFF42A063A020007CDE7 /* RTCCustomFrameCapturer.swift in Sources */,
 				A8DABFF52A063A020007CDE7 /* Config.swift in Sources */,
+				2E2350892BE11B000091FEA9 /* NetworkQuality.swift in Sources */,
 				A8DABFF12A063A020007CDE7 /* AntMediaError.swift in Sources */,
 				A8DABFF72A063A020007CDE7 /* WebRTCClient.swift in Sources */,
 				A8DABFF32A063A020007CDE7 /* AntMediaClientDelegate.swift in Sources */,

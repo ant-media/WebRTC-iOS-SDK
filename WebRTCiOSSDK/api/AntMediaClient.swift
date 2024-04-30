@@ -1131,6 +1131,21 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
+    /**
+     * Degradation preference in case of CPU adaptation or constrained bandwidth.
+     * If nil, implementation default degradation preference will be used.
+     */
+    public func setDegregationPreferences(_ degradationPreference: RTCDegradationPreference, streamId: String? = nil) {
+        let rtc = self.webRTCClientMap[streamId ?? self.getPublisherStreamId()]
+        
+        guard let params = rtc?.videoSender?.parameters else {
+            return
+        }
+        
+        params.degradationPreference = degradationPreference.rawValue
+        rtc?.videoSender?.parameters = params
+    }
+    
     public func disconnect() {
         for (streamId, webrtcClient) in self.webRTCClientMap {
             webrtcClient.disconnect()

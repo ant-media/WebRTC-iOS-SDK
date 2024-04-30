@@ -346,7 +346,7 @@ class WebRTCClient: NSObject {
         return iceConnectionState;
     }
     
-    
+    @discardableResult
     private func startCapture() -> Bool {
         
          let camera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
@@ -379,9 +379,11 @@ class WebRTCClient: NSObject {
                 
                 let cameraVideoCapturer = self.videoCapturer as? RTCCameraVideoCapturer;
                 
-                cameraVideoCapturer?.startCapture(with: camera!,
-                                                  format: selectedFormat!,
-                                                  fps: Int(fps))
+                cameraVideoCapturer?.startCapture(
+                    with: camera!,
+                    format: selectedFormat!,
+                    fps: Int(fps)
+                )
                 
                 return true
             }
@@ -394,7 +396,6 @@ class WebRTCClient: NSObject {
         }
     
         return false;
-        
     }
     
     private func createVideoTrack() -> RTCVideoTrack?  {
@@ -403,11 +404,26 @@ class WebRTCClient: NSObject {
         {
             //try with screencast video source
             let videoSource = WebRTCClient.factory.videoSource(forScreenCast: true)
-            self.videoCapturer = RTCCustomFrameCapturer.init(delegate: videoSource, height: targetHeight, externalCapture: externalVideoCapture, videoEnabled: videoEnabled, audioEnabled: externalAudio, fps:self.cameraSourceFPS);
+            self.videoCapturer = RTCCustomFrameCapturer.init(
+                delegate: videoSource,
+                height: targetHeight,
+                externalCapture: externalVideoCapture,
+                videoEnabled: videoEnabled,
+                audioEnabled: externalAudio,
+                fps:self.cameraSourceFPS
+            );
             
-            (self.videoCapturer as? RTCCustomFrameCapturer)?.setWebRTCClient(webRTCClient: self);
-            (self.videoCapturer as? RTCCustomFrameCapturer)?.startCapture()
-            let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
+            (self.videoCapturer as? RTCCustomFrameCapturer)?
+                .setWebRTCClient(webRTCClient: self);
+            
+            (self.videoCapturer as? RTCCustomFrameCapturer)?
+                .startCapture()
+            
+            let videoTrack = WebRTCClient.factory.videoTrack(
+                with: videoSource,
+                trackId: "video0"
+            )
+            
             return videoTrack
         }
         else {
@@ -421,7 +437,10 @@ class WebRTCClient: NSObject {
                 return nil;
             }
             #endif
-            let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
+            let videoTrack = WebRTCClient.factory.videoTrack(
+                with: videoSource,
+                trackId: "video0"
+            )
             return videoTrack
         }
         
@@ -435,7 +454,7 @@ class WebRTCClient: NSObject {
         if (self.videoEnabled)
         {
             self.localVideoTrack = createVideoTrack();
-
+            
             self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
         }
             
@@ -606,4 +625,11 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     func peerConnection(_ peerConnection: RTCPeerConnection, didRemove candidates: [RTCIceCandidate]) {
         //AntMediaClient.printf("---> didRemove")
     }
+}
+
+public enum RTCDegradationPreference: NSNumber {
+    case disabled = 0
+    case maintainFramerate = 1
+    case maintainResolution = 2
+    case balanced = 3
 }
