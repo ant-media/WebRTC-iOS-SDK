@@ -79,7 +79,14 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         self.conferenceClient?.publish(streamId: self.publisherStreamId, token: "", mainTrackId: roomId);
         
         //this plays the streams in the room
-        self.conferenceClient?.play(streamId: self.roomId);
+        
+        //self.conferenceClient?.play(streamId: self.roomId);
+        
+        //In order to make the play consistent, we've moved this method to the publish_started callback below
+        //because if this is the first user and second user join the call immediately after this user,
+        //it takes up to 8 seconds to play the stream. Because it thinks there is no user in the room,
+        //it will try to play again after timeout(5 secs) and it may take about 2-3 seconds to start play
+        
     }
     
     open override func viewWillDisappear(_ animated: Bool) {
@@ -217,6 +224,9 @@ extension ConferenceViewController: AntMediaClientDelegate
     
     public func publishStarted(streamId: String) {
         AntMediaClient.printf("Publish started for stream:\(streamId)")
+        
+        //this plays the streams in the room
+        self.conferenceClient?.play(streamId: self.roomId);
     }
     
     public func publishFinished(streamId: String) {
