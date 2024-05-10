@@ -58,16 +58,33 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             return;
             
         }
+        
+        let width = Int32(CVPixelBufferGetWidth(pixelBuffer))
+        let height = Int32(CVPixelBufferGetHeight(pixelBuffer))
+        
+        var scaledWidth = (width * Int32(self.targetHeight)) / height;
+        if (scaledWidth % 2 == 1) {
+            scaledWidth+=1;
+        }
+        
         let rtcPixelBuffer = RTCCVPixelBuffer(
-            pixelBuffer: pixelBuffer)
-                
-        let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer,
-                                          
-                                          rotation: rotation, timeStampNs: Int64(timeStampNs))
+            pixelBuffer: pixelBuffer,
+            adaptedWidth:scaledWidth,
+            adaptedHeight: Int32(self.targetHeight),
+            cropWidth: width,
+            cropHeight: height,
+            cropX: 0,
+            cropY: 0)
+        
+        let rtcVideoFrame = RTCVideoFrame(
+            buffer: rtcPixelBuffer,
+            rotation: rotation, 
+            timeStampNs: Int64(timeStampNs)
+        )
         
         self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
+        lastSentFrameTimeStampNanoSeconds = Int64(timeStampNs);
         lastSentFrameTimeStampNanoSeconds = timeStampNs;
-        
     }
     
     public func capture(_ sampleBuffer: CMSampleBuffer, externalRotation:Int = -1) {
