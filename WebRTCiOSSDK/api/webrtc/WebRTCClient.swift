@@ -449,13 +449,9 @@ class WebRTCClient: NSObject {
     
     private func addLocalMediaStream() -> Bool {
         
-        
         AntMediaClient.printf("Add local media streams")
-        if (self.videoEnabled)
-        {
-            self.localVideoTrack = createVideoTrack();
-            
-            self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
+        if (self.videoEnabled) {
+            setupVideoSender()
         }
             
         let audioSource = WebRTCClient.factory.audioSource(with: Config.createTestConstraints())
@@ -468,6 +464,18 @@ class WebRTCClient: NSObject {
         }
         self.delegate?.addLocalStream(streamId: self.streamId)
         return true
+    }
+    
+    private func setupVideoSender() {
+        self.localVideoTrack = createVideoTrack();
+        
+        self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
+
+        if let degregation = AntMediaPublisherConfig.shared.currentDegregation,
+           let params = videoSender?.parameters {
+            params.degradationPreference = degregation.rawValue
+            videoSender?.parameters = params
+        }
     }
     
     public func switchCamera() {

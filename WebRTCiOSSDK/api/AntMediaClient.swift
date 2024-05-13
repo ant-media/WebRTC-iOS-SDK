@@ -119,7 +119,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     var disableTrackId:String?
     
-    
     var reconnectIfRequiresScheduled: Bool = false;
     
     struct HandshakeMessage:Codable {
@@ -1135,7 +1134,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
      * Degradation preference in case of CPU adaptation or constrained bandwidth.
      * If nil, implementation default degradation preference will be used.
      */
-    public func setDegregationPreferences(_ degradationPreference: RTCDegradationPreference, streamId: String? = nil) {
+    public func setDegregationPreferences(
+        _ degradationPreference: RTCDegradationPreference,
+        streamId: String? = nil
+    ) {
+        AntMediaPublisherConfig.shared.currentDegregation = degradationPreference
+        
         let rtc = self.webRTCClientMap[streamId ?? self.getPublisherStreamId()]
         
         guard let params = rtc?.videoSender?.parameters else {
