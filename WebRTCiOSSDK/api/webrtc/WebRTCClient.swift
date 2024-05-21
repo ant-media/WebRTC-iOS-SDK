@@ -60,6 +60,8 @@ class WebRTCClient: NSObject {
      State of the connection
      */
     var iceConnectionState:RTCIceConnectionState = .new;
+    
+    private var degradationPreference:RTCDegradationPreference = .maintainResolution;
         
     public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, externalAudio:Bool) {
         super.init()
@@ -405,9 +407,8 @@ class WebRTCClient: NSObject {
             let videoTrack = WebRTCClient.factory.videoTrack(with: videoSource, trackId: "video0")
             return videoTrack
         }
-        
-       
     }
+    
     
     private func addLocalMediaStream() -> Bool {
         
@@ -418,6 +419,15 @@ class WebRTCClient: NSObject {
             self.localVideoTrack = createVideoTrack();
 
             self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
+            
+            if let params = videoSender?.parameters 
+            {
+                params.degradationPreference = (self.degradationPreference.rawValue) as NSNumber
+                videoSender?.parameters = params
+            }
+            else {
+                AntMediaClient.printf("DegradationPreference cannot be set");
+            }
         }
             
         let audioSource = WebRTCClient.factory.audioSource(with: Config.createTestConstraints())
@@ -430,6 +440,10 @@ class WebRTCClient: NSObject {
         }
         self.delegate?.addLocalStream(streamId: self.streamId)
         return true
+    }
+    
+    public func setDegradationPreference(degradationPreference:RTCDegradationPreference) {
+        self.degradationPreference = degradationPreference
     }
     
     public func switchCamera() {

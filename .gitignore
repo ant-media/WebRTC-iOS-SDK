@@ -4,3 +4,4 @@ Podfile.lock
 Release-iphoneos.xcarchive
 Release-iphonesimulator.xcarchive
 Release*
+Package.resolved
