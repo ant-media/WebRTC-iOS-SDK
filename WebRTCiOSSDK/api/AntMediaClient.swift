@@ -116,10 +116,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var cameraSourceFPS: Int = 30;
     
+    /**
+    Degradation preference when publishing streams. By default its values is maintainResolution because when resolution changes HLS playback does not play in safari
+    */
+    private var degradationPreference: RTCDegradationPreference = RTCDegradationPreference.maintainResolution;
+    
     var pingTimer: Timer?
     
     var disableTrackId:String?
-    
     
     var reconnectIfRequiresScheduled: Bool = false;
         
@@ -533,6 +537,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: mode != .unspecified ? mode : self.mode , cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id);
             
             self.webRTCClientMap[id]?.setToken(token)
+            self.webRTCClientMap[id]?.setDegradationPreference(degradationPreference: self.degradationPreference);
             
             AntMediaClient.rtcAudioSession.add(self);
         }
@@ -1178,6 +1183,19 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         else {
             AntMediaClient.printf("Websocket is not connected to enableTRack for track: \(trackId) in stream: \(self.playerStreamId)")
         }
+    }
+    
+    public func setDegradationPreference(_ degradationPreference: RTCDegradationPreference) 
+    {
+       self.degradationPreference = degradationPreference;
+       let rtc = self.webRTCClientMap[self.getPublisherStreamId()]
+
+       guard let params = rtc?.videoSender?.parameters else {
+           return
+       }
+
+       params.degradationPreference = (degradationPreference.rawValue) as NSNumber
+       rtc?.videoSender?.parameters = params
     }
     
     public func disconnect() {

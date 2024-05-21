@@ -346,6 +346,11 @@ public protocol AntMediaClientProtocol {
     func join(streamId:String)
     
     /**
+    Set the degradation prefernece in publishing streams. It can be called before the stream starts or while it's streaming.
+     */
+    func setDegradationPreference(_ degradationPreference: RTCDegradationPreference);
+    
+    /**
       Disconnects  websocket connection
      */
     func disconnect();
