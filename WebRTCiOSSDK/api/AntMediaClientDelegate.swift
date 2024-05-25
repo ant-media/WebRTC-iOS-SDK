@@ -120,7 +120,17 @@ public protocol AntMediaClientDelegate: AnyObject {
      - streamId: The id of the stream that the event happened
      - evenType: The type of the event
      */
+    @available(*, deprecated, message: "Will be removed soon. Use eventHappened(streamId, eventType, payload)")
     func eventHappened(streamId:String, eventType:String);
+
+    /**
+     It's called when there is an event happen such microphone is muted or unmuted for the specific streamId
+    - Parameters
+     - streamId: The id of the stream that the event happened
+     - evenType: The type of the event
+     - payload: The payload of the event
+     */
+    func eventHappened(streamId:String, eventType:String, payload: [String:Any]?)
     
     /**
      It's called when a new track is added to the stream. It works both on multirack streaming and conferencing
@@ -131,6 +141,11 @@ public protocol AntMediaClientDelegate: AnyObject {
      It's called when a tack is removed. It works both on multitrack streaming and conferencing
      */
     func trackRemoved(track:RTCMediaStreamTrack)
+    
+    /**
+     It's called when server responses to getBroadcastObject method in AntMediaClient.
+     */
+    func onLoadBroadcastObject(streamId: String, message: [String: Any])
     
     /**
      It's called after join to the room.
@@ -234,6 +249,15 @@ public extension AntMediaClientDelegate {
         for stream in streams {
             AntMediaClient.printf("Stream: \(stream) left from the room")
         }
+    }
+    
+    func onLoadBroadcastObject(streamId: String, message: [String: Any]) {
+        AntMediaClient.printf("onLoadBroadcastObject is called for \(streamId) and incoming response: \(message)")
+    }
+    
+    func eventHappened(streamId:String, eventType:String, payload: [String:Any]?) {
+        AntMediaClient.printf("\(streamId) \(eventType) with")
+        AntMediaClient.printf(payload?.json ?? "")
     }
     
 }

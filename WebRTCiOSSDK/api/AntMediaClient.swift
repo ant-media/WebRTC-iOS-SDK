@@ -1033,6 +1033,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     let streams = message[STREAMS] as! [String];
                     self.joinedRoom(streamId: streamId, streams:streams);
                 }
+                else if definition == BROADCAST_OBJECT_NOTIFICATION { // broadcastObject
+                   let broadcastString = message["broadcast"] as! String
+                   let broadcastObject = broadcastString.toJSON()
+                   self.delegate?.onLoadBroadcastObject(
+                       streamId: message[STREAM_ID] as! String,
+                       message: broadcastObject ?? [:]
+                   )
+               }
             
                 break;
             case ROOM_INFORMATION_COMMAND:
@@ -1209,6 +1217,25 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
     }
     
+    func sendCommand(command: String, streamId: String) {
+        let command =  [
+            COMMAND: command,
+            STREAM_ID: streamId
+        ].json;
+
+        webSocket?.write(string: command)
+    }
+    
+    public func getBroadcastObject(forStreamId id: String)
+    {
+        AntMediaClient.printf("GetBroadcastObject for \(id)")
+
+        sendCommand(
+            command: GET_BROADCAST_OBJECT_COMMAND,
+            streamId: id
+        )
+    }
+    
 }
 
 extension AntMediaClient: WebRTCClientDelegate {
@@ -1270,6 +1297,18 @@ extension AntMediaClient: WebRTCClientDelegate {
             //event happened
             if let incomingStreamId = json?[STREAM_ID] {
                 self.delegate?.eventHappened(streamId:incomingStreamId as! String , eventType:eventType as! String);
+                
+                self.delegate?.eventHappened(
+                                    streamId: incomingStreamId as! String,
+                                    eventType: eventType as! String
+                                )
+
+                self.delegate?.eventHappened(
+                    streamId: incomingStreamId as! String,
+                    eventType: eventType as! String,
+                    payload: json
+                )
+                
             }
             else {
                 AntMediaClient.printf("Incoming message does not have streamId:\(json)")
@@ -1279,6 +1318,8 @@ extension AntMediaClient: WebRTCClientDelegate {
             self.delegate?.dataReceivedFromDataChannel(streamId: streamId, data: data.data, binary: data.isBinary);
         }
     }
+    
+    
     
 }
 

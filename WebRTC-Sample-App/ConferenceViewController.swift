@@ -224,9 +224,12 @@ extension ConferenceViewController: AntMediaClientDelegate
     
     public func publishStarted(streamId: String) {
         AntMediaClient.printf("Publish started for stream:\(streamId)")
-        
+                
         //this plays the streams in the room
         self.conferenceClient?.play(streamId: self.roomId);
+        
+        conferenceClient?.getBroadcastObject(forStreamId: self.roomId)
+
     }
     
     public func publishFinished(streamId: String) {
@@ -235,6 +238,20 @@ extension ConferenceViewController: AntMediaClientDelegate
     
     public func videoView(_ videoView: RTCVideoRenderer, didChangeVideoSize size: CGSize) {
         AntMediaClient.printf("Video size changed to " + String(Int(size.width)) + "x" + String(Int(size.height)) + ". These changes are not handled in Simulator for now")
+    }
+    
+    public func onLoadBroadcastObject(streamId: String, message: [String : Any]) {
+           debugPrint(streamId)
+           debugPrint(message)
+    }
+    
+    public func eventHappened(streamId: String, eventType: String, payload: [String : Any]?) 
+    {
+        debugPrint("Event: \(streamId) - \(eventType) \(payload ?? [:])")
+        
+        if eventType == EVENT_TYPE_TRACK_LIST_UPDATED {
+            conferenceClient?.getBroadcastObject(forStreamId: streamId)
+        }
     }
 }
 

@@ -34,6 +34,9 @@ let EVENT_TYPE_MIC_MUTED = "MIC_MUTED"
 let EVENT_TYPE_MIC_UNMUTED = "MIC_UNMUTED";
 let EVENT_TYPE_CAM_TURNED_OFF = "CAM_TURNED_OFF";
 let EVENT_TYPE_CAM_TURNED_ON = "CAM_TURNED_ON";
+let GET_BROADCAST_OBJECT_COMMAND = "getBroadcastObject"
+let BROADCAST_OBJECT_NOTIFICATION = "broadcastObject"
+public let EVENT_TYPE_TRACK_LIST_UPDATED = "TRACK_LIST_UPDATED"
 
 let ENABLE_TRACK_COMMAND = "enableTrack"
 let ENABLE_VIDEO_TRACK_COMMAND = "toggleVideo"
@@ -349,6 +352,11 @@ public protocol AntMediaClientProtocol {
     Set the degradation prefernece in publishing streams. It can be called before the stream starts or while it's streaming.
      */
     func setDegradationPreference(_ degradationPreference: RTCDegradationPreference);
+    
+    /**
+     Get the broadcast object from the server. After the broadcast object has been received, it calls AntMediaClientDelegat:onLoadBroadcastObject method
+     */
+    func getBroadcastObject(forStreamId id: String)
     
     /**
       Disconnects  websocket connection
