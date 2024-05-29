@@ -168,12 +168,17 @@ public protocol AntMediaClientDelegate: AnyObject {
     @available(*, deprecated, message: "No need to use. New streams are removed automatically. trackRemoved is called automatically")
     func streamsLeft(streams: [String]);
     
+    func audioLevelChanged(_ client: AntMediaClient, audioLevel: Double)
 }
 
 public extension AntMediaClientDelegate {
     
     func clientDidConnect(_ client: AntMediaClient) {
         AntMediaClient.printf("Websocket is connected for \(client.getStreamId())")
+    }
+    
+    func audioLevelChanged(_ client: AntMediaClient, audioLevel: Double) {
+        // TODO: not implemented yet
     }
         
     func eventHappened(streamId: String, eventType: String) {

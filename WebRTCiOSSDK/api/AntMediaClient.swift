@@ -72,6 +72,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     var streamsInTheRoom:[String] = [];
     
     var roomInfoGetterTimer: Timer?;
+    var audioLevelGetterTimer: Timer?;
 
 
     //private var webRTCClient: WebRTCClient?;
@@ -295,7 +296,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     public func joinRoom(roomId:String, streamId: String = "") {
         self.mainTrackId = roomId;
         self.publisherStreamId = streamId;
-        self.mode = AntMediaClientMode.conference;       
+        self.mode = AntMediaClientMode.conference;
         if (!isWebSocketConnected) {
             connectWebSocket()
         }
@@ -811,6 +812,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 sendJoinCommand(streamId)
             }
         }
+        
+        // setup for audio interruption notification
+        self.setupAudioNotifications()
     }
     
     private func websocketDisconnected(message:String, code:UInt16) {
@@ -1127,6 +1131,15 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         self.webRTCClientMap[self.getStreamId(streamId)]?.getStats(handler: completionHandler)
     }
     
+    public func getStatistics(
+        for streamId: String = "",
+        completion: @escaping (ClientStatistics) -> Void
+    ) {
+        getStats(completionHandler: { report in
+            completion(.init(items: report.statistics.extractRTCStatItems()))
+        }, streamId: streamId)
+    }
+    
     public func deliverExternalAudio(sampleBuffer: CMSampleBuffer)
     {
         self.webRTCClientMap[getPublisherStreamId()]?.deliverExternalAudio(sampleBuffer: sampleBuffer);
@@ -1193,7 +1206,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
-    public func setDegradationPreference(_ degradationPreference: RTCDegradationPreference) 
+    public func setDegradationPreference(_ degradationPreference: RTCDegradationPreference)
     {
        self.degradationPreference = degradationPreference;
        let rtc = self.webRTCClientMap[self.getPublisherStreamId()]
@@ -1213,6 +1226,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
              
         self.webRTCClientMap.removeAll();
         self.webSocket?.disconnect();
+        
+        // remove audio notifications
+        self.removeAudioNotifications()
+        
         self.webSocket = nil;
         
     }
@@ -1434,6 +1451,92 @@ extension AntMediaClient: RTCVideoViewDelegate {
         if (bounds != nil)
         {
             resizeVideoFrame(bounds: bounds!, size: size, videoView: (videoView as? UIView)!)
+        }
+    }
+}
+
+// MARK: Audio interruption handling section
+
+extension AntMediaClient {
+    /// - Regsiters for interruption notifications
+    func setupAudioNotifications() {
+        // Get the default notification center instance.
+        let nc = NotificationCenter.default
+        nc.addObserver(self,
+                       selector: #selector(handleInterruption),
+                       name: AVAudioSession.interruptionNotification,
+                       object: AVAudioSession.sharedInstance())
+    }
+    
+    /// - Unregisters for interruption notifications
+    func removeAudioNotifications() {
+        // Get the default notification center instance.
+        let nc = NotificationCenter.default
+        nc.removeObserver(self,
+                          name: AVAudioSession.interruptionNotification,
+                          object: AVAudioSession.sharedInstance())
+    }
+    
+    /// - Handles audio interruptions
+    @objc func handleInterruption(notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
+            return
+        }
+        
+        
+        // Switch over the interruption type.
+        switch type {
+        case .began:
+            // An interruption began. Update the UI as necessary.
+            AntMediaClient.printf("Audio: interruption began")
+            break
+        case .ended:
+            // An interruption ended. Resume playback, if appropriate.
+            guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            if options.contains(.shouldResume) {
+                // An interruption ended. Resume playback.
+                AntMediaClient.printf("Audio: interruption ended and should resume playback")
+                activateAudioSession()
+            } else {
+                // An interruption ended. Don't resume playback.
+                AntMediaClient.printf("Audio: interruption ended and should not resume playback")
+            }
+        default: ()
+        }
+    }
+    
+    /// - Activates the audio session
+    private func activateAudioSession() {
+        DispatchQueue(label: "audio").async {() in
+            AntMediaClient.rtcAudioSession.lockForConfiguration()
+            AntMediaClient.rtcAudioSession.isAudioEnabled = true
+            AntMediaClient.rtcAudioSession.unlockForConfiguration()
+            AntMediaClient.printf("Audio: Activated")
+        }
+    }
+}
+
+// MARK: Audio level extrackting section
+extension AntMediaClient {
+    public func registerAudioLevelExtractor() {
+        audioLevelGetterTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(onAudioLevelTimerTicking), userInfo: nil, repeats: true)
+    }
+    
+    public func removeAudioLevelExtractor() {
+        audioLevelGetterTimer?.invalidate()
+        audioLevelGetterTimer = nil
+    }
+    
+    @objc private func onAudioLevelTimerTicking() {
+        getStatistics(for: getStreamId()) { [weak self] statistics in
+            guard let self else {
+                return
+            }
+            
+            self.delegate?.audioLevelChanged(self, audioLevel: statistics.audioLevel)
         }
     }
 }
