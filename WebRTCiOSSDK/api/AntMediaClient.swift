@@ -1024,6 +1024,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Publish started: Let's go")
                     self.webRTCClientMap[streamId]?.setMaxVideoBps(maxVideoBps: self.maxVideoBps)
+                    // register for audio level extraction
+                    self.registerAudioLevelExtractor()
                     self.delegate?.publishStarted(streamId: message[STREAM_ID] as! String)
                 }
                 else if definition == "publish_finished" {
@@ -1229,6 +1231,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         
         // remove audio notifications
         self.removeAudioNotifications()
+        
+        // remove audio level extractor
+        self.removeAudioLevelExtractor()
         
         self.webSocket = nil;
         
@@ -1521,22 +1526,31 @@ extension AntMediaClient {
 
 // MARK: Audio level extrackting section
 extension AntMediaClient {
+    /// - Registers audio level extractor. Just starts a timer to get statistics
     public func registerAudioLevelExtractor() {
         audioLevelGetterTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(onAudioLevelTimerTicking), userInfo: nil, repeats: true)
     }
     
+    /// - Removes audio level extractor
     public func removeAudioLevelExtractor() {
         audioLevelGetterTimer?.invalidate()
         audioLevelGetterTimer = nil
     }
     
     @objc private func onAudioLevelTimerTicking() {
-        getStatistics(for: getStreamId()) { [weak self] statistics in
+        getStatistics { [weak self] statistics in
             guard let self else {
                 return
             }
+            let isAudioEnabled = self.webRTCClientMap[
+                self.publisherStreamId ?? (self.p2pStreamId ?? "")
+            ]?.isAudioEnabled() ?? false
             
-            self.delegate?.audioLevelChanged(self, audioLevel: statistics.audioLevel)
+            self.delegate?.audioLevelChanged(
+                self,
+                audioLevel: statistics.audioLevel,
+                hasAudio: isAudioEnabled
+            )
         }
     }
 }
