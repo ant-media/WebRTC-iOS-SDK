@@ -148,6 +148,11 @@ public protocol AntMediaClientDelegate: AnyObject {
     func onLoadBroadcastObject(streamId: String, message: [String: Any])
     
     /**
+     It's called after`registerStatsListener`is `AntMediaClient` is called
+     */
+    func onStats(streamId:String, statistics:RTCStatisticsReport);
+    
+    /**
      It's called after join to the room.
      - streamId: the id of the stream tha can be used to publish stream.
         It's not an obligation to publish a stream. It changes according to the project
@@ -268,6 +273,10 @@ public extension AntMediaClientDelegate {
     func eventHappened(streamId:String, eventType:String, payload: [String:Any]?) {
         AntMediaClient.printf("\(streamId) \(eventType) with")
         AntMediaClient.printf(payload?.json ?? "")
+    }
+    
+    func onStats(streamId:String, statistics:RTCStatisticsReport) {
+        AntMediaClient.printf("streamId: \(streamId) stats received")
     }
     
 }

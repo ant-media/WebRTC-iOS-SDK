@@ -281,6 +281,20 @@ public protocol AntMediaClientProtocol {
     func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void, streamId:String);
     
     /**
+     Register a stats listener to get the stats peridocially. This is a helper method to make developers life easy.
+    Under the hood, it agains calls the `getStats` method. After you register for stats, `onStats` method of `AntMediaClientDelegate` is being called periodically
+     */
+    func registerStatsListener(for streamId:String, timeInterval:Double);
+   
+    
+    /**
+    Unregister stat listener for a specific streamId. After you call this method,`onStats` method of `AntMediaClientDelegate` will not be called for this streamId again.
+     - Parameters:
+        - streamId: is the stream id to be removed from listening stats
+     */
+    func unregisterStatsListener(streamId: String)
+     
+    /**
      Set the max video bitrate for publishing the stream
      */
     func setMaxVideoBps(videoBitratePerSecond: NSNumber);

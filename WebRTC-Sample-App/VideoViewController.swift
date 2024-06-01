@@ -289,6 +289,8 @@ extension VideoViewController: AntMediaClientDelegate {
         if let audioFile = self.audioFileUrl {
             sendMp3File(url: audioFile);
         }
+        
+        self.client?.registerStatsListener(for: streamId)
     }
     
     func publishFinished(streamId: String) {

@@ -15,10 +15,11 @@
 		A8B966092A069A2C00D67CA1 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
 		A8B9660A2A069A2C00D67CA1 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8CAF2BF2C0B1DFC00520691 /* ClientStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CAF2BD2C0B1DFC00520691 /* ClientStatistics.swift */; };
+		A8CAF2C02C0B90DD00520691 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
+		A8CAF2C12C0B90DD00520691 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8DABFD32A0639D80007CDE7 /* WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; };
 		A8DABFD82A0639D80007CDE7 /* WebRTCiOSSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABFD72A0639D80007CDE7 /* WebRTCiOSSDKTests.swift */; };
 		A8DABFD92A0639D80007CDE7 /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A8DABFEF2A063A020007CDE7 /* ConferenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABFE32A063A020007CDE7 /* ConferenceClient.swift */; };
 		A8DABFF02A063A020007CDE7 /* AntMediaClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABFE42A063A020007CDE7 /* AntMediaClient.swift */; };
 		A8DABFF12A063A020007CDE7 /* AntMediaError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABFE52A063A020007CDE7 /* AntMediaError.swift */; };
 		A8DABFF22A063A020007CDE7 /* AntMediaClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABFE62A063A020007CDE7 /* AntMediaClientProtocol.swift */; };
@@ -123,6 +124,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A8CAF2C22C0B90DD00520691 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A8CAF2C12C0B90DD00520691 /* WebRTC.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A8DAC04E2A063C4B0007CDE7 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -150,7 +162,6 @@
 		A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebRTCiOSSDK.h; sourceTree = "<group>"; };
 		A8DABFD22A0639D80007CDE7 /* WebRTCiOSSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebRTCiOSSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DABFD72A0639D80007CDE7 /* WebRTCiOSSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRTCiOSSDKTests.swift; sourceTree = "<group>"; };
-		A8DABFE32A063A020007CDE7 /* ConferenceClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConferenceClient.swift; sourceTree = "<group>"; };
 		A8DABFE42A063A020007CDE7 /* AntMediaClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClient.swift; sourceTree = "<group>"; };
 		A8DABFE52A063A020007CDE7 /* AntMediaError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaError.swift; sourceTree = "<group>"; };
 		A8DABFE62A063A020007CDE7 /* AntMediaClientProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AntMediaClientProtocol.swift; sourceTree = "<group>"; };
@@ -209,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8CAF2C02C0B90DD00520691 /* WebRTC.xcframework in Frameworks */,
 				A8DABFD32A0639D80007CDE7 /* WebRTCiOSSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +319,6 @@
 		A8DABFE22A063A020007CDE7 /* api */ = {
 			isa = PBXGroup;
 			children = (
-				A8DABFE32A063A020007CDE7 /* ConferenceClient.swift */,
 				A8DABFE42A063A020007CDE7 /* AntMediaClient.swift */,
 				A8DABFE52A063A020007CDE7 /* AntMediaError.swift */,
 				A8DABFE62A063A020007CDE7 /* AntMediaClientProtocol.swift */,
@@ -464,6 +475,7 @@
 				A8DABFCE2A0639D80007CDE7 /* Sources */,
 				A8DABFCF2A0639D80007CDE7 /* Frameworks */,
 				A8DABFD02A0639D80007CDE7 /* Resources */,
+				A8CAF2C22C0B90DD00520691 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -651,7 +663,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DABFEF2A063A020007CDE7 /* ConferenceClient.swift in Sources */,
 				A8DABFF92A063A020007CDE7 /* String.swift in Sources */,
 				A8DABFF82A063A020007CDE7 /* Dictionary.swift in Sources */,
 				A8DABFF02A063A020007CDE7 /* AntMediaClient.swift in Sources */,
@@ -1010,6 +1021,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2YK9J8G25K;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.WebRTCiOSSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1027,6 +1039,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 2YK9J8G25K;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.WebRTCiOSSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1123,7 +1136,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1143,7 +1156,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1162,7 +1175,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1181,7 +1194,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MJU7KX4L7S;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
