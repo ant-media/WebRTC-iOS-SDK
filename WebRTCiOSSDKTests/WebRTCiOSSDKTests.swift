@@ -44,9 +44,6 @@ final class WebRTCiOSSDKTests: XCTestCase {
         }
         
         await fulfillment(of: [rtcStatsTimerExpectation], timeout: 3)
-
-        XCTAssertTrue(false)
-
         
     }
 
