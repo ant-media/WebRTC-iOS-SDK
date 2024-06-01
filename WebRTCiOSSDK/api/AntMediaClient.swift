@@ -54,6 +54,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
  
     internal static var isDebug: Bool = false
+    internal static var isVerbose: Bool = false
     public weak var delegate: AntMediaClientDelegate?
 
     private var wsUrl: String!
@@ -1071,6 +1072,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (AntMediaClient.isDebug) {
             debugPrint("--> AntMediaSDK: " + msg)
         }
+    }
+    
+    public static func verbose(_ msg:String) {
+        if (AntMediaClient.isVerbose) {
+            debugPrint("--> AntMediaSDK[verbose]: " + msg);
+        }
+        
     }
     
     public func getStreamInfo()

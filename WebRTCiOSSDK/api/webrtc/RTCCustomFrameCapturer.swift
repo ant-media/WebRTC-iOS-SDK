@@ -54,20 +54,36 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     public func capture(_ pixelBuffer: CVPixelBuffer, rotation:RTCVideoRotation, timeStampNs: Int64 )
     {
         if ((Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < frameRateIntervalNanoSeconds ) {
-            AntMediaClient.printf("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
+            AntMediaClient.verbose("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
             return;
             
         }
+        
+        let width = Int32(CVPixelBufferGetWidth(pixelBuffer))
+        let height = Int32(CVPixelBufferGetHeight(pixelBuffer))
+        
+        var scaledWidth = (width * Int32(self.targetHeight)) / height;
+        if (scaledWidth % 2 == 1) {
+            scaledWidth+=1;
+        }
+        
         let rtcPixelBuffer = RTCCVPixelBuffer(
-            pixelBuffer: pixelBuffer)
-                
-        let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer,
-                                          
-                                          rotation: rotation, timeStampNs: Int64(timeStampNs))
+            pixelBuffer: pixelBuffer,
+            adaptedWidth:scaledWidth,
+            adaptedHeight: Int32(self.targetHeight),
+            cropWidth: width,
+            cropHeight: height,
+            cropX: 0,
+            cropY: 0)
+        
+        let rtcVideoFrame = RTCVideoFrame(
+                    buffer: rtcPixelBuffer,
+                    rotation: rotation,
+                    timeStampNs: Int64(timeStampNs)
+                )
         
         self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
-        lastSentFrameTimeStampNanoSeconds = timeStampNs;
-        
+        lastSentFrameTimeStampNanoSeconds = Int64(timeStampNs);
     }
     
     public func capture(_ sampleBuffer: CMSampleBuffer, externalRotation:Int = -1) {
@@ -83,25 +99,16 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             kNanosecondsPerSecond;
                 
         if ((Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < frameRateIntervalNanoSeconds ) {
-            AntMediaClient.printf("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
+            AntMediaClient.verbose("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
             return;
             
         }
         
         let _pixelBuffer:CVPixelBuffer? = CMSampleBufferGetImageBuffer(sampleBuffer);
         
+        
         if let pixelBuffer = _pixelBuffer
         {
-            
-            
-            let width = Int32(CVPixelBufferGetWidth(pixelBuffer))
-            let height = Int32(CVPixelBufferGetHeight(pixelBuffer))
-            
-            var scaledWidth = (width * Int32(self.targetHeight)) / height;
-            if (scaledWidth % 2 == 1) {
-                scaledWidth+=1;
-            }
-            
             //NSLog("Incoming frame width:\(width) height:\(height) adapted width:\(scaledWidth) height:\(self.targetHeight)")
             
             var rotation = RTCVideoRotation._0;
@@ -140,24 +147,9 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
                 rotation = RTCVideoRotation(rawValue:externalRotation) ?? RTCVideoRotation._0;
             }
 
+            
+            capture(pixelBuffer, rotation: rotation, timeStampNs: Int64(timeStampNs))
             //NSLog("Device orientation width: %d, height:%d ", width, height);
-            
-            let rtcPixelBuffer = RTCCVPixelBuffer(
-                pixelBuffer: pixelBuffer,
-                adaptedWidth:scaledWidth,
-                adaptedHeight: Int32(self.targetHeight),
-                cropWidth: width,
-                cropHeight: height,
-                cropX: 0,
-                cropY: 0)
-            
-            let rtcVideoFrame = RTCVideoFrame(buffer: rtcPixelBuffer,
-                                              
-                                              rotation: rotation, timeStampNs: Int64(timeStampNs))
-            
-            self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
-            lastSentFrameTimeStampNanoSeconds = Int64(timeStampNs);
-           
         }
         else {
             NSLog("Cannot get image buffer");
