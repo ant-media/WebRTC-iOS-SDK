@@ -71,7 +71,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private var mode: AntMediaClientMode!
     var streamsInTheRoom:[String] = [];
     
-    var roomInfoGetterTimer: Timer?;
     var audioLevelGetterTimer: Timer?;
 
 
@@ -303,36 +302,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         else {
             sendJoinConferenceCommand()
         }
-        //start periodic check
-        roomInfoGetterTimer?.invalidate()
-        roomInfoGetterTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { pingTimer in
-            let jsonString =
-            [ COMMAND: "getRoomInfo",
-              ROOM_ID: roomId,
-              STREAM_ID: self.publisherStreamId ?? ""
-            ] as [String: Any]
-            
-            if (self.isWebSocketConnected) {
-                self.webSocket?.write(string: jsonString.json)
-            }
-            else {
-                self.connectWebSocket()
-                AntMediaClient.printf("Websocket is not connected to get room info")
-            }
-            
-            //send current video and audio status perodically
-            
-            if let videoEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isVideoEnabled() {
-                self.sendVideoTrackStatusNotification(enabled: videoEnabled)
-            }
-            
-            if let audioEnabled = self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.isAudioEnabled() {
-                self.sendAudioTrackStatusNotification(enabled: audioEnabled)
-            }
-            
-            
-        }
-       
     }
     
     /**
@@ -353,7 +322,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     public func leaveFromRoom() {
-        roomInfoGetterTimer?.invalidate()
         if (isWebSocketConnected)
         {
             if let roomId = self.mainTrackId {
@@ -1024,8 +992,6 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Publish started: Let's go")
                     self.webRTCClientMap[streamId]?.setMaxVideoBps(maxVideoBps: self.maxVideoBps)
-                    // register for audio level extraction
-                    self.registerAudioLevelExtractor()
                     self.delegate?.publishStarted(streamId: message[STREAM_ID] as! String)
                 }
                 else if definition == "publish_finished" {
@@ -1256,6 +1222,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             command: GET_BROADCAST_OBJECT_COMMAND,
             streamId: id
         )
+    }
+    
+    deinit {
+        audioLevelGetterTimer?.invalidate()
+        audioLevelGetterTimer = nil
+        
+        pingTimer?.invalidate()
+        pingTimer = nil
     }
     
 }
@@ -1527,8 +1501,10 @@ extension AntMediaClient {
 // MARK: Audio level extrackting section
 extension AntMediaClient {
     /// - Registers audio level extractor. Just starts a timer to get statistics
-    public func registerAudioLevelExtractor() {
-        audioLevelGetterTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(onAudioLevelTimerTicking), userInfo: nil, repeats: true)
+    public func registerAudioLevelExtractor(timeInterval:Double=0.5) {
+        audioLevelGetterTimer?.invalidate()
+
+        audioLevelGetterTimer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(onAudioLevelTimerTicking), userInfo: nil, repeats: true)
     }
     
     /// - Removes audio level extractor
@@ -1553,4 +1529,6 @@ extension AntMediaClient {
             )
         }
     }
+    
+ 
 }

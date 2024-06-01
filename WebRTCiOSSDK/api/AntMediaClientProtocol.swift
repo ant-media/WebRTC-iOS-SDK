@@ -64,7 +64,7 @@ public protocol AntMediaClientProtocol {
     /**
      Set room Id to use in video conferencing
      */
-    @available(*, deprecated, message: "Use joinRoom command as in the sample ")
+    @available(*, deprecated, message: "No need to use just take a look at samples about publish/play/conference ")
     func setRoomId(roomId:String);
     
     /**
@@ -223,7 +223,8 @@ public protocol AntMediaClientProtocol {
     func setAudioTrack(enableTrack:Bool);
     
     /**
-     Swith the audio muted/unmuted. If mute is true, audio is being set to mute. If mute is false, audio bis being set to unmute
+     Switch the mic muted/unmuted. If mute is true, audio is being set to mute. If mute is false, audio bis being set to unmute.
+     If you just want to mute/unmute sending audio, use `setAudioTrack` method
      */
     func setMicMute( mute: Bool, completionHandler:@escaping(Bool, Error?)->Void)
 
@@ -315,6 +316,8 @@ public protocol AntMediaClientProtocol {
     
     /**
      Enable/disable  to play the video track. If it's disabled, then server does not send video frames for the track.
+     This method is for remote stream that is playing. It's not for the local video track. Please `setVideoTrack` if you want to mute sending audio
+
      - Parameters
         - trackId
      */
@@ -322,6 +325,7 @@ public protocol AntMediaClientProtocol {
     
     /**
      Enable/disable to play the audio track. If it's disabled, then server does not send audio frame for the track.
+     This method is for remote stream that is playing. It's not for the local audio track. Please `setAudioTrack` if you want to mute sending audio
      */
     func enableAudioTrack(trackId:String, enabled:Bool);
     
@@ -336,11 +340,13 @@ public protocol AntMediaClientProtocol {
       roomId: The id of the room to join.
       streamId: The willing id of the stream to be published. It's optional. Server may accept the streamId or return with another streamId in streamIdToPublish method
      */
+    @available(*, deprecated, message: "No need to use just take a look at sample at ConferenceViewController ")
     func joinRoom(roomId:String, streamId: String)
     
     /**
      Leave from a room. It stops both publishing and playing. If you just would like to stop publish or play, just call stop command with your streamId parameter
      */
+    @available(*, deprecated, message: "No need to use just take a look at sample at ConferenceViewController ")
     func leaveFromRoom()
     
     /**
@@ -357,6 +363,17 @@ public protocol AntMediaClientProtocol {
      Get the broadcast object from the server. After the broadcast object has been received, it calls AntMediaClientDelegat:onLoadBroadcastObject method
      */
     func getBroadcastObject(forStreamId id: String)
+    
+    /**
+     Register for Audio Level Extraction to get the audioLevel from the microphone. It's good to use to detect if user is speaking when he muted himself.
+     When this method is called, `audioLevelChanged` delegate method will be called automatically
+     */
+    func registerAudioLevelExtractor(timeInterval:Double)
+    
+    /**
+     Remove Audio Level extraction that is registered before
+     */
+    func removeAudioLevelExtractor();
     
     /**
       Disconnects  websocket connection

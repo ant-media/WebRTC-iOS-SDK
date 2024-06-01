@@ -168,6 +168,10 @@ public protocol AntMediaClientDelegate: AnyObject {
     @available(*, deprecated, message: "No need to use. New streams are removed automatically. trackRemoved is called automatically")
     func streamsLeft(streams: [String]);
     
+    /**
+     The delegate method that sends audio level of the microphone. , audioLeve is between 0 and 1.
+     If it's 0, it means it's silent. If it's 1, it means audio is max.
+     */
     func audioLevelChanged(_ client: AntMediaClient, audioLevel: Double, hasAudio: Bool)
 }
 
@@ -179,6 +183,7 @@ public extension AntMediaClientDelegate {
     
     func audioLevelChanged(_ client: AntMediaClient, audioLevel: Double, hasAudio: Bool) {
         // TODO: not implemented yet
+        AntMediaClient.printf("audio level changed \(audioLevel) and hasAudio:\(hasAudio)")
     }
         
     func eventHappened(streamId: String, eventType: String) {

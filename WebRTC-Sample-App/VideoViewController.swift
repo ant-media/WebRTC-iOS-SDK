@@ -127,7 +127,17 @@ class VideoViewController: UIViewController {
             AntMediaClient.printf("It's in publis mode and calling to mute/unmute the local audio to send");
 
             //mute/unmute the microphone for the publisher
-            self.client?.setAudioTrack(enableTrack: !sender.isSelected);
+            let toggleAudio = !sender.isSelected
+            self.client?.setAudioTrack(enableTrack: toggleAudio);
+            
+            if (toggleAudio) {
+                //it means audio is enabled
+                self.client?.removeAudioLevelExtractor();
+            }
+            else {
+                //it means audio is disabled
+                self.client?.registerAudioLevelExtractor();
+            }
         }
         
         

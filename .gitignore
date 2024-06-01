@@ -17,7 +17,7 @@ DerivedData/
 *.xcscmblueprint
 
 # Ignore signing and capability settings
-*.xcodeproj/project.pbxproj
+#*.xcodeproj/project.pbxproj
 *.xcodeproj/xcuserdata/
 *.xcodeproj/xcshareddata/xcschemes/xcschememanagement.plist
 
