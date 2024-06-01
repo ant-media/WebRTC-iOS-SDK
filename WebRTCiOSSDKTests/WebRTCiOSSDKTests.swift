@@ -42,9 +42,10 @@ final class WebRTCiOSSDKTests: XCTestCase {
                 rtcStatsTimerExpectation.fulfill()
             }
         }
-                
+        
         await fulfillment(of: [rtcStatsTimerExpectation], timeout: 3)
 
+        XCTAssertTrue(false)
 
         
     }
