@@ -5,3 +5,36 @@ Release-iphoneos.xcarchive
 Release-iphonesimulator.xcarchive
 Release*
 Package.resolved
+
+# Ignore Xcode project files
+project.xcworkspace/
+xcuserdata/
+DerivedData/
+.idea/
+
+# Ignore Xcode specific files
+*.xcuserstate
+*.xcscmblueprint
+
+# Ignore signing and capability settings
+#*.xcodeproj/project.pbxproj
+*.xcodeproj/xcuserdata/
+*.xcodeproj/xcshareddata/xcschemes/xcschememanagement.plist
+
+# SPM
+Packages/
+Package.pins
+
+# Xcode 11+
+.swiftpm/
+
+# Ignore build products
+build/
+Build/
+
+# Ignore temporary files
+*.moved-aside
+*.xcuserstate
+
+# Ignore Xcode Cache
+xcuserdata/

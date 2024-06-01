@@ -14,6 +14,7 @@
 		A8B966052A069A2800D67CA1 /* WebRTCiOSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8B966092A069A2C00D67CA1 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
 		A8B9660A2A069A2C00D67CA1 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8CAF2BF2C0B1DFC00520691 /* ClientStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CAF2BD2C0B1DFC00520691 /* ClientStatistics.swift */; };
 		A8DABFD32A0639D80007CDE7 /* WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; };
 		A8DABFD82A0639D80007CDE7 /* WebRTCiOSSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABFD72A0639D80007CDE7 /* WebRTCiOSSDKTests.swift */; };
 		A8DABFD92A0639D80007CDE7 /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -144,6 +145,7 @@
 		A8B965FA2A06969900D67CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B966022A0698EC00D67CA1 /* WebRTC-Sample-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WebRTC-Sample-App.entitlements"; sourceTree = "<group>"; };
 		A8B966032A06991200D67CA1 /* ScreenShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShare.entitlements; sourceTree = "<group>"; };
+		A8CAF2BD2C0B1DFC00520691 /* ClientStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientStatistics.swift; sourceTree = "<group>"; };
 		A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebRTCiOSSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebRTCiOSSDK.h; sourceTree = "<group>"; };
 		A8DABFD22A0639D80007CDE7 /* WebRTCiOSSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WebRTCiOSSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +249,15 @@
 			path = ScreenShare;
 			sourceTree = "<group>";
 		};
+		A8CAF2BE2C0B1DFC00520691 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				A8CAF2BD2C0B1DFC00520691 /* ClientStatistics.swift */,
+			);
+			name = utils;
+			path = api/utils;
+			sourceTree = "<group>";
+		};
 		A8DABFC02A0639D70007CDE7 = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +289,7 @@
 		A8DABFCC2A0639D80007CDE7 /* WebRTCiOSSDK */ = {
 			isa = PBXGroup;
 			children = (
+				A8CAF2BE2C0B1DFC00520691 /* utils */,
 				A8DABFE22A063A020007CDE7 /* api */,
 				A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */,
 			);
@@ -650,6 +662,7 @@
 				A8DABFF32A063A020007CDE7 /* AntMediaClientDelegate.swift in Sources */,
 				A8DABFF62A063A020007CDE7 /* WebRTCClientDelegate.swift in Sources */,
 				A8DABFF22A063A020007CDE7 /* AntMediaClientProtocol.swift in Sources */,
+				A8CAF2BF2C0B1DFC00520691 /* ClientStatistics.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
