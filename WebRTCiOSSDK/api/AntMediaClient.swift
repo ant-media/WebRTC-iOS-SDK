@@ -73,7 +73,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     var streamsInTheRoom:[String] = [];
     
     var audioLevelGetterTimer: Timer?;
-
+    
+    var rtcStatsTimer: Timer?
+    var rtcStatsStreamIdSet = Set<String>()
 
     //private var webRTCClient: WebRTCClient?;
     private var webRTCClientMap: [String: WebRTCClient] = [:]
@@ -474,6 +476,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
         else {
             //removing means that user requests to stop
+            unregisterStatsListener(streamId: tmpStreamId);
             self.webRTCClientMap.removeValue(forKey: tmpStreamId)?.disconnect();
             
             if (isWebSocketConnected) {
@@ -493,6 +496,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             else if (self.playerStreamId == tmpStreamId) {
                 self.playerStreamId = nil;
             }
+            
         }
         
     }
@@ -987,7 +991,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 else if definition == "play_finished" {
                     AntMediaClient.printf("Playing has finished")
                     self.streamsInTheRoom.removeAll();
-                    self.delegate?.playFinished(streamId: message[STREAM_ID] as! String)
+                    let streamId = message[STREAM_ID] as! String
+                    self.delegate?.playFinished(streamId: streamId)
+                    self.unregisterStatsListener(streamId: streamId)
                 }
                 else if definition == "publish_started" {
                     let streamId = message[STREAM_ID] as! String
@@ -999,6 +1005,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     let streamId = message[STREAM_ID] as! String
                     AntMediaClient.printf("Publish finished: Let's close")
                     self.delegate?.publishFinished(streamId: streamId)
+                    self.unregisterStatsListener(streamId: streamId)
                 }
                 else if definition == JOINED_ROOM_DEFINITION
                 {
@@ -1103,7 +1110,46 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
+    public func registerStatsListener(for streamId:String, timeInterval:Double = 5) {
+        self.rtcStatsTimer?.invalidate();
+        
+        self.rtcStatsStreamIdSet.insert(streamId)
+        self.rtcStatsTimer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] timer in
+            
+            guard let self = self else { return }
+
+            var itemsToRemove: Set<String> = []
+
+            for streamIdInSet in rtcStatsStreamIdSet
+            {
+                if let webRTCClient = self.webRTCClientMap[streamIdInSet]
+                {
+                    webRTCClient.getStats(handler:{ report in
+                        self.delegate?.onStats(streamId: streamIdInSet, statistics: report)
+                    });
+                }
+                else {
+                    itemsToRemove.insert(streamIdInSet);
+                }
+            }
+            
+            
+            for itemToRemove in itemsToRemove {
+                self.unregisterStatsListener(streamId: itemToRemove);
+            }
+        }
+    }
+    
+    public func unregisterStatsListener(streamId: String) {
+        self.rtcStatsStreamIdSet.remove(streamId);
+        if (self.rtcStatsStreamIdSet.isEmpty) {
+            self.rtcStatsTimer?.invalidate();
+            self.rtcStatsTimer = nil
+        }
+    }
+    
     public func getStats(completionHandler: @escaping (RTCStatisticsReport) -> Void, streamId:String = "") {
+        
         self.webRTCClientMap[self.getStreamId(streamId)]?.getStats(handler: completionHandler)
     }
     
@@ -1209,6 +1255,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         // remove audio level extractor
         self.removeAudioLevelExtractor()
         
+        self.invalidateTimers();
+        
         self.webSocket = nil;
         
     }
@@ -1232,12 +1280,19 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         )
     }
     
-    deinit {
+    func invalidateTimers() {
         audioLevelGetterTimer?.invalidate()
         audioLevelGetterTimer = nil
         
         pingTimer?.invalidate()
         pingTimer = nil
+        
+        rtcStatsTimer?.invalidate()
+        rtcStatsTimer = nil
+    }
+    
+    deinit {
+        invalidateTimers();
     }
     
 }
@@ -1323,8 +1378,6 @@ extension AntMediaClient: WebRTCClientDelegate {
         }
     }
     
-    
-    
 }
 
 extension AntMediaClient: WebSocketDelegate {
@@ -1345,8 +1398,12 @@ extension AntMediaClient: WebSocketDelegate {
             self.websocketConnected()
             self.delegate?.clientDidConnect(self)
             
+            
+    
+            
             //too keep the connetion alive send ping command for every 10 seconds
-            pingTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { pingTimer in
+            pingTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] pingTimer in
+                guard let self = self else { return }
                 let jsonString = self.getPingMessage().json
                 self.webSocket?.write(string: jsonString)
             }
