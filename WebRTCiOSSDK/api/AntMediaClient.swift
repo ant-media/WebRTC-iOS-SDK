@@ -508,10 +508,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (self.webRTCClientMap[id] == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClientMap[id]))")
             
-            self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: mode != .unspecified ? mode : self.mode , cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id);
+            self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: mode != .unspecified ? mode : self.mode , cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id,
+                                                         degradationPreference: self.degradationPreference);
             
             self.webRTCClientMap[id]?.setToken(token)
-            self.webRTCClientMap[id]?.setDegradationPreference(degradationPreference: self.degradationPreference);
             
             AntMediaClient.rtcAudioSession.add(self);
         }
