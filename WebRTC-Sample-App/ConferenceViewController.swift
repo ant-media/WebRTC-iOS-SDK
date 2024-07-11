@@ -126,6 +126,7 @@ extension ConferenceViewController: AntMediaClientDelegate
     }
     
     public func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
+
         
     }
     
@@ -251,6 +252,30 @@ extension ConferenceViewController: AntMediaClientDelegate
         
         if eventType == EVENT_TYPE_TRACK_LIST_UPDATED {
             conferenceClient?.getBroadcastObject(forStreamId: streamId)
+        }
+        else if (eventType == EVENT_TYPE_VIDEO_TRACK_ASSIGNMENT_LIST) {
+            
+            if let unwrappedPayload = payload?["payload"] as? [[String: Any]] {
+            
+                //let array = unwrappedPayload as? [[String: Any]]
+                for (item) in unwrappedPayload
+                {
+                    if let trackId = item["trackId"] as? String,
+                       let videoLabel = item["videoLabel"] as? String
+                    {
+                        
+                        print("videoLabel:\(videoLabel) plays the trackId:\(trackId)")
+                        //On the server side, we create WebRTC tracks with ARDAMSv{VIDEO_LABEL}
+                        //It's useful in limiting/dynamic allocation of the streams and tracks in a conference call
+                        //If you want to make sure, which webrtc track is playing which real streamId,
+                        //you can learn from here
+                        
+                        //i.e. you receive ARDAMSvvideoTrack0 in trackAdded method above, then you'll receive this event
+                        //and it will tell you videoTrack0 is playing the specific streamId.
+                        //If ARDAMSvvideoTrack0 starts to play another trackId, then you'll receive this event again.
+                    }
+                }
+            }
         }
     }
 }
