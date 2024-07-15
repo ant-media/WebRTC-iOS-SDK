@@ -124,7 +124,7 @@ public extension UserDefaults {
     
     /// Sets value for `key`
     
-    public subscript(key: String) -> Any? {
+    subscript(key: String) -> Any? {
         get {
             // return untyped Proxy
             // (make sure we don't fall into infinite loop)
@@ -152,13 +152,13 @@ public extension UserDefaults {
     
     /// Returns `true` if `key` exists
     
-    public func hasKey(_ key: String) -> Bool {
+    func hasKey(_ key: String) -> Bool {
         return object(forKey: key) != nil
     }
     
     /// Removes value for `key`
     
-    public func remove(_ key: String) {
+    func remove(_ key: String) {
         removeObject(forKey: key)
     }
     
@@ -167,7 +167,7 @@ public extension UserDefaults {
     /// - Note: This method only removes keys on the receiver `UserDefaults` object.
     ///         System-defined keys will still be present afterwards.
     
-    public func removeAll() {
+    func removeAll() {
         for (key, _) in dictionaryRepresentation() {
             removeObject(forKey: key)
         }
