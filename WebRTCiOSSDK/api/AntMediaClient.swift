@@ -1110,6 +1110,16 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
+    public func forceStreamQuality(resolutionHeight:Int, streamId:String) {
+        if (self.isWebSocketConnected)
+        {
+            self.webSocket?.write(string: [COMMAND: FORCE_STREAM_QUALITY_INFO, STREAM_ID: (self.playerStreamId!), TRACK_ID:streamId, STREAM_HEIGHT_FIELD: resolutionHeight].json)
+        }
+        else {
+            AntMediaClient.printf("Websocket is not connected")
+        }
+    }
+    
     public func registerStatsListener(for streamId:String, timeInterval:Double = 5) {
         self.rtcStatsTimer?.invalidate();
         

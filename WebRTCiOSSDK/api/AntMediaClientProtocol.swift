@@ -260,6 +260,12 @@ public protocol AntMediaClientProtocol {
       If the resolution is set to 0, then automatic stream quality will be used according to the measured network speed.
      */
     func forStreamQuality(resolutionHeight:Int);
+    
+    /**
+     - resolutionHeight: The height to be forced. If you set the height to zero, it will become auto
+     - streamId: The streamId or subtrack Id to change the resolution
+     */
+    func forceStreamQuality(resolutionHeight:Int, streamId:String)
     /**
      It get webrtc statistis and calls completionHandler.  There is a sample code for below to get the audio level
      in the application latyer
