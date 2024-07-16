@@ -1021,8 +1021,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                        message: broadcastObject ?? [:]
                    )
                }
+                else if definition == RESOLUTION_CHANGE_INFO_COMMAND {
+                    let streamId = message[STREAM_ID] as? String ?? "";
+                    self.delegate?.eventHappened(streamId: streamId, eventType: definition, payload: message)
+                }
             
                 break;
+           
             case ROOM_INFORMATION_COMMAND:
                 if let updatedStreamsInTheRoom = message[STREAMS] as? [String] {
                    //check that there is a new stream exists
@@ -1054,6 +1059,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                             
                 }
                 
+                break;
+            case "pong":
+                //dont do anything
                 break;
             case "error":
                 guard let definition = message["definition"] as? String else {
