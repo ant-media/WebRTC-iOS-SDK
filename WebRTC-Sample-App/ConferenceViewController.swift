@@ -20,15 +20,23 @@ open class ConferenceViewController: UIViewController ,  AVCaptureVideoDataOutpu
     var clientUrl: String!
     var roomId: String!
     var publisherStreamId: String!
-    
+        
     @IBOutlet var localView: UIView!
         
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var heroView: RTCMTLVideoView!
     //keeps which remoteView renders which track according to the index
     var remoteViewTrackMap: [RTCVideoTrack?] = [];
+    
+    var heroVideoTrack: RTCVideoTrack?;
         
     var conferenceClient: AntMediaClient?;
+    
+    //key is the videoTrack in WebRTC
+    //value is the streamId in the server
+    var videoTrackMap: [String: String] = [:]
+
     
     func generateRandomAlphanumericString(length: Int) -> String {
         let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
@@ -84,7 +92,7 @@ open class ConferenceViewController: UIViewController ,  AVCaptureVideoDataOutpu
 extension ConferenceViewController: AntMediaClientDelegate
 {
     public func clientHasError(_ message: String) {
-        
+        debugPrint("Error is \(message)");
     }
     
     public func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
@@ -177,6 +185,8 @@ extension ConferenceViewController: AntMediaClientDelegate
                     {
                         
                         print("videoLabel:\(videoLabel) plays the trackId:\(trackId)")
+                        
+                        videoTrackMap["ARDAMSv" + videoLabel] = trackId;
                         //On the server side, we create WebRTC tracks with ARDAMSv{VIDEO_LABEL}
                         //It's useful in limiting/dynamic allocation of the streams and tracks in a conference call
                         //If you want to make sure, which webrtc track is playing which real streamId,
@@ -188,6 +198,9 @@ extension ConferenceViewController: AntMediaClientDelegate
                     }
                 }
             }
+        }
+        else if (eventType == RESOLUTION_CHANGE_INFO_COMMAND) {
+            AntMediaClient.printf("Resolution has changed");
         }
     }
 }
@@ -204,6 +217,40 @@ extension ConferenceViewController: UICollectionViewDataSource {
         remoteViewTrackMap[indexPath.item]?.add(cell.playerView)
         
         return cell
+    }
+    
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        debugPrint("Item selected at \(indexPath.item)")
+        if let videoTrack = heroVideoTrack {
+            //if there is already heroVideoTrack, remove from renderer
+            videoTrack.remove(heroView);
+            //add to the current grid
+            remoteViewTrackMap.append(videoTrack)
+            
+            //decrease the quality
+            if let videoTrackId = videoTrackMap[videoTrack.trackId] {
+                conferenceClient?.forceStreamQuality(resolutionHeight: 240, streamId:  videoTrackId )
+            }
+           
+        }
+        
+        //get new track
+        heroVideoTrack = remoteViewTrackMap.remove(at: indexPath.item)
+        //render it in hero view
+        heroVideoTrack?.add(heroView);
+        //increase the resolution to 720
+        if let videoTrack = heroVideoTrack
+        {
+            if let videoTrackId = videoTrackMap[videoTrack.trackId] {
+                conferenceClient?.forceStreamQuality(resolutionHeight: 720, streamId: videoTrackId);
+            }
+        }
+        
+        //update the grid
+        collectionView.reloadData()
+        
+        
     }
     
 }

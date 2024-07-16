@@ -172,9 +172,8 @@ WebRTC Live Streaming</string>
                         <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v8Q-eO-C1v">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v8Q-eO-C1v">
+                                <rect key="frame" x="0.0" y="200" width="390" height="634"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Nz-ci-6za">
                                     <size key="itemSize" width="272" height="256"/>
@@ -217,17 +216,32 @@ WebRTC Live Streaming</string>
                                     <constraint firstAttribute="width" constant="90" id="tMd-w9-0ro"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Y7-Gu-YHc" customClass="RTCMTLVideoView">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="nbV-00-tZd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dqn-Tz-Jj5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dqn-Tz-Jj5" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" constant="20" id="Fpc-aE-wjW" userLabel="Safe Area.bottom = Local View.bottom"/>
+                            <constraint firstItem="9Y7-Gu-YHc" firstAttribute="top" secondItem="dqn-Tz-Jj5" secondAttribute="top" id="GSq-UA-gQi"/>
+                            <constraint firstItem="dqn-Tz-Jj5" firstAttribute="trailing" secondItem="v8Q-eO-C1v" secondAttribute="trailing" id="HDn-DF-pPN"/>
+                            <constraint firstItem="9Y7-Gu-YHc" firstAttribute="leading" secondItem="dqn-Tz-Jj5" secondAttribute="leading" id="Moc-Ar-up1"/>
+                            <constraint firstItem="v8Q-eO-C1v" firstAttribute="leading" secondItem="dqn-Tz-Jj5" secondAttribute="leading" id="O2j-tb-89J"/>
+                            <constraint firstItem="v8Q-eO-C1v" firstAttribute="bottom" secondItem="dqn-Tz-Jj5" secondAttribute="bottom" id="Rlb-vc-OLv"/>
+                            <constraint firstItem="v8Q-eO-C1v" firstAttribute="top" secondItem="9Y7-Gu-YHc" secondAttribute="bottom" id="ZD8-86-4wP"/>
                             <constraint firstItem="dqn-Tz-Jj5" firstAttribute="trailing" secondItem="Zwp-DO-5T7" secondAttribute="trailing" constant="33" id="pND-Zi-qjI" userLabel="Safe Area.trailing = Local View.trailing"/>
+                            <constraint firstItem="9Y7-Gu-YHc" firstAttribute="trailing" secondItem="dqn-Tz-Jj5" secondAttribute="trailing" id="zg8-Rt-pHw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l7b-W5-MXv"/>
                     <connections>
                         <outlet property="collectionView" destination="v8Q-eO-C1v" id="tlK-Cg-lCn"/>
+                        <outlet property="heroView" destination="9Y7-Gu-YHc" id="D6o-t3-s6g"/>
                         <outlet property="localView" destination="Zwp-DO-5T7" id="ada-FF-Y7z"/>
                     </connections>
                 </viewController>
