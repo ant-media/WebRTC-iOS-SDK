@@ -11,7 +11,7 @@ import Foundation
 import WebRTC
 import WebRTCiOSSDK
 
-open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutputSampleBufferDelegate, RTCVideoViewDelegate{
+open class ConferenceViewController: UIViewController ,  AVCaptureVideoDataOutputSampleBufferDelegate, RTCVideoViewDelegate{
     
     /*
      PAY ATTENTION
@@ -22,51 +22,26 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
     var publisherStreamId: String!
     
     @IBOutlet var localView: UIView!
-    @IBOutlet var remoteView0: UIView!
-    @IBOutlet var remoteView1: UIView!
-    @IBOutlet var remoteView2: UIView!
-    @IBOutlet var remoteView3: UIView!
         
-    var remoteViews:[RTCVideoRenderer] = []
+    @IBOutlet weak var collectionView: UICollectionView!
     
     //keeps which remoteView renders which track according to the index
     var remoteViewTrackMap: [RTCVideoTrack?] = [];
         
     var conferenceClient: AntMediaClient?;
-            
+    
     func generateRandomAlphanumericString(length: Int) -> String {
         let characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in characters.randomElement()! })
     }
     
-    func initRenderer(view: UIView)
-    {
-        #if arch(arm64)
-        let localRenderer = RTCMTLVideoView(frame: view.frame)
-        localRenderer.videoContentMode =  .scaleAspectFit
-        #else
-        let localRenderer = RTCEAGLVideoView(frame: view.frame)
-        localRenderer.delegate = self
-        #endif
-        
-        localRenderer.frame = view.bounds
-        
-        localRenderer.isHidden = true;
-        AntMediaClient.embedView(localRenderer, into: view)
-        remoteViews.append(localRenderer)
-        remoteViewTrackMap.append(nil);
-       
-    }
+
     
     open override func viewWillAppear(_ animated: Bool)
     {
         
-        //init renderers because front end manage the viewers
-        initRenderer(view: remoteView0)
-        initRenderer(view: remoteView1)
-        initRenderer(view: remoteView2)
-        initRenderer(view: remoteView3)
-       
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
         AntMediaClient.setDebug(true)
         self.conferenceClient =  AntMediaClient.init();
@@ -95,25 +70,12 @@ open class ConferenceViewController: UIViewController , AVCaptureVideoDataOutput
         
         //stop publishing
         self.conferenceClient?.stop(streamId: self.publisherStreamId);
-
-        
     }
     
     public func removePlayers() {
         Run.onMainThread { [self] in
-            var i = 0;
-            
-            while (i < remoteViewTrackMap.count)
-            {
-                remoteViewTrackMap[i] = nil;
-                if let view = remoteViews[i] as? RTCMTLVideoView {
-                    view.isHidden = true;
-                }
-                else if let view = remoteViews[i] as? RTCEAGLVideoView {
-                    view.isHidden = true;
-                }
-                i += 1
-            }
+            remoteViewTrackMap.removeAll();
+            collectionView.reloadData()
         }
     }
 }
@@ -139,58 +101,14 @@ extension ConferenceViewController: AntMediaClientDelegate
     }
     
     public func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {
-        
+                
         AntMediaClient.printf("Track is added with id:\(track.trackId)")
-        //tracks are in this format ARDAMSv+ streamId or ARDAMSa + streamId
-        let streamId =  track.trackId.suffix(track.trackId.count - "ARDAMSv".count);
-        
-        if (streamId == self.publisherStreamId) {
-            
-            //TODO: Refactor here to have a better solution. I mean server should not send this track
-            // When we have single object to publish and play the streams. It can be done.
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                //It's delay for 3 seconds because in some cases server enables while adding local stream
-                self.conferenceClient?.enableTrack(trackId: String(streamId), enabled: false);
-            }
-            track.isEnabled = false;
-            return;
-            
-        }
-        
-        AntMediaClient.printf("Track is added with id:\(track.trackId) and stream id:\(streamId)")
         if let videoTrack = track as? RTCVideoTrack
         {
-            //find the view to render
-            var i = 0;
-            while (i < remoteViewTrackMap.count) {
-                if (remoteViewTrackMap[i] == nil) {
-                    break
-                }
-                i += 1
+            remoteViewTrackMap.append(videoTrack);
+            Run.onMainThread {
+                self.collectionView.reloadData()
             }
-            
-            if (i < remoteViewTrackMap.count) {
-                //keep the track reference
-                remoteViewTrackMap[i] = videoTrack;
-                videoTrack.add(remoteViews[i]);
-                
-                Run.onMainThread { [self] in
-                    if let view = self.remoteViews[i] as? RTCMTLVideoView {
-                        view.isHidden = false;
-                    }
-                    else if let view = remoteViews[i] as? RTCEAGLVideoView {
-                        view.isHidden = false;
-                    }
-                }
-            }
-            else {
-                AntMediaClient.printf("No space to render new video track")
-            }
-                
-        }
-        else {
-            AntMediaClient.printf("New track is not video track")
         }
     }
     
@@ -203,14 +121,8 @@ extension ConferenceViewController: AntMediaClientDelegate
             {
                 if (remoteViewTrackMap[i]?.trackId == track.trackId)
                 {
-                    remoteViewTrackMap[i] = nil;
-                    
-                    if let view = remoteViews[i] as? RTCMTLVideoView {
-                        view.isHidden = true;
-                    }
-                    else if let view = remoteViews[i] as? RTCEAGLVideoView {
-                        view.isHidden = true;
-                    }
+                    remoteViewTrackMap.remove(at: i)
+                    collectionView.reloadData();
                     break;
                 }
                 i += 1
@@ -277,6 +189,36 @@ extension ConferenceViewController: AntMediaClientDelegate
                 }
             }
         }
+    }
+}
+
+extension ConferenceViewController: UICollectionViewDataSource {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return remoteViewTrackMap.count
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath) as! CellView;
+        cell.videoTrack = remoteViewTrackMap[indexPath.item];
+        cell.playerView.videoContentMode = .scaleAspectFit
+        remoteViewTrackMap[indexPath.item]?.add(cell.playerView)
+        
+        return cell
+    }
+    
+}
+
+extension ConferenceViewController: UICollectionViewDelegateFlowLayout {
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+       let columns: CGFloat = 2
+       let collectionViewWidth = collectionView.bounds.width
+       let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+       let spaceBetweenCells = flowLayout.minimumInteritemSpacing * (columns - 1)
+       let adjustedWidth = collectionViewWidth - spaceBetweenCells
+       let width: CGFloat = adjustedWidth / columns
+       let height: CGFloat = 200
+       return CGSize(width: width, height: height)
+        
     }
 }
 

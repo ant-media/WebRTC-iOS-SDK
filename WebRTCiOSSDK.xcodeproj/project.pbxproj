@@ -14,6 +14,7 @@
 		A8B966052A069A2800D67CA1 /* WebRTCiOSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8B966092A069A2C00D67CA1 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
 		A8B9660A2A069A2C00D67CA1 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A8C0684E2C45036F00BAD624 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0684D2C45036F00BAD624 /* CellView.swift */; };
 		A8CAF2BF2C0B1DFC00520691 /* ClientStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CAF2BD2C0B1DFC00520691 /* ClientStatistics.swift */; };
 		A8CAF2C02C0B90DD00520691 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
 		A8CAF2C12C0B90DD00520691 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -157,6 +158,7 @@
 		A8B965FA2A06969900D67CA1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B966022A0698EC00D67CA1 /* WebRTC-Sample-App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WebRTC-Sample-App.entitlements"; sourceTree = "<group>"; };
 		A8B966032A06991200D67CA1 /* ScreenShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ScreenShare.entitlements; sourceTree = "<group>"; };
+		A8C0684D2C45036F00BAD624 /* CellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellView.swift; sourceTree = "<group>"; };
 		A8CAF2BD2C0B1DFC00520691 /* ClientStatistics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientStatistics.swift; sourceTree = "<group>"; };
 		A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WebRTCiOSSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WebRTCiOSSDK.h; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 				A8DAC0112A063AB50007CDE7 /* Assets.xcassets */,
 				A8DAC0162A063AB50007CDE7 /* Info.plist */,
 				A8DAC00E2A063AB30007CDE7 /* WebRTC_Sample_App.xcdatamodeld */,
+				A8C0684D2C45036F00BAD624 /* CellView.swift */,
 			);
 			path = "WebRTC-Sample-App";
 			sourceTree = "<group>";
@@ -552,7 +555,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					A8B965F32A06969900D67CA1 = {
 						CreatedOnToolsVersion = 14.2;
@@ -697,6 +700,7 @@
 				A8DAC0442A063BC00007CDE7 /* AlertHelper.swift in Sources */,
 				A8DAC0422A063BC00007CDE7 /* WelcomeViewController.swift in Sources */,
 				A8DAC0482A063BC00007CDE7 /* ConferenceViewController.swift in Sources */,
+				A8C0684E2C45036F00BAD624 /* CellView.swift in Sources */,
 				A8DAC0412A063BC00007CDE7 /* VideoViewController.swift in Sources */,
 				A8DAC0472A063BC00007CDE7 /* Run.swift in Sources */,
 				A8DAC0082A063AB30007CDE7 /* SceneDelegate.swift in Sources */,
@@ -866,6 +870,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -929,6 +934,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -952,6 +958,7 @@
 		A8DABFDD2A0639D80007CDE7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -959,6 +966,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -969,6 +977,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.WebRTCiOSSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -984,6 +993,7 @@
 		A8DABFDE2A0639D80007CDE7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -991,6 +1001,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1001,6 +1012,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++20";
 				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.WebRTCiOSSDK;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

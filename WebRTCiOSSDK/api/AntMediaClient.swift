@@ -1021,8 +1021,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                        message: broadcastObject ?? [:]
                    )
                }
+                else if definition == RESOLUTION_CHANGE_INFO_COMMAND {
+                    let streamId = message[STREAM_ID] as? String ?? "";
+                    self.delegate?.eventHappened(streamId: streamId, eventType: definition, payload: message)
+                }
             
                 break;
+           
             case ROOM_INFORMATION_COMMAND:
                 if let updatedStreamsInTheRoom = message[STREAMS] as? [String] {
                    //check that there is a new stream exists
@@ -1054,6 +1059,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                             
                 }
                 
+                break;
+            case "pong":
+                //dont do anything
                 break;
             case "error":
                 guard let definition = message["definition"] as? String else {
@@ -1104,6 +1112,16 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (self.isWebSocketConnected)
         {
             self.webSocket?.write(string: [COMMAND: FORCE_STREAM_QUALITY_INFO, STREAM_ID: (self.playerStreamId!), STREAM_HEIGHT_FIELD: resolutionHeight].json)
+        }
+        else {
+            AntMediaClient.printf("Websocket is not connected")
+        }
+    }
+    
+    public func forceStreamQuality(resolutionHeight:Int, streamId:String) {
+        if (self.isWebSocketConnected)
+        {
+            self.webSocket?.write(string: [COMMAND: FORCE_STREAM_QUALITY_INFO, STREAM_ID: (self.playerStreamId!), TRACK_ID:streamId, STREAM_HEIGHT_FIELD: resolutionHeight].json)
         }
         else {
             AntMediaClient.printf("Websocket is not connected")

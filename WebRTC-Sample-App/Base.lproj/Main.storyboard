@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -168,27 +169,48 @@ WebRTC Live Streaming</string>
             <objects>
                 <viewController storyboardIdentifier="Conference" id="E4n-9I-LrE" customClass="ConferenceViewController" customModule="WebRTC_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CM5-Lj-3ty">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zBK-Om-nWf">
-                                <rect key="frame" x="16" y="47" width="179" height="370"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v8Q-eO-C1v">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PKz-rN-me0">
-                                <rect key="frame" x="206.66666666666663" y="47" width="175.33333333333337" height="346.66666666666669"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qPy-8E-T6N">
-                                <rect key="frame" x="16" y="417" width="179" height="350"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LXN-aK-Wm3">
-                                <rect key="frame" x="195" y="417" width="196" height="350"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </view>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Nz-ci-6za">
+                                    <size key="itemSize" width="272" height="256"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="playerCell" id="J7e-Mg-61f" customClass="CellView" customModule="WebRTC_Sample_App" customModuleProvider="target">
+                                        <rect key="frame" x="59" y="0.0" width="272" height="256"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uPH-qA-2vf">
+                                            <rect key="frame" x="0.0" y="0.0" width="272" height="256"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5H-io-ymV" customClass="RTCMTLVideoView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="272" height="256"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="R5H-io-ymV" firstAttribute="top" secondItem="uPH-qA-2vf" secondAttribute="top" id="Bzy-hV-kM4"/>
+                                                <constraint firstAttribute="trailing" secondItem="R5H-io-ymV" secondAttribute="trailing" id="Hho-93-tzM"/>
+                                                <constraint firstItem="R5H-io-ymV" firstAttribute="leading" secondItem="uPH-qA-2vf" secondAttribute="leading" id="N5p-vv-z77"/>
+                                                <constraint firstAttribute="bottom" secondItem="R5H-io-ymV" secondAttribute="bottom" id="hYm-6e-Ujt"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="272" height="256"/>
+                                        <connections>
+                                            <outlet property="playerView" destination="R5H-io-ymV" id="Akp-w5-wvC"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zwp-DO-5T7">
-                                <rect key="frame" x="267" y="607" width="90" height="160"/>
+                                <rect key="frame" x="267" y="654" width="90" height="160"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="dnu-X9-a9W"/>
@@ -199,56 +221,34 @@ WebRTC Live Streaming</string>
                         <viewLayoutGuide key="safeArea" id="dqn-Tz-Jj5"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="LXN-aK-Wm3" secondAttribute="trailing" constant="-17" id="3Bd-dA-tuF" userLabel="trailingMargin = Remote View3.trailing"/>
-                            <constraint firstItem="dqn-Tz-Jj5" firstAttribute="centerY" secondItem="zBK-Om-nWf" secondAttribute="bottom" id="4hl-T0-KDm"/>
-                            <constraint firstItem="PKz-rN-me0" firstAttribute="leading" secondItem="zBK-Om-nWf" secondAttribute="trailing" id="5Dx-Cr-rqG"/>
-                            <constraint firstItem="zBK-Om-nWf" firstAttribute="top" secondItem="dqn-Tz-Jj5" secondAttribute="top" id="6wq-5e-Mj6"/>
-                            <constraint firstItem="PKz-rN-me0" firstAttribute="top" secondItem="zBK-Om-nWf" secondAttribute="top" id="AqV-nA-EmJ"/>
-                            <constraint firstAttribute="centerX" secondItem="zBK-Om-nWf" secondAttribute="trailing" id="E4k-YY-Q71" userLabel="centerX = Remote View1.trailing"/>
                             <constraint firstItem="dqn-Tz-Jj5" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" constant="20" id="Fpc-aE-wjW" userLabel="Safe Area.bottom = Local View.bottom"/>
-                            <constraint firstItem="LXN-aK-Wm3" firstAttribute="top" secondItem="qPy-8E-T6N" secondAttribute="top" id="I4Q-cM-hh1"/>
-                            <constraint firstItem="LXN-aK-Wm3" firstAttribute="leading" secondItem="qPy-8E-T6N" secondAttribute="trailing" id="Q0S-IU-LsM"/>
-                            <constraint firstItem="qPy-8E-T6N" firstAttribute="centerX" secondItem="zBK-Om-nWf" secondAttribute="centerX" id="QRh-rT-aK6"/>
-                            <constraint firstItem="zBK-Om-nWf" firstAttribute="leading" secondItem="CM5-Lj-3ty" secondAttribute="leadingMargin" id="S5L-m5-Yrb"/>
-                            <constraint firstAttribute="centerY" secondItem="PKz-rN-me0" secondAttribute="bottom" id="Um9-Ar-5G8"/>
-                            <constraint firstItem="qPy-8E-T6N" firstAttribute="top" secondItem="zBK-Om-nWf" secondAttribute="bottom" id="gap-oY-sdl"/>
-                            <constraint firstItem="zBK-Om-nWf" firstAttribute="trailing" secondItem="qPy-8E-T6N" secondAttribute="trailing" id="jgL-N3-IEF"/>
-                            <constraint firstItem="PKz-rN-me0" firstAttribute="leading" secondItem="zBK-Om-nWf" secondAttribute="trailing" constant="11.5" id="kqQ-65-DXL" userLabel="Remote View1.leading = Remote View0.trailing"/>
-                            <constraint firstItem="dqn-Tz-Jj5" firstAttribute="trailing" secondItem="PKz-rN-me0" secondAttribute="trailing" constant="8" id="m4p-r2-kiA" userLabel="Safe Area.trailing = Remote View2.trailing"/>
-                            <constraint firstItem="qPy-8E-T6N" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" id="m71-fp-qJf"/>
-                            <constraint firstItem="qPy-8E-T6N" firstAttribute="leading" secondItem="zBK-Om-nWf" secondAttribute="leading" id="mUF-pe-umD"/>
                             <constraint firstItem="dqn-Tz-Jj5" firstAttribute="trailing" secondItem="Zwp-DO-5T7" secondAttribute="trailing" constant="33" id="pND-Zi-qjI" userLabel="Safe Area.trailing = Local View.trailing"/>
-                            <constraint firstItem="LXN-aK-Wm3" firstAttribute="leading" secondItem="qPy-8E-T6N" secondAttribute="trailing" id="wgl-l8-6b7"/>
-                            <constraint firstItem="LXN-aK-Wm3" firstAttribute="bottom" secondItem="Zwp-DO-5T7" secondAttribute="bottom" id="xyb-wW-VhS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="l7b-W5-MXv"/>
                     <connections>
+                        <outlet property="collectionView" destination="v8Q-eO-C1v" id="tlK-Cg-lCn"/>
                         <outlet property="localView" destination="Zwp-DO-5T7" id="ada-FF-Y7z"/>
-                        <outlet property="remoteView0" destination="zBK-Om-nWf" id="pbU-sW-7CT"/>
-                        <outlet property="remoteView1" destination="PKz-rN-me0" id="Uz2-bp-z9s"/>
-                        <outlet property="remoteView2" destination="qPy-8E-T6N" id="fzb-yG-Td5"/>
-                        <outlet property="remoteView3" destination="LXN-aK-Wm3" id="v8t-Qa-1hx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6tn-JR-W3G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1194.4000000000001" y="869.41529235382313"/>
+            <point key="canvasLocation" x="1193.8461538461538" y="868.72037914691941"/>
         </scene>
         <!--Video View Controller-->
         <scene sceneID="pqe-YK-PtD">
             <objects>
                 <viewController storyboardIdentifier="Video" id="xVm-wQ-O5q" customClass="VideoViewController" customModule="WebRTC_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="LyJ-zl-XYS">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="cFD-yb-BM7" customClass="RTCEAGLVideoView">
-                                <rect key="frame" x="0.0" y="47" width="390" height="740"/>
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="834"/>
                                 <color key="backgroundColor" red="0.32549019607843138" green="0.32549019607843138" blue="0.32549019607843138" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="lwh-ZV-HkX" customClass="RTCEAGLVideoView">
-                                <rect key="frame" x="270" y="637" width="90" height="120"/>
+                                <rect key="frame" x="270" y="684" width="90" height="120"/>
                                 <color key="backgroundColor" red="0.086274509803921567" green="0.086274509803921567" blue="0.086274509803921567" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="FEQ-6q-T1I"/>
@@ -256,7 +256,7 @@ WebRTC Live Streaming</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H3f-3T-91O">
-                                <rect key="frame" x="15" y="293.66666666666669" width="45" height="200"/>
+                                <rect key="frame" x="15" y="317" width="45" height="200"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5j2-CR-zdD" userLabel="Audio Button">
                                         <rect key="frame" x="2" y="0.0" width="40" height="40"/>
