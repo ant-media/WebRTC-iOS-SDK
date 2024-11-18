@@ -357,6 +357,15 @@ public protocol AntMediaClientProtocol {
     func enableTrack(trackId:String, enabled:Bool)
     
     /**
+     Get the local video track which is local camera or external source which is screen
+     */
+    func getLocalVideoTrack() -> RTCVideoTrack?;
+    
+    /**
+     Get the local audio track which is the local microphone
+     */
+    func getLocalAudioTrack() -> RTCAudioTrack?;
+    /**
      Call this method to join a conference room
      - Parameters
       roomId: The id of the room to join.

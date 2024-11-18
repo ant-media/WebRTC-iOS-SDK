@@ -259,6 +259,15 @@ extension VideoViewController: AntMediaClientDelegate {
     func localStreamStarted(streamId: String) {
         print("Local stream added")
         self.fullVideoView.isHidden = false
+        
+        var localVideoTrack:RTCVideoTrack? = self.client?.getLocalVideoTrack();
+        
+        print("local video trackId:\(localVideoTrack?.trackId)");
+        
+        var localAudioTrack:RTCAudioTrack? = self.client?.getLocalAudioTrack();
+        
+        print("local audio trackId:\(localAudioTrack?.trackId)");
+        
     }
     
     

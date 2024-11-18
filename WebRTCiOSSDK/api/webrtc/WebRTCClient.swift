@@ -85,16 +85,16 @@ class WebRTCClient: NSObject {
         self.peerConnection = WebRTCClient.factory.peerConnection(with: configuration, constraints: defaultConstraint, delegate: self)
     }
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, streamId: String) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate,  cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
-                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, streamId: streamId)
+                  cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, streamId: streamId)
     }
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, streamId: String) {
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, streamId: String) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate,
-                  mode: mode, cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
+                 cameraPosition: cameraPosition, targetWidth: targetWidth, targetHeight: targetHeight, videoEnabled: true, enableDataChannel:false, useExternalCameraSource: false, streamId: streamId)
     }
     
-    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, mode: AntMediaClientMode, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, useExternalCameraSource: Bool, externalAudio: Bool = false, externalVideoCapture: Bool = false, cameraSourceFPS: Int = 30, streamId: String,
+    public convenience init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, cameraPosition: AVCaptureDevice.Position, targetWidth: Int, targetHeight: Int, videoEnabled: Bool, enableDataChannel: Bool, useExternalCameraSource: Bool, externalAudio: Bool = false, externalVideoCapture: Bool = false, cameraSourceFPS: Int = 30, streamId: String,
                             degradationPreference: RTCDegradationPreference = RTCDegradationPreference.maintainResolution) {
         self.init(remoteVideoView: remoteVideoView, localVideoView: localVideoView, delegate: delegate, externalAudio: externalAudio)
         self.cameraPosition = cameraPosition
@@ -107,11 +107,9 @@ class WebRTCClient: NSObject {
         self.cameraSourceFPS = cameraSourceFPS;
         self.streamId = streamId;
         self.degradationPreference = degradationPreference
-        
-        if (mode != .play) {
-            self.addLocalMediaStream()
-        }
     }
+    
+    
     
     public func externalVideoCapture(externalVideoCapture: Bool) {
         self.externalVideoCapture = externalVideoCapture;
@@ -412,7 +410,7 @@ class WebRTCClient: NSObject {
     }
     
     
-    private func addLocalMediaStream() -> Bool {
+    public func addLocalMediaStream() -> Bool {
         
         
         AntMediaClient.printf("Add local media streams")
@@ -443,6 +441,16 @@ class WebRTCClient: NSObject {
         self.delegate?.addLocalStream(streamId: self.streamId)
         return true
     }
+    
+    public func getLocalVideoTrack() -> RTCVideoTrack {
+        return self.localVideoTrack;
+    }
+    
+    public func getLocalAudioTrack() -> RTCAudioTrack {
+        return self.localAudioTrack;
+    }
+    
+    
     
     public func setDegradationPreference(degradationPreference:RTCDegradationPreference) {
         self.degradationPreference = degradationPreference
