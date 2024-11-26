@@ -508,8 +508,13 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         if (self.webRTCClientMap[id] == nil) {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClientMap[id]))")
             
-            self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, mode: mode != .unspecified ? mode : self.mode , cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id,
+            self.webRTCClientMap[id] = WebRTCClient.init(remoteVideoView: remoteView, localVideoView: localView, delegate: self, cameraPosition: self.cameraPosition, targetWidth: self.targetWidth, targetHeight: self.targetHeight, videoEnabled: self.videoEnable, enableDataChannel: self.enableDataChannel, useExternalCameraSource: self.useExternalCameraSource, externalAudio: self.externalAudioEnabled, externalVideoCapture: self.externalVideoCapture, cameraSourceFPS: self.cameraSourceFPS, streamId:id,
                                                          degradationPreference: self.degradationPreference);
+            
+            
+            if (self.mode != .play) {
+                self.webRTCClientMap[id]?.addLocalMediaStream();
+            }
             
             self.webRTCClientMap[id]?.setToken(token)
             
@@ -635,6 +640,14 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     open func setAudioTrack(enableTrack: Bool) {
         self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.setAudioEnabled(enabled: enableTrack);
         self.sendAudioTrackStatusNotification(enabled:enableTrack);
+    }
+    
+    open func getLocalAudioTrack() -> RTCAudioTrack? {
+        self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.getLocalAudioTrack();
+    }
+    
+    open func getLocalVideoTrack() -> RTCVideoTrack? {
+        self.webRTCClientMap[self.publisherStreamId ?? (self.p2pStreamId ?? "")]?.getLocalVideoTrack();
     }
     
     func sendNotification(eventType:String, streamId: String = "") {
