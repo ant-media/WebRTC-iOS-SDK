@@ -82,9 +82,17 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
                 self.client.setExternalVideoCapture(externalVideoCapture: true);
             }
             
+            //in some ipad versions, resolution/aspect ratio is critical to set, otherwise iOS encoder may not encode the frames and
+            //server side reports publishTimeout because server cannot get the video frames
             self.client.setTargetResolution(width: 1280, height: 720);
+            self.client.setMaxVideoBps(videoBitratePerSecond: 2000000)
                     
             self.client.setExternalAudio(externalAudioEnabled: true)
+            
+            //In some devices iphone version, frames are dropped due to encoder queue and it causes glitches in the playback
+            //Decreasing the fps provides a better playback expeience.
+            //Alternatively, target resolution can be decreased above to let encoder work faster
+            self.client.setTargetFps(fps: 10)
                         
             self.client.publish(streamId: streamId as! String);
             
