@@ -42,11 +42,11 @@ public struct ClientStatistics {
     public private(set) var items: [RTCStatItem]
     
     public var audioSource: RTCStatItem? {
-        items.first(where: {$0.type == .media_source && $0.values["kind"] as? String == "audio"})
+        items.first(where: { $0.type == .media_source && $0.values["kind"] as? String == "audio" })
     }
     
     public var videoSource: RTCStatItem? {
-        items.first(where: {$0.type == .media_source && $0.values["kind"] as? String == "video"})
+        items.first(where: { $0.type == .media_source && $0.values["kind"] as? String == "video" })
     }
     
     public var audioLevel: Double {
