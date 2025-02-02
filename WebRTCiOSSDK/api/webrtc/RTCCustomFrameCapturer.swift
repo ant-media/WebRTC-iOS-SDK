@@ -14,57 +14,52 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     
     let kNanosecondsPerSecond: Float64 = 1000000000
     var nanoseconds: Float64 = 0
-    var lastSentFrameTimeStampNanoSeconds: Int64 = 0;
+    var lastSentFrameTimeStampNanoSeconds: Int64 = 0
     private var targetHeight: Int
         
-    private var videoEnabled: Bool = true;
-    private var audioEnabled: Bool = true;
+    private var videoEnabled: Bool = true
+    private var audioEnabled: Bool = true
     
-    private var webRTCClient: WebRTCClient?;
+    private var webRTCClient: WebRTCClient?
     
-    private var frameRateIntervalNanoSeconds : Float64 = 0;
-    
+    private var frameRateIntervalNanoSeconds: Float64 = 0
     
     // if externalCapture is true, it means that capture method is called from an external component.
     // externalComponent is the BroadcastExtension
-    private var externalCapture: Bool;
+    private var externalCapture: Bool
     
-    private var fps: Int;
+    private var fps: Int
     
-    
-    init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false, fps: Int = 30)
-    {
+    init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false, fps: Int = 30) {
         self.targetHeight = height
-        self.externalCapture = externalCapture;
+        self.externalCapture = externalCapture
         
         //if external capture is enabled videoEnabled and audioEnabled are ignored
-        self.videoEnabled = videoEnabled;
-        self.audioEnabled = audioEnabled;
-        self.frameRateIntervalNanoSeconds = kNanosecondsPerSecond/Double(fps);
-        self.fps = fps;
+        self.videoEnabled = videoEnabled
+        self.audioEnabled = audioEnabled
+        self.frameRateIntervalNanoSeconds = kNanosecondsPerSecond/Double(fps)
+        self.fps = fps
             
         super.init(delegate: delegate)
-        
     }
     
     public func setWebRTCClient(webRTCClient: WebRTCClient) {
         self.webRTCClient = webRTCClient
     }
     
-    public func capture(_ pixelBuffer: CVPixelBuffer, rotation:RTCVideoRotation, timeStampNs: Int64 )
-    {
+    public func capture(_ pixelBuffer: CVPixelBuffer, rotation: RTCVideoRotation, timeStampNs: Int64 ) {
         if ((Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < frameRateIntervalNanoSeconds ) {
             AntMediaClient.verbose("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
-            return;
-            
+            return
         }
         
         let width = Int32(CVPixelBufferGetWidth(pixelBuffer))
         let height = Int32(CVPixelBufferGetHeight(pixelBuffer))
         
-        var scaledWidth = (width * Int32(self.targetHeight)) / height;
-        if (scaledWidth % 2 == 1) {
-            scaledWidth+=1;
+        var scaledWidth = (width * Int32(self.targetHeight)) / height
+        
+        if scaledWidth % 2 == 1 {
+            scaledWidth += 1
         }
         
         let rtcPixelBuffer = RTCCVPixelBuffer(
@@ -74,7 +69,8 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             cropWidth: width,
             cropHeight: height,
             cropX: 0,
-            cropY: 0)
+            cropY: 0
+        )
         
         let rtcVideoFrame = RTCVideoFrame(
                     buffer: rtcPixelBuffer,
@@ -83,10 +79,10 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
                 )
         
         self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
-        lastSentFrameTimeStampNanoSeconds = Int64(timeStampNs);
+        lastSentFrameTimeStampNanoSeconds = Int64(timeStampNs)
     }
     
-    public func capture(_ sampleBuffer: CMSampleBuffer, externalRotation:Int = -1) {
+    public func capture(_ sampleBuffer: CMSampleBuffer, externalRotation: Int = -1) {
         
         if (CMSampleBufferGetNumSamples(sampleBuffer) != 1 || !CMSampleBufferIsValid(sampleBuffer) ||
             !CMSampleBufferDataIsReady(sampleBuffer))
@@ -95,20 +91,16 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             return;
         }
         
-        let timeStampNs = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) *
-            kNanosecondsPerSecond;
+        let timeStampNs = CMTimeGetSeconds(CMSampleBufferGetPresentationTimeStamp(sampleBuffer)) * kNanosecondsPerSecond
                 
         if ((Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < frameRateIntervalNanoSeconds ) {
             AntMediaClient.verbose("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)");
-            return;
-            
+            return
         }
         
-        let _pixelBuffer:CVPixelBuffer? = CMSampleBufferGetImageBuffer(sampleBuffer);
+        let _pixelBuffer: CVPixelBuffer? = CMSampleBufferGetImageBuffer(sampleBuffer)
         
-        
-        if let pixelBuffer = _pixelBuffer
-        {
+        if let pixelBuffer = _pixelBuffer {
             //NSLog("Incoming frame width:\(width) height:\(height) adapted width:\(scaledWidth) height:\(self.targetHeight)")
             
             var rotation = RTCVideoRotation._0;
@@ -154,7 +146,6 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         else {
             NSLog("Cannot get image buffer");
         }
-        
     }
     
     public func startCapture()
@@ -185,8 +176,7 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
         }
     }
     
-    public func stopCapture()
-    {
+    public func stopCapture() {
         if !externalCapture {
             let recorder = RPScreenRecorder.shared();
             if (recorder.isRecording) {
@@ -203,7 +193,4 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
              }
         }
     }
-    
-   
 }
-
