@@ -23,6 +23,7 @@ public class StreamInformation {
         self.videoCodec = json["videoCodec"] as! String
     }
 }
+
 public protocol AntMediaClientDelegate: AnyObject {
 
     /**

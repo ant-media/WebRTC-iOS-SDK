@@ -1467,7 +1467,7 @@ extension AntMediaClient {
     
     /// - Activates the audio session
     private func activateAudioSession() {
-        DispatchQueue(label: "audio").async {() in
+        DispatchQueue(label: "audio").async {
             self.rtcAudioSession.lockForConfiguration()
             self.rtcAudioSession.isAudioEnabled = true
             self.rtcAudioSession.unlockForConfiguration()

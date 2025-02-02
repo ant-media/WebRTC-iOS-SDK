@@ -97,7 +97,7 @@ extension ConferenceViewController: AntMediaClientDelegate
     }
     public func playStarted(streamId: String) {
         print("play started");
-        AntMediaClient.speakerOn();
+        conferenceClient?.speakerOn()
     }
     
     public func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {

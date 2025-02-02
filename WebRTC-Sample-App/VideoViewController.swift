@@ -307,7 +307,7 @@ extension VideoViewController: AntMediaClientDelegate {
     }
     
     func audioSessionDidStartPlayOrRecord(streamId: String) {
-        AntMediaClient.speakerOn()
+        client?.speakerOn()
     }
     
     func dataReceivedFromDataChannel(streamId: String, data: Data, binary: Bool) {
