@@ -801,7 +801,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.screen.share;
+				PRODUCT_BUNDLE_IDENTIFIER = antmedia.sbd.sample.screen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -828,7 +828,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.screen.share;
+				PRODUCT_BUNDLE_IDENTIFIER = antmedia.sbd.sample.screen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1075,7 +1075,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DEVELOPMENT_TEAM = 84D2TM7KGZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WebRTC-Sample-App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "WebRTC Sample";
@@ -1092,7 +1092,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample;
+				PRODUCT_BUNDLE_IDENTIFIER = antmedia.sbd.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1114,7 +1114,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DEVELOPMENT_TEAM = 84D2TM7KGZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WebRTC-Sample-App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "WebRTC Sample";
@@ -1131,7 +1131,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample;
+				PRODUCT_BUNDLE_IDENTIFIER = antmedia.sbd.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1150,11 +1150,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DEVELOPMENT_TEAM = 84D2TM7KGZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = antmedia.sbd.webrtc.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1170,11 +1170,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DEVELOPMENT_TEAM = 84D2TM7KGZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = antmedia.sbd.webrtc.sample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1189,11 +1189,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DEVELOPMENT_TEAM = 84D2TM7KGZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUlTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -1208,11 +1208,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MJU7KX4L7S;
+				DEVELOPMENT_TEAM = 84D2TM7KGZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = io.antmedia.ios.webrtc.sample.AppUlTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
