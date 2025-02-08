@@ -1216,10 +1216,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         (self.webRTCClientMap[self.getPublisherStreamId()]?.getVideoCapturer() as? RTCCustomFrameCapturer)?.capture(pixelBuffer, rotation: rotation, timeStampNs: timestampNs);
     }
     
-
     public func enableVideoTrack(trackId:String, enabled:Bool){
         if (isWebSocketConnected) {
-            
             let jsonString =  [
                 COMMAND: ENABLE_VIDEO_TRACK_COMMAND,
                 TRACK_ID: trackId,
@@ -1625,6 +1623,15 @@ extension AntMediaClient {
             )
         }
     }
-    
- 
+}
+
+extension AntMediaClient {
+    /// Use this method when streaming is started.
+    public func setFrameCapturer(_ capturer: @escaping (_ buffer: CVPixelBuffer, _ frame: CGRect) -> CGRect?) {
+        guard let streamId = publisherStreamId else {
+            return
+        }
+        
+        (webRTCClientMap[streamId]?.videoCapturer as? RTCCustomFrameCapturer)?.frameCapturer = capturer
+    }
 }

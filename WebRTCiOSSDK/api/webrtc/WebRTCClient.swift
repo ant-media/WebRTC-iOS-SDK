@@ -23,7 +23,7 @@ class WebRTCClient: NSObject {
     var delegate: WebRTCClientDelegate?
     var peerConnection : RTCPeerConnection?
     
-    private var videoCapturer: RTCVideoCapturer?
+    private(set) var videoCapturer: RTCVideoCapturer?
     var localVideoTrack: RTCVideoTrack!
     var localAudioTrack: RTCAudioTrack!
     var remoteVideoTrack: RTCVideoTrack!
@@ -329,7 +329,7 @@ class WebRTCClient: NSObject {
         return iceConnectionState;
     }
     
-    
+    @discardableResult
     private func startCapture() -> Bool {
         
          let camera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
@@ -420,7 +420,7 @@ class WebRTCClient: NSObject {
 
             self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
             
-            if let params = videoSender?.parameters 
+            if let params = videoSender?.parameters
             {
                 params.degradationPreference = (self.degradationPreference.rawValue) as NSNumber
                 videoSender?.parameters = params
@@ -576,10 +576,10 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
         let candidateJson = ["command": "takeCandidate",
                              "type" : "candidate",
-                             "streamId": self.streamId,
+                             "streamId": self.streamId ?? "",
                              "candidate" : candidate.sdp,
                              "label": candidate.sdpMLineIndex,
-                             "id": candidate.sdpMid] as [String : Any]
+                             "id": candidate.sdpMid ?? ""] as [String : Any]
         self.delegate?.sendMessage(candidateJson)
     }
     
