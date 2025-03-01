@@ -260,14 +260,17 @@ extension VideoViewController: AntMediaClientDelegate {
         print("Local stream added")
         self.fullVideoView.isHidden = false
         
-        var localVideoTrack:RTCVideoTrack? = self.client?.getLocalVideoTrack();
+        let localVideoTrack:RTCVideoTrack? = self.client?.getLocalVideoTrack();
         
-        print("local video trackId:\(localVideoTrack?.trackId)");
+        print("local video trackId:\(localVideoTrack?.trackId ?? "--")");
         
-        var localAudioTrack:RTCAudioTrack? = self.client?.getLocalAudioTrack();
+        let localAudioTrack:RTCAudioTrack? = self.client?.getLocalAudioTrack();
         
-        print("local audio trackId:\(localAudioTrack?.trackId)");
-        
+        print("local audio trackId:\(localAudioTrack?.trackId ?? "--")");
+     
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            self.client?.setZoomLevel(zoomFactor: 2)
+        }
     }
     
     

@@ -415,6 +415,41 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
+    public func setZoomLevel(zoomFactor: CGFloat) {
+        guard let streamId = publisherStreamId, let camera = webRTCClientMap[streamId]?.captureDevice else { return }
+        
+        do {
+            try camera.lockForConfiguration()
+            camera.videoZoomFactor = max(1.0, min(zoomFactor, camera.activeFormat.videoMaxZoomFactor)) // Keep within limits
+            camera.unlockForConfiguration()
+        } catch {
+            print("Failed to set zoom level: \(error)")
+        }
+    }
+    
+    public func smoothZoom(to zoomFactor: CGFloat, rate: Float) {
+        guard let streamId = publisherStreamId, let camera = webRTCClientMap[streamId]?.captureDevice else { return }
+
+        do {
+            try camera.lockForConfiguration()
+            camera.ramp(toVideoZoomFactor: max(1.0, min(zoomFactor, camera.activeFormat.videoMaxZoomFactor)), withRate: rate)
+            camera.unlockForConfiguration()
+        } catch {
+            print("Failed to ramp zoom: \(error)")
+        }
+    }
+    
+    public func stopZoomRamp() {
+        guard let streamId = publisherStreamId, let camera = webRTCClientMap[streamId]?.captureDevice else { return }
+
+        do {
+            try camera.lockForConfiguration()
+            camera.cancelVideoZoomRamp()
+            camera.unlockForConfiguration()
+        } catch {
+            print("Failed to cancel zoom ramp: \(error)")
+        }
+    }
     
     /*
      Connect to websocket.

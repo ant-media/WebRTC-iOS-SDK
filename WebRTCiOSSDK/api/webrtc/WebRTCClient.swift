@@ -56,6 +56,12 @@ class WebRTCClient: NSObject {
     private var externalAudio: Bool = false;
     
     private var cameraSourceFPS: Int = 30;
+    
+    // this is not an ideal method to get current capture device, we need more legit solution
+    var captureDevice: AVCaptureDevice? {
+        (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
+    }
+    
     /*
      State of the connection
      */
@@ -331,11 +337,8 @@ class WebRTCClient: NSObject {
     
     @discardableResult
     private func startCapture() -> Bool {
-        
-         let camera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
-        
-        if (camera != nil) {
-            let supportedFormats = RTCCameraVideoCapturer.supportedFormats(for: camera!)
+        if (captureDevice != nil) {
+            let supportedFormats = RTCCameraVideoCapturer.supportedFormats(for: captureDevice!)
             var currentDiff = INT_MAX
             var selectedFormat: AVCaptureDevice.Format? = nil
             for supportedFormat in supportedFormats {
@@ -348,7 +351,6 @@ class WebRTCClient: NSObject {
             }
             
             if (selectedFormat != nil) {
-                
                 var maxSupportedFramerate: Float64 = 0;
                 for fpsRange in selectedFormat!.videoSupportedFrameRateRanges {
                     maxSupportedFramerate = fmax(maxSupportedFramerate, fpsRange.maxFrameRate);
@@ -362,7 +364,7 @@ class WebRTCClient: NSObject {
                 
                 let cameraVideoCapturer = self.videoCapturer as? RTCCameraVideoCapturer;
                 
-                cameraVideoCapturer?.startCapture(with: camera!,
+                cameraVideoCapturer?.startCapture(with: captureDevice!,
                                                   format: selectedFormat!,
                                                   fps: Int(fps))
                 

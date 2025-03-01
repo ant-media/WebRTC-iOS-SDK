@@ -26,20 +26,20 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
     
     func publishStarted(streamId: String) {
         NSLog("Publish has started");
-        self.client.setFrameCapturer { [weak self] buffer, frame in
-            guard let self, let requiredFrame = self.sharedDefault.object(forKey: "screenShareFrame") as? [CGFloat] else {
-                return frame
-            }
-            
-            // topSafeArea iPhone 12 mini
-            let topSafeArea: CGFloat = 44
-            let convertedFrame = convertRectToBufferFrame(
-                rect: .init(x: requiredFrame[0], y: requiredFrame[1] + topSafeArea, width: requiredFrame[2], height: requiredFrame[3]),
-                screenSize: UIScreen.main.bounds.size,
-                bufferSize: frame.size
-            )
-            return convertedFrame
-        }
+//        self.client.setFrameCapturer { [weak self] buffer, frame in
+//            guard let self, let requiredFrame = self.sharedDefault.object(forKey: "screenShareFrame") as? [CGFloat] else {
+//                return frame
+//            }
+//            
+//            // topSafeArea iPhone 12 mini
+//            let topSafeArea: CGFloat = 44
+//            let convertedFrame = convertRectToBufferFrame(
+//                rect: .init(x: requiredFrame[0], y: requiredFrame[1] + topSafeArea, width: requiredFrame[2], height: requiredFrame[3]),
+//                screenSize: UIScreen.main.bounds.size,
+//                bufferSize: frame.size
+//            )
+//            return convertedFrame
+//        }
     }
     
     func convertRectToBufferFrame(rect: CGRect, screenSize: CGSize, bufferSize: CGSize) -> CGRect {
@@ -115,15 +115,15 @@ class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
             
             //in some ipad versions, resolution/aspect ratio is critical to set, otherwise iOS encoder may not encode the frames and
             //server side reports publishTimeout because server cannot get the video frames
-            self.client.setTargetResolution(width: 1280, height: 720);
-            self.client.setMaxVideoBps(videoBitratePerSecond: 2000000)
-                    
+
+            self.client.setTargetResolution(width: 1920, height: 1080);
+            self.client.setMaxVideoBps(videoBitratePerSecond: 5000000)
             self.client.setExternalAudio(externalAudioEnabled: true)
             
             //In some devices iphone version, frames are dropped due to encoder queue and it causes glitches in the playback
             //Decreasing the fps provides a better playback expeience.
             //Alternatively, target resolution can be decreased above to let encoder work faster
-            self.client.setTargetFps(fps: 10)
+            self.client.setTargetFps(fps: 30)
                         
             self.client.publish(streamId: streamId);
             
