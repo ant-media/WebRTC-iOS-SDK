@@ -39,7 +39,8 @@ class WelcomeViewController: UIViewController {
     var clientToken: String!
     var isConnected = false
     var tapGesture: UITapGestureRecognizer!
-    let sharedDefault = UserDefaults(suiteName: "group.io.antmedia.ios.webrtc.sample")!
+    // original: group.io.antmedia.ios.webrtc.sample
+    let sharedDefault = UserDefaults(suiteName: "group.io.antmedia.sbd.webrtc.sample")! // for test
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -143,6 +144,11 @@ class WelcomeViewController: UIViewController {
     
     private func showVideo()
     {
+        if self.modeSelection.selectedSegmentIndex == 3 {
+            self.show(ShareScreenController(), sender: nil)
+            return
+        }
+        
         if self.getMode() != AntMediaClientMode.conference {
             let controller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "Video") as! VideoViewController
             controller.clientUrl = self.clientUrl
@@ -161,4 +167,3 @@ class WelcomeViewController: UIViewController {
          
     }
 }
-

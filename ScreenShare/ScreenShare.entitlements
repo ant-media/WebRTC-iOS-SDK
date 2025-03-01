@@ -4,7 +4,8 @@
 <dict>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.io.antmedia.ios.webrtc.sample</string>
+		<string>group.io.antmedia.sbd.webrtc.sample</string>
+		<string>group.io.sbd.chatdemo</string>
 	</array>
 </dict>
 </plist>

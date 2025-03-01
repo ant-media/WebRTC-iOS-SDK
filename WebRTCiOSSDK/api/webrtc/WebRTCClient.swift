@@ -23,7 +23,7 @@ class WebRTCClient: NSObject {
     var delegate: WebRTCClientDelegate?
     var peerConnection : RTCPeerConnection?
     
-    private var videoCapturer: RTCVideoCapturer?
+    private(set) var videoCapturer: RTCVideoCapturer?
     var localVideoTrack: RTCVideoTrack!
     var localAudioTrack: RTCAudioTrack!
     var remoteVideoTrack: RTCVideoTrack!
@@ -56,6 +56,12 @@ class WebRTCClient: NSObject {
     private var externalAudio: Bool = false;
     
     private var cameraSourceFPS: Int = 30;
+    
+    // this is not an ideal method to get current capture device, we need more legit solution
+    var captureDevice: AVCaptureDevice? {
+        (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
+    }
+    
     /*
      State of the connection
      */
@@ -329,13 +335,10 @@ class WebRTCClient: NSObject {
         return iceConnectionState;
     }
     
-    
+    @discardableResult
     private func startCapture() -> Bool {
-        
-         let camera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
-        
-        if (camera != nil) {
-            let supportedFormats = RTCCameraVideoCapturer.supportedFormats(for: camera!)
+        if (captureDevice != nil) {
+            let supportedFormats = RTCCameraVideoCapturer.supportedFormats(for: captureDevice!)
             var currentDiff = INT_MAX
             var selectedFormat: AVCaptureDevice.Format? = nil
             for supportedFormat in supportedFormats {
@@ -348,7 +351,6 @@ class WebRTCClient: NSObject {
             }
             
             if (selectedFormat != nil) {
-                
                 var maxSupportedFramerate: Float64 = 0;
                 for fpsRange in selectedFormat!.videoSupportedFrameRateRanges {
                     maxSupportedFramerate = fmax(maxSupportedFramerate, fpsRange.maxFrameRate);
@@ -362,7 +364,7 @@ class WebRTCClient: NSObject {
                 
                 let cameraVideoCapturer = self.videoCapturer as? RTCCameraVideoCapturer;
                 
-                cameraVideoCapturer?.startCapture(with: camera!,
+                cameraVideoCapturer?.startCapture(with: captureDevice!,
                                                   format: selectedFormat!,
                                                   fps: Int(fps))
                 
@@ -420,7 +422,7 @@ class WebRTCClient: NSObject {
 
             self.videoSender = self.peerConnection?.add(self.localVideoTrack,  streamIds: [LOCAL_MEDIA_STREAM_ID])
             
-            if let params = videoSender?.parameters 
+            if let params = videoSender?.parameters
             {
                 params.degradationPreference = (self.degradationPreference.rawValue) as NSNumber
                 videoSender?.parameters = params
@@ -576,10 +578,10 @@ extension WebRTCClient: RTCPeerConnectionDelegate {
     func peerConnection(_ peerConnection: RTCPeerConnection, didGenerate candidate: RTCIceCandidate) {
         let candidateJson = ["command": "takeCandidate",
                              "type" : "candidate",
-                             "streamId": self.streamId,
+                             "streamId": self.streamId ?? "",
                              "candidate" : candidate.sdp,
                              "label": candidate.sdpMLineIndex,
-                             "id": candidate.sdpMid] as [String : Any]
+                             "id": candidate.sdpMid ?? ""] as [String : Any]
         self.delegate?.sendMessage(candidateJson)
     }
     
