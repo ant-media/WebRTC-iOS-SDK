@@ -349,7 +349,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     }
     
     // this configuration ask mic permission and capture mic record
-    public func resetDefaultWebRTCAudioConfiguation() {
+    open func resetDefaultWebRTCAudioConfiguation() {
         RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration())
     }
     
