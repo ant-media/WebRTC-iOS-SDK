@@ -163,6 +163,25 @@ public protocol AntMediaClientProtocol {
     func switchCamera()
     
     /**
+     Instant zoom
+     1.0 means no zoom, 2.0 means 2x zoom, and so on.
+     The method ensures the zoom does not exceed the camera’s limits.
+     */
+    func setZoomLevel(zoomFactor: CGFloat)
+
+    /**
+     Smooth zoom
+     The rate controls how fast the zoom happens.
+     Lower values (e.g., 1.0) mean slow zoom; higher values (e.g., 5.0) mean faster zoom.
+     */
+    func smoothZoom(to zoomFactor: CGFloat, rate: Float)
+
+    /**
+     If a zoom ramp is in progress, you can cancel it immediately:
+     */
+    func stopZoomRamp()
+    
+    /**
     Sends data via WebRTC's Data Channel.
      - Parameters:
         - data: The Data to send via data channel

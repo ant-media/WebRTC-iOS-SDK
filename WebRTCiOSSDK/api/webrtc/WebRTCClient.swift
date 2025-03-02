@@ -66,6 +66,16 @@ class WebRTCClient: NSObject {
     
     private var degradationPreference: RTCDegradationPreference = .maintainResolution
     
+    // this is not an ideal method to get current capture device, we need more legit solution
+    var captureDevice: AVCaptureDevice? {
+        if videoEnabled {
+          return (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
+        }
+        else {
+          return nil;
+        }
+    }
+    
     public init(remoteVideoView: RTCVideoRenderer?, localVideoView: RTCVideoRenderer?, delegate: WebRTCClientDelegate, externalAudio: Bool) {
         RTCInitializeSSL()
         
@@ -388,11 +398,10 @@ class WebRTCClient: NSObject {
     }
     
     private func startCapture() -> Bool {
+      
         
-        let camera = (RTCCameraVideoCapturer.captureDevices().first { $0.position == self.cameraPosition })
-        
-        if camera != nil {
-            let supportedFormats = RTCCameraVideoCapturer.supportedFormats(for: camera!)
+        if captureDevice != nil {
+            let supportedFormats = RTCCameraVideoCapturer.supportedFormats(for: captureDevice!)
             
             var currentDiff = INT_MAX
             
@@ -422,7 +431,7 @@ class WebRTCClient: NSObject {
                 
                 let cameraVideoCapturer = self.videoCapturer as? RTCCameraVideoCapturer
                 
-                cameraVideoCapturer?.startCapture(with: camera!,
+                cameraVideoCapturer?.startCapture(with: captureDevice!,
                                                   format: selectedFormat!,
                                                   fps: Int(fps))
                 
