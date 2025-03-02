@@ -524,6 +524,54 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     open func switchCamera() {
         self.webRTCClientMap[(self.publisherStreamId ?? (self.p2pStreamId)) ?? ""]?.switchCamera()
     }
+    
+    /**
+     Instant zoom
+     1.0 means no zoom, 2.0 means 2x zoom, and so on.
+     The method ensures the zoom does not exceed the camera’s limits.
+     */
+    open func setZoomLevel(zoomFactor: CGFloat) {
+       guard let streamId = publisherStreamId, let camera = webRTCClientMap[streamId]?.captureDevice else { return }
+
+       do {
+           try camera.lockForConfiguration()
+           camera.videoZoomFactor = max(1.0, min(zoomFactor, camera.activeFormat.videoMaxZoomFactor)) // Keep within limits
+           camera.unlockForConfiguration()
+       } catch {
+           print("Failed to set zoom level: \(error)")
+       }
+    }
+
+    /**
+     Smooth zoom
+     The rate controls how fast the zoom happens.
+     Lower values (e.g., 1.0) mean slow zoom; higher values (e.g., 5.0) mean faster zoom.
+     */
+    open func smoothZoom(to zoomFactor: CGFloat, rate: Float) {
+       guard let streamId = publisherStreamId, let camera = webRTCClientMap[streamId]?.captureDevice else { return }
+
+       do {
+           try camera.lockForConfiguration()
+           camera.ramp(toVideoZoomFactor: max(1.0, min(zoomFactor, camera.activeFormat.videoMaxZoomFactor)), withRate: rate)
+           camera.unlockForConfiguration()
+       } catch {
+           print("Failed to ramp zoom: \(error)")
+       }
+    }
+    /**
+     If a zoom ramp is in progress, you can cancel it immediately:
+     */
+    open func stopZoomRamp() {
+       guard let streamId = publisherStreamId, let camera = webRTCClientMap[streamId]?.captureDevice else { return }
+
+       do {
+           try camera.lockForConfiguration()
+           camera.cancelVideoZoomRamp()
+           camera.unlockForConfiguration()
+       } catch {
+           print("Failed to cancel zoom ramp: \(error)")
+       }
+    }
 
     /*
      Send data through WebRTC Data channel.
