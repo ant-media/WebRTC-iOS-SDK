@@ -15,7 +15,7 @@ public extension String {
     func toJSON() -> [String: Any]? {
         let data = self.data(using: .utf8)!
         do {
-            if let jsonArray = try JSONSerialization.jsonObject(with: data, options : .allowFragments) as? Dictionary<String,Any> {
+            if let jsonArray = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] {
                 return jsonArray
             } else {
                 return nil

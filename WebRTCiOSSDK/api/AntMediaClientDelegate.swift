@@ -16,13 +16,14 @@ public class StreamInformation {
    public let videoCodec: String
     
     init(json: [String: Any]!) {
-        self.streamWidth = json["streamWidth"] as! Int;
-        self.streamHeight = json["streamHeight"] as! Int;
-        self.videoBitrate = json["videoBitrate"] as! Int;
-        self.audioBitrate = json["audioBitrate"] as! Int;
-        self.videoCodec = json["videoCodec"] as! String;
+        self.streamWidth = json["streamWidth"] as! Int
+        self.streamHeight = json["streamHeight"] as! Int
+        self.videoBitrate = json["videoBitrate"] as! Int
+        self.audioBitrate = json["audioBitrate"] as! Int
+        self.videoCodec = json["videoCodec"] as! String
     }
 }
+
 public protocol AntMediaClientDelegate: AnyObject {
 
     /**
@@ -54,7 +55,6 @@ public protocol AntMediaClientDelegate: AnyObject {
      Called when local audio and video is started
      */
     func localStreamStarted(streamId: String)
-    
     
     /**
      Called when playing is started.
@@ -121,7 +121,7 @@ public protocol AntMediaClientDelegate: AnyObject {
      - evenType: The type of the event
      */
     @available(*, deprecated, message: "Will be removed soon. Use eventHappened(streamId, eventType, payload)")
-    func eventHappened(streamId:String, eventType:String);
+    func eventHappened(streamId: String, eventType: String)
 
     /**
      It's called when there is an event happen such microphone is muted or unmuted for the specific streamId
@@ -130,17 +130,17 @@ public protocol AntMediaClientDelegate: AnyObject {
      - evenType: The type of the event
      - payload: The payload of the event
      */
-    func eventHappened(streamId:String, eventType:String, payload: [String:Any]?)
+    func eventHappened(streamId: String, eventType: String, payload: [String: Any]?)
     
     /**
      It's called when a new track is added to the stream. It works both on multirack streaming and conferencing
      */
-    func trackAdded(track:RTCMediaStreamTrack, stream:[RTCMediaStream])
+    func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream])
     
     /**
      It's called when a tack is removed. It works both on multitrack streaming and conferencing
      */
-    func trackRemoved(track:RTCMediaStreamTrack)
+    func trackRemoved(track: RTCMediaStreamTrack)
     
     /**
      It's called when server responses to getBroadcastObject method in AntMediaClient.
@@ -150,28 +150,28 @@ public protocol AntMediaClientDelegate: AnyObject {
     /**
      It's called after`registerStatsListener`is `AntMediaClient` is called
      */
-    func onStats(streamId:String, statistics:RTCStatisticsReport);
+    func onStats(streamId: String, statistics: RTCStatisticsReport)
     
     /**
      It's called after join to the room.
      - streamId: the id of the stream tha can be used to publish stream.
         It's not an obligation to publish a stream. It changes according to the project
      */
-    func streamIdToPublish(streamId: String);
+    func streamIdToPublish(streamId: String)
     
     /**
       Called when new streams join to the room
      - streams:  stream id array of the streams that join to the room
      */
     @available(*, deprecated, message: "No need to use. New streams are added automatically. trackAdded is called automatically")
-    func newStreamsJoined(streams: [String]);
+    func newStreamsJoined(streams: [String])
     
     /**
      Called when some streams leaves from the room. So that players can be removed from the user interface
      - streams: stream id array of the stream that leaves from the room
      */
     @available(*, deprecated, message: "No need to use. New streams are removed automatically. trackRemoved is called automatically")
-    func streamsLeft(streams: [String]);
+    func streamsLeft(streams: [String])
     
     /**
      The delegate method that sends audio level of the microphone. , audioLeve is between 0 and 1.
@@ -196,14 +196,14 @@ public extension AntMediaClientDelegate {
     }
     
     func clientDidDisconnect(_ message: String) {
-        AntMediaClient.printf("Websocket is disconnected with this problem:\(message)");
+        AntMediaClient.printf("Websocket is disconnected with this problem:\(message)")
     }
     
-    func trackAdded(track:RTCMediaStreamTrack, stream:[RTCMediaStream]) {
+    func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {
         AntMediaClient.printf("Track is added with id:\(track.trackId) and kind:\(track.kind)")
     }
     
-    func trackRemoved(track:RTCMediaStreamTrack) {
+    func trackRemoved(track: RTCMediaStreamTrack) {
         AntMediaClient.printf("Track is removed with id:\(track.trackId) and kind:\(track.kind)")
     }
     
@@ -238,7 +238,7 @@ public extension AntMediaClientDelegate {
     func streamInformation(streamInfo: [StreamInformation]) {
         AntMediaClient.printf("Stream information has received")
         for result in streamInfo {
-            AntMediaClient.printf("resolution width:\(result.streamWidth) heigh:\(result.streamHeight) video " + "bitrate:\(result.videoBitrate) audio bitrate:\(result.audioBitrate) codec:\(result.videoCodec)");
+            AntMediaClient.printf("resolution width:\(result.streamWidth) heigh:\(result.streamHeight) video " + "bitrate:\(result.videoBitrate) audio bitrate:\(result.audioBitrate) codec:\(result.videoCodec)")
         }
     }
     
@@ -270,14 +270,13 @@ public extension AntMediaClientDelegate {
         AntMediaClient.printf("onLoadBroadcastObject is called for \(streamId) and incoming response: \(message)")
     }
     
-    func eventHappened(streamId:String, eventType:String, payload: [String:Any]?) {
+    func eventHappened(streamId: String, eventType: String, payload: [String: Any]?) {
         AntMediaClient.printf("\(streamId) \(eventType) with")
         AntMediaClient.printf(payload?.json ?? "")
     }
     
-    func onStats(streamId:String, statistics:RTCStatisticsReport) {
+    func onStats(streamId: String, statistics: RTCStatisticsReport) {
         AntMediaClient.printf("streamId: \(streamId) stats received")
     }
     
 }
-

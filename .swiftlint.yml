@@ -1,0 +1,66 @@
+disabled_rules:
+- trailing_whitespace
+- force_cast
+- line_length
+- identifier_name
+- missing_docs
+- extension_access_modifier
+- type_body_length
+- file_length
+- function_body_length
+- force_try
+- attributes
+- cyclomatic_complexity
+- function_parameter_count
+- large_tuple
+- empty_count
+- type_name
+
+opt_in_rules:
+  - array_init
+  - discouraged_object_literal
+  - fallthrough
+  - file_name_no_space
+  - joined_default_parameter
+  - unused_setter_value
+  - xct_specific_matcher
+  - unavailable_function
+  - last_where
+  - flatmap_over_map_reduce
+  - collection_alignment
+  - untyped_error_in_catch
+  - yoda_condition
+  - empty_string
+  - type_name
+  - implicit_getter
+  - pattern_matching_keywords
+  - unneeded_parentheses_in_closure_argument
+  - number_separator
+  - syntactic_sugar
+  - first_where
+  - closure_spacing
+  - contains_over_first_not_nil
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_range_nil_comparison
+  - weak_delegate
+  - empty_count
+  - optional_enum_case_matching
+  - orphaned_doc_comment
+  - prefer_self_type_over_type_of_self
+  - explicit_init
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - attributes
+  - operator_usage_whitespace
+  - closure_end_indentation
+  - prohibited_super_call
+  - fatal_error_message
+  - vertical_parameter_alignment_on_call
+  - let_var_whitespace
+  - literal_expression_end_indentation
+  - ibinspectable_in_extension
+  - prefer_zero_over_explicit_init
+  - notification_center_detachment
+
+reporter: "xcode"
