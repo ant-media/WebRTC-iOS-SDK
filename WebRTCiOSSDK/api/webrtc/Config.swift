@@ -11,14 +11,29 @@ import WebRTC
 
 public class Config: NSObject {
     
+    //You can also set the turn server address for this
     private static var stunServer: String = "stun:stun.l.google.com:19302"
+    private static var username: String = ""
+    private static var password: String = ""
+
     private static let constraints: [String: String] = ["OfferToReceiveAudio": "true", "OfferToReceiveVideo": "true"]
     private static let defaultConstraints: [String: String] = ["DtlsSrtpKeyAgreement": "true"]
     
     private static var rtcSdpSemantics = RTCSdpSemantics.unifiedPlan
     
+    /**
+     * You can set the turn server as well. If you need to add username and password, please use the setDefaultStunServer(server: String, user:String, pass:String)
+     */
     public static func setDefaultStunServer(server: String) {
         stunServer = server
+    }
+    /**
+     * You can set the turn server as well. If you need to add username and password
+     */
+    public static func setDefaultStunServer(server: String, user:String, pass:String) {
+        stunServer = server
+        username = user
+        password = pass
     }
     
     public static func setSdpSemantics(sdpSemantics: RTCSdpSemantics) {
@@ -26,7 +41,7 @@ public class Config: NSObject {
     }
     
     static func defaultStunServer() -> RTCIceServer {
-        return RTCIceServer(urlStrings: [stunServer], username: "", credential: "")
+        return RTCIceServer(urlStrings: [stunServer], username: username, credential: password)
     }
     
     static func createAudioVideoConstraints() -> RTCMediaConstraints {

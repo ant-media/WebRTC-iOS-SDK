@@ -57,8 +57,7 @@ class VideoViewController: UIViewController {
         
         
         //set default stunserver or turn server
-        //let iceServer:RTCIceServer = RTCIceServer.init(urlStrings: ["stun:stun.l.google.com:19302"], username: "", credential: "")
-        //Config.setDefaultStunServer(server: iceServer);
+        //Config.setDefaultStunServer(server: "stun:stun.l.google.com:19302", user:"", pass:"");
         
         //self.client.setMaxVideoBps(videoBitratePerSecond: 500000)
 
