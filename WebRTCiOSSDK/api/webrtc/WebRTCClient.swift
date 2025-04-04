@@ -7,7 +7,7 @@
 
 import Foundation
 import AVFoundation
-import WebRTC
+import AntMedia_WebRTC
 import ReplayKit
 
 class WebRTCClient: NSObject {

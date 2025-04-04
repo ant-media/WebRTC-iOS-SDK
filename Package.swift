@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "WebRTCiOSSDK",
-            targets: ["WebRTCiOSSDK", "WebRTC"]
+            targets: ["WebRTCiOSSDK", "AntMedia_WebRTC"]
         ),
     ],
     dependencies: [
@@ -23,8 +23,8 @@ let package = Package(
             path: "WebRTCiOSSDK"
         ),
         .binaryTarget(
-            name: "WebRTC",
-            path: "WebRTC.xcframework"
+            name: "AntMedia_WebRTC",
+            path: "AntMedia_WebRTC.xcframework"
         )
     ]
 )

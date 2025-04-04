@@ -1,0 +1,6 @@
+framework module AntMedia_WebRTC {
+  umbrella header "AntMedia_WebRTC.h"
+
+  export *
+  module * { export * }
+}

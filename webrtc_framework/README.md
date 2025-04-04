@@ -3,7 +3,8 @@ iOS SDK
 
 * Get WebRTC source code, change directory to src folder with `cd src` and checkout the m108 branch -> branch-heads/5359
   ```
-  git checkout -b antmedia_m108 branch-heads/5359
+  git checkout -b antmedia_m134 branch-heads/6998
+  
   ```
 
 * Apply patch in this directory
@@ -69,14 +70,14 @@ iOS SDK
 
 * Copy content of `ios_x64_simulator` to the `ios_simulator_universal`
   ```
-  cp -r out/ios_x64_simulator/WebRTC.Framework out/ios_simulator_universal/
+  cp -r out/ios_x64_simulator/AntMedia_WebRTC.Framework out/ios_simulator_universal/
   ```
 
 * Create FAT binary for simulators
   ```
-   lipo -create -output out/ios_simulator_universal/WebRTC.framework/WebRTC \
-    out/ios_arm64_simulator/WebRTC.framework/WebRTC  \
-    out/ios_x64_simulator/WebRTC.framework/WebRTC 
+   lipo -create -output out/ios_simulator_universal/AntMedia_WebRTC.framework/AntMedia_WebRTC \
+    out/ios_arm64_simulator/AntMedia_WebRTC.framework/AntMedia_WebRTC  \
+    out/ios_x64_simulator/AntMedia_WebRTC.framework/AntMedia_WebRTC 
   ```
 
 * After everything has finished. Run the following command to have xcframework in out directory

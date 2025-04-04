@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A84034FB2D9FAB3B0043215B /* AntMedia_WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F34A82D9F058200F15FB9 /* AntMedia_WebRTC.xcframework */; };
+		A84034FE2D9FABAB0043215B /* AntMedia_WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F34A82D9F058200F15FB9 /* AntMedia_WebRTC.xcframework */; };
+		A84034FF2D9FABAB0043215B /* AntMedia_WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A88F34A82D9F058200F15FB9 /* AntMedia_WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A88F34AB2D9F058200F15FB9 /* AntMedia_WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F34A82D9F058200F15FB9 /* AntMedia_WebRTC.xcframework */; };
+		A88F34AC2D9F058200F15FB9 /* AntMedia_WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A88F34A82D9F058200F15FB9 /* AntMedia_WebRTC.xcframework */; };
 		A8B965F62A06969900D67CA1 /* ReplayKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8B965F52A06969900D67CA1 /* ReplayKit.framework */; };
 		A8B965F92A06969900D67CA1 /* SampleHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B965F82A06969900D67CA1 /* SampleHandler.swift */; };
 		A8B965FD2A06969A00D67CA1 /* ScreenShare.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A8B965F42A06969900D67CA1 /* ScreenShare.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A8B966042A069A2800D67CA1 /* WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; };
 		A8B966052A069A2800D67CA1 /* WebRTCiOSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A8B966092A069A2C00D67CA1 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
-		A8B9660A2A069A2C00D67CA1 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8C0684E2C45036F00BAD624 /* CellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8C0684D2C45036F00BAD624 /* CellView.swift */; };
 		A8CAF2BF2C0B1DFC00520691 /* ClientStatistics.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8CAF2BD2C0B1DFC00520691 /* ClientStatistics.swift */; };
-		A8CAF2C02C0B90DD00520691 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
-		A8CAF2C12C0B90DD00520691 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8DABFD32A0639D80007CDE7 /* WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; };
 		A8DABFD82A0639D80007CDE7 /* WebRTCiOSSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DABFD72A0639D80007CDE7 /* WebRTCiOSSDKTests.swift */; };
 		A8DABFD92A0639D80007CDE7 /* WebRTCiOSSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = A8DABFCD2A0639D80007CDE7 /* WebRTCiOSSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -50,9 +51,6 @@
 		A8DAC0482A063BC00007CDE7 /* ConferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8DAC0402A063BC00007CDE7 /* ConferenceViewController.swift */; };
 		A8DAC04A2A063C4A0007CDE7 /* WebRTCiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; };
 		A8DAC04B2A063C4A0007CDE7 /* WebRTCiOSSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFCA2A0639D80007CDE7 /* WebRTCiOSSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A8DAC04F2A063C9B0007CDE7 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
-		A8DAC0522A063D300007CDE7 /* WebRTC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; };
-		A8DAC0532A063D300007CDE7 /* WebRTC.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A8DAC0A42A0672040007CDE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8DAC0A22A0672040007CDE7 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -119,7 +117,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A8B9660A2A069A2C00D67CA1 /* WebRTC.xcframework in Embed Frameworks */,
 				A8B966052A069A2800D67CA1 /* WebRTCiOSSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -131,7 +128,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A8CAF2C12C0B90DD00520691 /* WebRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,8 +138,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A8DAC0532A063D300007CDE7 /* WebRTC.xcframework in Embed Frameworks */,
 				A8DAC04B2A063C4A0007CDE7 /* WebRTCiOSSDK.framework in Embed Frameworks */,
+				A84034FF2D9FABAB0043215B /* AntMedia_WebRTC.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -152,6 +148,7 @@
 
 /* Begin PBXFileReference section */
 		A8522FE02B832967007BC5A8 /* WebRTC-Sample-AppDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WebRTC-Sample-AppDebug.entitlements"; sourceTree = "<group>"; };
+		A88F34A82D9F058200F15FB9 /* AntMedia_WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AntMedia_WebRTC.xcframework; sourceTree = "<group>"; };
 		A8B965F42A06969900D67CA1 /* ScreenShare.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = ScreenShare.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8B965F52A06969900D67CA1 /* ReplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReplayKit.framework; path = System/Library/Frameworks/ReplayKit.framework; sourceTree = SDKROOT; };
 		A8B965F82A06969900D67CA1 /* SampleHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleHandler.swift; sourceTree = "<group>"; };
@@ -174,7 +171,6 @@
 		A8DABFEC2A063A020007CDE7 /* WebRTCClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRTCClient.swift; sourceTree = "<group>"; };
 		A8DABFED2A063A020007CDE7 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		A8DABFEE2A063A020007CDE7 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = WebRTC.xcframework; sourceTree = "<group>"; };
 		A8DAC0032A063AB30007CDE7 /* WebRTC-Sample-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WebRTC-Sample-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8DAC0052A063AB30007CDE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A8DAC0072A063AB30007CDE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,7 +201,7 @@
 			files = (
 				A8B966042A069A2800D67CA1 /* WebRTCiOSSDK.framework in Frameworks */,
 				A8B965F62A06969900D67CA1 /* ReplayKit.framework in Frameworks */,
-				A8B966092A069A2C00D67CA1 /* WebRTC.xcframework in Frameworks */,
+				A88F34AC2D9F058200F15FB9 /* AntMedia_WebRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,8 +209,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DAC04F2A063C9B0007CDE7 /* WebRTC.xcframework in Frameworks */,
 				A8DABFFC2A063A2F0007CDE7 /* Starscream in Frameworks */,
+				A84034FB2D9FAB3B0043215B /* AntMedia_WebRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,8 +218,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8CAF2C02C0B90DD00520691 /* WebRTC.xcframework in Frameworks */,
 				A8DABFD32A0639D80007CDE7 /* WebRTCiOSSDK.framework in Frameworks */,
+				A88F34AB2D9F058200F15FB9 /* AntMedia_WebRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,8 +227,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8DAC0522A063D300007CDE7 /* WebRTC.xcframework in Frameworks */,
 				A8DAC04A2A063C4A0007CDE7 /* WebRTCiOSSDK.framework in Frameworks */,
+				A84034FE2D9FABAB0043215B /* AntMedia_WebRTC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +271,7 @@
 		A8DABFC02A0639D70007CDE7 = {
 			isa = PBXGroup;
 			children = (
-				A8DABFFD2A063A500007CDE7 /* WebRTC.xcframework */,
+				A88F34A82D9F058200F15FB9 /* AntMedia_WebRTC.xcframework */,
 				A8DABFCC2A0639D80007CDE7 /* WebRTCiOSSDK */,
 				A8DABFD62A0639D80007CDE7 /* WebRTCiOSSDKTests */,
 				A8DAC0042A063AB30007CDE7 /* WebRTC-Sample-App */,
@@ -820,7 +816,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample.screen.share";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample2.screen.share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -847,7 +843,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample.screen.share";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample2.screen.share";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1113,7 +1109,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1152,7 +1148,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample";
+				PRODUCT_BUNDLE_IDENTIFIER = "io.antmedia.ios.webrtc-sample2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

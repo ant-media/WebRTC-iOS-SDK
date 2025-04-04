@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-import WebRTC
+import AntMedia_WebRTC
 import WebRTCiOSSDK
 
 open class ConferenceViewController: UIViewController ,  AVCaptureVideoDataOutputSampleBufferDelegate, RTCVideoViewDelegate{
@@ -47,10 +47,13 @@ open class ConferenceViewController: UIViewController ,  AVCaptureVideoDataOutpu
         self.conferenceClient =  AntMediaClient.init();
         self.conferenceClient?.delegate = self
         self.conferenceClient?.setWebSocketServerUrl(url: self.clientUrl)
+       
         self.conferenceClient?.setLocalView(container: self.localView)
         
         //this publishes stream to the room
         self.publisherStreamId = generateRandomAlphanumericString(length: 10);
+                
+        self.conferenceClient?.setTargetResolution(width: 640, height:360 )
         self.conferenceClient?.publish(streamId: self.publisherStreamId, token: "", mainTrackId: roomId);
         
         //this plays the streams in the room

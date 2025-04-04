@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import WebRTC
+import AntMedia_WebRTC
 
 public class Config: NSObject {
     

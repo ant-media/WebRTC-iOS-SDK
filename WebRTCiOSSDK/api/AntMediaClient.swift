@@ -8,7 +8,7 @@
 import Foundation
 import AVFoundation
 import Starscream
-import WebRTC
+import AntMedia_WebRTC
 
 let TAG: String = "AntMedia_iOS: "
 
@@ -92,8 +92,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var cameraPosition: AVCaptureDevice.Position = .front
     
-    private var targetWidth: Int = 1_280
-    private var targetHeight: Int = 720
+    private var targetWidth: Int = 480
+    private var targetHeight: Int = 360
     
     private var maxVideoBps: NSNumber = 0
     
@@ -702,7 +702,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             self.rtcAudioSession.lockForConfiguration()
             
             do {
-                let category = mute ? AVAudioSession.Category.soloAmbient.rawValue : AVAudioSession.Category.playAndRecord.rawValue
+                let category = mute ? AVAudioSession.Category.soloAmbient : AVAudioSession.Category.playAndRecord
                 
                 try self.rtcAudioSession.setCategory(category)
                 // playAndRecord category defaults receiver to set to speaker
@@ -1026,12 +1026,16 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                 self.joinedRoom(streamId: streamId, streams: streams)
                 
             } else if definition == BROADCAST_OBJECT_NOTIFICATION { // broadcastObject
-                let broadcastString = message["broadcast"] as! String
-                let broadcastObject = broadcastString.toJSON()
-                self.delegate?.onLoadBroadcastObject(
-                    streamId: message[STREAM_ID] as! String,
-                    message: broadcastObject ?? [:]
-                )
+                if let broadcastString = message["broadcast"] as? String {
+                    let broadcastObject = broadcastString.toJSON()
+                    self.delegate?.onLoadBroadcastObject(
+                        streamId: message[STREAM_ID] as! String,
+                        message: broadcastObject ?? [:]
+                    )
+                }
+                else {
+                    AntMediaClient.printf("Warning: Broadcast object has not broadcast field")
+                }
                 
             } else if definition == RESOLUTION_CHANGE_INFO_COMMAND {
                 let streamId = message[STREAM_ID] as? String ?? ""
