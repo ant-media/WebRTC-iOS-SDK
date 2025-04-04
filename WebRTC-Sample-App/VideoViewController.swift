@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import WebRTC
+import AntMedia_WebRTC
 import AVFoundation
 import WebRTCiOSSDK
 
@@ -80,7 +80,7 @@ class VideoViewController: UIViewController {
             self.fullVideoView.isHidden = false
             self.modeLabel.text = "Mode: Publish"
             self.client!.setCameraPosition(position: .front)
-            self.client!.setTargetResolution(width: 640, height: 360)
+            self.client!.setTargetResolution(width: 640, height:360 )
             self.client!.setLocalView(container: fullVideoView, mode: .scaleAspectFit)
             
             //calling this method is not necessary. It just initializes the connection and opens the camera

@@ -8,7 +8,7 @@
 
 import ReplayKit
 import WebRTCiOSSDK
-import WebRTC
+import AntMedia_WebRTC
 
 class SampleHandler: RPBroadcastSampleHandler, AntMediaClientDelegate {
 

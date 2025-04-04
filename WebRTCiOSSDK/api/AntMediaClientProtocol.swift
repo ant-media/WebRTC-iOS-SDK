@@ -8,7 +8,7 @@
 
 import Foundation
 import AVFoundation
-import WebRTC
+import AntMedia_WebRTC
 
 let COMMAND = "command"
 let STREAM_ID = "streamId"

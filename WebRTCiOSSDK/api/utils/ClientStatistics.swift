@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import WebRTC
+import AntMedia_WebRTC
 
 // I debugged RTCStatistics object and found these types and extracted required values from it
 // ex: auidoLevel

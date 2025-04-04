@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import WebRTC
+import AntMedia_WebRTC
 public class CellView: UICollectionViewCell {
     
     

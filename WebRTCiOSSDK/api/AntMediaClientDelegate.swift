@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import WebRTC
+import AntMedia_WebRTC
 
 public class StreamInformation {
    public let streamWidth: Int
