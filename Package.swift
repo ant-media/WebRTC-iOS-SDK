@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "WebRTCiOSSDK",
-            targets: ["WebRTCiOSSDK", "WebRTC"]
+            targets: ["WebRTCiOSSDK"]
         ),
     ],
     dependencies: [
