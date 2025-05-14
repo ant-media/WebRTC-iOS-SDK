@@ -92,8 +92,25 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     
     private var cameraPosition: AVCaptureDevice.Position = .front
     
-    private var targetWidth: Int = 1_280
-    private var targetHeight: Int = 720
+    private var targetWidth: Int = {
+        guard let activeView = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first else {
+            return .zero
+        }
+        
+        let nativeBounds = activeView.screen.nativeBounds
+        
+        return Int(nativeBounds.width.rounded(.down))
+    }()
+    
+    private var targetHeight: Int = {
+        guard let activeView = (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first else {
+            return .zero
+        }
+        
+        let nativeBounds = activeView.screen.nativeBounds
+        
+        return Int(nativeBounds.height.rounded(.down))
+    }()
     
     private var maxVideoBps: NSNumber = 0
     
