@@ -38,3 +38,5 @@ Build/
 
 # Ignore Xcode Cache
 xcuserdata/
+*.entitlements
+*.pbxproj
