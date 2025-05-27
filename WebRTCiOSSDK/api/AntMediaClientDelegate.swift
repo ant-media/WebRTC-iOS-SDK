@@ -178,6 +178,16 @@ public protocol AntMediaClientDelegate: AnyObject {
      If it's 0, it means it's silent. If it's 1, it means audio is max.
      */
     func audioLevelChanged(_ client: AntMediaClient, audioLevel: Double, hasAudio: Bool)
+    
+    /**
+       The delegate method is called as response to getSubscriberCount for the stream
+     */
+    func subscriberCount(streamId:String, subscriberCount:Int)
+    
+    /**
+       The delegate method is called as a response to getSubscriberList for the stream
+     */
+    func subscriberList(streamId:String, subscriberList:[String])
 }
 
 public extension AntMediaClientDelegate {
@@ -277,6 +287,14 @@ public extension AntMediaClientDelegate {
     
     func onStats(streamId: String, statistics: RTCStatisticsReport) {
         AntMediaClient.printf("streamId: \(streamId) stats received")
+    }
+    
+    func subscriberCount(streamId:String, subscriberCount:Int) {
+        AntMediaClient.printf("subscriberCount for: \(streamId) is received as \(subscriberCount)")
+    }
+    
+    func subscriberList(streamId:String, subscriberList:[String]) {
+        AntMediaClient.printf("subscriberList for: \(streamId) is received: \(subscriberList)")
     }
     
 }

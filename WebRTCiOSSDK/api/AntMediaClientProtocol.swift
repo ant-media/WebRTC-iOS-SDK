@@ -12,6 +12,8 @@ import WebRTC
 
 let COMMAND = "command"
 let STREAM_ID = "streamId"
+let OFFSET = "offset"
+let SIZE = "size"
 let TRACK_ID = "trackId"
 let ENABLED = "enabled"
 let TOKEN_ID = "token"
@@ -35,8 +37,14 @@ let EVENT_TYPE_MIC_UNMUTED = "MIC_UNMUTED"
 let EVENT_TYPE_CAM_TURNED_OFF = "CAM_TURNED_OFF"
 let EVENT_TYPE_CAM_TURNED_ON = "CAM_TURNED_ON"
 let GET_BROADCAST_OBJECT_COMMAND = "getBroadcastObject"
+let GET_SUBSCRIBER_COUNT_COMMAND = "getSubscriberCount"
+let GET_SUBSCRIBER_LIST_COMMAND = "getSubscribers"
+
 let BROADCAST_OBJECT_NOTIFICATION = "broadcastObject"
 public let RESOLUTION_CHANGE_INFO_COMMAND = "resolutionChangeInfo"
+public let SUBSCRIBER_COUNT = "subscriberCount"
+public let SUBSCRIBER_LIST_NOTIFICATION = "subscriberList";
+
 public let EVENT_TYPE_TRACK_LIST_UPDATED = "TRACK_LIST_UPDATED"
 public let EVENT_TYPE_VIDEO_TRACK_ASSIGNMENT_LIST = "VIDEO_TRACK_ASSIGNMENT_LIST"
 
@@ -411,6 +419,16 @@ public protocol AntMediaClientProtocol {
      Get the broadcast object from the server. After the broadcast object has been received, it calls AntMediaClientDelegat:onLoadBroadcastObject method
      */
     func getBroadcastObject(forStreamId id: String)
+    
+    /**
+     Get the number of subscribers for the stream id
+     */
+    func getSubscriberCount(streamId id: String)
+    
+    /**
+     Get the subscriber list for the stream id
+     */
+    func getSubscriberList(streamId id: String, offset: Int, limit: Int)
     
     /**
      Register for Audio Level Extraction to get the audioLevel from the microphone. It's good to use to detect if user is speaking when he muted himself.
