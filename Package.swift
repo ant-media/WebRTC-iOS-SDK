@@ -1,5 +1,6 @@
 // swift-tools-version:5.3
 import PackageDescription
+
 let package = Package(
     name: "WebRTCiOSSDK",
     platforms: [
@@ -12,7 +13,11 @@ let package = Package(
         ),
     ],
     dependencies: [
-	@@ -21,10 +21,6 @@ let package = Package(
+            .package(url: "https://github.com/daltoniam/Starscream.git", from: "4.0.6")
+
+    ],
+    targets: [
+        .target(
             name: "WebRTCiOSSDK",
             dependencies: ["Starscream"],
             path: "WebRTCiOSSDK"
