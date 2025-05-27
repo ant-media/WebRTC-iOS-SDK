@@ -1,6 +1,5 @@
 // swift-tools-version:5.3
 import PackageDescription
-
 let package = Package(
     name: "WebRTCiOSSDK",
     platforms: [
@@ -9,18 +8,18 @@ let package = Package(
     products: [
         .library(
             name: "WebRTCiOSSDK",
-            targets: ["WebRTCiOSSDK"]
+            targets: ["WebRTCiOSSDK", "WebRTC"]
         ),
     ],
     dependencies: [
-            .package(url: "https://github.com/daltoniam/Starscream.git", from: "4.0.6")
-
-    ],
-    targets: [
-        .target(
+	@@ -21,10 +21,6 @@ let package = Package(
             name: "WebRTCiOSSDK",
             dependencies: ["Starscream"],
             path: "WebRTCiOSSDK"
+        ),
+        .binaryTarget(
+            name: "WebRTC",
+            path: "WebRTC.xcframework"
         )
     ]
 )
