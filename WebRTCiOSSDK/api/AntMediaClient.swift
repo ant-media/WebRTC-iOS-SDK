@@ -53,6 +53,7 @@ public enum AntMediaClientMode: Int {
 }
 
 open class AntMediaClient: NSObject, AntMediaClientProtocol {
+
     
     internal static var isDebug: Bool = false
     internal static var isVerbose: Bool = false
@@ -130,6 +131,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     var disableTrackId: String?
     
     var reconnectIfRequiresScheduled: Bool = false
+    
+    var subscriberId: String = ""
+    var subscriberCode: String = ""
+    var subscriberName: String = ""
         
     struct HandshakeMessage: Codable {
         var command: String?
@@ -140,6 +145,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         var mode: String?
         var mainTrack: String?
         var trackList: [String]
+        var subscriberId: String?
+        var subscriberCode: String?
+        var subscriberName: String?
     }
     
     struct Subscriber: Codable {
@@ -217,7 +225,8 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
             AntMediaClient.printf("Disable track id is not set \(String(describing: self.disableTrackId))")
         }
         
-        let handShakeMesage = HandshakeMessage(command: mode.getName(), streamId: streamId, token: token, video: self.videoEnable, audio: self.audioEnable, mainTrack: self.mainTrackId, trackList: trackList)
+        let handShakeMesage = HandshakeMessage(command: mode.getName(), streamId: streamId, token: token, video: self.videoEnable, audio: self.audioEnable, mainTrack: self.mainTrackId, trackList: trackList,
+                                               subscriberId: self.subscriberId, subscriberCode: self.subscriberCode, subscriberName: self.subscriberName)
         
         let json = try! JSONEncoder().encode(handShakeMesage)
         return String(data: json, encoding: .utf8)!
@@ -359,9 +368,22 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration())
     }
     
-    public func publish(streamId: String, token: String = "", mainTrackId: String = "") {
+    public func publish(streamId: String, token: String = "", mainTrackId: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "") {
     
         self.publisherStreamId = streamId
+        
+        if !subsriberId.isEmpty {
+            self.subscriberId = subsriberId
+        }
+
+        if !subscriberCode.isEmpty {
+            self.subscriberCode = subscriberCode
+        }
+
+        if !subscriberName.isEmpty {
+            self.subscriberName = subscriberName
+        }
+        
         // reset default webrtc audio configuation to capture audio and mic
         resetDefaultWebRTCAudioConfiguation()
         initPeerConnection(streamId: streamId, mode: AntMediaClientMode.publish, token: token)
@@ -381,9 +403,22 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
-    public func play(streamId: String, token: String = "") {
+    public func play(streamId: String, token: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "")
+    {
         
         self.playerStreamId = streamId
+       
+        if !subsriberId.isEmpty {
+            self.subscriberId = subsriberId
+        }
+
+        if !subscriberCode.isEmpty {
+            self.subscriberCode = subscriberCode
+        }
+
+        if !subscriberName.isEmpty {
+            self.subscriberName = subscriberName
+        }
         
         if !token.isEmpty {
             self.playToken = token
@@ -1066,7 +1101,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
                     let subscriberIds = subscribers.map { $0.subscriberId }
                     self.delegate?.subscriberList(streamId: streamId, subscriberList: subscriberIds)
                 }
-        }
+            }
         case ROOM_INFORMATION_COMMAND:
             if let updatedStreamsInTheRoom = message[STREAMS] as? [String] {
                 // check that there is a new stream exists
