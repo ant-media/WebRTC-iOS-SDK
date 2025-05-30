@@ -135,6 +135,9 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     var subscriberId: String = ""
     var subscriberCode: String = ""
     var subscriberName: String = ""
+    
+    var playOnlyDataChannel : Bool = false
+    var publishOnlyDataChannel : Bool = false
         
     struct HandshakeMessage: Codable {
         var command: String?
@@ -148,6 +151,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         var subscriberId: String?
         var subscriberCode: String?
         var subscriberName: String?
+        var onlyDataChannel: Bool?
     }
     
     struct Subscriber: Codable {
@@ -226,7 +230,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
         
         let handShakeMesage = HandshakeMessage(command: mode.getName(), streamId: streamId, token: token, video: self.videoEnable, audio: self.audioEnable, mainTrack: self.mainTrackId, trackList: trackList,
-                                               subscriberId: self.subscriberId, subscriberCode: self.subscriberCode, subscriberName: self.subscriberName)
+                                               subscriberId: self.subscriberId, subscriberCode: self.subscriberCode, subscriberName: self.subscriberName, onlyDataChannel: mode == .publish ? self.publishOnlyDataChannel : self.playOnlyDataChannel)
         
         let json = try! JSONEncoder().encode(handShakeMesage)
         return String(data: json, encoding: .utf8)!
@@ -368,9 +372,10 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration())
     }
     
-    public func publish(streamId: String, token: String = "", mainTrackId: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "") {
+    public func publish(streamId: String, token: String = "", mainTrackId: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "", onlyDataChannel: Bool=false) {
     
         self.publisherStreamId = streamId
+        self.publishOnlyDataChannel = onlyDataChannel
         
         if !subsriberId.isEmpty {
             self.subscriberId = subsriberId
@@ -403,10 +408,12 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         }
     }
     
-    public func play(streamId: String, token: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "")
+    public func play(streamId: String, token: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "",
+                     onlyDataChannel: Bool=false)
     {
         
         self.playerStreamId = streamId
+        self.playOnlyDataChannel = onlyDataChannel
        
         if !subsriberId.isEmpty {
             self.subscriberId = subsriberId
