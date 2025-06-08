@@ -135,9 +135,10 @@ public protocol AntMediaClientProtocol {
         - subscriberCode: The subscriber code is the TOTP code which is mandatory if the TOTP security is enabled on the server side
         - subscriberName: Subscriber name which is optional
         - onlyDataChannel: Option to publish for data channel not audio/video
+        - videoEnabled: Send stream with video or not 
      */
     func publish(streamId: String, token: String, mainTrackId: String, subsriberId: String, subscriberCode: String, subscriberName: String,
-                    onlyDataChannel: Bool)
+                 onlyDataChannel: Bool, videoEnabled: Bool)
     
     /**
      Starts to play a stream on the server side

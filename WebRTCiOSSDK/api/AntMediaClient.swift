@@ -372,10 +372,11 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         RTCAudioSessionConfiguration.setWebRTC(RTCAudioSessionConfiguration())
     }
     
-    public func publish(streamId: String, token: String = "", mainTrackId: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "", onlyDataChannel: Bool=false) {
+    public func publish(streamId: String, token: String = "", mainTrackId: String = "", subsriberId: String = "", subscriberCode: String = "", subscriberName: String = "", onlyDataChannel: Bool=false, videoEnabled: Bool = true) {
     
         self.publisherStreamId = streamId
         self.publishOnlyDataChannel = onlyDataChannel
+        self.videoEnable = videoEnabled
         
         if !subsriberId.isEmpty {
             self.subscriberId = subsriberId
@@ -531,6 +532,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     open func initPeerConnection(streamId: String = "", mode: AntMediaClientMode = .unspecified, token: String = "") {
         
         let id = getStreamId(streamId)
+        self.mode = mode;
         
         if self.webRTCClientMap[id] == nil {
             AntMediaClient.printf("Has wsClient? (start) : \(String(describing: self.webRTCClientMap[id]))")

@@ -51,7 +51,7 @@ open class ConferenceViewController: UIViewController ,  AVCaptureVideoDataOutpu
         
         //this publishes stream to the room
         self.publisherStreamId = generateRandomAlphanumericString(length: 10);
-        self.conferenceClient?.publish(streamId: self.publisherStreamId, token: "", mainTrackId: roomId);
+        self.conferenceClient?.publish(streamId: self.publisherStreamId, mainTrackId: roomId);
         
         //this plays the streams in the room
         
