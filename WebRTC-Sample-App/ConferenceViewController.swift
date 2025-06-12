@@ -96,13 +96,16 @@ extension ConferenceViewController: AntMediaClientDelegate
         removePlayers();
     }
     public func playStarted(streamId: String) {
-        print("play started");
+        debugPrint("play started");
         conferenceClient?.speakerOn()
+        
     }
     
     public func trackAdded(track: RTCMediaStreamTrack, stream: [RTCMediaStream]) {
                 
         AntMediaClient.printf("Track is added with id:\(track.trackId)")
+       
+        
         if let videoTrack = track as? RTCVideoTrack
         {
             remoteViewTrackMap.append(videoTrack);
@@ -110,6 +113,7 @@ extension ConferenceViewController: AntMediaClientDelegate
                 self.collectionView.reloadData()
             }
         }
+         
     }
     
     public func trackRemoved(track: RTCMediaStreamTrack) {
@@ -139,7 +143,7 @@ extension ConferenceViewController: AntMediaClientDelegate
         AntMediaClient.printf("Publish started for stream:\(streamId)")
                 
         //this plays the streams in the room
-        self.conferenceClient?.play(streamId: self.roomId);
+        self.conferenceClient?.play(streamId: self.roomId, subscriberId: "subscriberId", subscriberName: "subscriberName", disableTracksByDefault:false);
         
         conferenceClient?.getBroadcastObject(forStreamId: self.roomId)
 

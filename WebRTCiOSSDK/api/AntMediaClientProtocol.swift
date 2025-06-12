@@ -145,12 +145,14 @@ public protocol AntMediaClientProtocol {
      - Parameters
        - streamId: the id of the stream or id of the conference room. It supports playing both of them
        - token: The access token to publish the stream. If JWT or any other token security is enabled in the Ant Media Server, this field is required
-       - subsriberId: The subscriberId. If TOTP is enabled in server it is mandatory otherwise optional to have some field s
+       - subscriberId: The subscriberId. If TOTP is enabled in server it is mandatory otherwise optional to have some field s
        - subscriberCode: The subscriber code is the TOTP code which is mandatory if the TOTP security is enabled on the server side
        - subscriberName: Subscriber name which is optional
        - onlyDataChannel: Option to publish for data channel not audio/video
     */
-    func play(streamId: String, token: String, subsriberId: String, subscriberCode: String, subscriberName: String, onlyDataChannel: Bool)
+    func play(streamId: String, token: String,
+              subscriberId: String, subscriberCode: String, subscriberName: String, onlyDataChannel: Bool,
+              disableTracksByDefault: Bool)
     
     /**
     Sets the camera position front or back. This method is effective if it's called before `initPeerConnection()` and `start()` method.

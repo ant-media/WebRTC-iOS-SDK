@@ -24,6 +24,11 @@ public class StreamInformation {
     }
 }
 
+public struct Subscriber: Codable {
+    let subscriberId: String
+    let subscriberName: String
+}
+
 public protocol AntMediaClientDelegate: AnyObject {
 
     /**
@@ -187,7 +192,7 @@ public protocol AntMediaClientDelegate: AnyObject {
     /**
        The delegate method is called as a response to getSubscriberList for the stream
      */
-    func subscriberList(streamId:String, subscriberList:[String])
+    func subscriberList(streamId:String, subscriberList:[Subscriber])
 }
 
 public extension AntMediaClientDelegate {
@@ -293,7 +298,7 @@ public extension AntMediaClientDelegate {
         AntMediaClient.printf("subscriberCount for: \(streamId) is received as \(subscriberCount)")
     }
     
-    func subscriberList(streamId:String, subscriberList:[String]) {
+    func subscriberList(streamId:String, subscriberList:[Subscriber]) {
         AntMediaClient.printf("subscriberList for: \(streamId) is received: \(subscriberList)")
     }
     
