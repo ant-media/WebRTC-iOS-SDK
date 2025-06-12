@@ -12,6 +12,8 @@ import WebRTC
 
 let COMMAND = "command"
 let STREAM_ID = "streamId"
+let OFFSET = "offset"
+let SIZE = "size"
 let TRACK_ID = "trackId"
 let ENABLED = "enabled"
 let TOKEN_ID = "token"
@@ -35,8 +37,14 @@ let EVENT_TYPE_MIC_UNMUTED = "MIC_UNMUTED"
 let EVENT_TYPE_CAM_TURNED_OFF = "CAM_TURNED_OFF"
 let EVENT_TYPE_CAM_TURNED_ON = "CAM_TURNED_ON"
 let GET_BROADCAST_OBJECT_COMMAND = "getBroadcastObject"
+let GET_SUBSCRIBER_COUNT_COMMAND = "getSubscriberCount"
+let GET_SUBSCRIBER_LIST_COMMAND = "getSubscribers"
+
 let BROADCAST_OBJECT_NOTIFICATION = "broadcastObject"
 public let RESOLUTION_CHANGE_INFO_COMMAND = "resolutionChangeInfo"
+public let SUBSCRIBER_COUNT = "subscriberCount"
+public let SUBSCRIBER_LIST_NOTIFICATION = "subscriberList";
+
 public let EVENT_TYPE_TRACK_LIST_UPDATED = "TRACK_LIST_UPDATED"
 public let EVENT_TYPE_VIDEO_TRACK_ASSIGNMENT_LIST = "VIDEO_TRACK_ASSIGNMENT_LIST"
 
@@ -120,17 +128,31 @@ public protocol AntMediaClientProtocol {
     /**
      Publish stream to the server with streamId and roomId.
       - Parameters
-        - streamId: the id of the stream that is going to be published. 
+        - streamId: the id of the stream that is going to be published.  Required
         - mainTrackId: the id of the main stream or conference room  that this stream will be published. It's optional value
+        - token: The access token to publish the stream. If JWT or any other token security is enabled in the Ant Media Server, this field is required
+        - subsriberId: The subscriberId. If TOTP is enabled in server it is mandatory otherwise optional to have some field s
+        - subscriberCode: The subscriber code is the TOTP code which is mandatory if the TOTP security is enabled on the server side
+        - subscriberName: Subscriber name which is optional
+        - onlyDataChannel: Option to publish for data channel not audio/video
+        - videoEnabled: Send stream with video or not 
      */
-    func publish(streamId: String, token: String, mainTrackId: String)
+    func publish(streamId: String, token: String, mainTrackId: String, subsriberId: String, subscriberCode: String, subscriberName: String,
+                 onlyDataChannel: Bool, videoEnabled: Bool)
     
     /**
      Starts to play a stream on the server side
      - Parameters
        - streamId: the id of the stream or id of the conference room. It supports playing both of them
+       - token: The access token to publish the stream. If JWT or any other token security is enabled in the Ant Media Server, this field is required
+       - subscriberId: The subscriberId. If TOTP is enabled in server it is mandatory otherwise optional to have some field s
+       - subscriberCode: The subscriber code is the TOTP code which is mandatory if the TOTP security is enabled on the server side
+       - subscriberName: Subscriber name which is optional
+       - onlyDataChannel: Option to publish for data channel not audio/video
     */
-    func play(streamId: String, token: String)
+    func play(streamId: String, token: String,
+              subscriberId: String, subscriberCode: String, subscriberName: String, onlyDataChannel: Bool,
+              disableTracksByDefault: Bool)
     
     /**
     Sets the camera position front or back. This method is effective if it's called before `initPeerConnection()` and `start()` method.
@@ -411,6 +433,16 @@ public protocol AntMediaClientProtocol {
      Get the broadcast object from the server. After the broadcast object has been received, it calls AntMediaClientDelegat:onLoadBroadcastObject method
      */
     func getBroadcastObject(forStreamId id: String)
+    
+    /**
+     Get the number of subscribers for the stream id
+     */
+    func getSubscriberCount(streamId id: String)
+    
+    /**
+     Get the subscriber list for the stream id
+     */
+    func getSubscriberList(streamId id: String, offset: Int, limit: Int)
     
     /**
      Register for Audio Level Extraction to get the audioLevel from the microphone. It's good to use to detect if user is speaking when he muted himself.
