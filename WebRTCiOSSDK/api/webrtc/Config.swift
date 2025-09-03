@@ -15,7 +15,7 @@ public class Config: NSObject {
     private static var stunServer: String = "stun:stun.l.google.com:19302"
     private static var username: String = ""
     private static var password: String = ""
-
+    
     private static let constraints: [String: String] = ["OfferToReceiveAudio": "true", "OfferToReceiveVideo": "true"]
     private static let defaultConstraints: [String: String] = ["DtlsSrtpKeyAgreement": "true"]
     
@@ -44,8 +44,13 @@ public class Config: NSObject {
         return RTCIceServer(urlStrings: [stunServer], username: username, credential: password)
     }
     
-    static func createAudioVideoConstraints() -> RTCMediaConstraints {
-        return RTCMediaConstraints(mandatoryConstraints: constraints, optionalConstraints: defaultConstraints)
+    static func createAudioVideoConstraints(haveCamera: Bool, haveMic: Bool) -> RTCMediaConstraints {
+        var configConstraint = defaultConstraints
+        if !haveCamera {
+            configConstraint["video"] = "dummy"
+            configConstraint["OfferToReceiveVideo"] = "true"
+        }
+        return RTCMediaConstraints(mandatoryConstraints: constraints, optionalConstraints: configConstraint)
     }
     
     static func createDefaultConstraint() -> RTCMediaConstraints {
