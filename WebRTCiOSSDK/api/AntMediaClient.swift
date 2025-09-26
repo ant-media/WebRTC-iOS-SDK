@@ -66,7 +66,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
     private var p2pStreamId: String?
     private var publishToken: String?
     private var playToken: String?
-    private var webSocket: WebSocket?
+    private var webSocket: Starscream.WebSocket?
     // keep it for backward compatibility
     private var mode: AntMediaClientMode!
     var streamsInTheRoom: [String] = []
