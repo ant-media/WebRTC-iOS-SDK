@@ -11,6 +11,7 @@ import AVFoundation
 import WebRTC
 
 let COMMAND = "command"
+let PAYLOAD = "payload"
 let STREAM_ID = "streamId"
 let TRACK_ID = "trackId"
 let ENABLED = "enabled"

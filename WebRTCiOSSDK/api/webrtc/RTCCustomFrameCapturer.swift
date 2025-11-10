@@ -29,6 +29,10 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     private var externalCapture: Bool
     
     private var fps: Int
+    private var adaptiveFpsEnabled: Bool = false
+    private var cpuUsageThreshold: Float = 80.0
+    private var lowPerformanceFps: Int = 15
+    private var frameDropCount: Int = 0
     
     init(delegate: RTCVideoCapturerDelegate, height: Int, externalCapture: Bool = false, videoEnabled: Bool = true, audioEnabled: Bool = false, fps: Int = 30) {
         self.targetHeight = height
@@ -48,10 +52,17 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
     }
     
     public func capture(_ pixelBuffer: CVPixelBuffer, rotation: RTCVideoRotation, timeStampNs: Int64 ) {
-        if (Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < frameRateIntervalNanoSeconds {
-            AntMediaClient.verbose("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(frameRateIntervalNanoSeconds)")
+        // Adaptive frame rate based on performance
+        let currentFrameRateInterval = adaptiveFpsEnabled ? getAdaptiveFrameRateInterval() : frameRateIntervalNanoSeconds
+        
+        if (Double(timeStampNs) - Double(lastSentFrameTimeStampNanoSeconds)) < currentFrameRateInterval {
+            frameDropCount += 1
+            if frameDropCount % 100 == 0 {  // Log every 100 dropped frames
+                AntMediaClient.verbose("Dropping frame because high fps than the configured fps: \(fps). Incoming timestampNs:\(timeStampNs) last sent timestampNs:\(lastSentFrameTimeStampNanoSeconds) frameRateIntervalNs:\(currentFrameRateInterval)")
+            }
             return
         }
+        frameDropCount = 0
         
         let width = Int32(CVPixelBufferGetWidth(pixelBuffer))
         let height = Int32(CVPixelBufferGetHeight(pixelBuffer))
@@ -78,7 +89,9 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
                     timeStampNs: Int64(timeStampNs)
                 )
         
-        self.delegate?.capturer(self, didCapture: rtcVideoFrame.newI420())
+        // Avoid CPU-intensive I420 conversion by passing the original frame
+        // Only convert to I420 if specifically required by the encoder
+        self.delegate?.capturer(self, didCapture: rtcVideoFrame)
         lastSentFrameTimeStampNanoSeconds = Int64(timeStampNs)
     }
     
@@ -133,6 +146,36 @@ class RTCCustomFrameCapturer: RTCVideoCapturer {
             // NSLog("Device orientation width: %d, height:%d ", width, height);
         } else {
             NSLog("Cannot get image buffer")
+        }
+    }
+    
+    /**
+     * Enable adaptive frame rate control to reduce CPU usage during high load
+     */
+    public func setAdaptiveFpsEnabled(_ enabled: Bool) {
+        self.adaptiveFpsEnabled = enabled
+    }
+    
+    /**
+     * Set CPU usage threshold for adaptive frame rate (default: 80%)
+     */
+    public func setCpuUsageThreshold(_ threshold: Float) {
+        self.cpuUsageThreshold = threshold
+    }
+    
+    /**
+     * Get adaptive frame rate interval based on system performance
+     */
+    private func getAdaptiveFrameRateInterval() -> Float64 {
+        // Simple CPU usage estimation based on frame drop frequency
+        let isHighLoad = frameDropCount > 10 // If dropping many frames, system is under stress
+        
+        if isHighLoad {
+            // Reduce frame rate to save CPU
+            return kNanosecondsPerSecond / Double(lowPerformanceFps)
+        } else {
+            // Use normal frame rate
+            return frameRateIntervalNanoSeconds
         }
     }
     

@@ -66,6 +66,22 @@ class WebRTCClient: NSObject {
     
     private var degradationPreference: RTCDegradationPreference = .maintainResolution
     
+    var isHaveMic: Bool {
+        return !AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.builtInMicrophone],
+            mediaType: .audio,
+            position: .unspecified
+        ).devices.isEmpty
+    }
+    
+    var isHaveCamera: Bool {
+        return !AVCaptureDevice.DiscoverySession(
+            deviceTypes: [.builtInWideAngleCamera, .builtInTelephotoCamera, .builtInUltraWideCamera],
+            mediaType: .video,
+            position: .unspecified
+        ).devices.isEmpty
+    }
+    
     // this is not an ideal method to get current capture device, we need more legit solution
     var captureDevice: AVCaptureDevice? {
         if videoEnabled {
@@ -81,6 +97,11 @@ class WebRTCClient: NSObject {
         
         let videoEncoderFactory = RTCDefaultVideoEncoderFactory()
         let videoDecoderFactory = RTCDefaultVideoDecoderFactory()
+        
+        // Put H.264 first if available
+        if let h264 = videoEncoderFactory.supportedCodecs().first(where: { $0.name == kRTCH264CodecName }) {
+            videoEncoderFactory.preferredCodec = h264
+        }
         
         self.externalAudio = externalAudio
         self.audioDeviceModule = RTCAudioDeviceModule()
@@ -245,7 +266,7 @@ class WebRTCClient: NSObject {
     }
     
     public func sendAnswer() {
-        let constraint = Config.createAudioVideoConstraints()
+        let constraint = Config.createAudioVideoConstraints(haveCamera: isHaveCamera, haveMic: isHaveMic)
         self.peerConnection?.answer(for: constraint, completionHandler: { sdp, error in
             if error != nil {
                 AntMediaClient.printf("Error (sendAnswer): " + error!.localizedDescription)
@@ -288,7 +309,7 @@ class WebRTCClient: NSObject {
             self.dataChannel?.delegate = self
         }
         
-        let constraint = Config.createAudioVideoConstraints()
+        let constraint = Config.createAudioVideoConstraints(haveCamera: isHaveCamera, haveMic: isHaveMic)
         
         self.peerConnection?.offer(for: constraint, completionHandler: { sdp, error in
             if sdp?.type == RTCSdpType.offer {
@@ -391,6 +412,13 @@ class WebRTCClient: NSObject {
         if self.localVideoTrack != nil {
             self.localVideoTrack.isEnabled = self.videoEnabled
         }
+        if enabled {
+            startCapture()
+            (self.videoCapturer as? RTCCustomFrameCapturer)?.startCapture()
+        } else {
+            (self.videoCapturer as? RTCCameraVideoCapturer)?.stopCapture()
+            (self.videoCapturer as? RTCCustomFrameCapturer)?.stopCapture()
+        }
     }
     
     public func getIceConnectionState() -> RTCIceConnectionState {
@@ -466,15 +494,16 @@ class WebRTCClient: NSObject {
             return videoTrack
         } else {
             let videoSource = factory.videoSource()
-            #if TARGET_OS_SIMULATOR
-            self.videoCapturer = RTCFileVideoCapturer(delegate: videoSource)
-            #else
-            self.videoCapturer = RTCCameraVideoCapturer(delegate: videoSource)
-            let captureStarted = startCapture()
-            if !captureStarted {
-                return nil
+            if isHaveCamera {
+                self.videoCapturer = RTCCameraVideoCapturer(delegate: videoSource)
+                let captureStarted = startCapture()
+                if !captureStarted {
+                    return nil
+                }
+                
+            } else {
+                self.videoCapturer = RTCFileVideoCapturer(delegate: videoSource)
             }
-            #endif
             let videoTrack = factory.videoTrack(with: videoSource, trackId: "video0")
             return videoTrack
         }
@@ -484,7 +513,6 @@ class WebRTCClient: NSObject {
         AntMediaClient.printf("Add local media streams")
         if self.videoEnabled {
             self.localVideoTrack = createVideoTrack()
-            
             self.videoSender = self.peerConnection?.add(self.localVideoTrack, streamIds: [LOCAL_MEDIA_STREAM_ID])
             
             if let params = videoSender?.parameters {
