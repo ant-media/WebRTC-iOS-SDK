@@ -665,9 +665,7 @@ open class AntMediaClient: NSObject, AntMediaClientProtocol {
         (self.localView as? RTCMTLVideoView)?.isEnabled = enabled
         (self.remoteView as? RTCMTLVideoView)?.isEnabled = enabled
         #else
-        // For EAGL views, we can hide them to save rendering cycles
-        self.localView?.isHidden = !enabled
-        self.remoteView?.isHidden = !enabled
+        print("setVideoRenderingEnabled is only supported on arm64 architecture")
         #endif
     }
     
