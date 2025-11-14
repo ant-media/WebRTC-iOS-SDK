@@ -13,6 +13,9 @@ jobs:
       with:
         xcode-version: '26.1.0'
 
+    - name: Install iOS platform (26.x)
+      run: xcodebuild -downloadPlatform iOS
+
     - name: Build WebRTCiOSSDK
       run: xcodebuild -scheme WebRTCiOSSDK -configuration Release  -destination "generic/platform=iOS" ARCHS=arm64 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO build
       
