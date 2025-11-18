@@ -50,8 +50,13 @@ public protocol AntMediaClientProtocol {
      Sets the required options to for Ant Media Client to Run
      - Parameters:
         - url: Full Ant Media Server's websocket url. You can use ws or wss . It should be something
-        ws://your_server_address:5080/WebRTCAppEE/websocket
-        wss://your_server_address:5443/WebRTCAppEE/websocket
+        ws://your_server_address:5080/WebRTCAppEE/websocket?target=origin
+        wss://your_server_address:5443/WebRTCAppEE/websocket?target=origin
+        target query details:
+        It's not mandatory if you don't use the new Load Balancer mechanism
+        It uses one of the nodes on Cluster mode
+        Example parameters: "origin" or "edge"
+        Default value is origin
         - streamId: The stream id that you use in your connection. You either play or publish with this stream id.
         - token: If you active one-time token on server side, you should enter token value in here. If one-time token is not activated, just leave empty
         - mode: The Mode of the Client. It should .play, .publish or .join. If it's .play, it means your WebRTC client will play a stream with your streamId
